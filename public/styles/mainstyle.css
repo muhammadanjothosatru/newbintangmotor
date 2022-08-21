@@ -1,0 +1,31 @@
+.body-color {
+    background-color: #F7F8FA !important;
+}
+
+.bar-color {
+    background-color: white;
+}
+
+.logo-size {
+    width: 158.85px;
+    height: 32.85px;
+}
+
+.font {
+    font-family: 'Montserrat' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+.icon-size {
+    width: 24px;
+    height: 24px;
+}
+
+.navbar {
+    height: 62px !important;
+}
+
+.active {
+}
