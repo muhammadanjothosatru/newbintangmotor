@@ -14,8 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pelanggan', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('nama');
+            $table->string('alamat');
+            $table->integer('nik');
+            $table->string('nomor_hp');
+            $table->string('foto_ktp');
             $table->timestamps();
+            
         });
     }
 

@@ -14,7 +14,28 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kendaraan', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->integer('id_user');
+            $table->string('nama_pemilik');
+            $table->string('alamat');
+            $table->string('merk');
+            $table->string('tipe');
+            $table->string('jenis');
+            $table->string('model');
+            $table->string('tahun_pembuatan');
+            $table->string('daya_listrik');
+            $table->string('no_rangka');
+            $table->string('no_mesin');
+            $table->string('warna');
+            $table->string('tahun_registrasi');
+            $table->string('no_bpkb');
+            $table->string('status_kendaraan');
+            $table->string('cabang');
+            $table->string('harga_beli');
+            $table->string('harga_jual');
+            $table->string('tanggal_masuk');
+            $table->string('supplier');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
