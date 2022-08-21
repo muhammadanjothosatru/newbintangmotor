@@ -32,7 +32,6 @@ return new class extends Migration
             $table->string('status_kendaraan');
             $table->string('cabang');
             $table->string('harga_beli');
-            $table->string('harga_jual');
             $table->string('tanggal_masuk');
             $table->string('supplier');
             $table->string('keterangan');
