@@ -9,14 +9,17 @@
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="assets/modules/select2/dist/css/select2.min.css">
-
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link rel="stylesheet" href="css/sidebar.css">
 
   <!-- CSS Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dashboard.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
@@ -26,6 +29,32 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
+
+
+<script>
+        jQuery(document).ready(function($){
+            $("#sidebar-menu").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-menu").toggleClass("toggled");
+            });
+        })
+        </script>
+        <script>
+            $(function(){
+                console.log('ready');
+                
+                $('#sidebar-menu li').click(function(e) {
+                    e.preventDefault()
+                    
+                    $that = $(this);
+                    
+                    $that.parent().find('li').removeClass('active');
+                    $that.addClass('active');
+                });
+            })
+        </script>
+
+
 <!-- /END GA --></head>
 
 <body>
@@ -39,9 +68,7 @@
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
           <div class="search-element">
-            
-      
-         
+    
           </div>
         </form>
         <ul class="navbar-nav navbar-right">
@@ -56,7 +83,7 @@
        
               <div class="dropdown-divider"></div>
                   <a href="#" class="dropdown-item has-icon text-dark">
-                    <i class="fas fa-sign-out-alt">Logout</i>
+                    <i class="">Logout</i>
                 </a>
                 
             </div>
