@@ -24,6 +24,12 @@ class User extends Authenticatable
         'cabang',
         'role',
     ];
+    public function transaksi(){
+    	return $this->belongsToMany('App\Models\Transaksi');
+    }
+    public function kendaraan(){
+    	return $this->belongsToMany('App\Models\Kendaraan');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

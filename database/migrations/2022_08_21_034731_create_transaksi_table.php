@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_pelanggan');
-            $table->string('no_pol')->unique();
-            $table->integer('id_user');
+            $table->integer('pelanggan_id');
+            $table->string('no_pol');
+            $table->integer('user_id');
             $table->string('metode_pembayaran');
             $table->string('diskon');
             $table->string('harga_akhir');

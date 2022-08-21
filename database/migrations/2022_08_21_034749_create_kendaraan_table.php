@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('kendaraan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_user');
+            $table->string('no_pol')->unique();
+            $table->integer('user_id');
             $table->string('nama_pemilik');
             $table->string('alamat');
             $table->string('merk');
