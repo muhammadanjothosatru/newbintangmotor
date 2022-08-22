@@ -76,15 +76,17 @@
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
             </div>
           </li>
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">Hi, admin</div></a>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
+            <div class="d-sm-none d-lg-inline-block">Admin Lamongan</div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
-              <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item has-icon text-dark">
-                    <i class="">Logout</i>
-                </a>
+              <div class="card align-items-end pr-5 pt-3">
+                <div class>
+                    <a href="#logout" class=""><i class="">Logout</i></a>
+                </div>
+              </div>
+                  
                 
             </div>
           </li>
@@ -96,11 +98,8 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class="section-header">
-            <h1>@yield('sub-judul')</h1>
-          </div>
-          @yield('content')
-          <div class="section-body">
+          <div>
+            @include('pages.dashboard')
           </div>
         </section>
       </div>
