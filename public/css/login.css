@@ -1,0 +1,58 @@
+body {
+    background-color: #1457AE !important;
+}
+
+.btn-primary {
+    background-color: #1457AE !important;
+    border: 0.5px solid rgba(0, 0, 0, 0.5) !important;
+    border-radius: 5px !important;
+}
+
+.error {
+    width: 286px;
+}
+
+.logo {
+    width: 32.85px;
+    height: 32.85px;
+}
+
+.form-control {
+    width: 285px !important;
+    height: 31px !important;
+}
+
+.font-error {
+    font-family: 'Montserrat' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+.form-label {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 12px;
+    line-height: 4;
+}
+
+.font-btn {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+.logo-size {
+    width: 158.85px;
+    height: 32.85px;
+}
+
+
