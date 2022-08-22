@@ -11,9 +11,12 @@
   <link rel="stylesheet" href="assets/modules/select2/dist/css/select2.min.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
-  <!-- CSS Libraries -->
+  <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -53,6 +56,13 @@
                 });
             })
         </script>
+<!-- datatable -->
+<script>
+    $(document).ready(function () {
+    $.noConflict();
+    var table = $('#example').DataTable();
+});
+</script>
 
 
 <!-- /END GA --></head>
@@ -93,15 +103,15 @@
         </ul>
       </nav>
       
-      @include('layouts.sidebar')
+      @include('template.sidebar')
 
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div>
-            @include('pages.dashboard')
+            @yield('konten')
           </div>
         </section>
       </div>
-      @include('layouts.footer')
+      @include('template.footer')
       

@@ -600,7 +600,7 @@ select.form-control:not([size]):not([multiple]) {
 /* 3.5 Card */
 .card {
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   border: none;
   position: relative;
   margin-bottom: 30px; }
@@ -2660,4 +2660,11 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 
 .icon-dashboard {
   background: url('assets/images/dashboard.png') !important;
+}
+
+.font-sidebar {
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
 }

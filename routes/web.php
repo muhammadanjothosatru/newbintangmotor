@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('test');
 });
 
+Route::get('/kendaraan', function () {
+    return view('pages/kendaraan');
+});
+
 Route::get('/login', function () {
     return view('auth/login');
 });
