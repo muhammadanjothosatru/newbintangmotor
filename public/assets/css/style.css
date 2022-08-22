@@ -1580,7 +1580,7 @@ h6 .badge {
       left: 34px;
       content: '\f0d8';
       font-weight: 600;
-      font-family: 'Font Awesome 5 Free';
+      font-family: 'Montserrat';
       color: #fff;
       font-size: 30px; }
     .navbar .form-inline .search-result .search-header {
@@ -1906,7 +1906,7 @@ a.dropdown-item {
 /* 4.1 Misc */
 /* nunito-regular - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/nunito-v9-latin-regular.eot");
@@ -1915,7 +1915,7 @@ a.dropdown-item {
   /* Legacy iOS */ }
 /* nunito-600 - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   src: url("../fonts/nunito-v9-latin-600.eot");
@@ -1924,7 +1924,7 @@ a.dropdown-item {
   /* Legacy iOS */ }
 /* nunito-700 - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   src: url("../fonts/nunito-v9-latin-700.eot");
@@ -1933,7 +1933,7 @@ a.dropdown-item {
   /* Legacy iOS */ }
 /* nunito-800 - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 800;
   src: url("../fonts/nunito-v9-latin-800.eot");
@@ -2087,7 +2087,7 @@ blockquote {
   font-size: 15px; }
 
 .fas, .far, .fab, .fal {
-  font-size: 13px; }
+  font-size: 14px; }
 
 #visitorMap {
   height: 210px; }
@@ -2510,7 +2510,7 @@ body.layout-3 .navbar.navbar-secondary {
       margin-right: 35px; }
       body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item > .nav-link.has-dropdown:after {
         content: "";
-        font-family: 'Font Awesome 5 Free';
+        font-family: 'Montserrat';
         font-weight: 900;
         position: absolute;
         top: 50%;
@@ -2546,7 +2546,7 @@ body.layout-3 .navbar.navbar-secondary {
       padding-right: 20px !important; }
       body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item .dropdown-menu .nav-item .nav-link.has-dropdown:after {
         content: "";
-        font-family: 'Font Awesome 5 Free';
+        font-family: 'Montserrat';
         font-weight: 900;
         position: absolute;
         top: 50%;
@@ -2644,7 +2644,7 @@ body.layout-3 .main-footer {
       background-color: #fcfcfd; }
     .main-sidebar .sidebar-menu li a.has-dropdown:after {
       content: "";
-      font-family: 'Font Awesome 5 Free';
+      font-family: 'Montserrat';
       font-weight: 900;
       position: absolute;
       top: 50%;
