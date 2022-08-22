@@ -11,9 +11,12 @@
   <link rel="stylesheet" href="assets/modules/select2/dist/css/select2.min.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
-  <!-- CSS Libraries -->
+  <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -53,6 +56,13 @@
                 });
             })
         </script>
+<!-- datatable -->
+<script>
+    $(document).ready(function () {
+    $.noConflict();
+    var table = $('#example').DataTable();
+});
+</script>
 
 
 <!-- /END GA --></head>
@@ -76,15 +86,17 @@
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
             </div>
           </li>
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">Hi, admin</div></a>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
+            <div class="d-sm-none d-lg-inline-block">Admin Lamongan</div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
-              <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item has-icon text-dark">
-                    <i class="">Logout</i>
-                </a>
+              <div class="card align-items-end pr-5 pt-3">
+                <div class>
+                    <a href="#logout" class=""><i class="">Logout</i></a>
+                </div>
+              </div>
+                  
                 
             </div>
           </li>
@@ -96,11 +108,8 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class="section-header">
-            <h1>@yield('sub-judul')</h1>
-          </div>
-          @yield('content')
-          <div class="section-body">
+          <div>
+            @yield('konten')
           </div>
         </section>
       </div>
