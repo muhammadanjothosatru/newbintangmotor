@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->string('alamat');
-            $table->integer('nik');
+            $table->string('nik')->unique();
             $table->string('nomor_hp');
             $table->string('foto_ktp');
             $table->timestamps();

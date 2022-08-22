@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kendaraan', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('no_pol')->unique();
-            $table->integer('user_id');
+            // $table->bigIncrements('id');
+            $table->string('no_pol',20)->unique();
+            $table->primary('no_pol');
+
             $table->string('nama_pemilik');
             $table->string('alamat');
             $table->string('merk');
@@ -33,7 +34,7 @@ return new class extends Migration
             $table->string('status_kendaraan');
             $table->string('cabang');
             $table->string('harga_beli');
-            $table->string('tanggal_masuk');
+            $table->date('tanggal_masuk');
             $table->string('supplier');
             $table->string('keterangan');
             $table->timestamps();

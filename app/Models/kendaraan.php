@@ -9,7 +9,8 @@ class Kendaraan extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $primaryKey = 'no_pol';
+    public $incrementing = false;
     
     protected $table = 'kendaraan';
 
