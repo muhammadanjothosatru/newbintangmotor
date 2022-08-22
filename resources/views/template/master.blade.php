@@ -91,7 +91,7 @@
         </ul>
       </nav>
       
-      @include('layouts.sidebar')
+      @include('template.sidebar')
 
       <!-- Main Content -->
       <div class="main-content">
@@ -104,5 +104,5 @@
           </div>
         </section>
       </div>
-      @include('layouts.footer')
+      @include('template.footer')
       
