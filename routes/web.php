@@ -21,6 +21,10 @@ Route::get('/kendaraan', function () {
     return view('pages/kendaraan');
 });
 
+Route::get('/tambah-kendaraan', function () {
+    return view('pages/tambah-kendaraan');
+});
+
 Route::get('/login', function () {
     return view('auth/login');
 });

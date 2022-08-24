@@ -1,4 +1,4 @@
-<div class="main-sidebar sidebar-style-2 no-gutters">
+<div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <img src="images/logo2.png" width="60%" >
@@ -28,7 +28,5 @@
             <li class="">
               <a href="#administrasi" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
             </li>
-        
-       
         </aside>
       </div>

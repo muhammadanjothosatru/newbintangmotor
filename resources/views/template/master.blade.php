@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="assets/modules/select2/dist/css/select2.min.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
   <!-- Jquery -->
@@ -43,9 +42,7 @@
         })
         </script>
         <script>
-            $(function(){
-                console.log('ready');
-                
+            $(function(){              
                 $('#sidebar-menu li').click(function(e) {
                     e.preventDefault()
                     
@@ -71,9 +68,10 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <nav class="navbar navbar-expand-lg main-navbar">
+      <div class="navbar-bg"></div>
         <form class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="sidebarnihbos" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
           <div class="search-element">

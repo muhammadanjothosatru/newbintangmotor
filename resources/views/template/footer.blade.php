@@ -11,8 +11,6 @@
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
   <script src="assets/modules/select2/dist/js/select2.full.min.js"></script>
-  
-  <!-- JS Libraies -->
 
   <!-- Page Specific JS File -->
   
