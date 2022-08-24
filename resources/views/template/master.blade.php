@@ -105,7 +105,7 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div>
+          <div class=container-fluid>
             @yield('konten')
           </div>
         </section>
