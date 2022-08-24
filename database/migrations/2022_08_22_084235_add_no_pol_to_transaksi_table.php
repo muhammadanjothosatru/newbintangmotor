@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('transaksi', function (Blueprint $table) {
-            $table->string('no_pol');
+            $table->string('kendaraan_no_pol')->after('pelanggan_id')->required();
+            $table->foreign('kendaraan_no_pol')->references('no_pol')->on('kendaraan')->onDelete('restrict');
         });
     }
 
@@ -26,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('transaksi', function (Blueprint $table) {
-            //
+            $table->dropForeign(['kendaraan_no_pol']);
+            $table->dropColumn('kendaraan_no_pol');
         });
     }
 };

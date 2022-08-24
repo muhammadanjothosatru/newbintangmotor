@@ -18,17 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
         'cabang',
         'role',
     ];
     public function transaksi(){
-    	return $this->belongsToMany('App\Models\Transaksi');
+    	return $this->belongsToMany(Transaksi::class);
     }
     public function kendaraan(){
-    	return $this->belongsToMany('App\Models\Kendaraan');
+    	return $this->belongsToMany(Kendaraan::class);
     }
 
     /**

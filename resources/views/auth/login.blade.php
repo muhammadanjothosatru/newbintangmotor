@@ -40,13 +40,13 @@
                                             <img src="images/logo2.png" alt="" class="logo-size">
                                         </div>
                                         <div class="col">
-                                            <form action="{{url('proses_login')}}" method="POST" id="logForm">
-                                                {{ csrf_field() }}
+                                            <form action="{{url('login')}}" method="POST" id="logForm">
+                                                @csrf
                                                 <div class="form-group">
                                                     @error('login_gagal')
-                                                        {{-- <span class="invalid-feedback" role="alert">
+                                                        <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
-                                                        </span> --}}
+                                                        </span>
                                                         <div class="alert alert-warning alert-dismissible fade show error font-error" role="alert">
                                                             {{-- <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span> --}}
                                                             <span class="alert-inner--text"><strong>Peringatan!</strong> <br>Username atau password yang anda masukkan salah.</br> </span>
@@ -55,10 +55,10 @@
                                                             </button>
                                                         </div>
                                                         @enderror
-                                                    <label class="form-label" for="inputEmailAddress">Username</label>
+                                                    <label class="form-label" for="username">Username</label>
                                                     <input
                                                         class="form-control"
-                                                        id="inputEmailAddress"
+                                                        id="username"
                                                         name="username"
                                                         type="text"
                                                         placeholder="Masukkan Username"/>

@@ -12,6 +12,6 @@ class Pelanggan extends Model
     protected $table = 'pelanggan';
 
     public function transaksi(){
-    	return $this->belongsToMany('App\Models\Transaksi');
+    	return $this->belongsToMany(Transaksi::class);
     }
 }

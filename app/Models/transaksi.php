@@ -12,14 +12,14 @@ class Transaksi extends Model
     protected $table = 'transaksi';
 
     public function users(){
-    	return $this->belongsTo('App\Models\User');
+    	return $this->belongsTo(User::class, 'users_id','id');
     }
 
     public function pelanggan(){
-    	return $this->belongsTo('App\Models\Pelanggan');
+    	return $this->belongsTo(Pelanggan::class);
     }
 
     public function kendaraan(){
-    	return $this->belongsTo('App\Models\Kendaraan');
+    	return $this->belongsTo(Kendaraan::class);
     }
 }

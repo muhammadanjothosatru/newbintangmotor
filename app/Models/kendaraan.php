@@ -15,9 +15,9 @@ class Kendaraan extends Model
     protected $table = 'kendaraan';
 
     public function transaksi(){
-    	return $this->belongsToMany('App\Models\Transaksi');
+    	return $this->belongsToMany(Transaksi::class);
     }
     public function users(){
-    	return $this->belongsTo('App\Models\User');
+    	return $this->belongsTo(User::class,'users_id','id');
     }
 }
