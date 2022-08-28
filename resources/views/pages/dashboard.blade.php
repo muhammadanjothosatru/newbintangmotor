@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Test</title>
-</head>
-<body>
+@extends('template.master')
+@section('konten')
  
-
- 
-	<table border="1">
+<table id="example" class="display" style="width:100%">
+    <thead>
 		<tr>
 			<th>NO</th>
 			<th>ID</th>
@@ -16,6 +11,7 @@
 			<th>EMAIL</th>
 			<th>CABANG</th>
 		</tr>
+    </thead>
 		@foreach($user as $p)
 		<tr>
 			<td>{{ $loop->iteration}}</td>
@@ -29,5 +25,4 @@
 	</table>
  
  
-</body>
-</html>
+@endsection
