@@ -32,27 +32,21 @@
   gtag('config', 'UA-94034622-3');
 </script>
 
-
+<!-- <script>
+  jQuery(document).ready(function($){})
+</script>
 <script>
-        jQuery(document).ready(function($){
-            $("#sidebar-menu").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-menu").toggleClass("toggled");
-            });
-        })
-        </script>
-        <script>
-            $(function(){              
-                $('#sidebar-menu li').click(function(e) {
-                    e.preventDefault()
+  $(function(){              
+    $('#sidebar-menu li').click(function(e) {
+      e.preventDefault()
                     
-                    $that = $(this);
+      $that = $(this);
                     
-                    $that.parent().find('li').removeClass('active');
-                    $that.addClass('active');
-                });
-            })
-        </script>
+      $that.parent().find('li').removeClass('active');
+      $that.addClass('active');
+    });
+  })
+</script> -->
 <!-- datatable -->
 <script>
     $(document).ready(function () {
