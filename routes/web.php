@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,5 @@ Route::get('/kendaraan', function () {
 Route::get('/login', function () {
     return view('auth/login');
 });
+Route::resource('/pelanggan', PelangganController::class);
 

@@ -16,6 +16,7 @@ class PelangganController extends Controller
     {
         $pelanggan = Pelanggan::all();
         return view('pages.pelanggan', compact('pelanggan'));
+       
     }
 
     /**
@@ -70,7 +71,7 @@ class PelangganController extends Controller
      */
     public function update(Request $request, Pelanggan $pelanggan)
     {
-        //
+        
     }
 
     /**

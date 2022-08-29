@@ -17,7 +17,7 @@
             </li>
             
             <li class="">
-              <a href="#pelanggan" class="nav-link"><i class="fas fa-light fa-user"></i> <span>Pelanggan</span></a>
+              <a href="{{ route('pelanggan.index') }}" class="nav-link"><i class="fas fa-light fa-user"></i> <span>Pelanggan</span></a>
             </li>
             <li class="">
               <a href="#pembelian" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
