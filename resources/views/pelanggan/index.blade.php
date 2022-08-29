@@ -1,6 +1,6 @@
 @extends('template.master')
 @section('konten')
-<a href="{{ route('pelanggan.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Pelanggan</a>
+<a href="{{ route('pelanggan.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Kendaraan</a>
 <br><br>
 <table id="example" class="display" style="width:100%">
     <thead>
