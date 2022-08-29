@@ -17,7 +17,6 @@ return new class extends Migration
             // $table->bigIncrements('id');
             $table->string('no_pol',20)->unique();
             $table->primary('no_pol');
-
             $table->string('nama_pemilik');
             $table->string('alamat');
             $table->string('merk');
