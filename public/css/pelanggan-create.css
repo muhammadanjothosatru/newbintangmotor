@@ -1,0 +1,33 @@
+.font-form {
+    font-family: 'Montserrat' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+} 
+  
+.form-control-size {
+    height: 32px !important;
+}
+
+.textarea-control-size {
+    height: 111px !important;
+}
+  
+input::placeholder {
+    font-size: 12px !important;
+}
+  
+textarea::placeholder {
+    font-size: 12px !important;
+}
+
+.file-upload {
+    font-size: 12px !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #1457AE;
+    border-radius: 4px;
+}

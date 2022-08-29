@@ -167,7 +167,7 @@ select.form-control:not([size]):not([multiple]),
   height: 42px; }
 
 textarea.form-control {
-  height: 64px !important; }
+  height: 64px; }
 
 .custom-control {
   line-height: 1.6rem; }
@@ -2670,3 +2670,5 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
   font-weight: 600 !important;
   font-size: 14px !important;
 }
+
+
