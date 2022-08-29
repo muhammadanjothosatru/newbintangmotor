@@ -1,10 +1,10 @@
 <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <img src="images/logo2.png" width="60%" >
+            <img src="{{ asset('images/logo2.png')}}" width="60%" >
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-          <img src="images/logo.png" width="60%">
+          <img src="{{ asset('images/logo.png')}}" width="60%">
           </div>
           <ul class="sidebar-menu" id="sidebar-menu">
 
