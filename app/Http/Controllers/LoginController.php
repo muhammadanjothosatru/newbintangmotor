@@ -22,9 +22,18 @@ class LoginController extends Controller
         ]);
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/kendaraan');
+            return redirect()->intended('/dashboard');
         }
-        return back()->with('login_gagal','Gagal Login');
+        return back()->with('login_gagal','login gagal');
+    }
+    public function logout (Request $request){
+        Auth::logout();
+ 
+    $request->session()->invalidate();
+ 
+    $request->session()->regenerateToken();
+ 
+    return redirect('/login');
     }
 }
 

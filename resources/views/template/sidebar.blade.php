@@ -9,11 +9,11 @@
           <ul class="sidebar-menu" id="sidebar-menu">
 
             <li class="active">
-                <a class="nav-link" href="#dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             
             <li class="">
-              <a href="#kendaraan" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
+              <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
             </li>
             
             <li class="">

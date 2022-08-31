@@ -27,40 +27,40 @@
                                 <div class="card">
                                 <div class="d-flex align-items-center justify-content-center pt-4 pb-4">
                                     {{-- Error Alert --}}
-                                    @if(session('error'))
+                                    {{-- @if(session('login_gagal'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{session('error')}}
+                                        {{session('login_gagal')}}
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    @endif
+                                    @endif --}}
                                     <div class="card-body align-items-center">
                                         <div class="d-flex justify-content-center mb-5">
                                             <img src="images/logo2.png" alt="" class="logo-size">
                                         </div>
+                                        @if(session('login_gagal'))
+                                
+                                            <div class="alert alert-warning alert-dismissible fade show error font-error ml-3" role="alert">
+                                             {{-- <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span> --}}
+                                                <span class="alert-inner--text"><strong>Peringatan!</strong> <br>Username atau password yang anda masukkan salah.</br> </span>
+                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        @endif
                                         <div class="col">
                                             <form action="{{url('login')}}" method="POST" id="logForm">
                                                 @csrf
                                                 <div class="form-group">
-                                                    @error('login_gagal')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        <div class="alert alert-warning alert-dismissible fade show error font-error" role="alert">
-                                                            {{-- <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span> --}}
-                                                            <span class="alert-inner--text"><strong>Peringatan!</strong> <br>Username atau password yang anda masukkan salah.</br> </span>
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        @enderror
+                                                    
                                                     <label class="form-label" for="username">Username</label>
                                                     <input
                                                         class="form-control"
                                                         id="username"
                                                         name="username"
                                                         type="text"
+                                                        value="{{old('username')}}"
                                                         placeholder="Masukkan Username"/>
                                                     @if($errors->has('username'))
                                                     <span class="error font-error text-danger">Username wajib diisi!</span>

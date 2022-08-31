@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('warna');
             $table->string('tahun_registrasi');
             $table->string('no_bpkb');
-            $table->string('status_kendaraan');
+            $table->string('status_kendaraan')->default('Tersedia');
             $table->string('cabang');
             $table->string('harga_beli');
             $table->date('tanggal_masuk');
