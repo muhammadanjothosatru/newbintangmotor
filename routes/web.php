@@ -16,20 +16,17 @@ use App\Http\Controllers\PelangganController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('test');
+// start pages to login //
+Route::get('/', function(){
+ return view('auth.login');
 });
 
-Route::get('/kendaraan', function () {
-    return view('pages/kendaraan');
-});
-
+// route login dan logout//
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class,'authenticate'])->name('login');
 Route::post('/logout', [LoginController::class,'logout']);
 
-
+// group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
 Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/pelanggan', PelangganController::class);
