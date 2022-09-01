@@ -1,0 +1,48 @@
+.font-form {
+    font-family: 'Montserrat' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+} 
+  
+.form-control-size {
+    height: 32px !important;
+}
+
+.textarea-control-size {
+    height: 90px !important;
+}
+  
+input::placeholder {
+    font-size: 12px !important;
+}
+  
+textarea::placeholder {
+    font-size: 12px !important;
+}
+
+.file-upload {
+    font-size: 12px !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #1457AE;
+    border-radius: 4px;
+}
+
+.foto-ktp {
+    width: 241.05px;
+    height: 155.75px;
+}
+
+.font-data {
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 12px;
+line-height: 15px;
+
+color: #000000;
+}
