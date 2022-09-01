@@ -14,7 +14,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $transaksi = Transaksi::with('users','pelanggan','kendaraan')->get();
+        return view('transaksi.index', ['transaksi'=>$transaksi]);
     }
 
     /**

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('no_kontrak');
             $table->string('uang_dp');
             $table->string('bulan_angsuran');
-            $table->string('keterangan');
+            $table->string('keterangan')->default('Belum ACC');
             $table->timestamps();
         });
     }

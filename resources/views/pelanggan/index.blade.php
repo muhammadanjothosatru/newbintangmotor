@@ -12,11 +12,11 @@
 <table id="example" class="display" style="width:100%">
     <thead>
 		<tr>
-			<th>NO</th>
-			<th>NAMA</th>
-			<th>NOMOR HP</th>
-			<th>ALAMAT</th>
-			<th>ACTION</th>
+			<th>No</th>
+			<th>Nama</th>
+			<th>Nomor Hp</th>
+			<th>Alamat</th>
+			<th>Action</th>
 		</tr>
     </thead>
 		@foreach($pelanggan as $p)

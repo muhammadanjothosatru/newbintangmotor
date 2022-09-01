@@ -12,16 +12,16 @@
 <table id="example" class="display" style="width:100%">
     <thead>
 		<tr>
-			<th>NO</th>
-			<th>NO.POL</th>
-			<th>MERK</th>
-			<th>NAMA PEMILIK</th>
-			<th>TIPE</th>
-			<th>WARNA</th>
-			<th>TANGGAL MASUK</th>
-			<th>HARGA BELI</th>
-			<th>STATUS</th>
-			<th>ACTION</th>
+			<th>No</th>
+			<th>No. Pol</th>
+			<th>Merk</th>
+			<th>Nama Pemilik</th>
+			<th>Tipe</th>
+			<th>Warna</th>
+			<th>Tanggal Masuk</th>
+			<th>Harga Beli</th>
+			<th>Status</th>
+			<th>Action</th>
 		</tr>
     </thead>
 		@foreach($kendaraan as $k)
@@ -34,7 +34,7 @@
 			<td>{{ $k->warna}}</td>
 			<td>{{ $k->tanggal_masuk}}</td>
 			<td>{{ $k->harga_beli}}</td>
-			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></h1></td>
+			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
 			<td>
                 <a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
             </td>

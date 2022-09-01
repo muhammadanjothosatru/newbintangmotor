@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('merk');
             $table->string('tipe');
-            $table->string('jenis');
+            $table->enum('jenis',['Sepeda Motor','Mobil']);
             $table->string('model');
             $table->string('tahun_pembuatan');
             $table->string('daya_listrik');
