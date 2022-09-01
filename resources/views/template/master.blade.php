@@ -79,13 +79,17 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">Admin Lamongan</div></a>
+            <div class="d-sm-none d-lg-inline-block">welcome admin</div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
               <div class="card align-items-end pr-5 pt-3">
                 <div class>
-                    <a href="#logout" class=""><i class="">Logout</i></a>
+                  <form action="/logout" method="post">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                  </form>  
+                  {{-- <a href="/logout" class=""><i class="">Logout</i></a> --}}
                 </div>
               </div>
                   

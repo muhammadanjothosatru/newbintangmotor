@@ -37,7 +37,35 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $validate= $request->validate([
+            'nik' => 'required|unique:pelanggan',
+            'nama' => 'required',
+            'nomor_hp' => 'required|numeric',
+            'alamat' => 'required',
+           
+           
+        ]);
+       
+        
+        $newName = '';
+
+       if($request->file('foto_ktp')){
+            $extension = $request->file('foto_ktp')->getClientOriginalExtension();
+            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
+       }
+       
+     
+       $pelanggan = Pelanggan::create([
+        'nik' => $request->nik,
+        'nama' =>  $request->nama,
+        'foto_ktp' => $newName,
+        'nomor_hp' => $request->nomor_hp,
+        'alamat' => $request->alamat,
+    ]);
+    return redirect('/pelanggan')->with('success','data berhasil ditambahkan');
+        
     }
 
     /**
