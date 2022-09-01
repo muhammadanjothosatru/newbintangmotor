@@ -85,9 +85,10 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        $pelanggan = Pelanggan::findorfail($id);
+        return view('pelanggan.edit', compact('pelanggan'));
     }
 
     /**

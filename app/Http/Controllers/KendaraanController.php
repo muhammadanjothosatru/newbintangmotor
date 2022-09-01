@@ -25,7 +25,7 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        return view('kendaraan.create');
     }
 
     /**
