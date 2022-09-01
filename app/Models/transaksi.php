@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $guarded = ['id','no_kontrak','uang_dp','bulan_angsuran'];
     protected $table = 'transaksi';
 
     public function users(){
