@@ -49,12 +49,17 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="inputNama" class="col-sm-2 col-form-label font-form">No. HP</label>
+                    <label for="inputMerk" class="col-sm-2 col-form-label font-form">Merk</label>
                         <div class="col-sm-10">
-                            <div class="btn-group">
-                                <button class="btn dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                            <div class="dropdown ">
+                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
                                     Pilih Merk
                                 </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Honda</a></li>
+                                    <li><a class="dropdown-item" href="#">Yamaha</a></li>
+                                    <li><a class="dropdown-item" href="#">Suzuki</a></li>
+                                </ul>
                             </div>
                         </div>
                 </div>
