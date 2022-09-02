@@ -6,6 +6,9 @@
 {{ Session('success') }}
 </div> 
 @endif
+
+<a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Transaksi Baru</a>
+<br><br>
 <table id="example" class="display">
     <thead>
 		<tr>
