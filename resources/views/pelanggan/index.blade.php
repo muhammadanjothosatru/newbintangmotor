@@ -7,7 +7,9 @@
 </div> 
 @endif
 
-<a href="{{ route('pelanggan.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Pelanggan</a>
+<div class="card">
+	<div class="m-4">
+	<a href="{{ route('pelanggan.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Pelanggan</a>
 <br><br>
 <table id="example" class="display" style="width:100%">
     <thead>
@@ -31,4 +33,6 @@
 		</tr>
 		@endforeach
 	</table>
+	</div>
+</div>
 @endsection

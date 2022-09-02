@@ -6,7 +6,12 @@
 {{ Session('success') }}
 </div> 
 @endif
-<table id="example" class="display">
+
+<div class="card">
+    <div class="m-4">
+    <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Pembelian</a>
+    <br><br>
+    <table id="example" class="display">
     <thead>
 		<tr>
             <th>No</th>
@@ -46,4 +51,6 @@
     
    @endforeach
 	</table>
+    </div>
+</div>
 @endsection
