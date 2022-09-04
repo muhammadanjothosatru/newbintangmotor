@@ -24,7 +24,7 @@
         <div class="row pl-0 pr-0">
             <div class="font-form-header mb-3 col-6">Masukkan Detail Kendaraan</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
-                <a href="{{ route('pelanggan.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
+                <a href="{{ route('kendaraan.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
             </div>
         </div>
         
@@ -49,20 +49,6 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-<<<<<<< HEAD
-                    <label for="inputMerk" class="col-sm-2 col-form-label font-form">Merk</label>
-                        <div class="col-sm-10">
-                            <div class="dropdown ">
-                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Pilih Merk
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Honda</a></li>
-                                    <li><a class="dropdown-item" href="#">Yamaha</a></li>
-                                    <li><a class="dropdown-item" href="#">Suzuki</a></li>
-                                </ul>
-                            </div>
-=======
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
                         <select class="form-select" aria-label="Default select example">
@@ -79,7 +65,6 @@
                     <label for="inputTipe"  class="col-sm-2 col-form-label font-form">Tipe</label>
                         <div class="col-sm-10">
                             <input type="text" name="tipe" value="{{ old('tipe') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tipe Kendaraan" id="tipe">
->>>>>>> 03cc76ec6243fbb8618b2a4c1053a635092d6ced
                         </div>
                 </div>
                 <div class="mb-3 row">
