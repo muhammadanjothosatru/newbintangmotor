@@ -7,11 +7,17 @@
 </div> 
 @endif
 
+<<<<<<< HEAD
 <div class="card">
     <div class="m-4">
     <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Pembelian</a>
     <br><br>
     <table id="example" class="display">
+=======
+<a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Transaksi Baru</a>
+<br><br>
+<table id="example" class="display">
+>>>>>>> 03cc76ec6243fbb8618b2a4c1053a635092d6ced
     <thead>
 		<tr>
             <th>No</th>
