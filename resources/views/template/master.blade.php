@@ -23,6 +23,11 @@
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
   
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
