@@ -16,37 +16,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
-
   <!-- Template CSS -->
   @yield('link_css')
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
   
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
 
 <!-- <script>
-  jQuery(document).ready(function($){})
-</script>
-<script>
-  $(function(){              
-    $('#sidebar-menu li').click(function(e) {
-      e.preventDefault()
-                    
-      $that = $(this);
-                    
-      $that.parent().find('li').removeClass('active');
-      $that.addClass('active');
-    });
-  })
+    $(document).ready(function(){
+        $(document).on('click','#sidebar-menu li',function(){
+            $('li').removeClass("active");
+            $(this).addClass("active");
+
+            // without this below, the click on the link changes
+            // the page, so the HTML gets reset
+            return false ;
+        })
+    }) ;
 </script> -->
 <!-- datatable -->
 <script>
