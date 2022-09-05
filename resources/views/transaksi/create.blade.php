@@ -39,7 +39,10 @@
                 <div class="mb-3 row">
                     <label for="inputNama"  class="col-sm-2 col-form-label font-form">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama" value="{{ old('nama') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama">
+                            <select class="select2">
+                                <option value="AL">Alabama</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
                         </div>
                 </div>
                 <div class="mb-3 row">

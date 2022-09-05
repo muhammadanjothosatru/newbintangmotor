@@ -10,11 +10,10 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css')}}">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables/datatables.min.css')}}"/>
 
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
   <!-- Template CSS -->
   @yield('link_css')
@@ -38,7 +37,6 @@
 <!-- datatable -->
 <script>
     $(document).ready(function () {
-    $.noConflict();
     var table = $('#example').DataTable();
 });
 </script>
