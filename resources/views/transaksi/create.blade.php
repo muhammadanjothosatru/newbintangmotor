@@ -42,6 +42,7 @@
                                 <option value="3">Yagyu</option>
                             </select>
                         </div>
+<<<<<<< HEAD
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-2 pl-0 col-form-label"></div>
@@ -63,6 +64,16 @@
                         <label for="inputNama" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Alamat</label>
                         <div class="pl-0 pr-0 form-floating col-sm-10">
                             <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pelanggan" id="alamat">{{ old('alamat') }}</textarea>
+=======
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputNama"  class="col-sm-2 col-form-label font-form">Nama</label>
+                        <div class="col-sm-10">
+                            <select class="select2">
+                                <option value="AL">Alabama</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+>>>>>>> 42b9bab59f3a397336e97fb54f4d74f2d624dab2
                         </div>
                     </div>
                     <div class="mb-3 row">

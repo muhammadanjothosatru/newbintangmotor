@@ -10,12 +10,10 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css')}}">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables/datatables.min.css')}}"/>
 
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-
 
   <!-- Template CSS -->
   @yield('link_css')
@@ -23,6 +21,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
   
+<<<<<<< HEAD
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
   <!-- Latest compiled and minified JavaScript -->
@@ -37,26 +36,24 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
+=======
+>>>>>>> 42b9bab59f3a397336e97fb54f4d74f2d624dab2
 
 <!-- <script>
-  jQuery(document).ready(function($){})
-</script>
-<script>
-  $(function(){              
-    $('#sidebar-menu li').click(function(e) {
-      e.preventDefault()
-                    
-      $that = $(this);
-                    
-      $that.parent().find('li').removeClass('active');
-      $that.addClass('active');
-    });
-  })
+    $(document).ready(function(){
+        $(document).on('click','#sidebar-menu li',function(){
+            $('li').removeClass("active");
+            $(this).addClass("active");
+
+            // without this below, the click on the link changes
+            // the page, so the HTML gets reset
+            return false ;
+        })
+    }) ;
 </script> -->
 <!-- datatable -->
 <script>
     $(document).ready(function () {
-    $.noConflict();
     var table = $('#example').DataTable();
 });
 </script>
