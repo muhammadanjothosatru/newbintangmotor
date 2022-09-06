@@ -34,10 +34,10 @@
                     <div class="mb-3 row">
                         <label for="inputNama"  class="pl-0 pr-0 mt-2 col-sm-2 col-form-label font-form">Nama</label>
                         <div class="pl-0 pr-0 col-sm-10">
-                            <select class="select2 col-sm-12" data-placeholder="Cari Nama Pelanggan">
-                                <option></option>
-                                @foreach($pelanggan as $p)
-                                <option>{{ $p->nama }}</option>
+                            <select class="select2 col-sm-12" name="nama" required="required" data-placeholder="Cari Nama Pelanggan">
+                                <option ></option>
+                                @foreach($pelanggan as $data)
+                                <option value="{{$data->id}}">{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -51,10 +51,10 @@
                     <div class="mb-3 row">
                         <label for="inputNopol"  class="pl-0 pr-0 mt-2 col-sm-2 col-form-label font-form">No Pol.</label>
                         <div class="pl-0 pr-0 col-sm-10">
-                            <select class="select2 col-sm-12" data-placeholder="Cari Nomor Polisi">
+                            <select class="select2 col-sm-12" name="no_pol"data-placeholder="Cari Nomor Polisi">
                                 <option></option>
-                                @foreach($pelanggan as $p)
-                                <option>{{ $p->nama }}</option>
+                                @foreach($kendaraan as $data)
+                                <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
                                 @endforeach
                                 </select>
                         </div>
@@ -62,15 +62,16 @@
                     <div class="mb-3 row">
                         <label for="inputDiskon"  class="pl-0 pr-0 col-sm-2 col-form-label font-form">Diskon</label>
                             <div class=" pl-0 pr-0 col-sm-10">
-                                <input type="text" name="diskon" value="{{ old('diskon') }}" required="required" class="form-control form-control-size " placeholder="Masukkan Jumlah Diskon" id="diskon">
+                                <input type="text" name="diskon" class="form-control form-control-size " placeholder="Masukkan Jumlah Diskon" id="diskon">
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Harga Akhir</label>
                             <div class=" pl-0 pr-0 col-sm-10">
-                                <input type="text" name="hargaakhir" value="{{ old('hargaakhir') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
+                                <input type="text" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
                             </div>
                     </div>
+                    <br><br>
                     <div class="mb-3 row">
                         <button class="btn btn-primary btn-block mt-1" type="submit"><i class="fas fa-save mr-2"></i>Simpan</button>
                     </div>
@@ -81,6 +82,7 @@
                     <div class="mb-3 row">
                         <label for="metode"  class="pl-0 pr-0 col-sm-2 mt-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 pr-0 col-sm-10">
+
                             <select class="select2 col-sm-12"  onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
                                 <option></option>
                                 <option value="0">Tunai</option>

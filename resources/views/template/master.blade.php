@@ -20,8 +20,16 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
   <link rel="stylesheet" href="{{ asset('css/general.css')}}">
   @yield('link_css')
+
   
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
@@ -32,6 +40,7 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
+
 
   <!-- datatable -->
   <script>
@@ -62,7 +71,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">welcome admin</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  }}    </div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
