@@ -20,10 +20,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
-<<<<<<< HEAD
-=======
-  
-<<<<<<< HEAD
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
   <!-- Latest compiled and minified JavaScript -->
@@ -38,7 +35,7 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
->>>>>>> ee85861796d4450326bfa2e1a2950fa64f1978ca
+
 
   <!-- datatable -->
   <script>
