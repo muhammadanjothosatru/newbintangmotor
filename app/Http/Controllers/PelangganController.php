@@ -43,8 +43,6 @@ class PelangganController extends Controller
             'nama' => 'required',
             'nomor_hp' => 'required|numeric',
             'alamat' => 'required',
-           
-           
         ]);
        
         
