@@ -36,8 +36,6 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
-=======
->>>>>>> 42b9bab59f3a397336e97fb54f4d74f2d624dab2
 
 <!-- <script>
     $(document).ready(function(){

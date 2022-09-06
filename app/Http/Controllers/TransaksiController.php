@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -25,7 +26,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        return view('transaksi.create');
+        $pelanggan = Pelanggan::all();
+        return view('transaksi.create', compact('pelanggan'));
     }
 
     /**
