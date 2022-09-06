@@ -20,29 +20,15 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
-  
 
-<!-- <script>
-    $(document).ready(function(){
-        $(document).on('click','#sidebar-menu li',function(){
-            $('li').removeClass("active");
-            $(this).addClass("active");
+  <!-- datatable -->
+  <script>
+      $(document).ready(function () {
+      var table = $('#example').DataTable();
+  });
+  </script>
 
-            // without this below, the click on the link changes
-            // the page, so the HTML gets reset
-            return false ;
-        })
-    }) ;
-</script> -->
-<!-- datatable -->
-<script>
-    $(document).ready(function () {
-    var table = $('#example').DataTable();
-});
-</script>
-
-
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
