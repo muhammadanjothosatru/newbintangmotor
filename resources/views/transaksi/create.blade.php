@@ -44,7 +44,9 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-sm-2 pl-0 col-form-label"></div>
-                        <button class="btn btn-primary btn-block col-sm-10 mt-1"><i class="fas fa-plus mr-2"></i>Tambah Pelanggan Baru</button>
+                        <div class="font-form-header pl-0 pr-0 col-sm-10 mt-1">
+                            <a href="{{ route('pelanggan.create') }}" class="btn btn-primary btn-block"><i class="fas fa-plus mr-2"></i>Tambah Pelanggan Baru</a>
+                        </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputNopol"  class="pl-0 pr-0 mt-2 col-sm-2 col-form-label font-form">No Pol.</label>
@@ -71,15 +73,17 @@
                     </div>
                     <br><br>
                     <div class="mb-3 row">
-                        <button class="btn btn-primary btn-block mt-1"><i class="fas fa-save mr-2"></i>Simpan</button>
+                        <button class="btn btn-primary btn-block mt-1" type="submit"><i class="fas fa-save mr-2"></i>Simpan</button>
                     </div>
                 </div>
-            </div><div class="col-6">
+            </div>
+            <div class="col-6">
                 <div class="ml-3">
                     <div class="mb-3 row">
                         <label for="metode"  class="pl-0 pr-0 col-sm-2 mt-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 pr-0 col-sm-10">
-                            <select class="select2 col-sm-12" name="metode"  onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran">
+
+                            <select class="select2 col-sm-12"  onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
                                 <option></option>
                                 <option value="0">Tunai</option>
                                 <option value="1">Kredit</option>

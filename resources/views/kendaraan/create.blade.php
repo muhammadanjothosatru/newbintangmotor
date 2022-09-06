@@ -51,8 +51,8 @@
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Pilih Merk</option>
+                        <select class="select2 selectform" data-placeholder="Pilih Merk" style="width: 100%" data-minimum-results-for-search="Infinity">
+                            <option></option>
                             <option value="1">Honda</option>
                             <option value="2">Yamaha</option>
                             <option value="3">Suzuki</option>
