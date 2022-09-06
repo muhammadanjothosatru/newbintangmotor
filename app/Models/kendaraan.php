@@ -11,7 +11,27 @@ class Kendaraan extends Model
 
     protected $primaryKey = 'no_pol';
     public $incrementing = false;
-    protected $guarded = [];
+    protected $fillable = [
+        'no_pol' ,
+            'users_id' ,
+            'nama_pemilik' ,
+            'alamat' ,
+            'tipe' ,
+            'jenis' ,
+            'model',
+            'tahun_pembuatan',
+            'daya_listrik',
+            'no_rangka',
+            'warna' ,
+            'tahun_registrasi' ,
+            'no_bpkb',
+            'status_kendaraan' ,
+            'cabang',
+            'harga_beli',
+            'tanggal_masuk',
+            'supplier' ,
+            'keterangan',
+    ];
     
     protected $table = 'kendaraan';
 

@@ -79,7 +79,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">welcome admin</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  }}    </div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
