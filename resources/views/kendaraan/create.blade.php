@@ -135,7 +135,7 @@
                 <div class="mb-3 row">
                     <label for="inputTanggalMasuk"  class="col-sm-2 col-form-label font-form">Tanggal Masuk</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
+                            <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
                         </div>
                 </div>
                 <div class="mb-3 row">

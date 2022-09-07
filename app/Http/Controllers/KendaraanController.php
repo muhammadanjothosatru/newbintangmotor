@@ -56,6 +56,7 @@ class KendaraanController extends Controller
             'tanggal_masuk' => 'required',
         
         ]);
+        $newDate = 
         $kendaraan = Kendaraan::create([
             'no_pol' => $request->no_pol,
             'users_id' => Auth::user()->id,
