@@ -20,23 +20,6 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
-<<<<<<< HEAD
-  
-
-<!-- <script>
-    $(document).ready(function(){
-        $(document).on('click','#sidebar-menu li',function(){
-            $('li').removeClass("active");
-            $(this).addClass("active");
-
-            // without this below, the click on the link changes
-            // the page, so the HTML gets reset
-            return false ;
-        })
-    }) ;
-</script> -->
-<!-- datatable -->
-=======
 
 
 
@@ -50,16 +33,11 @@
   
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
->>>>>>> fd2a75e34e0158ade0c540f20f7893c296376544
 <script>
     $(document).ready(function () {
     var table = $('#example').DataTable();
 });
 </script>
-<<<<<<< HEAD
-=======
-
->>>>>>> fd2a75e34e0158ade0c540f20f7893c296376544
 
 
 <!-- /END GA --></head>
