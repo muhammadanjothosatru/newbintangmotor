@@ -17,12 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
-        $this->call([
-            UserSeeder::class,
-            NavigationSeeder::class,
-        ]);
-=======
        User::factory(10)->create();
        Pelanggan::factory(15)->create();
        Kendaraan::factory(15)->create();
@@ -31,6 +25,5 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
->>>>>>> fd2a75e34e0158ade0c540f20f7893c296376544
     }
 }
