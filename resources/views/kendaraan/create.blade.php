@@ -18,7 +18,7 @@
 	</div> 
   	
   @endif
-    <form action="{{ route('pelanggan.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="m-4">
         <div class="row pl-0 pr-0">
@@ -33,13 +33,13 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nopol" value="{{ old('nik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol">
+                            <input type="text" name="no_pol" value="{{ old('no_pol') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNamaPemilik"  class="col-sm-2 col-form-label font-form">Nama Pemilik</label>
                         <div class="col-sm-10">
-                            <input type="text" name="namapemilik" value="{{ old('nama') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik">
+                            <input type="text" name="nama_pemilik" value="{{ old('nama_pemilik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik">
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -51,13 +51,13 @@
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Pilih Merk</option>
-                            <option value="1">Honda</option>
-                            <option value="2">Yamaha</option>
-                            <option value="3">Suzuki</option>
-                            <option value="2">Kawasaki</option>
-                            <option value="3">Yagyu</option>
+                        <select class="select2 selectform" name="merk" data-placeholder="Pilih Merk" style="width: 100%" data-minimum-results-for-search="Infinity">
+                            <option></option>
+                            <option value="Honda">Honda</option>
+                            <option value="Yamaha">Yamaha</option>
+                            <option value="Suzuki">Suzuki</option>
+                            <option value="Kawasaki">Kawasaki</option>
+                            <option value="Yagyu">Yagyu</option>
                         </select>
                     </div>
                 </div>
@@ -82,13 +82,13 @@
                 <div class="mb-3 row">
                     <label for="inputTahun"  class="col-sm-2 col-form-label font-form">Tahun Pemb.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tahun" value="{{ old('tahun') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Pembuatan Kendaraan" id="tahun">
+                            <input type="text" name="tahun_pembuatan" value="{{ old('tahun_pembuatan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Pembuatan Kendaraan" id="tahun">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputDaya"  class="col-sm-2 col-form-label font-form">Daya Listrik</label>
                         <div class="col-sm-10">
-                            <input type="text" name="daya" value="{{ old('daya') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
+                            <input type="text" name="daya_listrik" value="{{ old('daya_listrik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
                         </div>
                 </div>
                 <div class="row">
@@ -99,13 +99,13 @@
                 <div class="mb-3 row">
                     <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nopol" value="{{ old('norangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
+                            <input type="text" name="no_rangka" value="{{ old('no_rangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNoMesin"  class="col-sm-2 col-form-label font-form">No. Mesin</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nomesin" value="{{ old('nomesin') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Mesin" id="nomesin">
+                            <input type="text" name="no_mesin" value="{{ old('no_mesin') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Mesin" id="nomesin">
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -117,25 +117,25 @@
                 <div class="mb-3 row">
                     <label for="inputTahunReg"  class="col-sm-2 col-form-label font-form">Tahun Reg.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tahunreg" value="{{ old('tahunreg') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Registrasi Kendaraan" id="tahunreg">
+                            <input type="text" name="tahun_registrasi" value="{{ old('tahun_registrasi') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Registrasi Kendaraan" id="tahunreg">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNoBPKB"  class="col-sm-2 col-form-label font-form">No. BPKB</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nobpkb" value="{{ old('nobpkb') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor BPKB" id="nobpkb">
+                            <input type="text" name="no_bpkb" value="{{ old('no_bpkb') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor BPKB" id="nobpkb">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
                         <div class="col-sm-10">
-                            <input type="text" name="harga" value="{{ old('harga') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
+                            <input type="text" name="harga_beli" value="{{ old('harga_beli') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTanggalMasuk"  class="col-sm-2 col-form-label font-form">Tanggal Masuk</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tanggalmasuk" value="{{ old('tanggalmasuk') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
+                            <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
                         </div>
                 </div>
                 <div class="mb-3 row">

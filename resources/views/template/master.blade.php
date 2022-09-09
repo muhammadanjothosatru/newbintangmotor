@@ -14,12 +14,13 @@
 
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script -->
 
   <!-- Template CSS -->
-  @yield('link_css')
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
+<<<<<<< HEAD
   
 
 <!-- <script>
@@ -35,11 +36,30 @@
     }) ;
 </script> -->
 <!-- datatable -->
+=======
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+  <link rel="stylesheet" href="{{ asset('css/general.css')}}">
+  @yield('link_css')
+
+  
+<!-- Start GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+>>>>>>> fd2a75e34e0158ade0c540f20f7893c296376544
 <script>
     $(document).ready(function () {
     var table = $('#example').DataTable();
 });
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> fd2a75e34e0158ade0c540f20f7893c296376544
 
 
 <!-- /END GA --></head>
@@ -64,7 +84,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">welcome admin</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  }}    </div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
