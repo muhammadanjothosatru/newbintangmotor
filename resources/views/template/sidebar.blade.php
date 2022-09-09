@@ -9,7 +9,7 @@
           <ul class="sidebar-menu" id="sidebar-menu">
 
             @foreach(getMenus() as $menu)
-              <li class="{{ request()->segment(1) == $menu->url ? 'active' : ''}}">
+              <li class="{{ request()->segment(1) == $menu->url ? 'active' : '' }}">
                   <a class="nav-link" href="{{$menu->url}}"><i class="{{$menu->icon}}"></i><span>{{$menu->name}}</span></a>
               </li>
             @endforeach
