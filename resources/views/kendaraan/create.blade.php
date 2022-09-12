@@ -68,10 +68,14 @@
                         </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="inputJenis"  class="col-sm-2 col-form-label font-form">Jenis</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="jenis" value="{{ old('jenis') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Jenis Kendaraan" id="jenis">
-                        </div>
+                    <label for="inputJenis" class="col-sm-2 col-form-label font-form">Jenis</label>
+                    <div class="dropdown col-sm-10 mt-1">
+                        <select class="select2 selectform" id="jenis" name="jenis" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%" data-minimum-results-for-search="Infinity">
+                            <option></option>
+                            <option value="Sepeda Motor">Sepeda Motor</option>
+                            <option value="Mobil">Mobil</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputModel"  class="col-sm-2 col-form-label font-form">Model</label>
