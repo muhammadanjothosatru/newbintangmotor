@@ -24,7 +24,7 @@
         <div class="row">
             <div class="font-form-header mb-3 col-6">Masukkan Detail Pembelian</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
-                <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
+                <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
             </div>
         </div>
         
