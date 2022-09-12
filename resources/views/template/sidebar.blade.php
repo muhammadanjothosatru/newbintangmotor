@@ -4,7 +4,7 @@
             <a class="nav-link" href="/dashboard"><img src="{{ asset('images/logo2.png')}}" width="75%" ></a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a class="nav-link" href="/dashboard"><img src="{{ asset('images/logo.png')}}" width="75%" ></a>
+            <a class="nav-link" href="/dashboard"><img src="{{ asset('images/logo.png')}}" width="100%" ></a>
           </div>
           <ul class="sidebar-menu" id="sidebar-menu">
 
