@@ -13,11 +13,11 @@
             <div class="font-form-header col-6"></div>
             <div class="font-form-header col-6 d-flex justify-content-end">
                 <a href="#Filter" class="daterange btn btn-primary btn-sm mr-2"><i class="fas fa-filter mr-2"></i>Filter Periode</a>
-                <a href="#Export" class="btn btn-primary btn-sm"><i class="fas fa-file-export mr-2"></i>Export</a>
+                <div class="pdf font-form-header"></div> 
             </div>
         </div>
         <br>
-        <table id="laporan" class="display col-12">
+        <table id="laporan" class="display col-12"> 
             <thead>
                 <tr>
                     <th>No</th>

@@ -30,22 +30,36 @@
 
 <!-- /END GA -->
 <script>
-    $(document).ready(function () {
+  $(document).ready(function () {
     $('#example').DataTable();
-});
+  });
 </script>
 
 <script>
-$(document).ready( function () {
-  $('#laporan').DataTable( {
-    dom: 'Brtip',
-    paging: false,
-    info: false,
-    buttons: [
-        'pdf'
-    ]
+  $(document).ready( function () {
+    var table = $('#laporan').DataTable({
+      dom: 'rtip',
+      paging: false,
+      info: false
+    });
+  var buttons = new $.fn.dataTable.Buttons(table, {
+      init: function(api, node, config) {
+        $(node).removeClass('dt-button')
+      },
+      buttons: [
+        {
+          text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
+          extend: 'pdf',
+          className: 'btn btn-primary btn-sm',
+          title: 'Laporan Bintang Motor ',
+          extension: '.pdf',
+          init: function(api, node, config) {
+            $(node).removeClass('dt-button buttons-pdf buttons-html5')
+          }
+        }
+      ]
+  }).container().appendTo($('.pdf'));
   } );
-} );
 </script>
 
 
