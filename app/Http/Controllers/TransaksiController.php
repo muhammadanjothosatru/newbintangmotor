@@ -6,6 +6,7 @@ use App\Models\Kendaraan;
 use App\Models\Transaksi;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -40,7 +41,42 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate= $request->validate([
+            'diskon' => 'required',
+            'harga_akhir' => 'required',
+        ]);
+
+        if($request->metode_pembayaran=='Tunai'){
+            $transaksi = Transaksi::create([
+                'pelanggan_id'=> $request->nama,
+                'kendaraan_no_pol' => $request->no_pol,
+                'metode_pembayaran'=>$request->metode_pembayaran,
+                'diskon'=>$request->diskon,
+                'harga_akhir'=>$request->harga_akhir,
+                'no_kontrak'=>'-',
+                'uang_dp'=>'-',
+                'bulan_angsuran'=>'-',
+                'keterangan'=>"-",
+                'users_id'=>Auth::id(),
+            ]);
+        }elseif($request->metode_pembayaran=='Kredit'){
+
+        $transaksi = Transaksi::create([
+            'pelanggan_id'=> $request->nama,
+            'kendaraan_no_pol' => $request->no_pol,
+            'metode_pembayaran'=>$request->metode_pembayaran,
+            'diskon'=>$request->diskon,
+            'harga_akhir'=>$request->harga_akhir,
+            'no_kontrak'=>$request->no_kontrak,
+            'uang_dp'=>$request->uang_dp,
+            'bulan_angsuran'=>$request->bulan_angsuran,
+            'keterangan'=>$request->keterangan,
+            'users_id'=>Auth::id(),
+        ]);
+      
+    }
+    Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
+    return redirect('/transaksi')->with('success','data berhasil ditambahkan');
     }
 
     /**

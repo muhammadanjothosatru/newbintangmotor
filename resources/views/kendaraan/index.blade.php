@@ -36,7 +36,12 @@
 			<td>{{ $k->warna}}</td>
 			<td>{{ $k->tanggal_masuk}}</td>
 			<td>{{ $k->harga_beli}}</td>
+			@if ($k->status_kendaraan=='Tersedia')
 			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
+			@elseif($k->status_kendaraan=='Terjual')
+			<td><span class="badge bg-danger">{{ $k->status_kendaraan}}</span></td>
+			@endif
+			
 			<td>
                 <a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
             </td>

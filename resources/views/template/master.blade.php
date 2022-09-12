@@ -42,7 +42,7 @@
       paging: false,
       info: false
     });
-  var buttons = new $.fn.dataTable.Buttons(table, {
+  new $.fn.dataTable.Buttons(table, {
       init: function(api, node, config) {
         $(node).removeClass('dt-button')
       },
