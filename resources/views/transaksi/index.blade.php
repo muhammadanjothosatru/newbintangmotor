@@ -11,7 +11,7 @@
     <div class="m-4">
         <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Transaksi Baru</a>
         <br><br>
-        <table id="example" class="display">
+        <table id="example" class="display col-12">
             <thead>
                 <tr>
                     <th>No</th>
