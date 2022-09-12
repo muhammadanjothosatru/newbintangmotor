@@ -1,6 +1,6 @@
 @extends('template.master')
 @section('link_css')
-<link rel="stylesheet" href="{{ asset('css/pelanggan-create.css')}}">
+<link rel="stylesheet" href="{{ asset('css/kendaraan-create.css')}}">
 @endsection
 @section('konten')
 <div class="card">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNamaPemilik"  class="col-sm-2 col-form-label font-form">Nama Pemilik</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="nama_pemilik" value="{{ old('nama_pemilik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik">
                         </div>
                 </div>
@@ -81,13 +81,13 @@
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTahun"  class="col-sm-2 col-form-label font-form">Tahun Pemb.</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="tahun_pembuatan" value="{{ old('tahun_pembuatan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Pembuatan Kendaraan" id="tahun">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputDaya"  class="col-sm-2 col-form-label font-form">Daya Listrik</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="daya_listrik" value="{{ old('daya_listrik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
                         </div>
                 </div>
@@ -98,13 +98,13 @@
             <div class="col-6">
                 <div class="mb-3 row">
                     <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="no_rangka" value="{{ old('no_rangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNoMesin"  class="col-sm-2 col-form-label font-form">No. Mesin</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="no_mesin" value="{{ old('no_mesin') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Mesin" id="nomesin">
                         </div>
                 </div>
@@ -116,26 +116,26 @@
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTahunReg"  class="col-sm-2 col-form-label font-form">Tahun Reg.</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="tahun_registrasi" value="{{ old('tahun_registrasi') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Registrasi Kendaraan" id="tahunreg">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNoBPKB"  class="col-sm-2 col-form-label font-form">No. BPKB</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="no_bpkb" value="{{ old('no_bpkb') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor BPKB" id="nobpkb">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 col-form-label">
                             <input type="text" name="harga_beli" value="{{ old('harga_beli') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTanggalMasuk"  class="col-sm-2 col-form-label font-form">Tanggal Masuk</label>
-                        <div class="col-sm-10">
-                            <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
+                        <div class="col-sm-10 col-form-label">
+                            <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control font-form form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
                         </div>
                 </div>
                 <div class="mb-3 row">
