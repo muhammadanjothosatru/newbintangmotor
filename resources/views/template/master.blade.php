@@ -29,16 +29,19 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
     $(document).ready(function () {
-    var table = $('#example').DataTable();
+    $('#example').DataTable();
 });
 </script>
 
 <script>
 $(document).ready( function () {
-  $('#laporan').dataTable( {
-    "dom": 'rtip',
-    "paging": false,
-    "info": false
+  $('#laporan').DataTable( {
+    dom: 'Brtip',
+    paging: false,
+    info: false,
+    buttons: [
+        'csv'
+    ]
   } );
 } );
 </script>
