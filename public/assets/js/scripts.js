@@ -79,42 +79,42 @@ $(function() {
   //   }, 600);
   // }
 
-  // var sidebar_dropdown = function() {
-  //   if($(".main-sidebar").length) {
-  //     $(".main-sidebar").niceScroll(sidebar_nicescroll_opts);
-  //     sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
+  var sidebar_dropdown = function() {
+    if($(".main-sidebar").length) {
+      // $(".main-sidebar").niceScroll(sidebar_nicescroll_opts);
+      // sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
 
-  //     $(".main-sidebar .sidebar-menu li a.has-dropdown").off('click').on('click', function() {
-  //       var me = $(this);
+      $(".main-sidebar .sidebar-menu li a.has-dropdown").off('click').on('click', function() {
+        var me = $(this);
 
-  //       me.parent().find('> .dropdown-menu').slideToggle(500, function() {
-  //         update_sidebar_nicescroll();
-  //         return false;
-  //       });
-  //       return false;
-  //     });
-  //   }
-  // }
-  // sidebar_dropdown();
+        me.parent().find('> .dropdown-menu').slideToggle(500, function() {
+          // update_sidebar_nicescroll();
+          return false;
+        });
+        return false;
+      });
+    }
+  }
+  sidebar_dropdown();
 
-  // if($("#top-5-scroll").length) {
-  //   $("#top-5-scroll").css({
-  //     height: 315
-  //   }).niceScroll();
-  // }
+  if($("#top-5-scroll").length) {
+    $("#top-5-scroll").css({
+      height: 315
+    }).niceScroll();
+  }
 
-  // $(".main-content").css({
-  //   minHeight: $(window).outerHeight() - 95
-  // })
+  $(".main-content").css({
+    minHeight: $(window).outerHeight() - 95
+  })
 
-  // $(".nav-collapse-toggle").click(function() {
-  //   $(this).parent().find('.navbar-nav').toggleClass('show');
-  //   return false;
-  // });
+  $(".nav-collapse-toggle").click(function() {
+    $(this).parent().find('.navbar-nav').toggleClass('show');
+    return false;
+  });
 
-  // $(document).on('click', function(e) {
-  //   $(".nav-collapse .navbar-nav").removeClass('show');
-  // });
+  $(document).on('click', function(e) {
+    $(".nav-collapse .navbar-nav").removeClass('show');
+  });
 
   var toggle_sidebar_mini = function(mini) {
     let body = $('body');
@@ -563,12 +563,35 @@ $(function() {
         timePicker24Hour: true,
       });
     }
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+
     if($(".daterange").length) {
       $('.daterange').daterangepicker({
+        
         locale: {format: 'YYYY-MM-DD'},
         drops: 'down',
-        opens: 'right'
-      });
+        opens: 'left',
+        startDate: start,
+        endDate: end,
+        ranges: {
+          'Hari ini': [moment(), moment()],
+          'Kemarin': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          '7 Hari Terakhir': [moment().subtract(6, 'days'), moment()],
+          '30 Hari Terakhir': [moment().subtract(29, 'days'), moment()],
+          'Bulan ini': [moment().startOf('month'), moment().endOf('month')],
+          'Bulan kemarin': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+       }
+        
+      }, cb);
+
+      cb(start, end);
+
     }
   }
 

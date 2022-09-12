@@ -7,11 +7,11 @@
 </div> 
 @endif
 
-<div class="card">
+<div class="card ">
 	<div class="m-4">
 	<a href="{{ route('kendaraan.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Kendaraan</a>
 <br><br>
-<table id="example" class="display" style="width:100%">
+<table id="example" class="display col-12">
     <thead>
 		<tr>
 			<th>No</th>

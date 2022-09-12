@@ -24,8 +24,8 @@
               <a href="{{ route('transaksi.index') }}" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
             </li>
 
-            <li class="{{ request()->is('laporan') ? 'active' : '' }}">
-              <a href="#laporan" class="nav-link"><i class="fas fa-folder"></i><span>Laporan</span></a>
+            <li class="{{ request()->is('laporan', 'laporan/*') ? 'active' : '' }}">
+              <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-folder"></i><span>Laporan</span></a>
             </li>
 
             <li class="{{ request()->is('/administrasi') ? 'active' : '' }}">
