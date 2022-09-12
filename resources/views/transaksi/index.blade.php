@@ -30,8 +30,6 @@
             </thead>
         <tbody>
             @foreach($transaksi as $data)
-                
-
             <tr>
                 <td>{{ $loop->iteration}}</td>
                 <td>{{ $data->created_at->format('d M Y') }}</td>
@@ -53,12 +51,9 @@
                     <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
                 </td>
             </tr>
-        </tbody>
-            
         @endforeach
+    </tbody>
             </table>
             </div>
         </div>
-    </div>
-</div>
 @endsection

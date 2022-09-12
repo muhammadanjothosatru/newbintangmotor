@@ -36,7 +36,7 @@ class Kendaraan extends Model
     ];
     
     protected $table = 'kendaraan';
-
+    protected $dates = ['tanggal_masuk'];
     public function transaksi(){
     	return $this->belongsToMany(Transaksi::class);
     }
