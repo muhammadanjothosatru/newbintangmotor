@@ -27,6 +27,8 @@
   
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
+<!-- /END GA -->
 <script>
     $(document).ready(function () {
     $('#example').DataTable();
@@ -40,14 +42,14 @@ $(document).ready( function () {
     paging: false,
     info: false,
     buttons: [
-        'csv'
+        'pdf'
     ]
   } );
 } );
 </script>
 
 
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">
