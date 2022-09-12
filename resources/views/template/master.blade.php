@@ -9,45 +9,59 @@
   <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/daterangepicker-master/daterangepicker-master/daterangepicker.css')}}">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables/datatables.min.css')}}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables2/datatables.css')}}"/>
 
   <!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script -->
+  <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
-
-
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-
   <link rel="stylesheet" href="{{ asset('css/general.css')}}">
   @yield('link_css')
 
   
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
+<!-- /END GA -->
+<script>
+  $(document).ready(function () {
+    $('#example').DataTable();
+  });
 </script>
 
+<script>
+  $(document).ready( function () {
+    var table = $('#laporan').DataTable({
+      dom: 'rtip',
+      paging: false,
+      info: false
+    });
+  var buttons = new $.fn.dataTable.Buttons(table, {
+      init: function(api, node, config) {
+        $(node).removeClass('dt-button')
+      },
+      buttons: [
+        {
+          text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
+          extend: 'pdf',
+          className: 'btn btn-primary btn-sm',
+          title: 'Laporan Bintang Motor ',
+          extension: '.pdf',
+          init: function(api, node, config) {
+            $(node).removeClass('dt-button buttons-pdf buttons-html5')
+          }
+        }
+      ]
+  }).container().appendTo($('.pdf'));
+  } );
+</script>
 
-  <!-- datatable -->
-  <script>
-      $(document).ready(function () {
-      var table = $('#example').DataTable();
-  });
-  </script>
 
 </head>
 

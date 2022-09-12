@@ -11,7 +11,8 @@
   <script src="{{ asset('assets/modules/moment.min.js')}}"></script>
   <script src="{{ asset('assets/js/stisla.js')}}"></script>
   <script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
-  <script src="{{ asset('assets/modules/datatables/datatables.min.js')}}"></script>
+  <script src="{{ asset('assets/modules/datatables2/datatables.js')}}"></script>
+  <script src="{{ asset('assets/modules/daterangepicker-master/daterangepicker-master/daterangepicker.js')}}"></script>
 
   <!-- Page Specific JS File -->
   

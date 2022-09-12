@@ -34,7 +34,7 @@ class KendaraanFactory extends Factory
             'warna' => $this->faker->colorName(),
             'tahun_registrasi' => $this->faker->year(),
             'no_bpkb' => $this->faker->randomNumber(),
-            'status_kendaraan' => $this->faker->words(3, true),
+            'status_kendaraan' => $this->faker->randomElement(['Tersedia']),
             'cabang' => $this->faker->randomElement(['LAMONGAN','BABAT']),
             'harga_beli' => $this->faker->numberBetween(),
             'tanggal_masuk' => $this->faker->date(),

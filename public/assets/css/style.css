@@ -1184,8 +1184,8 @@ h6 .badge {
     .btn.btn-lg.btn-icon-split div {
       margin-left: 25px; }
   .btn.btn-sm {
-    padding: .10rem .4rem;
-    font-size: 12px; }
+    padding: .10rem .4rem !important;
+    font-size: 12px !important; }
   .btn.btn-icon .ion, .btn.btn-icon .fas, .btn.btn-icon .far, .btn.btn-icon .fab, .btn.btn-icon .fal {
     margin-left: 0 !important;
     font-size: 12px; }
@@ -1286,8 +1286,8 @@ h6 .badge {
   color: #fff !important; }
 
 .btn-primary, .btn-primary.disabled {
-  background-color: #1457AE;
-  border-color: #1457AE; }
+  background-color: #1457AE !important;
+  border-color: #1457AE !important; }
   .btn-primary:focus, .btn-primary.disabled:focus {
     background-color: #394eea !important; }
     .btn-primary:focus:active, .btn-primary.disabled:focus:active {
@@ -2192,7 +2192,7 @@ body.sidebar-mini .hide-sidebar-mini {
 body.sidebar-mini .main-sidebar {
   width: 65px;
   overflow: initial !important;
-  position: absolute;
+  position: fixed;
   box-shadow: none; }
   body.sidebar-mini .main-sidebar:after {
     content: ' ';
@@ -2669,6 +2669,13 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
   font-style: normal !important;
   font-weight: 600 !important;
   font-size: 14px !important;
+}
+
+.font-export {
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
 }
 
 

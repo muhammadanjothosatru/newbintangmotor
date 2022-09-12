@@ -21,7 +21,7 @@ class PelangganFactory extends Factory
         return [
             'nama' => $this->faker->name(),
             'alamat' => $this->faker->address(),
-            'nik' => $this->faker->nik(),
+            'nik' => $this->faker->unique()->randomNumber(9, false),
             'nomor_hp' => $this->faker->phoneNumber(),
             'foto_ktp' => $this->faker->imageUrl(300, 300),
      ];
