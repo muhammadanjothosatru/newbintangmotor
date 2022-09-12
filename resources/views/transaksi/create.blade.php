@@ -18,7 +18,7 @@
 	</div> 
   	
   @endif
-    <form action="{{ route('pelanggan.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="m-4">
         <div class="row">
@@ -83,35 +83,35 @@
                         <label for="metode"  class="pl-0 col-sm-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 col-sm-10">
 
-                            <select class="select2 col-sm-12"  onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
+                            <select class="select2 col-sm-12" name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
                                 <option></option>
-                                <option value="0">Tunai</option>
-                                <option value="1">Kredit</option>
+                                <option value="Tunai">Tunai</option>
+                                <option value="Kredit">Kredit</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputDiskon"  class="pl-0 col-sm-2 col-form-label font-form">Nomor Kontrak</label>
                             <div class=" pl-0 col-sm-10 col-form-label">
-                                <input type="text" name="nokontrak" value="{{ old('nokontrak') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" disabled>
+                                <input type="text" name="no_kontrak" value="{{ old('no_kontrak') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="uangmuka" value="{{ old('uangmuka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
+                                <input type="text" name="uang_dp" value="{{ old('uang_dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="angsuran" value="{{ old('angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
+                                <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan Acc</label>
                             <div class=" pl-0 col-form-label col-sm-10">
-                                <input type="text" name="ketacc" value="{{ old('ketacc') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Keterangan Persetujuan" id="acc" disabled>
+                                <input type="text" name="keterangan" value="{{ old('keterangan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Keterangan Persetujuan" id="acc" disabled>
                             </div>
                     </div>
                 </div>
@@ -124,12 +124,12 @@
 
 <script type="text/javascript">
     function selectmetode(metodedipilih){
-        if(metodedipilih.value==0){
+        if(metodedipilih.value=='Tunai'){
             $('#nokontrak').prop('disabled', true);
             $('#uangmuka').prop('disabled', true);
             $('#angsuran').prop('disabled', true);
             $('#acc').prop('disabled', true);
-        } else if(metodedipilih.value==1){
+        } else if(metodedipilih.value=='Kredit'){
             $('#nokontrak').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
             $('#angsuran').prop('disabled', false);

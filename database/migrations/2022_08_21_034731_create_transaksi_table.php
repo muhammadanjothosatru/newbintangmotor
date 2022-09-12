@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('metode_pembayaran',['CASH','KREDIT']);
+            $table->string('metode_pembayaran');
             $table->string('diskon');
             $table->string('harga_akhir');
-            $table->string('no_kontrak');
-            $table->string('uang_dp');
-            $table->string('bulan_angsuran');
+            $table->string('no_kontrak')->default('-');
+            $table->string('uang_dp')->default('-');
+            $table->string('bulan_angsuran')->default('-');
             $table->string('keterangan')->default('Belum ACC');
             $table->timestamps();
         });

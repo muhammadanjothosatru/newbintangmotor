@@ -46,7 +46,7 @@ class PelangganController extends Controller
         ]);
        
         
-        $newName = '';
+    
 
        if($request->file('foto_ktp')){
             $extension = $request->file('foto_ktp')->getClientOriginalExtension();
