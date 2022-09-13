@@ -28,7 +28,6 @@ class Kendaraan extends Model
             'tahun_registrasi' ,
             'no_bpkb',
             'status_kendaraan' ,
-            'cabang',
             'harga_beli',
             'tanggal_masuk',
             'supplier' ,

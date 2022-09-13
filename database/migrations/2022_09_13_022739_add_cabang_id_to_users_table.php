@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            // $table->enum('cabang',['LAMONGAN','BABAT']);
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('cabang_id')->after('password')->required();
+            $table->foreign('cabang_id')->references('id')->on('cabang')->onDelete('restrict');
         });
     }
 
@@ -30,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['cabang_id']);
+            $table->dropColumn('cabang_id');
+        });
     }
 };
