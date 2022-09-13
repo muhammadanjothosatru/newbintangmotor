@@ -32,7 +32,7 @@ Route::post('/logout', [LoginController::class,'logout']);
 Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/pelanggan', PelangganController::class);
-    Route::get('/pelanggan/edit/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
+    Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
     Route::resource('/kendaraan', KendaraanController::class);
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/laporan', LaporanController::class);
