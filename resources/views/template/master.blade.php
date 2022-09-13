@@ -39,7 +39,7 @@
   $(document).ready( function (){
 
     var table = $('#laporan').DataTable({
-      dom: 'rtip',
+      dom: '',
       paging: false,
       info: false
     });
