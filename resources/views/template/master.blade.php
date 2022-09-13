@@ -39,9 +39,9 @@
   $(document).ready( function (){
 
     var table = $('#laporan').DataTable({
-      dom: '',
-      paging: false,
-      info: false
+      // dom: '',
+      // paging: false,
+      // info: false
     });
   new $.fn.dataTable.Buttons(table, {
       init: function(api, node, config) {

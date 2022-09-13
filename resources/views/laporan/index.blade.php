@@ -45,23 +45,15 @@
                 <td>{{ $data->kendaraan->tahun_pembuatan }}</td>
                 <td>{{ $data->kendaraan->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                @if ($data->keterangan=="Belum ACC")
-                <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
-                @elseif ($data->keterangan=="Sudah ACC")
-                <td><span class="badge bg-success">{{ $data->keterangan }}</span></td>
-                @elseif($data->keterangan=="-")
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
-                @endif
+               
             </tr>
-<<<<<<< HEAD
-        @endforeach
-    </tbody>
-=======
             @endforeach
-        </tbody>
             
+           
+        </tbody>
+          
         
->>>>>>> 396e7ac1764cdc5e5b7120ea4ee9259c3bf64a0a
             </table>
             </div>
         </div>

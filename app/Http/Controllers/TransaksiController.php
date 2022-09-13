@@ -51,7 +51,6 @@ class TransaksiController extends Controller
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
                 'metode_pembayaran'=>$request->metode_pembayaran,
-                'diskon'=>$request->diskon,
                 'harga_akhir'=>$request->harga_akhir,
                 'no_kontrak'=>'-',
                 'uang_dp'=>'-',
@@ -65,12 +64,11 @@ class TransaksiController extends Controller
             'pelanggan_id'=> $request->nama,
             'kendaraan_no_pol' => $request->no_pol,
             'metode_pembayaran'=>$request->metode_pembayaran,
-            'diskon'=>$request->diskon,
             'harga_akhir'=>$request->harga_akhir,
-            'no_kontrak'=>$request->no_kontrak,
+            'no_kontrak'=>'-',
             'uang_dp'=>$request->uang_dp,
             'bulan_angsuran'=>$request->bulan_angsuran,
-            'keterangan'=>$request->keterangan,
+            'keterangan'=>'Belum ACC',
             'users_id'=>Auth::id(),
         ]);
       

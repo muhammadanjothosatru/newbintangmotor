@@ -59,12 +59,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="inputDiskon"  class="col-sm-2 col-form-label font-form">Diskon</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="diskon" class="form-control form-control-size " placeholder="Masukkan Jumlah Diskon" id="diskon">
-                            </div>
-                    </div>
+                    
                     <div class="mb-3 row">
                         <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Akhir</label>
                             <div class="col-sm-10">
@@ -93,7 +88,7 @@
                     <div class="mb-3 row">
                         <label for="inputDiskon"  class="pl-0 col-sm-2 col-form-label font-form">Nomor Kontrak</label>
                             <div class=" pl-0 col-sm-10 col-form-label">
-                                <input type="text" name="no_kontrak" value="{{ old('no_kontrak') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" disabled>
+                                <input type="text" name="no_kontrak" value="-"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
@@ -108,12 +103,7 @@
                                 <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
                             </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan Acc</label>
-                            <div class=" pl-0 col-form-label col-sm-10">
-                                <input type="text" name="keterangan" value="{{ old('keterangan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Keterangan Persetujuan" id="acc" disabled>
-                            </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -130,7 +120,6 @@
             $('#angsuran').prop('disabled', true);
             $('#acc').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
-            $('#nokontrak').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
             $('#angsuran').prop('disabled', false);
             $('#acc').prop('disabled', false);

@@ -12,7 +12,6 @@ class Transaksi extends Model
         'pelanggan_id',
                 'kendaraan_no_pol',
                 'metode_pembayaran',
-                'diskon',
                 'harga_akhir',
                 'no_kontrak',
                 'uang_dp',
