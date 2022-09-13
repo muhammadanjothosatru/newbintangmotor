@@ -21,7 +21,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'cabang',
+        'cabang_id',
         'role',
     ];
     public function transaksi(){
@@ -29,6 +29,9 @@ class User extends Authenticatable
     }
     public function kendaraan(){
     	return $this->belongsToMany(Kendaraan::class);
+    }
+    public function cabang(){
+    	return $this->belongsTo(Cabang::class);
     }
 
     /**

@@ -34,7 +34,7 @@
 			<td>{{ $k->nama_pemilik}}</td>
 			<td>{{ $k->tipe}}</td>
 			<td>{{ $k->warna}}</td>
-			<td>{{ $k->tanggal_masuk}}</td>
+			<td>{{ $k->tanggal_masuk->format("d M Y")}}</td>
 			<td>{{ $k->harga_beli}}</td>
 			@if ($k->status_kendaraan=='Tersedia')
 			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>

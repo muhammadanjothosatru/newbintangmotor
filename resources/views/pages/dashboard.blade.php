@@ -25,7 +25,7 @@
 					<td>{{  $data->username }}</td>
 					<td>{{$data->role}}</td>
 					<td>{{$data->email}}</td>
-					<td>{{ $data->cabang }}</td>
+					<td>{{ $data->cabang->nama }}</td>
 					<td>
 						<a href="" class="btn btn-primary btn-sm">Lihat</a>
 					</td>

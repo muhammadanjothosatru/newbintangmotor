@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Cabang;
 use App\Models\Kendaraan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,14 +30,14 @@ class KendaraanFactory extends Factory
             'jenis' => $this->faker->randomElement(['Sepeda Motor','Mobil']),
             'model' => $this->faker->words(3, true),
             'tahun_pembuatan' => $this->faker->year(),
-            'daya_listrik' => $this->faker->realText(rand(10, 20)),
+            'daya_listrik' => $this->faker->randomNumber(),
             'no_rangka' => $this->faker->randomNumber(),
             'no_mesin' => $this->faker->randomNumber(),
             'warna' => $this->faker->colorName(),
             'tahun_registrasi' => $this->faker->year(),
             'no_bpkb' => $this->faker->randomNumber(),
             'status_kendaraan' => $this->faker->randomElement(['Tersedia']),
-            'cabang' => $this->faker->randomElement(['LAMONGAN','BABAT']),
+            // 'cabang' => $this->faker->randomElement(['LAMONGAN','BABAT']),
             'harga_beli' => $this->faker->numberBetween(),
             'tanggal_masuk' => $this->faker->date(),
             'supplier' => $this->faker->name(),

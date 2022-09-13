@@ -71,7 +71,7 @@ class KendaraanController extends Controller
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
             'status_kendaraan' =>"Tersedia",
-            'cabang' =>Auth::user()->cabang,
+            'cabang' =>Auth::user()->cabang_id,
             'tahun_registrasi' => $request->tahun_registrasi,
             'no_bpkb' => $request->no_bpkb,
             'harga_beli' => $request->harga_beli,

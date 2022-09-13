@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'username' => 'adminlamongan',
             'role' => '0',
             'email' => 'admin@gmail.com',
-            'cabang' => 'LAMONGAN',
+            'cabang_id' => '1',
             'password' => bcrypt('123456'),
         ]);
     }
