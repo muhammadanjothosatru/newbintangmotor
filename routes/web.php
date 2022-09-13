@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/pelanggan', PelangganController::class);
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
     Route::resource('/kendaraan', KendaraanController::class);
+    Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/laporan', LaporanController::class);
 });

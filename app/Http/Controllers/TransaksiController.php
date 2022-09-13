@@ -42,8 +42,7 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $validate= $request->validate([
-            'diskon' => 'required',
-            'harga_akhir' => 'required',
+            'harga_akhir' => 'required|numeric',
         ]);
 
         if($request->metode_pembayaran=='Tunai'){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kendaraan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -100,6 +101,12 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
+    public function detail($no_pol)
+    {
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        $kendaraan_cabang = Kendaraan::with('users.cabang')->get();
+        return view('kendaraan.detail', compact('kendaraan'));
+    }
     public function edit(Kendaraan $kendaraan)
     {
         //
