@@ -51,9 +51,8 @@
                     <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
                 </td>
             </tr>
+            @endforeach
         </tbody>
-            
-        @endforeach
             </table>
             </div>
         </div>
