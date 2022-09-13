@@ -36,7 +36,8 @@
 </script>
 
 <script>
-  $(document).ready( function () {
+  $(document).ready( function (){
+
     var table = $('#laporan').DataTable({
       dom: 'rtip',
       paging: false,
@@ -59,7 +60,37 @@
         }
       ]
   }).container().appendTo($('.pdf'));
-  } );
+
+    var minDate, maxDate;
+ 
+
+  $.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = new Date(minDate);
+        var max = new Date(maxDate);
+
+        var date = new Date(data[1]);
+ 
+        if (
+            ( min === null && max === null ) ||
+            ( min === null && date <= max ) ||
+            ( min <= date   && max === null ) ||
+            ( min <= date   && date <= max )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
+
+  $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+      minDate = picker.startDate.format('DD MMM YYYY');
+      maxDate = picker.endDate.format('DD MMM YYYY');
+
+      table.draw();
+    });
+  });
+  
 </script>
 
 
