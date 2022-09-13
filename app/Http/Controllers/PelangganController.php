@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PelangganController extends Controller
 {
@@ -50,7 +51,7 @@ class PelangganController extends Controller
         $newName="";
        if($request->file('foto_ktp')){
             $extension = $request->file('foto_ktp')->getClientOriginalExtension();
-            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $newName = $request->nama.'.'.$extension;
             $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
        }
        
@@ -107,15 +108,19 @@ class PelangganController extends Controller
             'foto_ktp' => 'mimes:jpg,png,jpeg|image',
         ]);
         $pelanggan = Pelanggan::findorfail($id);
-       if($request->hasFile('foto_ktp')){
-            $foto_ktp = $request->foto_ktp;
+       
+       if($request->has('foto_ktp')){
             $extension = $request->file('foto_ktp')->getClientOriginalExtension();
-            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $newName = $request->nama.'.'.$extension;
             $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
             $pelanggan->foto_ktp = $newName;
-
        }
-     
+       $namaFoto = $pelanggan->foto_ktp;
+       
+       if($namaFoto != null || $namaFoto != ''){
+        Storage::delete($namaFoto);
+       }
+
        $pelanggan->nik =$request->nik;
        $pelanggan->nama=$request->nama;
        $pelanggan->nomor_hp = $request->nomor_hp;
