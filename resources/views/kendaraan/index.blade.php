@@ -29,7 +29,35 @@
 			<th>Action</th>
 		</tr>
     </thead>
-		@foreach($kendaraan as $k)
+	@foreach($data['adminbabat'] as $k)
+		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
+	<tr>
+		
+		
+		<td>{{ $loop->iteration}}</td>
+		<td>{{ $k->no_pol }}</td>
+		<td>{{ $k->merk}}</td>
+		<td>{{ $k->nama_pemilik}}</td>
+		<td>{{ $k->tipe}}</td>
+		<td>{{ $k->warna}}</td>
+		<td>{{  \Carbon\Carbon::parse($k->tanggal_masuk)->format('d M Y')}}</td>
+		<td>{{ $k->harga_beli}}</td>
+		@if ($k->status_kendaraan=='Tersedia')
+		<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
+		@elseif($k->status_kendaraan=='Terjual')
+		<td><span class="badge bg-danger">{{ $k->status_kendaraan}}</span></td>
+		@endif
+		
+		<td>
+			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
+		</td>
+		
+	
+	</tr>
+	@endif
+		@endforeach
+		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 2)
+		@foreach($data['adminlamongan'] as $k)
 		<tr>
 			<td>{{ $loop->iteration}}</td>
 			<td>{{ $k->no_pol }}</td>
@@ -37,7 +65,7 @@
 			<td>{{ $k->nama_pemilik}}</td>
 			<td>{{ $k->tipe}}</td>
 			<td>{{ $k->warna}}</td>
-			<td>{{ $k->tanggal_masuk->format("d M Y")}}</td>
+			<td>{{ \Carbon\Carbon::parse($k->tanggal_masuk)->format('d M Y')}}</td>
 			<td>{{ $k->harga_beli}}</td>
 			@if ($k->status_kendaraan=='Tersedia')
 			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
@@ -50,6 +78,31 @@
             </td>
 		</tr>
 		@endforeach
+		@endif
+		
+		@if (Auth::user()->role == 0)
+		@foreach($data['kendaraan'] as $k)
+		<tr>
+			<td>{{ $loop->iteration}}</td>
+			<td>{{ $k->no_pol }}</td>
+			<td>{{ $k->merk}}</td>
+			<td>{{ $k->nama_pemilik}}</td>
+			<td>{{ $k->tipe}}</td>
+			<td>{{ $k->warna}}</td>
+			<td>{{ $k->tanggal_masuk->format('d M Y')}}</td>
+			<td>{{ $k->harga_beli}}</td>
+			@if ($k->status_kendaraan=='Tersedia')
+			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
+			@elseif($k->status_kendaraan=='Terjual')
+			<td><span class="badge bg-danger">{{ $k->status_kendaraan}}</span></td>
+			@endif
+			
+			<td>
+                <a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
+            </td>
+		</tr>
+		@endforeach
+		@endif
 	</table>
 	</div>
 </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class KendaraanController extends Controller
@@ -18,7 +19,24 @@ class KendaraanController extends Controller
     public function index()
     {
         $kendaraan = Kendaraan::all();
-        return view('kendaraan.index', compact('kendaraan'));
+        $adminlamongan =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->where('users.cabang_id', '=', '1')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->select('kendaraan.*')
+                ->get();
+        $adminbabat =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->where('users.cabang_id', '=', '2')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->select('kendaraan.*')
+                ->get();
+        $data = [
+            'adminlamongan'=> $adminlamongan,
+            'adminbabat'=> $adminbabat,
+            'kendaraan'=> $kendaraan,
+        ];
+        return view('kendaraan.index',compact('data'));
     }
 
     /**
@@ -26,6 +44,10 @@ class KendaraanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function adminLamongan()
+    {
+        
+    }
     public function create()
     {
         return view('kendaraan.create');
