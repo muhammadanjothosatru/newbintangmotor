@@ -98,9 +98,7 @@
                             <input type="text" name="model" readonly value="{!! $kendaraan->users->cabang->nama !!}" required="required"class="form-control-plaintext font-data" placeholder="Masukkan Model Kendaraan" id="model">
                         </div>
                 </div>
-                <div class="row">
-                    <button class="btn btn-primary btn-block"><i class="fas fa-save mr-2"></i>Simpan</button>
-                </div>
+                
             </div>
             <div class="col-6">
                 <div class="mb-3 row">

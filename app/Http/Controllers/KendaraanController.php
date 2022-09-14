@@ -124,7 +124,7 @@ class KendaraanController extends Controller
     {
         
         $validate= $request->validate([
-           
+            'no_pol' => 'required',
             'nama_pemilik' => 'required',
             'alamat' => 'required',
             'merk' => 'required',
@@ -137,6 +137,7 @@ class KendaraanController extends Controller
             'no_mesin' => 'required',
             'warna' => 'required',
             'tahun_registrasi' => 'required',
+            'status_kendaraan' => 'required',
             'no_bpkb' => 'required',
             'harga_beli' => 'required|numeric',
             'tanggal_masuk' => 'required',
@@ -144,7 +145,7 @@ class KendaraanController extends Controller
     ]);
         
         $kendaraan = Kendaraan::findorfail($no_pol);
-        $kendaraan->update($request->all());
+        $kendaraan->update($validate);
         return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
     }
 

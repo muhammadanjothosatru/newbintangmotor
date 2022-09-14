@@ -11,7 +11,7 @@ class Kendaraan extends Model
 
     protected $primaryKey = 'no_pol';
     public $incrementing = false;
-
+    protected $keyType = 'string';
     protected $fillable = [
         'no_pol' ,
             'users_id' ,

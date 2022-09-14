@@ -40,10 +40,10 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="no_pol" value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol">
+                            <input type="text" name="no_pol" value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
                             @if($errors->has('no_pol'))
-    <div class="error">{{ $errors->first('no_pol') }}</div>
-@endif
+                                <div class="error">{{ $errors->first('no_pol') }}</div>
+                            @endif
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -105,17 +105,19 @@
                             <input type="text" name="daya_listrik" value="{!! $kendaraan->daya_listrik!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
                         </div>
                 </div>
-                <div class="row">
-                    <button class="btn btn-primary btn-block"><i class="fas fa-save mr-2"></i>Simpan</button>
-                </div>
-            </div>
-            <div class="col-6">
                 <div class="mb-3 row">
                     <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
                         <div class="col-sm-10 col-form-label">
                             <input type="text" name="no_rangka" value="{!! $kendaraan->no_rangka !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
                         </div>
                 </div>
+           
+                <div class="row">
+                    <button class="btn btn-primary btn-block"><i class="fas fa-save mr-2"></i>Simpan</button>
+                </div>
+            </div>
+            <div class="col-6">
+                
                 <div class="mb-3 row">
                     <label for="inputNoMesin"  class="col-sm-2 col-form-label font-form">No. Mesin</label>
                         <div class="col-sm-10 col-form-label">
@@ -162,6 +164,16 @@
                     <label for="inputKeterangan" class="col-sm-2 col-form-label font-form">Keterangan</label>
                     <div class="form-floating col-sm-10">
                         <textarea class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan Tambahan" id="keterengan">{!! $kendaraan->keterangan !!}</textarea>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputJenis" class="col-sm-2 col-form-label font-form">Status</label>
+                    <div class="dropdown col-sm-10 mt-1">
+                        <select class="select2 selectform" id="status_kendaraan" name="status_kendaraan" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%" data-minimum-results-for-search="Infinity">
+                            <option></option>
+                            <option value="Tersedia"{{ $kendaraan->status_kendaraan == 'Tersedia' ? 'selected' : '' }}>Tersedia</option>
+                            <option value="Terjual"{{ $kendaraan->status_kendaraan == 'Terjual' ? 'selected' : '' }}>Terjual</option>
+                        </select>
                     </div>
                 </div>
             </div>
