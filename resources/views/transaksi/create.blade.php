@@ -59,9 +59,21 @@
                         <div class="col-sm-10">
                             <select class="select2 col-sm-12" name="no_pol"data-placeholder="Cari Nomor Polisi">
                                 <option></option>
-                                @foreach($kendaraan as $data)
-                                <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
-                                @endforeach
+                                @if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
+                                    @foreach($motorlamongan as $data)
+                                        <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
+                                    @endforeach
+                                @endif
+                                @if (Auth::user()->role == 1 && Auth::user()->cabang_id == 2)
+                                    @foreach($motorbabat as $data)
+                                        <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
+                                    @endforeach
+                                @endif
+                                @if (Auth::user()->role == 0)
+                                    @foreach($kendaraan as $data)
+                                        <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
+                                    @endforeach
+                                @endif
                                 </select>
                         </div>
                     </div>

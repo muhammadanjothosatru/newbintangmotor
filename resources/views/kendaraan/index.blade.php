@@ -29,7 +29,7 @@
 			<th>Action</th>
 		</tr>
     </thead>
-	@foreach($data['adminbabat'] as $k)
+	@foreach($data['adminlamongan'] as $k)
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
 	<tr>
 		
@@ -57,7 +57,7 @@
 	@endif
 		@endforeach
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 2)
-		@foreach($data['adminlamongan'] as $k)
+		@foreach($data['adminbabat'] as $k)
 		<tr>
 			<td>{{ $loop->iteration}}</td>
 			<td>{{ $k->no_pol }}</td>

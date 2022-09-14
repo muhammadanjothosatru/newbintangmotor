@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kendaraan;
-use App\Models\Transaksi;
 use App\Models\Pelanggan;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
@@ -17,8 +18,31 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::with('users','pelanggan','kendaraan')->get();
-        return view('transaksi.index', ['transaksi'=>$transaksi]);
+        $transaksi_lamongan_motor =DB::table('transaksi')
+                ->join('users','transaksi.users_id', '=', 'users.id')
+                ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
+                ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol')
+                ->where('users.cabang_id', '=', '1')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*')
+                ->get();
+        $transaksi_babat_motor =DB::table('transaksi')
+                ->join('users','transaksi.users_id', '=', 'users.id')
+                ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
+                ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol')
+                ->where('users.cabang_id', '=', '2')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*')
+                ->get();
+        $transaksi_motor = DB::table('transaksi')
+                ->join('users','transaksi.users_id', '=', 'users.id')
+                ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
+                ->join('kendaraan','transaksi.kendaraan_no_pol','=','kendaraan.no_pol')        
+                ->where('kendaraan.jenis','=','Sepeda Motor')
+                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*')
+                ->get();
+        // $transaksi = Transaksi::with('users','pelanggan','kendaraan')->get();
+        return view('transaksi.index', compact('transaksi_lamongan_motor','transaksi_babat_motor','transaksi_motor'));
     }
 
     /**
@@ -29,8 +53,26 @@ class TransaksiController extends Controller
     public function create()
     {
         $pelanggan = Pelanggan::all();
-        $kendaraan = Kendaraan::all();
-        return view('transaksi.create', compact('pelanggan','kendaraan'));
+        $kendaraan = DB::table('kendaraan')
+                    ->where('kendaraan.status_kendaraan','=','Tersedia')
+                    ->select('kendaraan.*')
+                    ->get();
+        $motorlamongan =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->where('users.cabang_id', '=', '1')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                ->select('kendaraan.*')
+                ->get();
+        $motorbabat =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->where('users.cabang_id', '=', '2')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                ->select('kendaraan.*')
+                ->get();
+       
+        return view('transaksi.create',compact('pelanggan','kendaraan','motorlamongan','motorbabat'));
     }
 
     /**
