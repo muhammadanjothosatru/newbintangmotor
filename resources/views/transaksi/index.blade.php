@@ -12,7 +12,9 @@
 
 <div class="card">
     <div class="m-4">
+        @if(Auth::user()->role != 0)
         <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Transaksi Baru</a>
+        @endif
         <br><br>
         <table id="example" class="display col-12">
             <thead>
@@ -52,7 +54,7 @@
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
                 @endif
                 <td>
-                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
+                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
                 </td>
             </tr>
             @endforeach
@@ -78,7 +80,7 @@
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
                 @endif
                 <td>
-                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
+                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
                 </td>
             </tr>
             @endforeach
@@ -104,7 +106,7 @@
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
                 @endif
                 <td>
-                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
+                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
                 </td>
             </tr>
             @endforeach

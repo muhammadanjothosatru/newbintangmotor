@@ -49,8 +49,10 @@
 		@endif
 		
 		<td>
-			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
+			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
 		</td>
+
 		
 	
 	</tr>
@@ -74,8 +76,9 @@
 			@endif
 			
 			<td>
-                <a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
-            </td>
+				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+			</td>
 		</tr>
 		@endforeach
 		@endif
@@ -98,8 +101,9 @@
 			@endif
 			
 			<td>
-                <a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm">Lihat</a>
-            </td>
+				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+			</td>
 		</tr>
 		@endforeach
 		@endif

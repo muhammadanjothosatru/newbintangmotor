@@ -40,7 +40,7 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="no_pol" value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                            <input type="text" name="no_pol"  readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
                             @if($errors->has('no_pol'))
                                 <div class="error">{{ $errors->first('no_pol') }}</div>
                             @endif

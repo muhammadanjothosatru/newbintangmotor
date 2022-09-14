@@ -32,7 +32,7 @@
 			<td>{{ $p->nomor_hp}}</td>
 			<td>{{ $p->alamat}}</td>
 			<td>
-                <a href="{{ route('pelanggan.edit', $p->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
+                <a href="{{ route('pelanggan.edit', $p->id ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
             </td>
 		</tr>
 		@endforeach

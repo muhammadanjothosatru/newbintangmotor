@@ -106,6 +106,7 @@ class PelangganController extends Controller
     {
         $validate= $request->validate([
             'foto_ktp' => 'mimes:jpg,png,jpeg|image',
+            'nomor_hp' => 'required|numeric',
         ]);
         $pelanggan = Pelanggan::findorfail($id);
        

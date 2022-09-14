@@ -27,9 +27,10 @@
             <li class="{{ request()->is('laporan', 'laporan/*') ? 'active' : '' }}">
               <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-folder"></i><span>Laporan</span></a>
             </li>
-
+            @if(Auth::user()->role == 0)
             <li class="{{ request()->is('/administrasi') ? 'active' : '' }}">
               <a href="#administrasi" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
             </li>
+            @endif
         </aside>
       </div>
