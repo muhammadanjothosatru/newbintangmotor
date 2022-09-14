@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kendaraan;
 use App\Models\User;
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 class KendaraanController extends Controller
@@ -72,7 +73,6 @@ class KendaraanController extends Controller
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
             'status_kendaraan' =>"Tersedia",
-            'cabang' =>Auth::user()->cabang_id,
             'tahun_registrasi' => $request->tahun_registrasi,
             'no_bpkb' => $request->no_bpkb,
             'harga_beli' => $request->harga_beli,
@@ -107,9 +107,10 @@ class KendaraanController extends Controller
         $kendaraan_cabang = Kendaraan::with('users.cabang')->get();
         return view('kendaraan.detail', compact('kendaraan'));
     }
-    public function edit(Kendaraan $kendaraan)
+    public function edit($no_pol)
     {
-        //
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        return view('kendaraan.edit', compact('kendaraan'));
     }
 
     /**
@@ -119,9 +120,32 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kendaraan $kendaraan)
+    public function update(Request $request, $no_pol)
     {
-        //
+        
+        $validate= $request->validate([
+           
+            'nama_pemilik' => 'required',
+            'alamat' => 'required',
+            'merk' => 'required',
+            'tipe' => 'required',
+            'jenis' => 'required',
+            'model' => 'required',
+            'tahun_pembuatan' => 'required|numeric',
+            'daya_listrik' => 'required',
+            'no_rangka' => 'required',
+            'no_mesin' => 'required',
+            'warna' => 'required',
+            'tahun_registrasi' => 'required',
+            'no_bpkb' => 'required',
+            'harga_beli' => 'required|numeric',
+            'tanggal_masuk' => 'required',
+        
+    ]);
+        
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        $kendaraan->update($request->all());
+        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
     }
 
     /**

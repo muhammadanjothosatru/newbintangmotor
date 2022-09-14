@@ -32,7 +32,7 @@
             <div class="font-form-header mb-3 col-6">Detail Kendaraan</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
                 <a href="{{ route('kendaraan.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
-                <a href="{{ route('kendaraan.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-pen mr-2"></i>Ubah</a>
+                <a href="{{ route('kendaraan.edit',$kendaraan->no_pol) }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-pen mr-2"></i>Ubah</a>
             </div>
         </div>
         

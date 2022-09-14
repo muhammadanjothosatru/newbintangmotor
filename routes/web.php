@@ -29,7 +29,7 @@ Route::post('/login', [LoginController::class,'authenticate'])->name('login');
 Route::post('/logout', [LoginController::class,'logout']);
 
 // group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
-Route::middleware(['auth'])->group(function () {
+Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/pelanggan', PelangganController::class);
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
