@@ -6,12 +6,12 @@
 <div class="card">
     @if(count($errors)>0)
     @foreach($errors->all() as $error)
-    <div class="alert alert-danger" role="alert">
-    {{ $error }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>  		
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{$error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     @endforeach
 @endif
 
@@ -150,6 +150,7 @@
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
                         <div class="col-sm-10 col-form-label">
                             <input type="text" name="harga_beli" value="{!! $kendaraan->harga_beli !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
+                           
                         </div>
                 </div>
                 <div class="mb-3 row">

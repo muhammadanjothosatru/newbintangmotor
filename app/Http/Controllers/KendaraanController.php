@@ -161,13 +161,14 @@ class KendaraanController extends Controller
             'tanggal_masuk' => 'required',
         
     ]);
-        $newNopol ="";
-        if($request->has('no_pol')){
-            $newNopol = $request->no_pol;
-        }
+       
         $kendaraan = Kendaraan::findorfail($no_pol);
         
-            $kendaraan->no_pol = $newNopol;
+        $newNopol ="";
+        if($request['no_pol']!=$kendaraan->no_pol){
+            return redirect()->route('kendaraan.edit',$kendaraan->no_pol)->with('error','Data Kendaraan anda berhasil diupdate');
+        }else{
+            $kendaraan->no_pol = $request->no_pol;
             $kendaraan->nama_pemilik = $request->nama_pemilik;
             $kendaraan->alamat = $request->alamat;
             $kendaraan->merk = $request->merk;
@@ -188,7 +189,7 @@ class KendaraanController extends Controller
             $kendaraan->keterangan = $request->keterangan;
             $kendaraan->save();
         return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
-    }
+    }}
 
     /**
      * Remove the specified resource from storage.
