@@ -33,26 +33,12 @@
 <script>
 
 $(document).ready( function () {
-    var table = $('#example').DataTable({
-      init: function(api, node, config) {
-          $(node).removeClass('dt-button')
-        },
-        buttons: [
-          {
-            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
-            extend: 'pdf',
-            className: 'btn btn-primary btn-sm',
-            title: 'Laporan Bintang Motor ',
-            extension: '.pdf',
-            init: function(api, node, config) {
-              $(node).removeClass('dt-button buttons-pdf buttons-html5')
-            }
-          }
-        ]
-    });
 
-    new $.fn.dataTable.Buttons(table, {
-        init: function(api, node, config) {
+    var table2 = $('#example').DataTable({
+    });
+    var table = $('#laporan').DataTable({
+      dom: 'Bfrtip',
+      init: function(api, node, config) {
           $(node).removeClass('dt-button')
         },
         buttons: [
@@ -68,7 +54,27 @@ $(document).ready( function () {
             }
           }
         ]
-    }).container().appendTo($('.pdf'));
+
+    });
+
+    // new $.fn.dataTable.Buttons(table, { 
+    //     init: function(api, node, config) {
+    //       $(node).removeClass('dt-button')
+    //     },
+    //     buttons: [
+    //       {
+    //         text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
+    //         extend: 'pdf',
+    //         download: 'open',
+    //         className: 'btn btn-primary btn-sm',
+    //         title: 'Laporan Bintang Motor ',
+    //         extension: '.pdf',
+    //         init: function(api, node, config) {
+    //           $(node).removeClass('dt-button buttons-pdf buttons-html5')
+    //         }
+    //       }
+    //     ]
+    // }).container().appendTo($('.pdf'));
     
     $('.daterange').on('apply.daterangepicker', function(ev, picker) {
     minDate = picker.startDate.format('DD MMM YYYY');
@@ -81,7 +87,7 @@ $(document).ready( function () {
  
   $.fn.dataTable.ext.search.push(
       function( settings, data, dataIndex ) {
-        if ( settings.nTable.id !== 'example' ) {
+        if ( settings.nTable.id !== 'laporan' ) {
           return true;
         }
           var min = new Date(minDate);

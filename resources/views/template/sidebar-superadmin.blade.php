@@ -15,8 +15,8 @@
             <li class="dropdown {{ request()->is('kendaraan', 'kendaraan/*') ? 'active' : ''}}">
               <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#motor">Motor</a></li> 
-                <li><a class="nav-link" href="#mobil">Mobil</a></li>              
+                <li><a class="nav-link" href="#motor">Motor</a></li>
+                <li><a class="nav-link" href="#mobil">Mobil</a></li>
               </ul>
             </li>
             
