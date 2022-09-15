@@ -45,8 +45,8 @@
                             @elseif($kendaraan->status_kendaraan == "Terjual")
                                 <input type="text" name="no_pol" readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
                            @endif
-                            @if($errors->has('no_pol'))
-                                <div class="error">{{ $errors->first('no_pol') }}</div>
+                           @if($errors->has('no_pol'))
+                                <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
                             @endif
                         </div>
                 </div>
