@@ -200,8 +200,10 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kendaraan $kendaraan)
+    public function destroy($no_pol)
     {
-        //
+        Kendaraan::findorfail($no_pol)->delete();
+        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil dihapus');
     }
+   
 }
