@@ -59,7 +59,7 @@ $(document).ready( function () {
 
     var minDate, maxDate;
  
-      var DateFilterFunction =  function( settings, data, dataIndex ) {
+    var DateFilterFunction =  function( settings, data, dataIndex ) {
         if ( settings.nTable.id !== 'laporan' ) {
           return true;
         }
@@ -68,8 +68,6 @@ $(document).ready( function () {
           var max = new Date(maxDate);
 
           var date = new Date(data[1]);
-
-          console.log(min, max, date);
   
           if (
               ( min === null && max === null ) ||
@@ -88,7 +86,6 @@ $(document).ready( function () {
       minDate = picker.startDate.format('DD MMM YYYY');
       maxDate = picker.endDate.format('DD MMM YYYY');
       $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
-
       table.draw();
   });
 
