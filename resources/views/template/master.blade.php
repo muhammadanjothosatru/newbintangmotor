@@ -57,44 +57,19 @@ $(document).ready( function () {
 
     });
 
-    // new $.fn.dataTable.Buttons(table, { 
-    //     init: function(api, node, config) {
-    //       $(node).removeClass('dt-button')
-    //     },
-    //     buttons: [
-    //       {
-    //         text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
-    //         extend: 'pdf',
-    //         download: 'open',
-    //         className: 'btn btn-primary btn-sm',
-    //         title: 'Laporan Bintang Motor ',
-    //         extension: '.pdf',
-    //         init: function(api, node, config) {
-    //           $(node).removeClass('dt-button buttons-pdf buttons-html5')
-    //         }
-    //       }
-    //     ]
-    // }).container().appendTo($('.pdf'));
-    
-    $('.daterange').on('apply.daterangepicker', function(ev, picker) {
-    minDate = picker.startDate.format('DD MMM YYYY');
-    maxDate = picker.endDate.format('DD MMM YYYY');
-
-    table.draw();
-  });
-
-  var minDate, maxDate;
+    var minDate, maxDate;
  
-  $.fn.dataTable.ext.search.push(
-      function( settings, data, dataIndex ) {
+      var DateFilterFunction =  function( settings, data, dataIndex ) {
         if ( settings.nTable.id !== 'laporan' ) {
           return true;
         }
-        console.log(settings.dataIndex);
+        
           var min = new Date(minDate);
           var max = new Date(maxDate);
 
           var date = new Date(data[1]);
+
+          console.log(min, max, date);
   
           if (
               ( min === null && max === null ) ||
@@ -106,11 +81,30 @@ $(document).ready( function () {
           }
           return false;
       }
-  );
+
+  $( document ).ready(function() {
+    $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('DD MMM YYYY') + ' - ' + picker.endDate.format('DD MMM YYYY'));
+      minDate = picker.startDate.format('DD MMM YYYY');
+      maxDate = picker.endDate.format('DD MMM YYYY');
+      $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
+
+      table.draw();
+  });
+
+  $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+    $(this).val('');
+    minDate='';
+    maxDate='';
+    $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
+    $table.draw();
+  });
+
+
+  });
 
   });
 </script>
-
 
 </head>
 

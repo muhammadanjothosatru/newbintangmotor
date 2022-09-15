@@ -568,13 +568,13 @@ $(function() {
     var end = moment();
 
     function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        $('#reportrange span').html(start.format('DD MMM YYYY') + ' - ' + end.format('DD MMM YYYY'));
     }
 
-    if($(".daterange").length) {
-      $('.daterange').daterangepicker({
+    if($("#daterange").length) {
+      $('#daterange').daterangepicker({
         
-        locale: {format: 'YYYY-MM-DD'},
+        locale: {format: 'DD MMM YYYY'},
         drops: 'down',
         opens: 'left',
         startDate: start,

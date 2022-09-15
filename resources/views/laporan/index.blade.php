@@ -12,7 +12,7 @@
     <div class="row">
             <div class="font-form-header col-6"></div>
             <div class="font-form-header col-6 d-flex justify-content-end">
-                <button class="daterange btn btn-primary btn-sm mr-2"><i class="fas fa-filter mr-2"></i>Filter Periode</button>
+                <button class="daterange btn btn-primary btn-sm mr-2" id="daterange"><i class="fas fa-filter mr-2"></i>Filter Periode</button>
             </div>
         </div>
         <br>
