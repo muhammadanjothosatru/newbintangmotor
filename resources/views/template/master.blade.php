@@ -47,7 +47,7 @@ $(document).ready( function () {
             extend: 'pdf',
             download: 'open',
             className: 'btn btn-primary btn-sm',
-            title: 'Laporan Bintang Motor ',
+            title: 'Laporan Bintang Motor',
             extension: '.pdf',
             init: function(api, node, config) {
               $(node).removeClass('dt-button buttons-pdf buttons-html5')
