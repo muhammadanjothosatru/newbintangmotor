@@ -28,6 +28,7 @@
                     <th>Tahun</th>
                     <th>Warna</th>
                     <th>Metode Pembayaran</th>
+                    <th>Harga Jual</th>
                     <th>Keterangan ACC</th>
                     <th>Action</th>
                     
@@ -46,6 +47,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
+                <td>{{ $data->harga_akhir }}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -72,6 +74,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
+                <td>{{ $data->harga_akhir }}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -98,6 +101,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
+                <td>{{ $data->harga_akhir }}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
