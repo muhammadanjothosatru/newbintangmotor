@@ -198,13 +198,9 @@ class KendaraanController extends Controller
      */
     public function destroy($no_pol)
     {
-        Kendaraan::findorfail($no_pol)->delete();
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        $kendaraan->delete();
         return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil dihapus');
     }
-    public function destroy2($no_pol)
-    {
-        Kendaraan::findorfail($no_pol)->delete();
-        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil dihapus');
-    }
-   
+  
 }
