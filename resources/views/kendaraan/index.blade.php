@@ -29,7 +29,7 @@
 			<th>Action</th>
 		</tr>
     </thead>
-	@foreach($data['adminlamongan'] as $k)
+	@foreach($adminlamongan as $k)
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
 	<tr>
 		
@@ -49,17 +49,19 @@
 		@endif
 		
 		<td>
-			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+			<form class="p-0" action="{{route('kendaraan.destroy',$k) }}" method="POST">
+				@method('DELETE')
+				@csrf	
+				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+			</form>
 		</td>
 
-		
-	
 	</tr>
 	@endif
 		@endforeach
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 2)
-		@foreach($data['adminbabat'] as $k)
+		@foreach($adminbabat as $k)
 		<tr>
 			<td>{{ $loop->iteration}}</td>
 			<td>{{ $k->no_pol }}</td>
@@ -76,15 +78,19 @@
 			@endif
 			
 			<td>
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+				<form class="p-0" action="{{route('kendaraan.destroy',$k) }}" method="POST">
+					@method('DELETE')
+					@csrf	
+					<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+					<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+    			</form>
 			</td>
 		</tr>
 		@endforeach
 		@endif
 		
 		@if (Auth::user()->role == 0)
-		@foreach($data['kendaraan'] as $k)
+		@foreach($kendaraan as $k)
 		<tr>
 			<td>{{ $loop->iteration}}</td>
 			<td>{{ $k->no_pol }}</td>
@@ -101,13 +107,31 @@
 			@endif
 			
 			<td>
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+				<form class="p-0" action="{{route('kendaraan.destroy',$k) }}" method="POST">
+					@method('DELETE')
+					@csrf	
+					<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+					<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+    			</form>
 			</td>
 		</tr>
 		@endforeach
 		@endif
 	</table>
-	</div>
-</div>
+	
 @endsection
+{{-- <script src="/js/bootstrap-confirmation.js" defer></script>
+<script>
+	$('#mdelete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var nopol = button.data('no_pol');
+        var modal = $(this);
+
+        modal.find('#delete-form').attr('action', '/your/url-to-delete/' + nopol);
+
+        modal.find('#txtid').val(nopol);
+        modal.find('#uid').val(nopol);
+        modal.find('.modal-body').text(
+            'Are you sure you want to delete ' + nopol);
+    })
+</script> --}}

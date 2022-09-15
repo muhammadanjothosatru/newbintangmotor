@@ -40,9 +40,13 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="no_pol"  readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
-                            @if($errors->has('no_pol'))
-                                <div class="error">{{ $errors->first('no_pol') }}</div>
+                            @if($kendaraan->status_kendaraan == "Tersedia")
+                                <input type="text" name="no_pol"  value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                            @elseif($kendaraan->status_kendaraan == "Terjual")
+                                <input type="text" name="no_pol" readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                           @endif
+                           @if($errors->has('no_pol'))
+                                <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
                             @endif
                         </div>
                 </div>
@@ -67,7 +71,7 @@
                             <option value="Yamaha"{{ $kendaraan->merk == 'Yamaha' ? 'selected' : '' }}>Yamaha</option>
                             <option value="Suzuki"{{ $kendaraan->merk == 'Suzuki' ? 'selected' : '' }}>Suzuki</option>
                             <option value="Kawasaki"{{ $kendaraan->merk == 'Kawasaki' ? 'selected' : '' }}>Kawasaki</option>
-                            <option value="Yagyu"{{ $kendaraan->merk == 'Yagyu' ? 'selected' : '' }}>Yagyu</option>
+                            <option value="Piaggio"{{ $kendaraan->merk == 'Piaggio' ? 'selected' : '' }}>Piaggio</option>
                         </select>
                     </div>
                 </div>
