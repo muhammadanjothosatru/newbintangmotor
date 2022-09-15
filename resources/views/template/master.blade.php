@@ -36,13 +36,9 @@
 </script>
 
 <script>
-  $(document).ready( function (){
+  $(document).ready(function (){
 
-    var table = $('#laporan').DataTable({
-      dom: '',
-      paging: false,
-      info: false
-    });
+    var table = $('#laporan').DataTable();
   new $.fn.dataTable.Buttons(table, {
       init: function(api, node, config) {
         $(node).removeClass('dt-button')
@@ -61,11 +57,13 @@
       ]
   }).container().appendTo($('.pdf'));
 
-    var minDate, maxDate;
+  var minDate, maxDate;
  
 
   $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
+
+      console.log(settings.nTable.id);
         var min = new Date(minDate);
         var max = new Date(maxDate);
 
