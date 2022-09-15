@@ -11,6 +11,7 @@ class Kendaraan extends Model
 
     protected $primaryKey = 'no_pol';
     public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
         'no_pol' ,
             'users_id' ,
@@ -28,7 +29,6 @@ class Kendaraan extends Model
             'tahun_registrasi' ,
             'no_bpkb',
             'status_kendaraan' ,
-            'cabang',
             'harga_beli',
             'tanggal_masuk',
             'supplier' ,
@@ -36,7 +36,7 @@ class Kendaraan extends Model
     ];
     
     protected $table = 'kendaraan';
-
+    protected $dates = ['tanggal_masuk'];
     public function transaksi(){
     	return $this->belongsToMany(Transaksi::class);
     }

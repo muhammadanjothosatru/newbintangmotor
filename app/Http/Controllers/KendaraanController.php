@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class KendaraanController extends Controller
@@ -16,7 +19,24 @@ class KendaraanController extends Controller
     public function index()
     {
         $kendaraan = Kendaraan::all();
-        return view('kendaraan.index', compact('kendaraan'));
+        $adminlamongan =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->where('users.cabang_id', '=', '1')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->select('kendaraan.*')
+                ->get();
+        $adminbabat =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->where('users.cabang_id', '=', '2')
+                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                ->select('kendaraan.*')
+                ->get();
+        $data = [
+            'adminlamongan'=> $adminlamongan,
+            'adminbabat'=> $adminbabat,
+            'kendaraan'=> $kendaraan,
+        ];
+        return view('kendaraan.index',compact('data'));
     }
 
     /**
@@ -24,6 +44,10 @@ class KendaraanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function adminLamongan()
+    {
+        
+    }
     public function create()
     {
         return view('kendaraan.create');
@@ -71,7 +95,6 @@ class KendaraanController extends Controller
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
             'status_kendaraan' =>"Tersedia",
-            'cabang' =>Auth::user()->cabang,
             'tahun_registrasi' => $request->tahun_registrasi,
             'no_bpkb' => $request->no_bpkb,
             'harga_beli' => $request->harga_beli,
@@ -100,9 +123,16 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kendaraan $kendaraan)
+    public function detail($no_pol)
     {
-        //
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        $kendaraan_cabang = Kendaraan::with('users.cabang')->get();
+        return view('kendaraan.detail', compact('kendaraan'));
+    }
+    public function edit($no_pol)
+    {
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        return view('kendaraan.edit', compact('kendaraan'));
     }
 
     /**
@@ -112,9 +142,33 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kendaraan $kendaraan)
+    public function update(Request $request, $no_pol)
     {
-        //
+        
+        $validate= $request->validate([
+            'no_pol' => 'required',
+            'nama_pemilik' => 'required',
+            'alamat' => 'required',
+            'merk' => 'required',
+            'tipe' => 'required',
+            'jenis' => 'required',
+            'model' => 'required',
+            'tahun_pembuatan' => 'required|numeric',
+            'daya_listrik' => 'required',
+            'no_rangka' => 'required',
+            'no_mesin' => 'required',
+            'warna' => 'required',
+            'tahun_registrasi' => 'required',
+            'status_kendaraan' => 'required',
+            'no_bpkb' => 'required',
+            'harga_beli' => 'required|numeric',
+            'tanggal_masuk' => 'required',
+        
+    ]);
+        
+        $kendaraan = Kendaraan::findorfail($no_pol);
+        $kendaraan->update($validate);
+        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
     }
 
     /**

@@ -38,7 +38,15 @@
 <script>
   $(document).ready(function (){
 
+<<<<<<< HEAD
     var table = $('#laporan').DataTable();
+=======
+    var table = $('#laporan').DataTable({
+      // dom: '',
+      // paging: false,
+      // info: false
+    });
+>>>>>>> 89dd9a03e98db2f8a2698a155a293544c91952b7
   new $.fn.dataTable.Buttons(table, {
       init: function(api, node, config) {
         $(node).removeClass('dt-button')

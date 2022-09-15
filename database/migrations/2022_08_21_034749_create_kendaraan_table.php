@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kendaraan', function (Blueprint $table) {
             // $table->bigIncrements('id');
-            $table->string('no_pol',20)->unique();
+            $table->string('no_pol',20);
             $table->primary('no_pol');
             $table->string('nama_pemilik');
             $table->string('alamat');
@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('tahun_registrasi');
             $table->string('no_bpkb');
             $table->string('status_kendaraan')->default('Tersedia');
-            $table->string('cabang');
             $table->string('harga_beli');
             $table->date('tanggal_masuk');
             $table->string('supplier');

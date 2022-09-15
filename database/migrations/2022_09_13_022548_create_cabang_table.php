@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('cabang', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('metode_pembayaran');
-            $table->string('harga_akhir');
-            $table->string('no_kontrak')->default('-');
-            $table->string('uang_dp')->default('-');
-            $table->string('bulan_angsuran')->default('-');
-            $table->string('keterangan')->default('Belum ACC');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('cabang');
     }
 };

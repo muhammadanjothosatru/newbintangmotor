@@ -6,16 +6,24 @@
 <div class="card">
     @if(count($errors)>0)
   	@foreach($errors->all() as $error)
-  	<div class="alert alert-danger" role="alert">
-      {{ $error }}
-	</div>  		
+  	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ $error }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     		
   	@endforeach
   @endif
 
   @if(Session::has('success'))
-  	<div class="alert alert-success" role="alert">
-      {{ Session('success') }}
-	</div> 
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ Session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+      
   	
   @endif
     <form action="{{ route('pelanggan.edit', $pelanggan->id) }}" method="POST" enctype="multipart/form-data">
@@ -25,7 +33,7 @@
             <div class="font-form-header mb-3 col-6">Detail Pelanggan</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
                 <a href="{{ route('pelanggan.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
-                <a href="{{ route('pelanggan.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-pen mr-2"></i>Ubah</a>
+                <a href="{{ route('pelanggan.ubah',$pelanggan->id) }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-pen mr-2"></i>Ubah</a>
             </div>
         </div>
         
