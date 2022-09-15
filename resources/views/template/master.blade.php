@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables2/datatables.css')}}"/>
 
   <!-- Jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{{ asset('assets/modules/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
 
   <!-- Template CSS -->
@@ -29,70 +29,79 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 
 <!-- /END GA -->
-<script>
-  $(document).ready(function () {
-    $('#example').DataTable();
-  });
-</script>
 
 <script>
-  $(document).ready( function (){
 
-    var table = $('#laporan').DataTable({
-      // dom: '',
-      // paging: false,
-      // info: false
+$(document).ready( function () {
+
+    var table2 = $('#example').DataTable({
     });
-  new $.fn.dataTable.Buttons(table, {
+    var table = $('#laporan').DataTable({
+      dom: 'Bfrtip',
       init: function(api, node, config) {
-        $(node).removeClass('dt-button')
-      },
-      buttons: [
-        {
-          text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
-          extend: 'pdf',
-          className: 'btn btn-primary btn-sm',
-          title: 'Laporan Bintang Motor ',
-          extension: '.pdf',
-          init: function(api, node, config) {
-            $(node).removeClass('dt-button buttons-pdf buttons-html5')
+          $(node).removeClass('dt-button')
+        },
+        buttons: [
+          {
+            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
+            extend: 'pdf',
+            download: 'open',
+            className: 'btn btn-primary btn-sm',
+            title: 'Laporan Bintang Motor',
+            extension: '.pdf',
+            init: function(api, node, config) {
+              $(node).removeClass('dt-button buttons-pdf buttons-html5')
+            }
           }
-        }
-      ]
-  }).container().appendTo($('.pdf'));
+        ]
+
+    });
 
     var minDate, maxDate;
  
-
-  $.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var min = new Date(minDate);
-        var max = new Date(maxDate);
-
-        var date = new Date(data[1]);
- 
-        if (
-            ( min === null && max === null ) ||
-            ( min === null && date <= max ) ||
-            ( min <= date   && max === null ) ||
-            ( min <= date   && date <= max )
-        ) {
-            return true;
+    var DateFilterFunction =  function( settings, data, dataIndex ) {
+        if ( settings.nTable.id !== 'laporan' ) {
+          return true;
         }
-        return false;
-    }
-);
+        
+          var min = new Date(minDate);
+          var max = new Date(maxDate);
 
-  $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+          var date = new Date(data[1]);
+  
+          if (
+              ( min === null && max === null ) ||
+              ( min === null && date <= max ) ||
+              ( min <= date   && max === null ) ||
+              ( min <= date   && date <= max )
+          ) {
+              return true;
+          }
+          return false;
+      }
+
+  $( document ).ready(function() {
+    $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('DD MMM YYYY') + ' - ' + picker.endDate.format('DD MMM YYYY'));
       minDate = picker.startDate.format('DD MMM YYYY');
       maxDate = picker.endDate.format('DD MMM YYYY');
-
+      $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
       table.draw();
-    });
   });
-  
-</script>
 
+  $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+    $(this).val('');
+    minDate='';
+    maxDate='';
+    $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
+    $table.draw();
+  });
+
+
+  });
+
+  });
+</script>
 
 </head>
 
@@ -141,7 +150,7 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class=container-fluid>
+          <div class="container-fluid p-0">
             @yield('konten')
           </div>
         </section>
