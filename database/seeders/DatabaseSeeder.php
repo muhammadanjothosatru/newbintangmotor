@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Cabang::factory(2)->create();
+        // Cabang::factory(2)->create();
        User::factory(10)->create();
        Pelanggan::factory(15)->create();
-       Kendaraan::factory(15)->create();
+       Kendaraan::factory(100)->create();
        
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -14,12 +14,18 @@
             
             <li class="{{ request()->is('kendaraan', 'kendaraan/*') ? 'active' : ''}}">
               <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
+              @if(Auth::user()->role == 0)
+              <ul class="dropdown-menu">
+                <li class="{{ request()->is('kendaraan/#motor') ? 'active' : ''}}"><a class="nav-link " href="#motor">Motor</a></li>
+                <li class="{{ request()->is('kendaraan/#mobil') ? 'active' : ''}}"><a class="nav-link" href="#mobil">Mobil</a></li>
+              </ul>
+              @endif
             </li>
-            
+            {{-- @if (Auth::user()->role == 1) --}}
             <li class="{{ request()->is('pelanggan', 'pelanggan/*') ? 'active' : ''}}">
               <a href="{{ route('pelanggan.index') }}" class="nav-link"><i class="fas fa-light fa-user"></i> <span>Pelanggan</span></a>
             </li>
-
+            {{-- @endif --}}
             <li class="{{ request()->is('transaksi', 'transaksi/*') ? 'active' : ''}}">
               <a href="{{ route('transaksi.index') }}" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
             </li>
@@ -27,9 +33,10 @@
             <li class="{{ request()->is('laporan', 'laporan/*') ? 'active' : '' }}">
               <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-folder"></i><span>Laporan</span></a>
             </li>
-
-            <li class="{{ request()->is('/administrasi') ? 'active' : '' }}">
+            @if(Auth::user()->role == 0)
+            <li class="{{ request()->is('#administrasi') ? 'active' : '' }}">
               <a href="#administrasi" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
             </li>
+            @endif
         </aside>
       </div>

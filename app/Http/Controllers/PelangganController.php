@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PelangganController extends Controller
 {
@@ -47,10 +48,10 @@ class PelangganController extends Controller
        
         
     
-
+        $newName="";
        if($request->file('foto_ktp')){
             $extension = $request->file('foto_ktp')->getClientOriginalExtension();
-            $newName = $request->nama.'-'.now()->timestamp.'.'.$extension;
+            $newName = $request->nama.'.'.$extension;
             $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
        }
        
@@ -88,6 +89,11 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::findorfail($id);
         return view('pelanggan.edit', compact('pelanggan'));
     }
+    public function ubah($id)
+    {
+        $pelanggan = Pelanggan::findorfail($id);
+        return view('pelanggan.update', compact('pelanggan'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -96,9 +102,33 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        
+        $validate= $request->validate([
+            'foto_ktp' => 'mimes:jpg,png,jpeg|image',
+            'nomor_hp' => 'required|numeric',
+        ]);
+        $pelanggan = Pelanggan::findorfail($id);
+       
+       if($request->has('foto_ktp')){
+            $extension = $request->file('foto_ktp')->getClientOriginalExtension();
+            $newName = $request->nama.'.'.$extension;
+            $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
+            $pelanggan->foto_ktp = $newName;
+       }
+       $namaFoto = $pelanggan->foto_ktp;
+       
+       if($namaFoto != null || $namaFoto != ''){
+        Storage::delete($namaFoto);
+       }
+
+       $pelanggan->nik =$request->nik;
+       $pelanggan->nama=$request->nama;
+       $pelanggan->nomor_hp = $request->nomor_hp;
+       $pelanggan->alamat = $request->alamat;
+       $pelanggan->save();
+  
+        return redirect()->route('pelanggan.index')->with('success','Data pelanggan anda berhasil diupdate'); 
     }
 
     /**

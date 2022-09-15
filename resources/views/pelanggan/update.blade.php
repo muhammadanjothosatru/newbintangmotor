@@ -18,8 +18,9 @@
 	</div> 
   	
   @endif
-    <form action="{{ route('pelanggan.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pelanggan.update',$pelanggan->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
     <div class="m-4">
         <div class="row pl-0 pr-0">
             <div class="font-form-header mb-3 col-6">Masukkan Data Pelanggan</div>
@@ -33,31 +34,37 @@
                 <div class="mb-3 row">
                     <label for="inputNIK"  class="col-sm-2 col-form-label font-form">NIK</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nik" value="{{ old('nik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan NIK Pelanggan" id="nik">
+                            <input type="text" name="nik" value="{!! $pelanggan->nik !!}" required="required" class="form-control form-control-size" placeholder="Masukkan NIK Pelanggan" id="nik">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama"  class="col-sm-2 col-form-label font-form">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama" value="{{ old('nama') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama">
+                            <input type="text" name="nama" value="{!! $pelanggan->nama !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Alamat</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pelanggan" id="alamat">{{ old('alamat') }}</textarea>
+                        <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pelanggan" id="alamat">{!! $pelanggan->alamat !!}</textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">No. HP</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nomor_hp"  value="{{ old('nomor_hp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan No. HP Pelanggan" id="inputNIK">
+                            <input type="text" name="nomor_hp"  value="{!! $pelanggan->nomor_hp!!}" required="required" class="form-control form-control-size" placeholder="Masukkan No. HP Pelanggan" id="inputNIK">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP</label>
                     <div class="form-floating col-sm-10">
-                        <input class="form-control file-upload "  name="foto_ktp" type="file" id="file-upload"></input>
+                        @if ($pelanggan->foto_ktp)
+                        <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" class="img-thumbnail" style="width:50%"alt="...">
+                        @else
+                        <span class="badge badge-danger">belum ada foto</span>
+                        @endif
+                        <input class="form-control file-upload " accept="image/*" name="foto_ktp" type="file" id="file-upload"></input>
+        
                     </div>
                 </div>
                 <div class="mb-3 row">

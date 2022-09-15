@@ -2,9 +2,13 @@
 @section('konten')
 
 @if(Session::has('success'))
-<div class="alert alert-success" role="alert">
-{{ Session('success') }}
-</div> 
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+	{{ Session('success') }} 
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+  </div>
+
 @endif
 
 <div class="card">
@@ -28,7 +32,7 @@
 			<td>{{ $p->nomor_hp}}</td>
 			<td>{{ $p->alamat}}</td>
 			<td>
-                <a href="{{ route('pelanggan.edit', $p->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
+                <a href="{{ route('pelanggan.edit', $p->id ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
             </td>
 		</tr>
 		@endforeach
