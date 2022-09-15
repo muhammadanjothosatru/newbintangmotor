@@ -43,7 +43,7 @@ $(document).ready( function () {
         },
         buttons: [
           {
-            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
+            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
             extend: 'pdf',
             download: 'open',
             className: 'btn btn-primary btn-sm',
@@ -90,6 +90,7 @@ $(document).ready( function () {
         if ( settings.nTable.id !== 'laporan' ) {
           return true;
         }
+        console.log(settings.dataIndex);
           var min = new Date(minDate);
           var max = new Date(maxDate);
 
