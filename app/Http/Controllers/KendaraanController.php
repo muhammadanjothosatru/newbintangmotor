@@ -166,7 +166,7 @@ class KendaraanController extends Controller
         
         $newNopol ="";
         if($request['no_pol']!=$kendaraan->no_pol){
-            return redirect()->route('kendaraan.edit',$kendaraan->no_pol)->with('error','Data Kendaraan anda berhasil diupdate');
+            return back()->withErrors('No.Pol Kendaraan Sudah Terdaftar');
         }else{
             $kendaraan->no_pol = $request->no_pol;
             $kendaraan->nama_pemilik = $request->nama_pemilik;
