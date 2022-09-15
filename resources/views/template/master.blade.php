@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables2/datatables.css')}}"/>
 
   <!-- Jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{{ asset('assets/modules/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
 
   <!-- Template CSS -->
@@ -29,74 +29,79 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 
 <!-- /END GA -->
-<script>
-  $(document).ready(function () {
-    $('#example').DataTable();
-  });
-</script>
 
 <script>
-  $(document).ready(function (){
 
-<<<<<<< HEAD
-    var table = $('#laporan').DataTable();
-=======
-    var table = $('#laporan').DataTable({
-      // dom: '',
-      // paging: false,
-      // info: false
-    });
->>>>>>> 89dd9a03e98db2f8a2698a155a293544c91952b7
-  new $.fn.dataTable.Buttons(table, {
+$(document).ready( function () {
+    var table = $('#example').DataTable({
       init: function(api, node, config) {
-        $(node).removeClass('dt-button')
-      },
-      buttons: [
-        {
-          text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
-          extend: 'pdf',
-          className: 'btn btn-primary btn-sm',
-          title: 'Laporan Bintang Motor ',
-          extension: '.pdf',
-          init: function(api, node, config) {
-            $(node).removeClass('dt-button buttons-pdf buttons-html5')
+          $(node).removeClass('dt-button')
+        },
+        buttons: [
+          {
+            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
+            extend: 'pdf',
+            className: 'btn btn-primary btn-sm',
+            title: 'Laporan Bintang Motor ',
+            extension: '.pdf',
+            init: function(api, node, config) {
+              $(node).removeClass('dt-button buttons-pdf buttons-html5')
+            }
           }
-        }
-      ]
-  }).container().appendTo($('.pdf'));
+        ]
+    });
+
+    new $.fn.dataTable.Buttons(table, {
+        init: function(api, node, config) {
+          $(node).removeClass('dt-button')
+        },
+        buttons: [
+          {
+            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export</a></i>',
+            extend: 'pdf',
+            download: 'open',
+            className: 'btn btn-primary btn-sm',
+            title: 'Laporan Bintang Motor ',
+            extension: '.pdf',
+            init: function(api, node, config) {
+              $(node).removeClass('dt-button buttons-pdf buttons-html5')
+            }
+          }
+        ]
+    }).container().appendTo($('.pdf'));
+    
+    $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+    minDate = picker.startDate.format('DD MMM YYYY');
+    maxDate = picker.endDate.format('DD MMM YYYY');
+
+    table.draw();
+  });
 
   var minDate, maxDate;
  
-
   $.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-
-      console.log(settings.nTable.id);
-        var min = new Date(minDate);
-        var max = new Date(maxDate);
-
-        var date = new Date(data[1]);
- 
-        if (
-            ( min === null && max === null ) ||
-            ( min === null && date <= max ) ||
-            ( min <= date   && max === null ) ||
-            ( min <= date   && date <= max )
-        ) {
-            return true;
+      function( settings, data, dataIndex ) {
+        if ( settings.nTable.id !== 'example' ) {
+          return true;
         }
-        return false;
-    }
-);
+          var min = new Date(minDate);
+          var max = new Date(maxDate);
 
-  $('.daterange').on('apply.daterangepicker', function(ev, picker) {
-      minDate = picker.startDate.format('DD MMM YYYY');
-      maxDate = picker.endDate.format('DD MMM YYYY');
-
-      table.draw();
-    });
-  });
+          var date = new Date(data[1]);
   
+          if (
+              ( min === null && max === null ) ||
+              ( min === null && date <= max ) ||
+              ( min <= date   && max === null ) ||
+              ( min <= date   && date <= max )
+          ) {
+              return true;
+          }
+          return false;
+      }
+  );
+
+  });
 </script>
 
 
@@ -147,7 +152,7 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class=container-fluid>
+          <div class="container-fluid p-0">
             @yield('konten')
           </div>
         </section>

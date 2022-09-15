@@ -3,7 +3,7 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="{{ asset('assets/modules/jquery.min.js')}}"></script>
+  <script src="{{ asset('assets/modules/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/modules/popper.js')}}"></script>
   <script src="{{ asset('assets/modules/tooltip.js')}}"></script>
   <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
