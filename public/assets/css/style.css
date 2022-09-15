@@ -1482,7 +1482,7 @@ h6 .badge {
 /* 3.18 Navbar */
 .navbar {
   height: 70px;
-  left: 230px;
+  left: 200px;
   right: 5px;
   position: fixed;
   z-index: 890;
@@ -2173,7 +2173,7 @@ pre {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 230px;
+  width: 200px;
   background-color: #fff;
   z-index: 880;
   left: 0; }
@@ -2532,7 +2532,7 @@ body.layout-3 .main-footer {
         padding-left: 10px; }
 
 .main-content {
-  padding-left: 250px;
+  padding-left: 220px;
   padding-right: 15px;
   padding-top: 80px;
   width: 100%;
