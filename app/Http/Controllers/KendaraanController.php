@@ -31,12 +31,8 @@ class KendaraanController extends Controller
                 ->where('kendaraan.jenis', '=', 'Sepeda Motor')
                 ->select('kendaraan.*')
                 ->get();
-        $data = [
-            'adminlamongan'=> $adminlamongan,
-            'adminbabat'=> $adminbabat,
-            'kendaraan'=> $kendaraan,
-        ];
-        return view('kendaraan.index',compact('data'));
+       
+        return view('kendaraan.index',compact('kendaraan','adminlamongan','adminbabat'));
     }
 
     /**
@@ -201,6 +197,11 @@ class KendaraanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($no_pol)
+    {
+        Kendaraan::findorfail($no_pol)->delete();
+        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil dihapus');
+    }
+    public function destroy2($no_pol)
     {
         Kendaraan::findorfail($no_pol)->delete();
         return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil dihapus');
