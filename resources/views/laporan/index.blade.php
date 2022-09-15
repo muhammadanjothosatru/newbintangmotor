@@ -53,21 +53,9 @@
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
                 @endif
             </tr>
-<<<<<<< HEAD
             @endforeach
-        </tbody>
-=======
-<<<<<<< HEAD
-        @endforeach
-    </tbody>
-=======
-            @endforeach
-        </tbody>
-            
-        
->>>>>>> 396e7ac1764cdc5e5b7120ea4ee9259c3bf64a0a
->>>>>>> c6e10ac0b4a941210a1d0d134d4d12fd08062e41
-            </table>
-            </div>
-        </div>
+            </tbody>  
+        </table>
+    </div>
+</div>
 @endsection
