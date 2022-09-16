@@ -55,7 +55,6 @@
             @endforeach
         </tbody>
         <tfoot>
-            @foreach($transaksi as $data)
             <tr>
                 <th>Jumlah Laba</th>
                 <th></th>
@@ -69,9 +68,8 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>{{}}</th>
+                <th></th>
             </tr>
-            @endforeach
         </tfoot>
         </table>
         </div>
