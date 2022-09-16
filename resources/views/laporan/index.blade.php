@@ -29,6 +29,9 @@
                     <th>Warna</th>
                     <th>Metode Pembayaran</th>
                     <th>Keterangan ACC</th>
+                    <th>Harga Beli</th>
+                    <th>Harga Jual</th>
+                    <th>Laba</th>
                     
                 </tr>
             </thead>
@@ -45,9 +48,29 @@
                 <td>{{ $data->kendaraan->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
+                <td>{{ $data->kendaraan->harga_beli }}</td>
+                <td>{{ $data->harga_akhir }}</td>
+                <td>{{ $data->harga_akhir - $data->kendaraan->harga_beli }}</td>
             </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <th>Jumlah Laba</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
         </table>
         </div>
     </div>

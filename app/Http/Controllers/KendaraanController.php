@@ -170,7 +170,7 @@ class KendaraanController extends Controller
         $kendaraan->status_kendaraan =$request->status_kendaraan;
         $kendaraan->tahun_registrasi = $request->tahun_registrasi;
         $kendaraan->no_bpkb = $request->no_bpkb;
-        $kendaraan->harga_beli = preg_replace('/[^0-9]/', '', $request->harga_beli);
+        $kendaraan->harga_beli = intval(preg_replace('/[^0-9]/', '', $request->harga_beli))+intval(preg_replace('/[^0-9]/', '', $request->biaya_tambahan));
         $kendaraan->tanggal_masuk = $request->tanggal_masuk;
         $kendaraan->supplier = $request->supplier;
         $kendaraan->keterangan = $request->keterangan;

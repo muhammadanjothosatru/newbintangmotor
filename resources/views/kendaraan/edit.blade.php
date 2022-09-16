@@ -148,8 +148,13 @@
                 </div>
                 <div class="mb-3 row">
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
-                        <div class="col-sm-10 col-form-label">
+                        <div class="col-sm-4 ">
                         <input type="text" name="harga_beli" value="Rp. {!! number_format($kendaraan->harga_beli, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
+                        
+                    </div>
+                    <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Biaya Tambahan</label>
+                        <div class="col-sm-4">
+                        <input type="text" name="biaya_tambahan" value="0" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="biaya_    tambahan">
                         
                     </div>
                 </div>
@@ -209,6 +214,10 @@
     var hargabeli = document.getElementById('harga');
     hargabeli.addEventListener('keyup', function(e){
         hargabeli.value = currency(this.value, 'Rp')
+    })
+    var biaya_tambahan = document.getElementById('biaya_tambahan');
+    biaya_tambahan.addEventListener('keyup', function(e){
+        biaya_tambahan.value = currency(this.value, 'Rp')
     })
 
 </script>
