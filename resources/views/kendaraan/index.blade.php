@@ -33,7 +33,7 @@
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
 	<tr>
 		
-		
+		'/[^0-9]/'
 		<td>{{ $loop->iteration}}</td>
 		<td>{{ $k->no_pol }}</td>
 		<td>{{ $k->merk}}</td>
@@ -41,7 +41,7 @@
 		<td>{{ $k->tipe}}</td>
 		<td>{{ $k->warna}}</td>
 		<td>{{  \Carbon\Carbon::parse($k->tanggal_masuk)->format('d M Y')}}</td>
-		<td>{{ $k->harga_beli}}</td>
+		<td>Rp. {{ number_format($k->harga_beli, 0, ',', '.');}}</td>
 		@if ($k->status_kendaraan=='Tersedia')
 		<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
 		@elseif($k->status_kendaraan=='Terjual')
@@ -74,7 +74,7 @@
 			<td>{{ $k->tipe}}</td>
 			<td>{{ $k->warna}}</td>
 			<td>{{ \Carbon\Carbon::parse($k->tanggal_masuk)->format('d M Y')}}</td>
-			<td>{{ $k->harga_beli}}</td>
+			<td>Rp. {{ number_format($k->harga_beli, 0, ',', '.');}}</td>
 			@if ($k->status_kendaraan=='Tersedia')
 			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
 			@elseif($k->status_kendaraan=='Terjual')
@@ -107,7 +107,7 @@
 			<td>{{ $k->tipe}}</td>
 			<td>{{ $k->warna}}</td>
 			<td>{{ $k->tanggal_masuk->format('d M Y')}}</td>
-			<td>{{ $k->harga_beli}}</td>
+			<td>Rp. {{ number_format($k->harga_beli, 0, ',', '.');}}</td>
 			@if ($k->status_kendaraan=='Tersedia')
 			<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
 			@elseif($k->status_kendaraan=='Terjual')
@@ -146,4 +146,5 @@
         modal.find('.modal-body').text(
             'Are you sure you want to delete ' + nopol);
     })
+
 </script> --}}

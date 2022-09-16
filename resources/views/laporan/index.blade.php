@@ -12,7 +12,11 @@
     <div class="row">
             <div class="font-form-header col-6"></div>
             <div class="font-form-header col-6 d-flex justify-content-end">
+<<<<<<< HEAD
                 <button class="daterange btn btn-primary btn-sm mr-2" id="daterange"><i class="fas fa-filter mr-2"></i>Filter Periode</button>
+=======
+            <button class="daterange btn btn-primary btn-sm mr-2" id="daterange"><i class="fas fa-filter mr-2"></i>Filter Periode</button>
+>>>>>>> dac22c6acfe4115e10956ccc20505ecebefb6cd5
             </div>
         </div>
         <br>
@@ -45,15 +49,10 @@
                 <td>{{ $data->kendaraan->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
-               
             </tr>
             @endforeach
-            
-           
         </tbody>
-          
-        
-            </table>
-            </div>
+        </table>
         </div>
+    </div>
 @endsection

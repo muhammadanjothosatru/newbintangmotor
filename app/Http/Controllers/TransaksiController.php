@@ -84,7 +84,7 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $validate= $request->validate([
-            'harga_akhir' => 'required|numeric',
+            'harga_akhir' => 'required',
         ]);
 
         if($request->metode_pembayaran=='Tunai'){
@@ -92,7 +92,7 @@ class TransaksiController extends Controller
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
                 'metode_pembayaran'=>$request->metode_pembayaran,
-                'harga_akhir'=>$request->harga_akhir,
+                'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
                 'no_kontrak'=>'-',
                 'uang_dp'=>'-',
                 'bulan_angsuran'=>'-',
@@ -105,7 +105,7 @@ class TransaksiController extends Controller
             'pelanggan_id'=> $request->nama,
             'kendaraan_no_pol' => $request->no_pol,
             'metode_pembayaran'=>$request->metode_pembayaran,
-            'harga_akhir'=>$request->harga_akhir,
+            'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
             'no_kontrak'=>'-',
             'uang_dp'=>$request->uang_dp,
             'bulan_angsuran'=>$request->bulan_angsuran,

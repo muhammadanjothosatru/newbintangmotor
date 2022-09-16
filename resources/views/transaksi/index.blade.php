@@ -16,7 +16,7 @@
         <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Transaksi Baru</a>
         @endif
         <br><br>
-        <table id="example" class="display col-12">
+        <table id="laporan" class="display col-12">
             <thead>
                 <tr>
                     <th>No</th>
@@ -47,7 +47,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>{{ $data->harga_akhir }}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -74,7 +74,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>{{ $data->harga_akhir }}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -101,7 +101,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>{{ $data->harga_akhir }}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")

@@ -134,7 +134,7 @@
                 <div class="mb-3 row">
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="harga_beli"  readonly value="{!! $kendaraan->harga_beli !!}" required="required" class="form-control-plaintext font-data" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
+                            <input type="text" name="harga_beli"  readonly value="Rp. {!! number_format($kendaraan->harga_beli, 0, ',', '.')!!}" required="required" class="form-control-plaintext font-data" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -167,5 +167,28 @@
     </div>
 </form>
 </div>
+
+
+<script type="text/javascript">
+    function currency(angka, prefix){
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+        split = number_string.split(','),
+        sisa = split[0].length%3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if(ribuan) {
+            separator = sisa ? '.': '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp ' + rupiah : '');
+    }
+
+    var hargabeli = document.getElementById('harga');
+    hargabeli.value = currency(this.value, 'Rp')
+
+</script>
 
 @endsection
