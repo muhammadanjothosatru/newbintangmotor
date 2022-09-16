@@ -16,7 +16,7 @@
         <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Transaksi Baru</a>
         @endif
         <br><br>
-        <table id="laporan" class="display col-12">
+        <table id="example" class="display col-12">
             <thead>
                 <tr>
                     <th>No</th>

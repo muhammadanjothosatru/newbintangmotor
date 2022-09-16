@@ -33,7 +33,7 @@
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
 	<tr>
 		
-		'/[^0-9]/'
+		
 		<td>{{ $loop->iteration}}</td>
 		<td>{{ $k->no_pol }}</td>
 		<td>{{ $k->merk}}</td>
@@ -52,6 +52,7 @@
 			<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 				@method('DELETE')
 				@csrf	
+				<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
 				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
 				@if($k->status_kendaraan == "Tersedia")
 				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
@@ -84,7 +85,8 @@
 			<td>
 				<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 					@method('DELETE')
-					@csrf	
+					@csrf
+					<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>	
 					<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
 					@if($k->status_kendaraan == "Tersedia")
 					<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
@@ -117,7 +119,8 @@
 			<td>
 				<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 					@method('DELETE')
-					@csrf	
+					@csrf
+					<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>	
 					<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
 					@if($k->status_kendaraan == "Tersedia")
 					<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
@@ -132,19 +135,3 @@
 	</table>
 	
 @endsection
-{{-- <script src="/js/bootstrap-confirmation.js" defer></script>
-<script>
-	$('#mdelete').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var nopol = button.data('no_pol');
-        var modal = $(this);
-
-        modal.find('#delete-form').attr('action', '/your/url-to-delete/' + nopol);
-
-        modal.find('#txtid').val(nopol);
-        modal.find('#uid').val(nopol);
-        modal.find('.modal-body').text(
-            'Are you sure you want to delete ' + nopol);
-    })
-
-</script> --}}
