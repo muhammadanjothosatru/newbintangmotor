@@ -132,16 +132,9 @@ class KendaraanController extends Controller
         return view('kendaraan.edit', compact('kendaraan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kendaraan  $kendaraan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $no_pol)
+    
+    function updateData($request, $kendaraan)
     {
-        
         $validate= $request->validate([
             'no_pol' => 'required',
             'nama_pemilik' => 'required',
@@ -161,35 +154,51 @@ class KendaraanController extends Controller
             'harga_beli' => 'required|numeric',
             'tanggal_masuk' => 'required',
         
-    ]);
-       
+        ]);
+        $kendaraan->no_pol = $request->no_pol;
+        $kendaraan->nama_pemilik = $request->nama_pemilik;
+        $kendaraan->alamat = $request->alamat;
+        $kendaraan->merk = $request->merk;
+        $kendaraan->tipe = $request->tipe;
+        $kendaraan->jenis = $request->jenis;
+        $kendaraan->model = $request->model;
+        $kendaraan->tahun_pembuatan = $request->tahun_pembuatan;
+        $kendaraan->daya_listrik = $request->daya_listrik;
+        $kendaraan->no_rangka = $request->no_rangka;
+        $kendaraan->no_mesin = $request->no_mesin;
+        $kendaraan->warna = $request->warna;
+        $kendaraan->status_kendaraan =$request->status_kendaraan;
+        $kendaraan->tahun_registrasi = $request->tahun_registrasi;
+        $kendaraan->no_bpkb = $request->no_bpkb;
+        $kendaraan->harga_beli = $request->harga_beli;
+        $kendaraan->tanggal_masuk = $request->tanggal_masuk;
+        $kendaraan->supplier = $request->supplier;
+        $kendaraan->keterangan = $request->keterangan;
+        $kendaraan->save();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Kendaraan  $kendaraan
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $no_pol)
+    {
+
         $kendaraan = Kendaraan::findorfail($no_pol);
         try{
             $kendaraan2 = Kendaraan::findorfail($request['no_pol']);
-            return back()->withErrors(['no_pol'=>'No.Pol Kendaraan Sudah Terdaftar']);
-        }catch (ModelNotFoundException $e){
-            
-            $kendaraan->no_pol = $request->no_pol;
-            $kendaraan->nama_pemilik = $request->nama_pemilik;
-            $kendaraan->alamat = $request->alamat;
-            $kendaraan->merk = $request->merk;
-            $kendaraan->tipe = $request->tipe;
-            $kendaraan->jenis = $request->jenis;
-            $kendaraan->model = $request->model;
-            $kendaraan->tahun_pembuatan = $request->tahun_pembuatan;
-            $kendaraan->daya_listrik = $request->daya_listrik;
-            $kendaraan->no_rangka = $request->no_rangka;
-            $kendaraan->no_mesin = $request->no_mesin;
-            $kendaraan->warna = $request->warna;
-            $kendaraan->status_kendaraan =$request->status_kendaraan;
-            $kendaraan->tahun_registrasi = $request->tahun_registrasi;
-            $kendaraan->no_bpkb = $request->no_bpkb;
-            $kendaraan->harga_beli = $request->harga_beli;
-            $kendaraan->tanggal_masuk = $request->tanggal_masuk;
-            $kendaraan->supplier = $request->supplier;
-            $kendaraan->keterangan = $request->keterangan;
-            $kendaraan->save();
-        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
+            if($request['no_pol'] == $kendaraan->no_pol){
+                self::updateData($request, $kendaraan);
+                return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
+            } else {
+                return back()->withErrors(['no_pol'=>'No.Pol Kendaraan Sudah Terdaftar']);
+            };
+        } catch (ModelNotFoundException $e){
+            self::updateData($request, $kendaraan);
+            return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
         }
             
     }
