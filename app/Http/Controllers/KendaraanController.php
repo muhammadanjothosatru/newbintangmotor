@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Kendaraan;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -163,11 +164,11 @@ class KendaraanController extends Controller
     ]);
        
         $kendaraan = Kendaraan::findorfail($no_pol);
-        
-        $newNopol ="";
-        if($request['no_pol']!=$kendaraan->no_pol){
-            return back()->withErrors('No.Pol Kendaraan Sudah Terdaftar');
-        }else{
+        try{
+            $kendaraan2 = Kendaraan::findorfail($request['no_pol']);
+            return back()->withErrors(['no_pol'=>'No.Pol Kendaraan Sudah Terdaftar']);
+        }catch (ModelNotFoundException $e){
+            
             $kendaraan->no_pol = $request->no_pol;
             $kendaraan->nama_pemilik = $request->nama_pemilik;
             $kendaraan->alamat = $request->alamat;
@@ -189,7 +190,9 @@ class KendaraanController extends Controller
             $kendaraan->keterangan = $request->keterangan;
             $kendaraan->save();
         return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil diupdate');
-    }}
+        }
+            
+    }
 
     /**
      * Remove the specified resource from storage.
