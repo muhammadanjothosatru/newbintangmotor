@@ -608,6 +608,7 @@ $(function() {
 $(document).ready( function () {
 
   var table2 = $('#example').DataTable({
+    responsive: true
     // processing: true,
     // serverSide: true,
     // ajax: 'scripts/server_processing.php',

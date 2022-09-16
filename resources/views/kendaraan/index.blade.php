@@ -32,11 +32,8 @@
 	@foreach($adminlamongan as $k)
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
 	<tr>
-<<<<<<< HEAD
-=======
 		
 		
->>>>>>> ea8531323905f7bcac1e2949af907a19a05eb503
 		<td>{{ $loop->iteration}}</td>
 		<td>{{ $k->no_pol }}</td>
 		<td>{{ $k->merk}}</td>
@@ -137,8 +134,4 @@
 		@endif
 	</table>
 	
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> ea8531323905f7bcac1e2949af907a19a05eb503
