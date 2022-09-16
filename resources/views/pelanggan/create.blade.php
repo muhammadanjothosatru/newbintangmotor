@@ -5,6 +5,7 @@
 @section('konten')
 <div class="card mt-4">
     @if(count($errors)>0)
+<<<<<<< HEAD
   	@foreach($errors->all() as $error)
   	<div class="alert alert-danger alert-dismissible fade show" role="alert">
       {{ $error }}
@@ -14,6 +15,17 @@
 	</div>  		
   	@endforeach
   @endif
+=======
+    @foreach($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{$error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    @endforeach
+@endif
+>>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
 
   @if(Session::has('success'))
   	<div class="alert alert-success" role="alert">

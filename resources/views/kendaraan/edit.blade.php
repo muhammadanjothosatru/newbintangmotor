@@ -6,15 +6,20 @@
 <div class="card">
     @if(count($errors)>0)
     @foreach($errors->all() as $error)
-    <div class="alert alert-danger" role="alert">
-    {{ $error }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>  		
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{$error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     @endforeach
 @endif
 
+{{-- @if(session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session()->get('error') }}
+    </div>
+@endif --}}
 @if(Session::has('success'))
     <div class="alert alert-success" role="alert">
     {{ Session('success') }}
@@ -40,9 +45,13 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="no_pol"  readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
-                            @if($errors->has('no_pol'))
-                                <div class="error">{{ $errors->first('no_pol') }}</div>
+                            @if($kendaraan->status_kendaraan == "Tersedia")
+                                <input type="text" name="no_pol"  value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                            @elseif($kendaraan->status_kendaraan == "Terjual")
+                                <input type="text" name="no_pol" readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                           @endif
+                           @if($errors->has('no_pol'))
+                                <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
                             @endif
                         </div>
                 </div>
@@ -67,7 +76,7 @@
                             <option value="Yamaha"{{ $kendaraan->merk == 'Yamaha' ? 'selected' : '' }}>Yamaha</option>
                             <option value="Suzuki"{{ $kendaraan->merk == 'Suzuki' ? 'selected' : '' }}>Suzuki</option>
                             <option value="Kawasaki"{{ $kendaraan->merk == 'Kawasaki' ? 'selected' : '' }}>Kawasaki</option>
-                            <option value="Yagyu"{{ $kendaraan->merk == 'Yagyu' ? 'selected' : '' }}>Yagyu</option>
+                            <option value="Piaggio"{{ $kendaraan->merk == 'Piaggio' ? 'selected' : '' }}>Piaggio</option>
                         </select>
                     </div>
                 </div>
@@ -146,6 +155,7 @@
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
                         <div class="col-sm-10 col-form-label">
                             <input type="text" name="harga_beli" value="{!! $kendaraan->harga_beli !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
+                           
                         </div>
                 </div>
                 <div class="mb-3 row">

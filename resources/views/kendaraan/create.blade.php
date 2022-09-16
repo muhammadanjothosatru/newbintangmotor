@@ -7,11 +7,19 @@
     @if(count($errors)>0)
     @foreach($errors->all() as $error)
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+<<<<<<< HEAD
     {{ $error }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
   </div>  		
+=======
+        {{$error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+>>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
     @endforeach
 @endif
 
@@ -37,9 +45,12 @@
         <div class="row">
             <div class="col-6">
                 <div class="mb-3 row">
-                    <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
+                    <label for="inputNoPol"  class="form-label col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
                             <input type="text" name="no_pol" value="{{ old('no_pol') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol">
+                              @if($errors->has('no_pol'))
+                                <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
+                            @endif
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -59,11 +70,11 @@
                     <div class="dropdown col-sm-10 mt-1">
                         <select class="select2 selectform" name="merk" data-placeholder="Pilih Merk" style="width: 100%" data-minimum-results-for-search="Infinity">
                             <option></option>
-                            <option value="Honda">Honda</option>
-                            <option value="Yamaha">Yamaha</option>
-                            <option value="Suzuki">Suzuki</option>
-                            <option value="Kawasaki">Kawasaki</option>
-                            <option value="Yagyu">Yagyu</option>
+                            <option value="Honda" {{ old('merk') == "Honda" ? 'selected' : '' }}>Honda</option>
+                            <option value="Yamaha" {{ old('merk') == "Yamaha" ? 'selected' : '' }}>Yamaha</option>
+                            <option value="Suzuki" {{ old('merk') == "Suzuki" ? 'selected' : '' }}>Suzuki</option>
+                            <option value="Kawasaki" {{ old('merk') == "Kawasaki" ? 'selected' : '' }}>Kawasaki</option>
+                            <option value="Piaggio" {{ old('merk') == "Piaggio" ? 'selected' : '' }}>Piaggio</option>
                         </select>
                     </div>
                 </div>
@@ -78,8 +89,8 @@
                     <div class="dropdown col-sm-10 mt-1">
                         <select class="select2 selectform" id="jenis" name="jenis" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%" data-minimum-results-for-search="Infinity">
                             <option></option>
-                            <option value="Sepeda Motor">Sepeda Motor</option>
-                            <option value="Mobil">Mobil</option>
+                            <option value="Sepeda Motor"{{ old('jenis') == "Sepeda Motor" ? 'selected' : '' }}>Sepeda Motor</option>
+                            <option value="Mobil" {{ old('jenis') == "Mobil" ? 'selected' : '' }}>Mobil</option>
                         </select>
                     </div>
                 </div>
