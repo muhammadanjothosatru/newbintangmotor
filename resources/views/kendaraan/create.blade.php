@@ -148,7 +148,7 @@
                 <div class="mb-3 row">
                     <label for="inputTanggalMasuk"  class="col-sm-2 col-form-label font-form">Tanggal Masuk</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control font-form form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk">
+                            <input type="text" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control font-form form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk" onfocus="(this.type='date')"  onblur="(this.type='text')" >
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -169,5 +169,29 @@
     </div>
 </form>
 </div>
+
+<script type="text/javascript">
+    function currency(angka, prefix){
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+        split = number_string.split(','),
+        sisa = split[0].length%3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if(ribuan) {
+            separator = sisa ? '.': '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp ' + rupiah : '');
+    }
+
+    var hargabeli = document.getElementById('harga');
+    hargabeli.addEventListener('keyup', function(e){
+        hargabeli.value = currency(this.value, 'Rp')
+    })
+
+</script>
 
 @endsection

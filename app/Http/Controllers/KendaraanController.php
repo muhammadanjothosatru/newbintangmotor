@@ -73,7 +73,7 @@ class KendaraanController extends Controller
             'warna' => 'required',
             'tahun_registrasi' => 'required',
             'no_bpkb' => 'required',
-            'harga_beli' => 'required|numeric',
+            'harga_beli' => 'required',
             'tanggal_masuk' => 'required',
         
         ]);
@@ -94,7 +94,7 @@ class KendaraanController extends Controller
             'status_kendaraan' =>"Tersedia",
             'tahun_registrasi' => $request->tahun_registrasi,
             'no_bpkb' => $request->no_bpkb,
-            'harga_beli' => $request->harga_beli,
+            'harga_beli' => preg_replace('/[^0-9]/', '', $request->harga_beli),
             'tanggal_masuk' => $request->tanggal_masuk,
             'supplier' => $request->supplier,
             'keterangan' => $request->keterangan,
@@ -151,7 +151,7 @@ class KendaraanController extends Controller
             'tahun_registrasi' => 'required',
             'status_kendaraan' => 'required',
             'no_bpkb' => 'required',
-            'harga_beli' => 'required|numeric',
+            'harga_beli' => 'required',
             'tanggal_masuk' => 'required',
         
         ]);
@@ -170,7 +170,7 @@ class KendaraanController extends Controller
         $kendaraan->status_kendaraan =$request->status_kendaraan;
         $kendaraan->tahun_registrasi = $request->tahun_registrasi;
         $kendaraan->no_bpkb = $request->no_bpkb;
-        $kendaraan->harga_beli = $request->harga_beli;
+        $kendaraan->harga_beli = preg_replace('/[^0-9]/', '', $request->harga_beli);
         $kendaraan->tanggal_masuk = $request->tanggal_masuk;
         $kendaraan->supplier = $request->supplier;
         $kendaraan->keterangan = $request->keterangan;

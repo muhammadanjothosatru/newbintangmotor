@@ -34,36 +34,6 @@
                     
                 </tr>
             </thead>
-<<<<<<< HEAD
-            <tbody>
-            @foreach($transaksi as $data)
-                <tr>
-                    <td>{{ $loop->iteration}}</td>
-                    <td>{{ $data->created_at->format('d M Y') }}</td>
-                    <td>{{ $data->pelanggan->nama }}</td>
-                    <td>{{ $data->kendaraan->no_pol }}</td>
-                    <td>{{ $data->kendaraan->merk }}</td>
-                    <td>{{ $data->kendaraan->tipe}}</td>
-                    <td>{{ $data->kendaraan->tahun_pembuatan }}</td>
-                    <td>{{ $data->kendaraan->warna }}</td>
-                    <td>{{ $data->metode_pembayaran }}</td>
-                    @if ($data->keterangan=="Belum ACC")
-                    <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
-                    @elseif ($data->keterangan=="Sudah ACC")
-                    <td><span class="badge bg-success">{{ $data->keterangan }}</span></td>
-                    @elseif($data->keterangan=="-")
-                    <td><span class="badge ">{{ $data->keterangan }}</span></td>
-                    @endif
-                    <td>
-                        <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm">Lihat</a>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>  
-        </table>
-    </div>
-</div>
-=======
         <tbody>
             @if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
             @foreach($transaksi_lamongan_motor as $data)
@@ -77,7 +47,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>{{ $data->harga_akhir }}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -104,7 +74,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>{{ $data->harga_akhir }}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -131,7 +101,7 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>{{ $data->harga_akhir }}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
                 <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
@@ -149,5 +119,4 @@
             </table>
             </div>
         </div>
->>>>>>> 2f89b6dd60e669b9f96bc193cbc17eecbc7c205e
 @endsection
