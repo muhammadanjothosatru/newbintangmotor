@@ -16,7 +16,7 @@
             </div>
         </div>
         <br>
-        <table id="laporan" class="display col-12" id="order_table"> 
+        <table id="laporan" class="display col-12"> 
         <thead>
                 <tr>
                     <th>No</th>

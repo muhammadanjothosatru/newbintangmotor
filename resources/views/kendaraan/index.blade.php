@@ -32,8 +32,6 @@
 	@foreach($adminlamongan as $k)
 		@if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
 	<tr>
-		
-		'/[^0-9]/'
 		<td>{{ $loop->iteration}}</td>
 		<td>{{ $k->no_pol }}</td>
 		<td>{{ $k->merk}}</td>
@@ -132,19 +130,3 @@
 	</table>
 	
 @endsection
-{{-- <script src="/js/bootstrap-confirmation.js" defer></script>
-<script>
-	$('#mdelete').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var nopol = button.data('no_pol');
-        var modal = $(this);
-
-        modal.find('#delete-form').attr('action', '/your/url-to-delete/' + nopol);
-
-        modal.find('#txtid').val(nopol);
-        modal.find('#uid').val(nopol);
-        modal.find('.modal-body').text(
-            'Are you sure you want to delete ' + nopol);
-    })
-
-</script> --}}
