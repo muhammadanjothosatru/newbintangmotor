@@ -49,28 +49,16 @@
 		@endif
 		
 		<td>
-<<<<<<< HEAD
-		<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
-			@method('DELETE')
-			@csrf	
-			<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-			@if($k->status_kendaraan == "Tersedia")
-=======
 			<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 				@method('DELETE')
 				@csrf	
 				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
 				@if($k->status_kendaraan == "Tersedia")
->>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
 				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
 				@elseif($k->status_kendaraan == "Terjual")
 				<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
 				@endif
-<<<<<<< HEAD
-    	</form>
-=======
 			</form>
->>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
 		</td>
 
 	</tr>
@@ -94,18 +82,6 @@
 			@endif
 			
 			<td>
-<<<<<<< HEAD
-			<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
-				@method('DELETE')
-				@csrf	
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-				@if($k->status_kendaraan == "Tersedia")
-				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
-				@elseif($k->status_kendaraan == "Terjual")
-				<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
-				@endif
-    		</form>
-=======
 				<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 					@method('DELETE')
 					@csrf	
@@ -116,7 +92,6 @@
 					<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
 					@endif
 				</form>
->>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
 			</td>
 		</tr>
 		@endforeach
@@ -140,18 +115,6 @@
 			@endif
 			
 			<td>
-<<<<<<< HEAD
-			<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
-				@method('DELETE')
-				@csrf	
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
-				@if($k->status_kendaraan == "Tersedia")
-				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
-				@elseif($k->status_kendaraan == "Terjual")
-				<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
-				@endif
-    		</form>
-=======
 				<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 					@method('DELETE')
 					@csrf	
@@ -162,7 +125,6 @@
 					<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
 					@endif
 				</form>
->>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
 			</td>
 		</tr>
 		@endforeach
