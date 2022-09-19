@@ -38,10 +38,6 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
     Route::resource('/kendaraan', KendaraanController::class);
     Route::get('/mobil', [KendaraanController::class,'mobil']);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
-<<<<<<< HEAD
-    Route::get('kendaraan/mobil',[KendaraanController::class,'mobil'])->name('kendaraan.mobil');
-=======
->>>>>>> 5f1e34fdf1c43c84149b98580d2d1c185c05da00
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/laporan', LaporanController::class);
 });
