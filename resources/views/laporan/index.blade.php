@@ -2,9 +2,7 @@
 @section('konten')
 
 @if(Session::has('success'))
-<div class="alert alert-success" role="alert">
-{{ Session('success') }}
-</div> 
+<div id="flash" data-flash="{{session('success')}}"></div>
 @endif
 
 <div class="card">

@@ -1,6 +1,12 @@
 @extends('template.master')
 @section('konten')
 
+
+@if(Session::has('success'))
+<div id="flash" data-flash="{{ Session('success') }}">
+
+</div>
+@endif
 <div class="card">
 	<div class="m-4">
 		@auth

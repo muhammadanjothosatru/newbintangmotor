@@ -20,6 +20,7 @@
   <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
 
   <!-- Template CSS -->
+
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
@@ -31,7 +32,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 
 <!-- /END GA -->
-
+>
 <script>
 
 $(document).ready( function () {
@@ -103,6 +104,7 @@ $(document).ready( function () {
   });
 
   });
+
 </script>
 
 </head>

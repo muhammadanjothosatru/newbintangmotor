@@ -16,6 +16,8 @@
 @endif
 
   @if(Session::has('success'))
+  <div id="flash" data-flash="{{ Session('success') }}">
+  </div>
   	<div class="alert alert-success" role="alert">
       {{ Session('success') }}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
