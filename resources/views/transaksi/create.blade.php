@@ -59,21 +59,11 @@
                         <div class="col-sm-10">
                             <select class="select2 col-sm-12" name="no_pol"data-placeholder="Cari Nomor Polisi">
                                 <option></option>
-                                @if (Auth::user()->role == 1 && Auth::user()->cabang_id == 1)
-                                    @foreach($motorlamongan as $data)
+                                    @foreach($all_kendaraan as $data)
                                         <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
                                     @endforeach
-                                @endif
-                                @if (Auth::user()->role == 1 && Auth::user()->cabang_id == 2)
-                                    @foreach($motorbabat as $data)
-                                        <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
-                                    @endforeach
-                                @endif
-                                @if (Auth::user()->role == 0)
-                                    @foreach($kendaraan as $data)
-                                        <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
-                                    @endforeach
-                                @endif
+                        
+            
                                 </select>
                         </div>
                     </div>
@@ -96,7 +86,7 @@
                         <label for="metode"  class="pl-0 col-sm-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 col-sm-10">
 
-                            <select class="select2 col-sm-12" name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
+                            <select class="select2 col-sm-12" required="required"name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
                                 <option></option>
                                 <option value="Tunai">Tunai</option>
                                 <option value="Kredit">Kredit</option>

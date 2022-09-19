@@ -51,7 +51,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  }}    </div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  }} <i class="fas fa-caret-down"></i> </div></a>
             <div class="dropdown-menu dropdown-menu-right">
        
        
@@ -59,7 +59,7 @@
                 <div class>
                   <form action="/logout" method="post">
                   @csrf
-                  <button type="submit" class="dropdown-item">Logout</button>
+                  <button type="submit" class="dropdown-item"> <i class='fas fa-sign-out-alt'></i> Logout </button>
                   </form>  
                   {{-- <a href="/logout" class=""><i class="">Logout</i></a> --}}
                 </div>

@@ -99,9 +99,9 @@
                         </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="inputDaya"  class="col-sm-2 col-form-label font-form">Daya Listrik</label>
+                    <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="daya_listrik" value="{{ old('daya_listrik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
+                            <input type="text" name="no_rangka" value="{{ old('no_rangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
                         </div>
                 </div>
                 <div class="row">
@@ -109,12 +109,6 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="mb-3 row">
-                    <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
-                        <div class="col-sm-10 col-form-label">
-                            <input type="text" name="no_rangka" value="{{ old('no_rangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
-                        </div>
-                </div>
                 <div class="mb-3 row">
                     <label for="inputNoMesin"  class="col-sm-2 col-form-label font-form">No. Mesin</label>
                         <div class="col-sm-10 col-form-label">
