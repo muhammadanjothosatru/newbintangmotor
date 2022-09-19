@@ -28,6 +28,8 @@
 >>>>>>> 0294122909c9683fdb8f4c6591e5142fdcbfd597
 
   @if(Session::has('success'))
+  <div id="flash" data-flash="{{ Session('success') }}">
+  </div>
   	<div class="alert alert-success" role="alert">
       {{ Session('success') }}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">

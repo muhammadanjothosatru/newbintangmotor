@@ -6,24 +6,22 @@
 <div class="card mt-4">
     @if(count($errors)>0)
     @foreach($errors->all() as $error)
+<<<<<<< HEAD
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
     {{ $error }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>  		
+=======
+    <div id="flasherror" data-flash=" {{$error}}"></div>
+>>>>>>> 958ef511067cb3e9979ba024ac626e8d8a145498
     @endforeach
 @endif
 
-@if(Session::has('success'))
-    <div class="alert alert-success" role="alert">
-    {{ Session('success') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div> 
-    
-@endif
+  @if(Session::has('success'))
+  <div id="flash" data-flash="{{session('success')}}"></div>
+  @endif
     <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="m-4">

@@ -20,6 +20,7 @@
   <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
 
   <!-- Template CSS -->
+
   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
@@ -30,6 +31,84 @@
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 
+<<<<<<< HEAD
+=======
+<!-- /END GA -->
+>
+<script>
+
+$(document).ready( function () {
+
+    var table2 = $('#example').DataTable({
+    });
+    var table = $('#laporan').DataTable({
+      dom: 'Bfrtip',
+      init: function(api, node, config) {
+          $(node).removeClass('dt-button')
+        },
+        buttons: [
+          {
+            text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
+            extend: 'pdf',
+            download: 'open',
+            className: 'btn btn-primary btn-sm',
+            title: 'Laporan Bintang Motor',
+            extension: '.pdf',
+            init: function(api, node, config) {
+              $(node).removeClass('dt-button buttons-pdf buttons-html5')
+            }
+          }
+        ]
+
+    });
+
+    var minDate, maxDate;
+ 
+    var DateFilterFunction =  function( settings, data, dataIndex ) {
+        if ( settings.nTable.id !== 'laporan' ) {
+          return true;
+        }
+        
+          var min = new Date(minDate);
+          var max = new Date(maxDate);
+
+          var date = new Date(data[1]);
+  
+          if (
+              ( min === null && max === null ) ||
+              ( min === null && date <= max ) ||
+              ( min <= date   && max === null ) ||
+              ( min <= date   && date <= max )
+          ) {
+              return true;
+          }
+          return false;
+      }
+
+  $( document ).ready(function() {
+    $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('DD MMM YYYY') + ' - ' + picker.endDate.format('DD MMM YYYY'));
+      minDate = picker.startDate.format('DD MMM YYYY');
+      maxDate = picker.endDate.format('DD MMM YYYY');
+      $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
+      table.draw();
+  });
+
+  $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+    $(this).val('');
+    minDate='';
+    maxDate='';
+    $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
+    $table.draw();
+  });
+
+
+  });
+
+  });
+
+</script>
+>>>>>>> 958ef511067cb3e9979ba024ac626e8d8a145498
 
 </head>
 
