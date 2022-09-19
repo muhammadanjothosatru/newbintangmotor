@@ -613,6 +613,9 @@ $(document).ready( function () {
     // serverSide: true,
     // ajax: 'scripts/server_processing.php',
   });
+
+//   
+
   var table = $('#laporan').DataTable({
     dom: 'Bfrtip',
     init: function(api, node, config) {
@@ -621,11 +624,16 @@ $(document).ready( function () {
       buttons: [
         {
           text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
-          extend: 'pdf',
+          extend: 'pdfHtml5',
           download: 'open',
           className: 'btn btn-primary btn-sm',
           title: 'Laporan Bintang Motor',
           extension: '.pdf',
+          customize: function(doc) {
+            doc.defaultStyle.fontSize = 8;
+            doc.styles.tableHeader.fontSize = 8;
+            doc.content[1].margin = [ -15, 0, 0, 0 ];
+          },
           init: function(api, node, config) {
             $(node).removeClass('dt-button buttons-pdf buttons-html5')
           }
