@@ -64,10 +64,7 @@ class KendaraanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminLamongan()
-    {
-        
-    }
+    
     public function create()
     {
         return view('kendaraan.create');
