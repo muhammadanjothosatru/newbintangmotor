@@ -86,27 +86,21 @@
                             <input type="text" name="tahun_pembuatan" readonly value="{!! $kendaraan->tahun_pembuatan !!}" required="required" class="form-control-plaintext font-data" placeholder="Masukkan Tahun Pembuatan Kendaraan" id="tahun">
                         </div>
                 </div>
-                <div class="mb-3 row">
-                    <label for="inputDaya"  class="col-sm-2 col-form-label font-form">Daya Listrik</label>
-                        <div class="col-sm-10 col-form-label">
-                            <input type="text" name="daya_listrik" readonly value="{!! $kendaraan->daya_listrik !!}" required="required" class="form-control-plaintext font-data" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
-                        </div>
-                </div>
+                
                 <div class="mb-3 row">
                     <label for="inputModel"  class="col-sm-2 col-form-label font-form">Cabang</label>
                         <div class="col-sm-10">
                             <input type="text" name="model" readonly value="{!! $kendaraan->users->cabang->nama !!}" required="required"class="form-control-plaintext font-data" placeholder="Masukkan Model Kendaraan" id="model">
                         </div>
                 </div>
-                
-            </div>
-            <div class="col-6">
                 <div class="mb-3 row">
                     <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
                         <div class="col-sm-10 col-form-label">
                             <input type="text" name="no_rangka" readonly value="{!! $kendaraan->no_rangka !!}" required="required" class="form-control-plaintext font-data" placeholder="Masukkan Nomor Rangka" id="norangka">
                         </div>
                 </div>
+            </div>
+            <div class="col-6"> 
                 <div class="mb-3 row">
                     <label for="inputNoMesin"  class="col-sm-2 col-form-label font-form">No. Mesin</label>
                         <div class="col-sm-10 col-form-label">

@@ -20,20 +20,43 @@ class KendaraanController extends Controller
     public function index()
     {
         $kendaraan = Kendaraan::all();
-        $adminlamongan =DB::table('kendaraan')
-                ->join('users','kendaraan.users_id', '=', 'users.id')
-                ->where('users.cabang_id', '=', '1')
-                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                ->select('kendaraan.*')
-                ->get();
-        $adminbabat =DB::table('kendaraan')
-                ->join('users','kendaraan.users_id', '=', 'users.id')
-                ->where('users.cabang_id', '=', '2')
-                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                ->select('kendaraan.*')
-                ->get();
-       
-        return view('kendaraan.index',compact('kendaraan','adminlamongan','adminbabat'));
+        $kendaraanmotor =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id');
+             
+                if (Auth::user()->role == 1) {
+                    $kendaraanmotor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 2) {
+                    $kendaraanmotor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 0) {
+                $kendaraanmotor->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->select('kendaraan.*');
+                }
+                $allkendaraan=$kendaraanmotor->get();
+                return view('kendaraan.index',compact('kendaraan','allkendaraan'));
+
+        
+    }
+    public function mobil(){
+        $kendaraanmobil =DB::table('kendaraan')
+        ->join('users','kendaraan.users_id', '=', 'users.id');
+     
+        if (Auth::user()->role == 2) {
+            $kendaraanmobil->where('users.cabang_id', Auth::user()->cabang_id)
+                        ->where('kendaraan.jenis', '=', 'Mobil')
+                        ->select('kendaraan.*');
+        }
+        if (Auth::user()->role == 0) {
+        $kendaraanmobil->where('kendaraan.jenis', '=', 'Mobil')
+                        ->select('kendaraan.*');
+        }
+        $allkendaraan=$kendaraanmobil->get();
+        return view('kendaraan.mobil',compact('allkendaraan'));
     }
 
     /**
@@ -67,7 +90,6 @@ class KendaraanController extends Controller
             'jenis' => 'required',
             'model' => 'required',
             'tahun_pembuatan' => 'required|numeric',
-            'daya_listrik' => 'required',
             'no_rangka' => 'required',
             'no_mesin' => 'required',
             'warna' => 'required',
@@ -87,7 +109,7 @@ class KendaraanController extends Controller
             'jenis' => $request->jenis,
             'model' => $request->model,
             'tahun_pembuatan' => $request->tahun_pembuatan,
-            'daya_listrik' => $request->daya_listrik,
+            'daya_listrik' => '0',
             'no_rangka' => $request->no_rangka,
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
@@ -144,7 +166,6 @@ class KendaraanController extends Controller
             'jenis' => 'required',
             'model' => 'required',
             'tahun_pembuatan' => 'required|numeric',
-            'daya_listrik' => 'required',
             'no_rangka' => 'required',
             'no_mesin' => 'required',
             'warna' => 'required',
@@ -163,7 +184,7 @@ class KendaraanController extends Controller
         $kendaraan->jenis = $request->jenis;
         $kendaraan->model = $request->model;
         $kendaraan->tahun_pembuatan = $request->tahun_pembuatan;
-        $kendaraan->daya_listrik = $request->daya_listrik;
+        $kendaraan->daya_listrik = '0';
         $kendaraan->no_rangka = $request->no_rangka;
         $kendaraan->no_mesin = $request->no_mesin;
         $kendaraan->warna = $request->warna;

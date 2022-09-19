@@ -18,31 +18,29 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi_lamongan_motor =DB::table('transaksi')
+        $transaksi_motor =DB::table('transaksi')
                 ->join('users','transaksi.users_id', '=', 'users.id')
                 ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
-                ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol')
-                ->where('users.cabang_id', '=', '1')
-                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*')
-                ->get();
-        $transaksi_babat_motor =DB::table('transaksi')
-                ->join('users','transaksi.users_id', '=', 'users.id')
-                ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
-                ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol')
-                ->where('users.cabang_id', '=', '2')
-                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*')
-                ->get();
-        $transaksi_motor = DB::table('transaksi')
-                ->join('users','transaksi.users_id', '=', 'users.id')
-                ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
-                ->join('kendaraan','transaksi.kendaraan_no_pol','=','kendaraan.no_pol')        
-                ->where('kendaraan.jenis','=','Sepeda Motor')
-                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*')
-                ->get();
-        // $transaksi = Transaksi::with('users','pelanggan','kendaraan')->get();
-        return view('transaksi.index', compact('transaksi_lamongan_motor','transaksi_babat_motor','transaksi_motor'));
+                ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol');
+                if (Auth::user()->role == 1) {
+                    $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
+                }
+                if (Auth::user()->role == 2) {
+                    $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
+                }
+                if (Auth::user()->role == 0) {
+                    $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
+                }
+                $all_transaksi_motor=$transaksi_motor->get();
+                return view('transaksi.index', compact('all_transaksi_motor'));
+        
+                //Function mobil blade
+                //code.......
     }
 
     /**
@@ -57,22 +55,28 @@ class TransaksiController extends Controller
                     ->where('kendaraan.status_kendaraan','=','Tersedia')
                     ->select('kendaraan.*')
                     ->get();
-        $motorlamongan =DB::table('kendaraan')
-                ->join('users','kendaraan.users_id', '=', 'users.id')
-                ->where('users.cabang_id', '=', '1')
-                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
-                ->select('kendaraan.*')
-                ->get();
-        $motorbabat =DB::table('kendaraan')
-                ->join('users','kendaraan.users_id', '=', 'users.id')
-                ->where('users.cabang_id', '=', '2')
-                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
-                ->select('kendaraan.*')
-                ->get();
-       
-        return view('transaksi.create',compact('pelanggan','kendaraan','motorlamongan','motorbabat'));
+        $motor =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id');
+                if (Auth::user()->role == 1) {
+                    $motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 2) {
+                    $motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 0) {
+                    $motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+               
+                $all_kendaraan=$motor->get();
+        return view('transaksi.create',compact('pelanggan','kendaraan','all_kendaraan'));
     }
 
     /**

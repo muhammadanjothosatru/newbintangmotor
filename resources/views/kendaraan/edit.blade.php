@@ -104,18 +104,12 @@
                         </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="inputDaya"  class="col-sm-2 col-form-label font-form">Daya Listrik</label>
-                        <div class="col-sm-10 col-form-label">
-                            <input type="text" name="daya_listrik" value="{!! $kendaraan->daya_listrik!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Daya Listrik Kendaraan" id="daya">
-                        </div>
-                </div>
-                <div class="mb-3 row">
                     <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
                         <div class="col-sm-10 col-form-label">
                             <input type="text" name="no_rangka" value="{!! $kendaraan->no_rangka !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
                         </div>
                 </div>
-           
+           <br>
                 <div class="row">
                     <button class="btn btn-primary btn-block"><i class="fas fa-save mr-2"></i>Simpan</button>
                 </div>
@@ -154,7 +148,7 @@
                     </div>
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Biaya Tambahan</label>
                         <div class="col-sm-4">
-                        <input type="text" name="biaya_tambahan" value="0" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="biaya_    tambahan">
+                        <input type="text" name="biaya_tambahan" value="0" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="biaya_tambahan">
                         
                     </div>
                 </div>
