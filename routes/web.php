@@ -1,13 +1,14 @@
 <?php
 
+use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MobilController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\LaporanController;
-use App\Models\Kendaraan;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +36,8 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
     Route::resource('/pelanggan', PelangganController::class);
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
     Route::resource('/kendaraan', KendaraanController::class);
+    Route::get('/mobil', [KendaraanController::class,'mobil']);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
-    Route::get('/mobil/kendaraan',[KendaraanController::class,'mobil'])->name('kendaraan.mobil');
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/laporan', LaporanController::class);
 });

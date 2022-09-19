@@ -6,6 +6,7 @@
   <title>BINTANG MOTOR &mdash; Admin Page</title>
 
   <!-- General CSS Files -->
+  <link rel="stylesheet" href="{{ asset('assets/modules/sweetalert/sweetalert2.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css')}}">
@@ -14,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/modules/datatables2/datatables.css')}}"/>
 
   <!-- Jquery -->
+  <script src="{{ asset('assets/modules/sweetalert/sweetalert2.min.js')}}"></script>
   <script src="{{ asset('assets/modules/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
 
