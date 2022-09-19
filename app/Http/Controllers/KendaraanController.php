@@ -131,7 +131,7 @@ class KendaraanController extends Controller
             'supplier' => $request->supplier,
             'keterangan' => $request->keterangan,
         ]);
-        return redirect('/kendaraan')->with('success','data berhasil ditambahkan');
+        return redirect()->back()->with('success','data berhasil ditambahkan');
             
     }
 
@@ -244,7 +244,7 @@ class KendaraanController extends Controller
     {
         $kendaraan = Kendaraan::findorfail($no_pol);
         $kendaraan->delete();
-        return redirect()->route('kendaraan.index')->with('success','Data Kendaraan anda berhasil dihapus');
+        return redirect()->back()->with('success','Data Kendaraan anda berhasil dihapus');
     }
   
 }

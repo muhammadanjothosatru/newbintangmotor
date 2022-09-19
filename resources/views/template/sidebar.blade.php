@@ -12,12 +12,16 @@
                 <a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             
-            <li class="{{ request()->is('kendaraan', 'kendaraan/*') ? 'active' : ''}}">
+            <li class="{{ request()->is('kendaraan', 'mobil') ? 'active' : ''}}">
               <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
               @if(Auth::user()->role == 0)
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('kendaraan') ? 'active' : ''}}"><a class="nav-link " href="kendaraan">Motor</a></li>
+<<<<<<< HEAD
                 <li class=""><a class="nav-link" href="{{ route('kendaraan.mobil') }}">Mobil</a></li>
+=======
+                <li class="{{ request()->is('mobil') ? 'active' : ''}}"><a class="nav-link" href="mobil">Mobil</a></li>
+>>>>>>> 5f1e34fdf1c43c84149b98580d2d1c185c05da00
               </ul>
               @endif
             </li>

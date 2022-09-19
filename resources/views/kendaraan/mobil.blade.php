@@ -63,9 +63,15 @@
 		</td>
 
 	</tr>
+<<<<<<< HEAD
 	
 		@endforeach
 	
+=======
+		
+		@endforeach
+		
+>>>>>>> 5f1e34fdf1c43c84149b98580d2d1c185c05da00
 	</table>
 	
 @endsection
