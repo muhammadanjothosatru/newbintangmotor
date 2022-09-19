@@ -647,6 +647,8 @@ if (flash) {
         icon: "success",
         title: "success",
         text: flash,
+        showConfirmButton: false,
+        timer: 1500,
     });
 }
 var flasherror = $("#flasherror").data("flash");
