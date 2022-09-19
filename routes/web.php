@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
     Route::resource('/kendaraan', KendaraanController::class);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
-    Route::get('/mobil/kendaraan',[KendaraanController::class,'mobil'])->name('kendaraan.mobil');
+    Route::get('kendaraan/mobil',[KendaraanController::class,'mobil'])->name('kendaraan.mobil');
     Route::resource('/transaksi', TransaksiController::class);
     Route::resource('/laporan', LaporanController::class);
 });

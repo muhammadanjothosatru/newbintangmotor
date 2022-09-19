@@ -16,8 +16,8 @@
               <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
               @if(Auth::user()->role == 0)
               <ul class="dropdown-menu">
-                <li class="{{ request()->is('kendaraan/#motor') ? 'active' : ''}}"><a class="nav-link " href="#motor">Motor</a></li>
-                <li class="{{ request()->is('kendaraan/#mobil') ? 'active' : ''}}"><a class="nav-link" href="#mobil">Mobil</a></li>
+                <li class="{{ request()->is('kendaraan') ? 'active' : ''}}"><a class="nav-link " href="kendaraan">Motor</a></li>
+                <li class=""><a class="nav-link" href="{{ route('kendaraan.mobil') }}">Mobil</a></li>
               </ul>
               @endif
             </li>

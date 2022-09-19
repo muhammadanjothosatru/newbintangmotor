@@ -13,6 +13,30 @@ use Illuminate\Support\Facades\Auth;
 class KendaraanController extends Controller
 {
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    
+    public function mobil()
+    {
+        $kendaraanmobil =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id');
+            
+                if (Auth::user()->role == 2) {
+                    $kendaraanmobil->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 0) {
+                $kendaraanmobil->where('kendaraan.jenis', '=', 'Mobil')
+                                ->select('kendaraan.*');
+                }
+                $allkendaraan=$kendaraanmobil->get();
+                return view('kendaraan.mobil',compact('allkendaraan'));
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -42,22 +66,8 @@ class KendaraanController extends Controller
 
         
     }
-    public function mobil(){
-        $kendaraanmobil =DB::table('kendaraan')
-        ->join('users','kendaraan.users_id', '=', 'users.id');
-     
-        if (Auth::user()->role == 2) {
-            $kendaraanmobil->where('users.cabang_id', Auth::user()->cabang_id)
-                        ->where('kendaraan.jenis', '=', 'Mobil')
-                        ->select('kendaraan.*');
-        }
-        if (Auth::user()->role == 0) {
-        $kendaraanmobil->where('kendaraan.jenis', '=', 'Mobil')
-                        ->select('kendaraan.*');
-        }
-        $allkendaraan=$kendaraanmobil->get();
-        return view('kendaraan.mobil',compact('allkendaraan'));
-    }
+
+    
 
     /**
      * Show the form for creating a new resource.
