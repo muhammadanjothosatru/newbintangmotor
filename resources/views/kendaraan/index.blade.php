@@ -38,21 +38,21 @@
 		<td>{{  \Carbon\Carbon::parse($k->tanggal_masuk)->format('d M Y')}}</td>
 		<td>Rp. {{ number_format($k->harga_beli, 0, ',', '.');}}</td>
 		@if ($k->status_kendaraan=='Tersedia')
-		<td><span class="badge bg-success">{{ $k->status_kendaraan}}</span></td>
+		<td><span class="badge bg-success p-2">{{ $k->status_kendaraan}}</span></td>
 		@elseif($k->status_kendaraan=='Terjual')
-		<td><span class="badge bg-danger">{{ $k->status_kendaraan}}</span></td>
+		<td><span class="badge bg-danger p-2">{{ $k->status_kendaraan}}</span></td>
 		@endif
 		
 		<td>
 			<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 				@method('DELETE')
 				@csrf	
-				<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+				<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
 				@if($k->status_kendaraan == "Tersedia")
-				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="fa fa-trash-alt"></i></button>
 				@elseif($k->status_kendaraan == "Terjual")
-				<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+				<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="fa fa-trash-alt"></i></button>
 				@endif
 			</form>
 		</td>

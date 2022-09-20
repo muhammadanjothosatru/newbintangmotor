@@ -8,6 +8,10 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use LaravelDaily\Invoices\Classes\Buyer;
+use LaravelDaily\Invoices\Classes\Seller;
+use LaravelDaily\Invoices\Facades\Invoice;
+use LaravelDaily\Invoices\Classes\InvoiceItem;
 
 class TransaksiController extends Controller
 {
@@ -139,9 +143,10 @@ class TransaksiController extends Controller
      * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaksi $transaksi)
+    public function edit(Transaksi $transaksi, $id)
     {
-        //
+        $transaksi = Transaksi::findorfail($id);
+        return view('transaksi.edit', compact('transaksi'));
     }
 
     /**
@@ -165,5 +170,24 @@ class TransaksiController extends Controller
     public function destroy(Transaksi $transaksi)
     {
         //
+    }
+
+    public function invoice(Request $request, $id)
+    {
+        $transaksi = Transaksi::findorfail($id);
+        $transaksi_new = Transaksi::with('pelanggan')->get();
+        $customer = new Buyer([
+            'name'          => $request->nama,
+            // 'address'       => $transaksi->pelanggan->alamat,
+        ]);
+
+        $item = (new InvoiceItem())->title('Motor')->pricePerUnit(2);
+
+        $invoice = Invoice::make()
+            ->buyer($customer)
+            ->discountByPercent(10)
+            ->addItem($item);
+
+        return $invoice->stream();
     }
 }
