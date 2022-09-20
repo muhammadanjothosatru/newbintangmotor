@@ -44,15 +44,15 @@
 		@endif
 		
 		<td>
-			<form class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
+			<form id="delete-kendaraan" class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
 				@method('DELETE')
 				@csrf	
 				<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
 				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
 				@if($k->status_kendaraan == "Tersedia")
-				<button class='btn btn-danger btn-sm' type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+				<button class='btn btn-danger btn-sm'  type="submit" id="delete" ><i class="far fa-trash-alt"></i></button>
 				@elseif($k->status_kendaraan == "Terjual")
-				<button class='btn btn-danger btn-sm' disabled type="submit" onclick="return confirm('Are you sure?')"data-toggle="confirmation" ><i class="far fa-trash-alt"></i></button>
+				<button class='btn btn-danger btn-sm' disabled type="submit" id="delete"  ><i class="far fa-trash-alt"></i></button>
 				@endif
 			</form>
 		</td>
@@ -64,3 +64,23 @@
 	</table>
 	
 @endsection
+<script>
+	$('#delete').on('click', function (e) {
+		e.preventDefault();
+		let id = $(this).data('id');
+		Swal.fire({
+			title: 'Are you sure ?',
+			text: "You won't be able to revert this !",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$('#delete-kendaraan').submit();
+			}
+		})
+	});
+	</script>
+	
