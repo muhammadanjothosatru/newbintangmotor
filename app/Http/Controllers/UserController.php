@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Cabang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('user.index',compact('user'));
     }
 
     /**
@@ -24,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $cabang = Cabang::all();
+        return view('user.create', compact('cabang'));
     }
 
     /**
@@ -35,7 +39,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate= $request->validate([
+            'username' => 'required',
+            'email' => 'required|email',
+            'role' => 'required',
+            'cabang_id' => 'required',
+            'password' => 'required',
+        ]);
+        $password = $request->password;
+        $hashedPassword = Hash::make($password);
+        $user = User::create([
+            'username' => $request->username,
+            'email' =>  $request->email,
+            'role' => $request->role,
+            'cabang_id' => $request->cabang_id,
+            'password' => $hashedPassword,
+        ]);
+        return redirect('/user')->with('success','data berhasil ditambahkan');
     }
 
     /**

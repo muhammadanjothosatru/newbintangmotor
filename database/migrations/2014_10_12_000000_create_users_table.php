@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username')->unique();
-            $table->string('email')->unique();
+            $table->string('email');
             // $table->enum('cabang',['LAMONGAN','BABAT']);
             $table->string('password');
             $table->timestamps();

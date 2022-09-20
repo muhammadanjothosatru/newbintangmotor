@@ -22,7 +22,7 @@ class KendaraanFactory extends Factory
     {
         return [
             'no_pol' => $this->faker->unique()->regexify('[A-Z]{1} [1-9]{4} [A-Z]{2}'),
-            'users_id' => mt_rand(1,5),
+            'users_id' => mt_rand(1,3),
             'nama_pemilik' => $this->faker->name(),
             'alamat' => $this->faker->address(),
             'merk' => $this->faker->randomElement(['Honda','Yamaha','Suzuki']),
