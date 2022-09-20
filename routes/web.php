@@ -32,12 +32,14 @@ Route::post('/logout', [LoginController::class,'logout']);
 
 // group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
 Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
-    Route::resource('/dashboard', DashboardController::class);
-    Route::resource('/pelanggan', PelangganController::class);
+    Route::resources([
+        'dashboard' => DashboardController::class,
+        'pelanggan' => PelangganController::class,
+        'kendaraan' => KendaraanController::class,
+        'transaksi' => TransaksiController::class,
+        'laporan' => LaporanController::class,
+    ]);
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
-    Route::resource('/kendaraan', KendaraanController::class);
-    Route::get('/mobil', [KendaraanController::class,'mobil']);
+    Route::get('/kendaraan-mobil', [KendaraanController::class,'mobil']);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
-    Route::resource('/transaksi', TransaksiController::class);
-    Route::resource('/laporan', LaporanController::class);
 });
