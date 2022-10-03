@@ -11,6 +11,8 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,4 +46,5 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
     Route::get('/kendaraan-mobil', [KendaraanController::class,'mobil']);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
+    Route::get('/transaksi/{id}/invoice', [TransaksiController::class,'invoice'])->name('transaksi.invoice');
 });

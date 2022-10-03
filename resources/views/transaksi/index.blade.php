@@ -44,14 +44,20 @@
                 <td>{{ $data->metode_pembayaran }}</td>
                 <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 @if ($data->keterangan=="Belum ACC")
-                <td><span class="badge bg-warning">{{ $data->keterangan }}</span></td>
+                <td><span class="badge bg-warning p-2">{{ $data->keterangan }}</span></td>
                 @elseif ($data->keterangan=="Sudah ACC")
-                <td><span class="badge bg-success">{{ $data->keterangan }}</span></td>
+                <td><span class="badge bg-success p-2">{{ $data->keterangan }}</span></td>
                 @elseif($data->keterangan=="-")
-                <td><span class="badge ">{{ $data->keterangan }}</span></td>
+                <td><span class="badge">{{ $data->keterangan }}</span></td>
                 @endif
                 <td>
-                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm"><i class="far fa-eye"></i></a>
+                <form class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
+				    @method('PUT')
+				    @csrf	
+                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                    <button class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
+                </form>
+                    
                 </td>
             </tr>
             @endforeach

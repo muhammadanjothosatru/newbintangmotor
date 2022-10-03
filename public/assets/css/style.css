@@ -907,7 +907,9 @@ select.form-control:not([size]):not([multiple]) {
     
 /* 3.6 Table */
 .table td, .table:not(.table-bordered) th {
-  border-top: none; }
+  border-top: none;
+  font-size: 12px;
+}
 .table:not(.table-sm):not(.table-md):not(.dataTable) td, .table:not(.table-sm):not(.table-md):not(.dataTable) th {
   padding: 0 25px;
   height: 60px;
@@ -2021,8 +2023,12 @@ blockquote {
 .ion {
   font-size: 15px; }
 
-.fas, .far, .fab, .fal {
-  font-size: 14px; }
+.fas {
+  font-size: 14px;
+}
+
+.fa, .far, .fab, .fal {
+  font-size: 10px; }
 
 #visitorMap {
   height: 210px; }
