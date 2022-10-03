@@ -172,12 +172,12 @@ class TransaksiController extends Controller
         //
     }
 
-    public function invoice(Request $request, $id)
+    public function invoice()
     {
-        $transaksi = Transaksi::findorfail($id);
+        // $transaksi = Transaksi::findorfail($id);
         $transaksi_new = Transaksi::with('pelanggan')->get();
         $customer = new Buyer([
-            'name'          => $request->nama,
+            'name'          => 'John Pukul',
             // 'address'       => $transaksi->pelanggan->alamat,
         ]);
 
