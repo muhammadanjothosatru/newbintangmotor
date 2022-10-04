@@ -33,10 +33,10 @@ class TransaksiController extends Controller
                 } else if (Auth::user()->role == 2) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Mobil')
-                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
                 } else if (Auth::user()->role == 0) {
                     $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
                 }
                 $all_transaksi_motor=$transaksi_motor->get();
                 return view('transaksi.index', compact('all_transaksi_motor'));
