@@ -678,6 +678,13 @@ $(document).ready(function () {
                 className: 'btn btn-primary btn-sm',
                 title: 'Laporan Bintang Motor',
                 extension: '.pdf',
+                orientation: 'landscape',
+                footer: true,
+                customize: function(doc) {
+                    doc.defaultStyle.fontSize = 10;
+                    doc.styles.tableHeader.fontSize = 10;
+                    doc.styles.tableFooter.fontSize = 10;
+                }, 
                 init: function (api, node, config) {
                     $(node).removeClass('dt-button buttons-pdf buttons-html5')
                 }

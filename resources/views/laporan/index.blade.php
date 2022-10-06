@@ -53,8 +53,19 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="12" style="text-align:right; white-space: nowrap;">Total:</th>
-                <th style="white-space: nowrap"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th style="text-align:right; white-space: nowrap;">Total:</th>
+                <th style="text-align:right; white-space: nowrap"></th>
             </tr>
         </tfoot>
         </table>
