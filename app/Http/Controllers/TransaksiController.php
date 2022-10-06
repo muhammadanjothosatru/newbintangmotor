@@ -141,7 +141,7 @@ class TransaksiController extends Controller
      * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaksi $transaksi, $id)
+    public function edit($id)
     {
         $transaksi = Transaksi::findorfail($id);
         return view('transaksi.edit', compact('transaksi'));
