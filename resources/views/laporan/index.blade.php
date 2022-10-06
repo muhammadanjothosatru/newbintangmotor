@@ -19,24 +19,24 @@
                 <tr>
                     <th>No</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Nama Pelanggan</th>
+                    <th>Pelanggan</th>
                     <th>No.Pol</th>
                     <th>Merk</th>
                     <th>Tipe</th>
                     <th>Tahun</th>
                     <th>Warna</th>
-                    <th>Metode Pembayaran</th>
-                    <th>Keterangan ACC</th>
+                    <th>Pembayaran</th>
+                    <th>Ket. ACC</th>
                     <th>Harga Beli</th>
                     <th>Harga Jual</th>
                     <th>Laba</th>
-                    
                 </tr>
             </thead>
         <tbody>
+            <?php $jmlLaba = 0 ?>
             @foreach($transaksi as $data)
             <tr>
-                <td>{{ $loop->iteration}}</td>
+                <td style="width:25px">{{ $loop->iteration}}</td>
                 <td>{{ $data->created_at->format('d M Y') }}</td>
                 <td>{{ $data->pelanggan->nama }}</td>
                 <td>{{ $data->kendaraan->no_pol }}</td>
@@ -46,9 +46,10 @@
                 <td>{{ $data->kendaraan->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
-                <td>{{ $data->kendaraan->harga_beli }}</td>
-                <td>{{ $data->harga_akhir }}</td>
-                <td>{{ $data->harga_akhir - $data->kendaraan->harga_beli }}</td>
+                <td>Rp. {{ number_format($data->kendaraan->harga_beli, 0, ',', '.');}}</td>
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
+                <td>Rp. {{ number_format($data->harga_akhir - $data->kendaraan->harga_beli, 0, ',', '.');}}</td>
+                <?php $jmlLaba += ($data->harga_akhir - $data->kendaraan->harga_beli) ?>
             </tr>
             @endforeach
         </tbody>
@@ -66,7 +67,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
+                <th>Rp. {{ number_format($jmlLaba, 0, ',', '.');}}</th>
             </tr>
         </tfoot>
         </table>
