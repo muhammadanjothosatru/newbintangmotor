@@ -187,8 +187,8 @@ class TransaksiController extends Controller
         ->pricePerUnit($transaksi->harga_akhir);
 
         $invoice = Invoice::make()
+            ->logo(public_path('images/logo2.png'))
             ->buyer($customer)
-            ->discountByPercent(10)
             ->addItem($item);
 
         return $invoice->stream();

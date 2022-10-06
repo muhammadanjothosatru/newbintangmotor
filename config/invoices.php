@@ -28,33 +28,33 @@ return [
     ],
 
     'currency' => [
-        'code' => 'eur',
+        'code' => 'rupiah',
         /*
          * Usually cents
          * Used when spelling out the amount and if your currency has decimals.
          *
          * Example: Amount in words: Eight hundred fifty thousand sixty-eight EUR and fifteen ct.
          */
-        'fraction' => 'ct.',
-        'symbol'   => '€',
+        'fraction' => '',
+        'symbol'   => 'Rp',
         /*
          * Example: 19.00
          */
-        'decimals' => 2,
+        'decimals' => 0,
         /*
          * Example: 1.99
          */
-        'decimal_point' => '.',
+        'decimal_point' => ',',
         /*
          * By default empty.
          * Example: 1,999.00
          */
-        'thousands_separator' => '',
+        'thousands_separator' => '.',
         /*
          * Supported tags {VALUE}, {SYMBOL}, {CODE}
          * Example: 1.99 €
          */
-        'format' => '{VALUE} {SYMBOL}',
+        'format' => '{SYMBOL} {VALUE}',
     ],
 
     'paper' => [
