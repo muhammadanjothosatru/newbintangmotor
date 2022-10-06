@@ -31,9 +31,8 @@
                     <th>Harga Jual</th>
                     <th>Laba</th>
                 </tr>
-            </thead>
+        </thead>
         <tbody>
-            <?php $jmlLaba = 0 ?>
             @foreach($transaksi as $data)
             <tr>
                 <td style="width:25px">{{ $loop->iteration}}</td>
@@ -49,25 +48,13 @@
                 <td>Rp. {{ number_format($data->kendaraan->harga_beli, 0, ',', '.');}}</td>
                 <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 <td>Rp. {{ number_format($data->harga_akhir - $data->kendaraan->harga_beli, 0, ',', '.');}}</td>
-                <?php $jmlLaba += ($data->harga_akhir - $data->kendaraan->harga_beli) ?>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th>Jumlah Laba</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>Rp. {{ number_format($jmlLaba, 0, ',', '.');}}</th>
+                <th colspan="12" style="text-align:right; white-space: nowrap;">Total:</th>
+                <th style="white-space: nowrap"></th>
             </tr>
         </tfoot>
         </table>

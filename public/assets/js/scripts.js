@@ -53,10 +53,10 @@ $("[data-confirm]").each(function () {
 // Global
 $(function () {
     let sidebar_nicescroll_opts = {
-            cursoropacitymin: 0,
-            cursoropacitymax: 0.8,
-            zindex: 892,
-        },
+        cursoropacitymin: 0,
+        cursoropacitymax: 0.8,
+        zindex: 892,
+    },
         now_layout_class = null;
 
     var sidebar_sticky = function () {
@@ -156,8 +156,8 @@ $(function () {
                     me.find("> .dropdown-menu").hide();
                     me.find("> .dropdown-menu").prepend(
                         '<li class="dropdown-title pt-3">' +
-                            me.find("> a").text() +
-                            "</li>"
+                        me.find("> a").text() +
+                        "</li>"
                     );
                 } else {
                     me.find("> a").attr("data-toggle");
@@ -642,73 +642,91 @@ $(function () {
     }
 });
 
-$(document).ready( function () {
+$(document).ready(function () {
 
-  var table2 = $('#example').DataTable({
-  });
-  var table = $('#laporan').DataTable({
-    dom: 'Bfrtip',
-    init: function(api, node, config) {
-        $(node).removeClass('dt-button')
-      },
-      buttons: [
-        {
-          text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
-          extend: 'pdf',
-          download: 'open',
-          className: 'btn btn-primary btn-sm',
-          title: 'Laporan Bintang Motor',
-          extension: '.pdf',
-          init: function(api, node, config) {
-            $(node).removeClass('dt-button buttons-pdf buttons-html5')
-          }
+    var table2 = $('#example').DataTable({
+    });
+    var table = $('#laporan').DataTable({
+        dom: 'Bfrtip',
+        footerCallback: function (row, data, start, end, display) {
+            var api = this.api();
+
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ? i.replace('Rp.', '').replaceAll('.', '') * 1 : typeof i === 'number' ? i : 0;
+            };
+
+            // Total over this page
+            var pageTotal = api
+                .column(12, { page: 'current' })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            // Update footer
+            $(api.column(12).footer()).html('Rp. ' + pageTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        },
+        init: function (api, node, config) {
+            $(node).removeClass('dt-button')
+        },
+        buttons: [
+            {
+                text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
+                extend: 'pdf',
+                download: 'open',
+                className: 'btn btn-primary btn-sm',
+                title: 'Laporan Bintang Motor',
+                extension: '.pdf',
+                init: function (api, node, config) {
+                    $(node).removeClass('dt-button buttons-pdf buttons-html5')
+                }
+            }
+        ]
+    });
+
+    var minDate, maxDate;
+
+    var DateFilterFunction = function (settings, data, dataIndex) {
+        if (settings.nTable.id !== 'laporan') {
+            return true;
         }
-      ]
 
-  });
-
-  var minDate, maxDate;
-
-  var DateFilterFunction =  function( settings, data, dataIndex ) {
-      if ( settings.nTable.id !== 'laporan' ) {
-        return true;
-      }
-      
         var min = new Date(minDate);
         var max = new Date(maxDate);
 
         var date = new Date(data[1]);
 
         if (
-            ( min === null && max === null ) ||
-            ( min === null && date <= max ) ||
-            ( min <= date   && max === null ) ||
-            ( min <= date   && date <= max )
+            (min === null && max === null) ||
+            (min === null && date <= max) ||
+            (min <= date && max === null) ||
+            (min <= date && date <= max)
         ) {
             return true;
         }
         return false;
     }
 
-$( document ).ready(function() {
-  $('#daterange').on('apply.daterangepicker', function(ev, picker) {
-    $(this).val(picker.startDate.format('DD MMM YYYY') + ' - ' + picker.endDate.format('DD MMM YYYY'));
-    minDate = picker.startDate.format('DD MMM YYYY');
-    maxDate = picker.endDate.format('DD MMM YYYY');
-    $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
-    table.draw();
-});
+    $(document).ready(function () {
+        $('#daterange').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('DD MMM YYYY') + ' - ' + picker.endDate.format('DD MMM YYYY'));
+            minDate = picker.startDate.format('DD MMM YYYY');
+            maxDate = picker.endDate.format('DD MMM YYYY');
+            $.fn.dataTableExt.afnFiltering.push(DateFilterFunction);
+            table.draw();
+        });
 
-$('#daterange').on('cancel.daterangepicker', function(ev, picker) {
-  $(this).val('');
-  minDate='';
-  maxDate='';
-  $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
-  $table.draw();
-});
+        $('#daterange').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+            minDate = '';
+            maxDate = '';
+            $.fn.dataTable.ext.search.splice($.fn.dataTable.ext.search.indexOf(DateFilterFunction, 1));
+            $table.draw();
+        });
 
 
-});
+    });
 
 });
 
