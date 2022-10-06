@@ -29,16 +29,14 @@ class TransaksiController extends Controller
                 if (Auth::user()->role == 1) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
-                }
-                if (Auth::user()->role == 2) {
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                } else if (Auth::user()->role == 2) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Mobil')
-                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
-                }
-                if (Auth::user()->role == 0) {
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                } else if (Auth::user()->role == 0) {
                     $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('kendaraan.*','transaksi.*','pelanggan.*','users.*');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
                 }
                 $all_transaksi_motor=$transaksi_motor->get();
                 return view('transaksi.index', compact('all_transaksi_motor'));
@@ -172,16 +170,21 @@ class TransaksiController extends Controller
         //
     }
 
-    public function invoice()
+    public function invoice($id)
     {
-        // $transaksi = Transaksi::findorfail($id);
-        $transaksi_new = Transaksi::with('pelanggan')->get();
+        $transaksi = Transaksi::findorfail($id);
+        
+        $pelanggan = Pelanggan::findorfail($transaksi->pelanggan_id);
+        $kendaraan = Kendaraan::findorfail($transaksi->kendaraan_no_pol);
+
         $customer = new Buyer([
-            'name'          => 'John Pukul',
-            // 'address'       => $transaksi->pelanggan->alamat,
+            'name'          => $pelanggan->nama,
+            'address'       => $pelanggan->alamat,
         ]);
 
-        $item = (new InvoiceItem())->title('Motor')->pricePerUnit(2);
+        $item = (new InvoiceItem())
+        ->title($kendaraan->merk)
+        ->pricePerUnit($transaksi->harga_akhir);
 
         $invoice = Invoice::make()
             ->buyer($customer)
