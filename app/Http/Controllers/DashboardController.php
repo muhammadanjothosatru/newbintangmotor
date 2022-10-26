@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,8 +16,28 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('pages.dashboard',compact('user'));
+        $jumlahkendaraan =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id');
+             
+                if (Auth::user()->role == 1) {
+                    $jumlahkendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->where('status_kendaraan', '=', 'Tersedia')
+                                ->select(DB::raw('count(no_pol) as total_kendaraan'));
+                }
+                if (Auth::user()->role == 2) {
+                    $jumlahkendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->where('status_kendaraan', '=', 'Tersedia')
+                                ->select(DB::raw('count(no_pol) as total_kendaraan'));
+                }
+                if (Auth::user()->role == 0) {
+                $jumlahkendaraan->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->where('status_kendaraan', '=', 'Tersedia')
+                                ->select('no_pol', DB::raw('count(no_pol) as total_kendaraan'));
+                }
+                $allkendaraan=$jumlahkendaraan->get();
+                return view('pages.dashboard',compact('allkendaraan')); 
     }
 
     /**

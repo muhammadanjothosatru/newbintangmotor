@@ -7,37 +7,64 @@
 
 </div>
 @endif
+
+<h5>Dashboard</h5>
+
 <div class="card">
-	<div class="m-4">
-		@auth
-		<h1>welcome, {{ Auth::user()->username  }}</h1>
-		@endauth
-		<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Tambah Transaksi</a>
-		<br><br>
-		<table id="example" class="display" style="width:100%">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>username</th>
-					<th>role</th>
-					<th>email</th>
-					<th>cabang</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-				@foreach($user as $data)
-				<tr>
-					<td>{{ $loop->iteration}}</td>
-					<td>{{  $data->username }}</td>
-					<td>{{$data->role}}</td>
-					<td>{{$data->email}}</td>
-					<td>{{ $data->cabang->nama }}</td>
-					<td>
-						<a href="" class="btn btn-primary btn-sm">Lihat</a>
-					</td>
-				</tr>
-				@endforeach
-			</table>
-	</div>
+		<!-- @auth
+		<h5>welcome, {{ Auth::user()->username  }}</h5>
+		@endauth -->
+		<div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 ">
+              <div class="card card-statistic-2">
+                <div class="card-icon shadow-primary bg-primary">
+                  <i class="fas fa-motorcycle"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Kendaraan</h4>
+                  </div>
+                  <div class="card-body">
+				  	@foreach($allkendaraan as $total)
+						{{$total->total_kendaraan}}
+					@endforeach	
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <div class="card card-statistic-2">
+                <div class="card-icon shadow-primary bg-primary">
+                  <i class="fas fa-archive"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Penjualan Bulan Ini</h4>
+                  </div>
+                  <div class="card-body">
+                    59
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="card card-statistic-2">
+                <div class="card-icon shadow-primary bg-primary">
+                  <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Keuntungan Bulan Ini</h4>
+                  </div>
+                  <div class="card-body">
+                    RP. 128.000.000,00
+                  </div>
+                </div>
+              </div>
+            </div>
+		</div>
+		<div>
+		
+		</div>
 </div>
 @endsection
