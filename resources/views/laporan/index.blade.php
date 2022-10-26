@@ -8,7 +8,18 @@
 <div class="card">
     <div class="m-4">
     <div class="row">
-            <div class="font-form-header col-6"></div>
+            <div class="font-form-header col-6">
+            <div class="dropdown ">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tipe Pembayaran
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button class="tipe-pembayaran dropdown-item" value="">Semua</button>
+                    <button class="tipe-pembayaran dropdown-item" value="Tunai">Tunai</button>
+                    <button class="tipe-pembayaran dropdown-item" value="Kredit">Kredit</button>
+                </div>
+                </div>
+            </div>
             <div class="font-form-header col-6 d-flex justify-content-end">
                 <button class="daterange btn btn-primary btn-sm mr-2" id="daterange"><i class="fas fa-filter mr-2"></i>Filter Periode</button>
             </div>
@@ -53,8 +64,19 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="12" style="text-align:right; white-space: nowrap;">Total:</th>
-                <th style="white-space: nowrap"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th style="text-align:right; white-space: nowrap;">Total:</th>
+                <th style="text-align:right; white-space: nowrap"></th>
             </tr>
         </tfoot>
         </table>

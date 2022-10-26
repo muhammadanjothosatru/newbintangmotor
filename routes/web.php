@@ -47,4 +47,5 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
     Route::get('/kendaraan-mobil', [KendaraanController::class,'mobil']);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
     Route::get('/transaksi/{id}/invoice', [TransaksiController::class,'invoice'])->name('transaksi.invoice');
+    Route::get('/transaksi/{id}/detail', [TransaksiController::class,'detail'])->name('transaksi.detail');
 });
