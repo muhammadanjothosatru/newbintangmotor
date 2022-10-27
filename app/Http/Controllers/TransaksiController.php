@@ -201,10 +201,19 @@ class TransaksiController extends Controller
 
         $item = (new InvoiceItem())
         ->title($kendaraan->merk)
+        ->jenis($kendaraan->jenis)
+        ->warna($kendaraan->warna)
+        ->tahun($kendaraan->tahun_pembuatan)
+        ->nopol($kendaraan->no_pol)
+        ->nosin($kendaraan->no_mesin)
+        ->noka($kendaraan->no_rangka)
+        ->nobpkb($kendaraan->no_bpkb)
+        ->ketlain($transaksi->keterangan)
         ->pricePerUnit($transaksi->harga_akhir);
 
         $invoice = Invoice::make()
             ->logo(public_path('images/logo2.png'))
+            ->bg_kwitansi(public_path('images/bg_kwitansi.png'))
             ->buyer($customer)
             ->addItem($item);
 

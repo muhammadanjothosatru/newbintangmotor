@@ -5,7 +5,7 @@ return [
         /*
          * Carbon date format
          */
-        'format' => 'Y-m-d',
+        'format' => 'd m Y',
         /*
          * Due date for payment since invoice's date.
          */
@@ -28,7 +28,7 @@ return [
     ],
 
     'currency' => [
-        'code' => 'rupiah',
+        'code' => 'Rupiah',
         /*
          * Usually cents
          * Used when spelling out the amount and if your currency has decimals.
@@ -59,8 +59,8 @@ return [
 
     'paper' => [
         // A4 = 210 mm x 297 mm = 595 pt x 842 pt
-        'size'        => 'a4',
-        'orientation' => 'portrait',
+        'size'        => 'a5',
+        'orientation' => 'landscape',
     ],
 
     'disk' => 'local',

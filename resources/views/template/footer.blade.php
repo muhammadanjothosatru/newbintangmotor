@@ -13,7 +13,6 @@
   <script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
   <script src="{{ asset('assets/modules/datatables2/datatables.js')}}"></script>
   <script src="{{ asset('assets/modules/daterangepicker-master/daterangepicker-master/daterangepicker.js')}}"></script>
-  <script src="{{ asset('assets/modules/chart.js-3.9.1/package/dist/chart.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
   
