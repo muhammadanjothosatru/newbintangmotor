@@ -44,21 +44,21 @@
                 </tr>
         </thead>
         <tbody>
-            @foreach($transaksi as $data)
+            @foreach($all_transaksi_motor as $data)
             <tr>
                 <td style="width:25px">{{ $loop->iteration}}</td>
-                <td>{{ $data->created_at->format('d M Y') }}</td>
-                <td>{{ $data->pelanggan->nama }}</td>
-                <td>{{ $data->kendaraan->no_pol }}</td>
-                <td>{{ $data->kendaraan->merk }}</td>
-                <td>{{ $data->kendaraan->tipe}}</td>
-                <td>{{ $data->kendaraan->tahun_pembuatan }}</td>
-                <td>{{ $data->kendaraan->warna }}</td>
+                <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}</td>
+                <td>{{ $data->nama }}</td>
+                <td>{{ $data->no_pol }}</td>
+                <td>{{ $data->merk }}</td>
+                <td>{{ $data->tipe}}</td>
+                <td>{{ $data->tahun_pembuatan }}</td>
+                <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
-                <td>Rp. {{ number_format($data->kendaraan->harga_beli, 0, ',', '.');}}</td>
+                <td>Rp. {{ number_format($data->harga_beli, 0, ',', '.');}}</td>
                 <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
-                <td>Rp. {{ number_format($data->harga_akhir - $data->kendaraan->harga_beli, 0, ',', '.');}}</td>
+                <td>Rp. {{ number_format($data->harga_akhir - $data->harga_beli, 0, ',', '.');}}</td>
             </tr>
             @endforeach
         </tbody>

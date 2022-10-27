@@ -25,9 +25,9 @@
                     <h4>Total Kendaraan</h4>
                   </div>
                   <div class="card-body">
-				  	@foreach($allkendaraan as $total)
-						{{$total->total_kendaraan}}
-					@endforeach	
+                    @foreach($allkendaraan as $total)
+                      {{$total->total_kendaraan}}
+                    @endforeach	
                   </div>
                 </div>
               </div>
@@ -42,7 +42,9 @@
                     <h4>Penjualan Bulan Ini</h4>
                   </div>
                   <div class="card-body">
-                    59
+                    @foreach($all_transaksi as $total)
+                      {{$total->total_transaksi}}
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -57,7 +59,9 @@
                     <h4>Keuntungan Bulan Ini</h4>
                   </div>
                   <div class="card-body">
-                    RP. 128.000.000,00
+                    @foreach($all_keuntungan as $total)
+                      Rp. {{ number_format($total->total_keuntungan, 0, ',', '.');}}
+                    @endforeach
                   </div>
                 </div>
               </div>
