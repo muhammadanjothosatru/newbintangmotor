@@ -32,6 +32,12 @@
 
             <li class="{{ request()->is('laporan', 'laporan/*') ? 'active' : '' }}">
               <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-folder"></i><span>Laporan</span></a>
+              @if(Auth::user()->role == 0)
+              <ul class="dropdown-menu">
+                <li class="{{ request()->is('laporan') ? 'active' : ''}}"><a class="nav-link " href="laporan">Motor</a></li>
+                <li class="{{ request()->is('laporan-mobil') ? 'active' : ''}}"><a class="nav-link" href="laporan-mobil">Mobil</a></li>
+              </ul>
+              @endif
             </li>
             @if(Auth::user()->role == 0)
             <li class="{{ request()->is('#administrasi') ? 'active' : '' }}">

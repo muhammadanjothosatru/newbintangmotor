@@ -32,9 +32,9 @@ class DashboardController extends Controller
                                 ->select(DB::raw('count(no_pol) as total_kendaraan'));
                 }
                 if (Auth::user()->role == 0) {
-                $jumlahkendaraan->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->where('status_kendaraan', '=', 'Tersedia')
-                                ->select('no_pol', DB::raw('count(no_pol) as total_kendaraan'));
+                $jumlahkendaraan->where('status_kendaraan', '=', 'Tersedia')
+                                // ->where('status_kendaraan', '=', 'Tersedia')
+                                ->select(DB::raw('count(no_pol) as total_kendaraan'));
                 }
                 $allkendaraan=$jumlahkendaraan->get();
                 return view('pages.dashboard',compact('allkendaraan')); 
