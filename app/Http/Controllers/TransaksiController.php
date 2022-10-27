@@ -12,6 +12,7 @@ use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\Seller;
 use LaravelDaily\Invoices\Facades\Invoice;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TransaksiController extends Controller
 {
@@ -143,8 +144,24 @@ class TransaksiController extends Controller
      */
     public function edit($id)
     {
+        // $transaksi = Transaksi::findorfail($id);
+
+        // $pelanggan = Pelanggan::findorfail($transaksi->pelanggan_id);
+        // $kendaraan = Kendaraan::findorfail($transaksi->kendaraan_no_pol);
+        
+
+        // return view('transaksi.edit', compact('transaksi', 'pelanggan', 'kendaraan'));
+    }
+
+    public function detail($id)
+    {
         $transaksi = Transaksi::findorfail($id);
-        return view('transaksi.edit', compact('transaksi'));
+
+        $pelanggan = Pelanggan::findorfail($transaksi->pelanggan_id);
+        $kendaraan = Kendaraan::findorfail($transaksi->kendaraan_no_pol);
+        
+
+        return view('transaksi.detail', compact('transaksi', 'pelanggan', 'kendaraan'));
     }
 
     /**

@@ -54,7 +54,7 @@
                 <form class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
 				    @method('PUT')
 				    @csrf	
-                    <a href="{{ route('transaksi.edit', $data->id ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                    <a href="{{ route('transaksi.detail', $data->id ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                     <button class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
                 </form>
                     

@@ -62,9 +62,7 @@ class KendaraanController extends Controller
                                 ->select('kendaraan.*');
                 }
                 $allkendaraan=$kendaraanmotor->get();
-                return view('kendaraan.index',compact('kendaraan','allkendaraan'));
-
-        
+                return view('kendaraan.index',compact('kendaraan','allkendaraan')); 
     }
 
     
