@@ -60,7 +60,6 @@
             }
             .table {
                 width: 100%;
-                margin-bottom: 1rem;
                 color: #212529;
             }
             .table th,
@@ -133,8 +132,6 @@
                 font-size: 11px;
                 font-weight: 700;
                 border-width:1px;
-                border-style:solid;
-                border-color:#213e50;
                 padding: 0.5em;
                 background-color: #02213e50;
             }
@@ -171,13 +168,15 @@
             SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091 / 08223347431<br>
             (<span>&#177;</span> 100 meter barat Kantor BRI Lamongan)<br>
             CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat (0322) 456463</p>
+ 
+            <hr width="100%" align="right" noshade>
 
             <h4 class="text-center"><strong>TELAH DITERIMA OLEH "UD. BINTANG MOTOR"</strong></h4>
             {{-- Table --}}
 
             
             <p class="nominal"> Uang sebanyak: {{ $invoice->getTotalAmountInWords() }}</p>
-            <table class="table table-items">
+            <table class="table table-items mb-0">
                 <tbody>
                     @foreach($invoice->items as $item)
                     <tr>
@@ -244,12 +243,19 @@
 
             <table class="table pl-0 ml-0 table-items">
                 <tbody>
-                    <tr>
+                    <tr class="mb-0">
                         <td colspan="2" class="pl-0 ml-0">
                             <p class="nominal">
                                 {{ trans('invoices::invoice.amount_in_words') }}:  {{ $invoice->formatCurrency($invoice->total_amount) }}
                             </p>
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td class="border-0 pl-0">
@@ -265,7 +271,6 @@
                         <td><strong>UD. BINTANG MOTOR</strong></td>
                         <td class="border-0 pl-0"><strong>Pembeli</strong></td>
                     </tr>
-                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
                     <tr><td></td><td></td><td></td><td></td><td></td></tr>
                     <tr><td></td><td></td><td></td><td></td><td></td></tr>
                     <tr><td></td><td></td><td></td><td></td><td></td></tr>
