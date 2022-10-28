@@ -5,7 +5,7 @@ return [
         /*
          * Carbon date format
          */
-        'format' => 'd m Y',
+        'format' => 'd M Y',
         /*
          * Due date for payment since invoice's date.
          */

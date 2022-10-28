@@ -133,6 +133,7 @@
                 font-weight: 700;
                 border-width:1px;
                 padding: 0.5em;
+                margin: 0;
                 background-color: #02213e50;
             }
             .body {
