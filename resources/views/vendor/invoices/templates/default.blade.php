@@ -41,6 +41,7 @@
             }
             table {
                 border-collapse: collapse;
+                border-spacing: 0;
             }
             td {
                 border-top: none;
@@ -67,13 +68,19 @@
                 padding: 0.25rem;
                 vertical-align: center;
                 border-collapse: collapse;
+                border-spacing: 0;
+                line-height: 6pt;
             }
             .table.table-items td {
                 border-collapse: collapse;
+                border-spacing: 0;
+                line-height: 6pt;
             }
             .table thead th {
                 vertical-align: center;
                 border-collapse: collapse;
+                border-spacing: 0;
+                line-height: 6pt;
             }
             .mt-5 {
                 margin-top: 3rem !important;
@@ -123,8 +130,13 @@
                 content: "\00B1";
             }
             .nominal {
-                font-size: 10px;
+                font-size: 11px;
                 font-weight: 700;
+                border-width:1px;
+                border-style:solid;
+                border-color:#213e50;
+                padding: 0.5em;
+                background-color: #02213e50;
             }
             .body {
                 overflow: hidden;
@@ -150,14 +162,15 @@
         {{-- Header --}}
             <div class="text-center logo">
                 @if($invoice->logo)
-                <img class="center" src="{{ $invoice->getLogo() }}" alt="logo" height="40">
+                <img class="center" src="{{ $invoice->getLogo() }}" alt="logo" height="30">
                 @endif
             </div>
 
-            <p class="text-center"><strong>Jual Beli Sepeda Motor / Mobil - Cash - Kredit / Tukar Tambah<br>
-                SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091 / 08223347431<br>
-                (<span>&#177;</span> 100 meter barat Kantor BRI Lamongan)<br>
-                CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat (0322) 456463<strong></p>
+            <p class="text-center" style="font-size: 12px; margin-bottom: -5px;"><strong>Jual Beli Sepeda Motor / Mobil - Cash - Kredit / Tukar Tambah<strong></p>
+            <p class="text-center">
+            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091 / 08223347431<br>
+            (<span>&#177;</span> 100 meter barat Kantor BRI Lamongan)<br>
+            CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat (0322) 456463</p>
 
             <h4 class="text-center"><strong>TELAH DITERIMA OLEH "UD. BINTANG MOTOR"</strong></h4>
             {{-- Table --}}
@@ -229,20 +242,16 @@
                 </tbody>
             </table>
 
-            @if($invoice->notes)
-                <p>
-                    {{ trans('invoices::invoice.notes') }}: {!! $invoice->notes !!}
-                </p>
-            @endif
-
-            <table class="table">
+            <table class="table pl-0 ml-0 table-items">
                 <tbody>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" class="pl-0 ml-0">
                             <p class="nominal">
                                 {{ trans('invoices::invoice.amount_in_words') }}:  {{ $invoice->formatCurrency($invoice->total_amount) }}
                             </p>
                         </td>
+                        <td></td>
+                        <td></td>
                         <td class="border-0 pl-0">
                             <p> <strong>Lamongan, {{ $invoice->getDate() }}</strong></p>
                         </td>
@@ -251,32 +260,30 @@
                         <td>
 
                         </td>
-                        <td>UD. BINTANG MOTOR</td>
-                        <td class="border-0 pl-0">Pembeli</td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>UD. BINTANG MOTOR</strong></td>
+                        <td class="border-0 pl-0"><strong>Pembeli</strong></td>
                     </tr>
-                    <tr><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td></tr>
-                    <tr><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td></tr>
                     <tr>
                         <td>
 
                         </td>
+                        <td></td>
+                        <td></td>
                         <td>______________________________</td>
                         <td class="border-0 pl-0">______________________________</td>
                     </tr>
                 </tbody>
             </table>
-
-            <!--
-                <td class="px-0">
-            @if($invoice->buyer->name)
-                <p class="buyer-name">
-                    <strong>{{ $invoice->buyer->name }}</strong>
-                </p>
-            @endif
-        -->
         </div>
     </body>
 </html>

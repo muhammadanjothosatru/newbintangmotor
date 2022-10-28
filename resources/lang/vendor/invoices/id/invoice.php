@@ -7,7 +7,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'invoice'                => 'Nota Pembelian',
+    'invoice'                => 'Kwitansi',
     'serial'                 => 'Nomor Seri',
     'date'                   => 'Tanggal',
     'seller'                 => 'Penjual',

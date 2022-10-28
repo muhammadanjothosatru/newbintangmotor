@@ -114,7 +114,7 @@ class TransaksiController extends Controller
             'metode_pembayaran'=>$request->metode_pembayaran,
             'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
             'no_kontrak'=>'-',
-            'uang_dp'=>$request->uang_dp,
+            'uang_dp'=>preg_replace('/[^0-9]/', '', $request->uang_dp),
             'bulan_angsuran'=>$request->bulan_angsuran,
             'keterangan'=>'Belum ACC',
             'users_id'=>Auth::id(),
@@ -199,6 +199,13 @@ class TransaksiController extends Controller
             'address'       => $pelanggan->alamat,
         ]);
 
+        $biaya = 0;
+        if($transaksi->metode_pembayaran == "Kredit"){
+            $biaya = $transaksi->uang_dp;
+        } else {
+            $biaya = $transaksi->harga_akhir;
+        }
+
         $item = (new InvoiceItem())
         ->title($kendaraan->merk)
         ->jenis($kendaraan->jenis)
@@ -209,7 +216,7 @@ class TransaksiController extends Controller
         ->noka($kendaraan->no_rangka)
         ->nobpkb($kendaraan->no_bpkb)
         ->ketlain($transaksi->keterangan)
-        ->pricePerUnit($transaksi->harga_akhir);
+        ->pricePerUnit($biaya);
 
         $invoice = Invoice::make()
             ->logo(public_path('images/logo2.png'))

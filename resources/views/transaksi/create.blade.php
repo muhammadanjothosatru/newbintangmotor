@@ -143,6 +143,11 @@
     hargaakhir.addEventListener('keyup', function(e){
         hargaakhir.value = currency(this.value, 'Rp')
     });
+
+    var uang_dp = document.getElementById('uangmuka');
+    uang_dp.addEventListener('keyup', function(e){
+        uang_dp.value = currency(this.value, 'Rp')
+    });
 </script>
 
 
