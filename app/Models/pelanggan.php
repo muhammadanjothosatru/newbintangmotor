@@ -14,6 +14,7 @@ class Pelanggan extends Model
         'nomor_hp',
         'alamat',
         'foto_ktp',
+        'foto_ktp2',
     ];
     protected $table = 'pelanggan';
 

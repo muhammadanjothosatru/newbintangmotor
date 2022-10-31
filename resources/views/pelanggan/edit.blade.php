@@ -53,7 +53,21 @@
                 <div class="mb-3 row">
                     <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP</label>
                     <div class="form-floating col-sm-10">
+                        @if ($pelanggan->foto_ktp)
                         <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" class="foto-ktp" alt="...">
+                        @else
+                        <span class="badge badge-danger">belum ada foto</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP 2</label>
+                    <div class="form-floating col-sm-10">
+                        @if ($pelanggan->foto_ktp2)
+                        <img src="{{asset('storage/foto_ktp2/'.$pelanggan->foto_ktp2)}}" class="foto-ktp" alt="...">
+                        @else
+                        <span class="badge badge-danger">belum ada foto</span>
+                        @endif
                     </div>
                 </div>
             </div>

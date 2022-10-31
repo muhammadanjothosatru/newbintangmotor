@@ -58,12 +58,19 @@ class PelangganController extends Controller
             $newName = $request->nama.'.'.$extension;
             $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
        }
+        $newName2="";
+       if($request->file('foto_ktp2')){
+            $extension = $request->file('foto_ktp2')->getClientOriginalExtension();
+            $newName2 = $request->nama.'2'.'.'.$extension;
+            $request->file('foto_ktp2')->storeAs('foto_ktp2',$newName2);
+       }
        
      
        $pelanggan = Pelanggan::create([
         'nik' => $request->nik,
         'nama' =>  $request->nama,
         'foto_ktp' => $newName,
+        'foto_ktp2' => $newName2,
         'nomor_hp' => $request->nomor_hp,
         'alamat' => $request->alamat,
     ]);
@@ -110,6 +117,7 @@ class PelangganController extends Controller
     {
         $validate= $request->validate([
             'foto_ktp' => 'mimes:jpg,png,jpeg|image',
+            'foto_ktp2' => 'mimes:jpg,png,jpeg|image',
             'nomor_hp' => 'required|numeric',
         ]);
         $pelanggan = Pelanggan::findorfail($id);
@@ -124,6 +132,18 @@ class PelangganController extends Controller
        
        if($namaFoto != null || $namaFoto != ''){
         Storage::delete($namaFoto);
+       }
+
+       if($request->has('foto_ktp2')){
+            $extension = $request->file('foto_ktp2')->getClientOriginalExtension();
+            $newName = $request->nama.'2'.'.'.$extension;
+            $request->file('foto_ktp2')->storeAs('foto_ktp2',$newName);
+            $pelanggan->foto_ktp2 = $newName;
+       }
+       $namaFoto2 = $pelanggan->foto_ktp2;
+       
+       if($namaFoto2 != null || $namaFoto2 != ''){
+        Storage::delete($namaFoto2);
        }
 
        $pelanggan->nik =$request->nik;
