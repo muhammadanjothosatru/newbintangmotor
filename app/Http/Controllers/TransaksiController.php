@@ -242,7 +242,7 @@ class TransaksiController extends Controller
         ->nosin($kendaraan->no_mesin)
         ->noka($kendaraan->no_rangka)
         ->nobpkb($kendaraan->no_bpkb)
-        ->ketlain($transaksi->keterangan)
+        ->ketlain($transaksi->keterangan_lain)
         ->pricePerUnit($biaya);
 
         $invoice = Invoice::make()

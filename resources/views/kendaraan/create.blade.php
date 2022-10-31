@@ -5,14 +5,14 @@
 @section('konten')
 <div class="card">
 @if(count($errors)>0)
-@foreach($errors->all() as $error)
-<div id="flasherror" data-flash=" {{$error}}"></div>
-@endforeach
+    @foreach($errors->all() as $error)
+        <div id="flasherror" data-flash=" {{$error}}"></div>
+    @endforeach
 @endif
 
-  @if(Session::has('success'))
-  <div id="flash" data-flash="{{session('success')}}"></div>
-  @endif
+@if(Session::has('success'))
+    <div id="flash" data-flash="{{session('success')}}"></div>
+@endif
   
     <form action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
