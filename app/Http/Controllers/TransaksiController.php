@@ -79,7 +79,7 @@ class TransaksiController extends Controller
                 }
                
                 $all_kendaraan=$motor->get();
-        return view('transaksi.create',compact('pelanggan','kendaraan','all_kendaraan'));
+        return view('transaksi.create', compact('pelanggan','kendaraan','all_kendaraan'));
     }
 
     /**
@@ -122,7 +122,7 @@ class TransaksiController extends Controller
       
     }
     Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
-    return redirect('/transaksi')->with('success','data berhasil ditambahkan');
+    return redirect('/transaksi')->with('success','data berhasil ditambahkan')->with('message', $transaksi->id);
     }
 
     /**
