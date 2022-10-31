@@ -16,6 +16,7 @@ class LaporanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function index()
     {
         $transaksi_motor =DB::table('transaksi')

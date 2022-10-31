@@ -24,6 +24,7 @@ class PelangganFactory extends Factory
             'nik' => $this->faker->unique()->randomNumber(9, false),
             'nomor_hp' => $this->faker->phoneNumber(),
             'foto_ktp' => $this->faker->imageUrl(300, 300),
+            'foto_ktp2' => $this->faker->imageUrl(300, 300),
      ];
     }
 }

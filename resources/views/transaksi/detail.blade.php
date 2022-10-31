@@ -80,35 +80,46 @@
                 <div class="ml-3">
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Harga Jual</label>
-                        <div class="pl-0 col-sm-10">
+                        <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->harga_akhir !!}">
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label class="pl-0 col-sm-2 col-form-label font-form">Komisi</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->komisi !!}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Metode Pembayaran</label>
-                        <div class="pl-0 col-sm-10">
+                        <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->metode_pembayaran !!}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Uang Muka</label>
-                        <div class="pl-0 col-sm-10">
+                        <div class=" col-sm-10">
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->uang_dp !!}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
-                        <div class="pl-0 col-sm-10">
+                        <div class=" col-sm-10">
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->bulan_angsuran !!}">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan</label>
-                        <div class="pl-0 col-sm-10">
+                        <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
+                        <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->keterangan !!}">
                         </div>
                     </div>
-                    
+                    <div class="mb-3 row">
+                        <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan Lain</label>
+                        <div class="col-sm-10">
+                            <textarea rows="4" class="form-control-plaintext font-data" readonly>{!! $transaksi->keterangan_lain!!}</textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

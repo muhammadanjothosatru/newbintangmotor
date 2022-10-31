@@ -109,7 +109,7 @@
                     <div class="mb-3 row">
                         <label for="inputAlamat" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
                         <div class="pl-0 col-sm-10">
-                            <textarea class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan" id="keterangan"></textarea>
+                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan"></textarea>
                         </div>
                     </div>
                     

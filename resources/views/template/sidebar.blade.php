@@ -26,17 +26,17 @@
               <a href="{{ route('pelanggan.index') }}" class="nav-link"><i class="fas fa-light fa-user"></i> <span>Pelanggan</span></a>
             </li>
             {{-- @endif --}}
-            <li class="{{ request()->is('transaksi', 'transaksi/*') ? 'active' : ''}}">
+            <li class="{{ request()->is('transaksi','transaksi-mobil', 'transaksi/*','transaksi-mobil/*') ? 'active' : ''}}">
               <a href="{{ route('transaksi.index') }}" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
               @if(Auth::user()->role == 0)
               <ul class="dropdown-menu">
-                <li class="{{ request()->is('transaksi') ? 'active' : ''}}"><a class="nav-link " href="laporan">Motor</a></li>
-                <li class="{{ request()->is('transaksi-mobil') ? 'active' : ''}}"><a class="nav-link" href="laporan-mobil">Mobil</a></li>
+                <li class="{{ request()->is('transaksi') ? 'active' : ''}}"><a class="nav-link " href="transaksi">Motor</a></li>
+                <li class="{{ request()->is('transaksi-mobil','transaksi-mobil/*') ? 'active' : ''}}"><a class="nav-link" href="transaksi-mobil">Mobil</a></li>
               </ul>
               @endif
             </li>
 
-            <li class="{{ request()->is('laporan', 'laporan/*') ? 'active' : '' }}">
+            <li class="{{ request()->is('laporan','laporan-mobil', 'laporan/*','laporan-mobil/*') ? 'active' : '' }}">
               <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-folder"></i><span>Laporan</span></a>
               @if(Auth::user()->role == 0)
               <ul class="dropdown-menu">
