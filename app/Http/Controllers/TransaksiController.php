@@ -21,6 +21,26 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function mobil()
+    {
+        $transaksi_mobil =DB::table('transaksi')
+        ->join('users','transaksi.users_id', '=', 'users.id')
+        ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
+        ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol');
+        if (Auth::user()->role == 2) {
+            $transaksi_mobil->where('users.cabang_id', Auth::user()->cabang_id)
+                        ->where('kendaraan.jenis', '=', 'Mobil')
+                        ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                        ->orderBy('transaksi.created_at', 'desc');
+        } else if (Auth::user()->role == 0) {
+            $transaksi_mobil->where('kendaraan.jenis', '=', 'Mobil')
+                        ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                        ->orderBy('transaksi.created_at', 'desc');
+        }
+        
+        $all_transaksi_mobil=$transaksi_mobil->get();
+        return view('transaksi.mobil', compact('all_transaksi_mobil'));
+    }
     public function index()
     {
         $transaksi_motor =DB::table('transaksi')
