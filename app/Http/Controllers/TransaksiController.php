@@ -30,14 +30,17 @@ class TransaksiController extends Controller
                 if (Auth::user()->role == 1) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                                ->orderBy('transaksi.created_at', 'desc');
                 } else if (Auth::user()->role == 2) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Mobil')
-                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                                ->orderBy('transaksi.created_at', 'desc');
                 } else if (Auth::user()->role == 0) {
                     $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                                ->orderBy('transaksi.created_at', 'desc');
                 }
                 $all_transaksi_motor=$transaksi_motor->get();
                 return view('transaksi.index', compact('all_transaksi_motor'));
@@ -79,7 +82,7 @@ class TransaksiController extends Controller
                 }
                
                 $all_kendaraan=$motor->get();
-        return view('transaksi.create',compact('pelanggan','kendaraan','all_kendaraan'));
+        return view('transaksi.create', compact('pelanggan','kendaraan','all_kendaraan'));
     }
 
     /**
@@ -122,7 +125,7 @@ class TransaksiController extends Controller
       
     }
     Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
-    return redirect('/transaksi')->with('success','data berhasil ditambahkan');
+    return redirect('/transaksi')->with('success','data berhasil ditambahkan')->with('message', $transaksi->id);
     }
 
     /**

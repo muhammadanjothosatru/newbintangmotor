@@ -2,8 +2,9 @@
 @section('konten')
 
 @if(Session::has('success'))
-<div id="flash" data-flash="{{session('success')}}"></div>
+    <div id="flash" data-flash="{{session('success')}}"></div>
 @endif
+
 
 <div class="card">
     <div class="m-4">
@@ -66,4 +67,20 @@
             </table>
             </div>
         </div>
+
+@if(Session::has('message'))
+<form style="display: none" action="{{route('transaksi.invoice', session('message'))}}" method="GET" id="formsuccess">
+    <button class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
+</form>
+<script type="text/javascript">
+    var delayInMilliseconds = 2000; //1 second
+    setTimeout(function() {
+        $("#formsuccess").submit();
+        setTimeout(function() {
+            window.location.href = '/transaksi';
+        }, delayInMilliseconds);
+    }, delayInMilliseconds);
+</script>
+@endif
 @endsection
+

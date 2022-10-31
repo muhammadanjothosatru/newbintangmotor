@@ -50,16 +50,19 @@ class KendaraanController extends Controller
                 if (Auth::user()->role == 1) {
                     $kendaraanmotor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('kendaraan.*');
+                                ->select('kendaraan.*')
+                                ->orderBy('kendaraan.created_at', 'desc');
                 }
                 if (Auth::user()->role == 2) {
                     $kendaraanmotor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Mobil')
-                                ->select('kendaraan.*');
+                                ->select('kendaraan.*')
+                                ->orderBy('kendaraan.created_at', 'desc');
                 }
                 if (Auth::user()->role == 0) {
                 $kendaraanmotor->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('kendaraan.*');
+                                ->select('kendaraan.*')
+                                ->orderBy('kendaraan.created_at', 'desc');
                 }
                 $allkendaraan=$kendaraanmotor->get();
                 return view('kendaraan.index',compact('kendaraan','allkendaraan')); 
@@ -121,7 +124,11 @@ class KendaraanController extends Controller
             'status_kendaraan' =>"Tersedia",
             'tahun_registrasi' => $request->tahun_registrasi,
             'no_bpkb' => $request->no_bpkb,
+<<<<<<< HEAD
             'harga_beli' =>  preg_replace('/[^0-9]/', '', $request->harga_beli),
+=======
+            'harga_beli' => preg_replace('/[^0-9]/', '', $request->harga_beli),
+>>>>>>> 7d1612e4f11e9dbc9e8ffeb39aecb70b2f7209e3
             'tanggal_masuk' => $request->tanggal_masuk,
             'supplier' => $request->supplier,
             'keterangan' => $request->keterangan,
