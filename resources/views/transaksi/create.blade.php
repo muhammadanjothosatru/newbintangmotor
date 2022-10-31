@@ -63,6 +63,12 @@
                                 <input type="text" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
                             </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="inputKomisi"  class="col-sm-2 col-form-label font-form">Komisi</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="komisi" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
+                            </div>
+                    </div>
                     <br>
                     <div class="mb-3 row">
                         <button class="btn btn-primary btn-block mr-3 ml-3" type="submit"><i class="fas fa-save mr-2"></i>Simpan</button>
@@ -99,6 +105,12 @@
                             <div class=" pl-0 col-sm-10">
                                 <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
                             </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputAlamat" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
+                        <div class="pl-0 col-sm-10">
+                            <textarea class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan" id="keterangan"></textarea>
+                        </div>
                     </div>
                     
                 </div>
@@ -142,6 +154,11 @@
     var hargaakhir = document.getElementById('hargaakhir');
     hargaakhir.addEventListener('keyup', function(e){
         hargaakhir.value = currency(this.value, 'Rp')
+    });
+
+    var komisi = document.getElementById('komisi');
+    komisi.addEventListener('keyup', function(e){
+        komisi.value = currency(this.value, 'Rp')
     });
 
     var uang_dp = document.getElementById('uangmuka');

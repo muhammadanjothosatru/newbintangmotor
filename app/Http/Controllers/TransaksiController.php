@@ -99,7 +99,7 @@ class TransaksiController extends Controller
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
                 'metode_pembayaran'=>$request->metode_pembayaran,
-                'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
+                'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir) - preg_replace('/[^0-9]/', '', $request->komisi),
                 'no_kontrak'=>'-',
                 'uang_dp'=>'-',
                 'bulan_angsuran'=>'-',
