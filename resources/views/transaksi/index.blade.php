@@ -69,7 +69,7 @@
         </div>
 
 @if(Session::has('message'))
-<form style="display: none" action="{{route('transaksi.invoice', session('message'))}}" method="GET" id="formsuccess">
+<form target="_blank" style="display: none" action="{{route('transaksi.invoice', session('message'))}}" method="GET" id="formsuccess">
     <button class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
 </form>
 <script type="text/javascript">
