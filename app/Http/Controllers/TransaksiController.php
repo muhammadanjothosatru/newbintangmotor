@@ -30,14 +30,17 @@ class TransaksiController extends Controller
                 if (Auth::user()->role == 1) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                                ->orderBy('transaksi.created_at', 'desc');
                 } else if (Auth::user()->role == 2) {
                     $transaksi_motor->where('users.cabang_id', Auth::user()->cabang_id)
                                 ->where('kendaraan.jenis', '=', 'Mobil')
-                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                                ->orderBy('transaksi.created_at', 'desc');
                 } else if (Auth::user()->role == 0) {
                     $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna');
+                                ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna')
+                                ->orderBy('transaksi.created_at', 'desc');
                 }
                 $all_transaksi_motor=$transaksi_motor->get();
                 return view('transaksi.index', compact('all_transaksi_motor'));
@@ -79,7 +82,7 @@ class TransaksiController extends Controller
                 }
                
                 $all_kendaraan=$motor->get();
-        return view('transaksi.create',compact('pelanggan','kendaraan','all_kendaraan'));
+        return view('transaksi.create', compact('pelanggan','kendaraan','all_kendaraan'));
     }
 
     /**
@@ -114,7 +117,7 @@ class TransaksiController extends Controller
             'metode_pembayaran'=>$request->metode_pembayaran,
             'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
             'no_kontrak'=>'-',
-            'uang_dp'=>$request->uang_dp,
+            'uang_dp'=>preg_replace('/[^0-9]/', '', $request->uang_dp),
             'bulan_angsuran'=>$request->bulan_angsuran,
             'keterangan'=>'Belum ACC',
             'users_id'=>Auth::id(),
@@ -122,7 +125,7 @@ class TransaksiController extends Controller
       
     }
     Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
-    return redirect('/transaksi')->with('success','data berhasil ditambahkan');
+    return redirect('/transaksi')->with('success','data berhasil ditambahkan')->with('message', $transaksi->id);
     }
 
     /**
@@ -199,6 +202,13 @@ class TransaksiController extends Controller
             'address'       => $pelanggan->alamat,
         ]);
 
+        $biaya = 0;
+        if($transaksi->metode_pembayaran == "Kredit"){
+            $biaya = $transaksi->uang_dp;
+        } else {
+            $biaya = $transaksi->harga_akhir;
+        }
+
         $item = (new InvoiceItem())
         ->title($kendaraan->merk)
         ->jenis($kendaraan->jenis)
@@ -209,7 +219,7 @@ class TransaksiController extends Controller
         ->noka($kendaraan->no_rangka)
         ->nobpkb($kendaraan->no_bpkb)
         ->ketlain($transaksi->keterangan)
-        ->pricePerUnit($transaksi->harga_akhir);
+        ->pricePerUnit($biaya);
 
         $invoice = Invoice::make()
             ->logo(public_path('images/logo2.png'))
