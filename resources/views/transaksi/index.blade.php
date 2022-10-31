@@ -73,7 +73,13 @@
     <button class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
 </form>
 <script type="text/javascript">
-    $("#formsuccess").submit();
+    var delayInMilliseconds = 2000; //1 second
+    setTimeout(function() {
+        $("#formsuccess").submit();
+        setTimeout(function() {
+            window.location.href = '/transaksi';
+        }, delayInMilliseconds);
+    }, delayInMilliseconds);
 </script>
 @endif
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PelangganController extends Controller
@@ -15,7 +16,10 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $pelanggan = Pelanggan::all();
+        $pelanggan = DB::table('pelanggan');
+        $pelanggan->select('pelanggan.*')
+        ->orderBy('pelanggan.nama', 'asc');
+        $pelanggan = $pelanggan->get();
         return view('pelanggan.index', compact('pelanggan'));
        
     }
