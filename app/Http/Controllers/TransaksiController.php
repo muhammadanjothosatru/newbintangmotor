@@ -122,11 +122,13 @@ class TransaksiController extends Controller
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
                 'metode_pembayaran'=>$request->metode_pembayaran,
-                'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir) - preg_replace('/[^0-9]/', '', $request->komisi),
+                'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
+                'komisi'=>preg_replace('/[^0-9]/', '', $request->komisi),
                 'no_kontrak'=>'-',
                 'uang_dp'=>'-',
                 'bulan_angsuran'=>'-',
                 'keterangan'=>"-",
+                'keterangan_lain'=>$request->keterangan_lain,
                 'users_id'=>Auth::id(),
             ]);
         }elseif($request->metode_pembayaran=='Kredit'){
@@ -136,10 +138,12 @@ class TransaksiController extends Controller
             'kendaraan_no_pol' => $request->no_pol,
             'metode_pembayaran'=>$request->metode_pembayaran,
             'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
+            'komisi'=>preg_replace('/[^0-9]/', '', $request->komisi),
             'no_kontrak'=>'-',
             'uang_dp'=>preg_replace('/[^0-9]/', '', $request->uang_dp),
             'bulan_angsuran'=>$request->bulan_angsuran,
             'keterangan'=>'Belum ACC',
+            'keterangan_lain'=>$request->keterangan_lain,
             'users_id'=>Auth::id(),
         ]);
       
