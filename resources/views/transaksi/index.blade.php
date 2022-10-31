@@ -52,7 +52,7 @@
                 <td><span class="badge">{{ $data->keterangan }}</span></td>
                 @endif
                 <td>
-                <form class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
+                <form target="_blank" class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
 				    @method('PUT')
 				    @csrf	
                     <a href="{{ route('transaksi.detail', $data->id ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
