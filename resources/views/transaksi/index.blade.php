@@ -52,7 +52,7 @@
                 <td><span class="badge">{{ $data->keterangan }}</span></td>
                 @endif
                 <td>
-                <form class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
+                <form target="_blank" class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
 				    @method('PUT')
 				    @csrf	
                     <a href="{{ route('transaksi.detail', $data->id ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -69,7 +69,7 @@
         </div>
 
 @if(Session::has('message'))
-<form style="display: none" action="{{route('transaksi.invoice', session('message'))}}" method="GET" id="formsuccess">
+<form target="_blank" style="display: none" action="{{route('transaksi.invoice', session('message'))}}" method="GET" id="formsuccess">
     <button class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
 </form>
 <script type="text/javascript">
