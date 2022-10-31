@@ -14,6 +14,7 @@
   <script src="{{ asset('assets/modules/datatables2/datatables.js')}}"></script>
   <script src="{{ asset('assets/modules/daterangepicker-master/daterangepicker-master/daterangepicker.js')}}"></script>
 
+
   <!-- Page Specific JS File -->
   
   <!-- Template JS File -->

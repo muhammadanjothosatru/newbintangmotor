@@ -50,7 +50,13 @@
                         </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP</label>
+                    <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP 1</label>
+                    <div class="form-floating col-sm-10">
+                        <input class="form-control file-upload " accept="image/*" name="foto_ktp" type="file" id="file-upload"></input>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP 2</label>
                     <div class="form-floating col-sm-10">
                         <input class="form-control file-upload " accept="image/*" name="foto_ktp" type="file" id="file-upload"></input>
                     </div>

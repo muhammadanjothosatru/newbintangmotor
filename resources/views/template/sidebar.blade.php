@@ -28,6 +28,12 @@
             {{-- @endif --}}
             <li class="{{ request()->is('transaksi', 'transaksi/*') ? 'active' : ''}}">
               <a href="{{ route('transaksi.index') }}" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
+              @if(Auth::user()->role == 0)
+              <ul class="dropdown-menu">
+                <li class="{{ request()->is('transaksi') ? 'active' : ''}}"><a class="nav-link " href="laporan">Motor</a></li>
+                <li class="{{ request()->is('transaksi-mobil') ? 'active' : ''}}"><a class="nav-link" href="laporan-mobil">Mobil</a></li>
+              </ul>
+              @endif
             </li>
 
             <li class="{{ request()->is('laporan', 'laporan/*') ? 'active' : '' }}">

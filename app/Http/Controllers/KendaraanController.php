@@ -124,7 +124,7 @@ class KendaraanController extends Controller
             'status_kendaraan' =>"Tersedia",
             'tahun_registrasi' => $request->tahun_registrasi,
             'no_bpkb' => $request->no_bpkb,
-            'harga_beli' => preg_replace('/[^0-9]/', '', $request->harga_beli),
+            'harga_beli' =>  preg_replace('/[^0-9]/', '', $request->harga_beli),
             'tanggal_masuk' => $request->tanggal_masuk,
             'supplier' => $request->supplier,
             'keterangan' => $request->keterangan,

@@ -8,12 +8,13 @@
 </div>
 @endif
 
-<h5>Dashboard</h5>
-
 <div class="card">
 		<!-- @auth
 		<h5>welcome, {{ Auth::user()->username  }}</h5>
 		@endauth -->
+    <div class="mt-3 ml-3">
+      <h5>Dashboard</h5>
+    </div>
 		<div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 ">
               <div class="card card-statistic-2">
@@ -68,7 +69,52 @@
             </div>
 		</div>
 		<div>
-		
+      <canvas id="myChart" height="100px"></canvas>
 		</div>
 </div>
+
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'],
+        datasets: [{
+            label: 'Penjualan Tiap Bulan',
+            data: [12, 19, 8, 5, 9, 3, 12, 19, 8, 5, 9, 3],
+            backgroundColor: [
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)'
+            ]
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+            xAxes: [{
+                barThickness: 8,  // number (pixels) or 'flex'
+                maxBarThickness: 8 // number (pixels)
+            }]
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Penjualan'
+            }
+        }
+    }
+});
+</script>
 @endsection

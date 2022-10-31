@@ -18,6 +18,7 @@
   <script src="{{ asset('assets/modules/sweetalert/sweetalert2.min.js')}}"></script>
   <script src="{{ asset('assets/modules/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/modules/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{ asset('assets/modules/chart.min.js')}}"></script>
 
   <!-- Template CSS -->
 

@@ -35,7 +35,6 @@
                 font-weight: bolder;
             }
             img {
-                a
                 vertical-align: middle;
                 border-style: none;
             }
