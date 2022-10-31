@@ -8,12 +8,13 @@
 </div>
 @endif
 
-<h5>Dashboard</h5>
-
 <div class="card">
 		<!-- @auth
 		<h5>welcome, {{ Auth::user()->username  }}</h5>
 		@endauth -->
+    <div class="mt-3 ml-3">
+      <h5>Dashboard</h5>
+    </div>
 		<div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 ">
               <div class="card card-statistic-2">
@@ -68,7 +69,7 @@
             </div>
 		</div>
 		<div>
-      <canvas id="myChart" width="10px">Chart</canvas>
+      <canvas id="myChart" height="100px"></canvas>
 		</div>
 </div>
 
@@ -77,33 +78,40 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Penjualan Tiap Bulan',
+            data: [12, 19, 8, 5, 9, 3, 12, 19, 8, 5, 9, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)',
+                'rgba(20, 87, 174, 1)'
+            ]
         }]
     },
     options: {
         scales: {
             y: {
                 beginAtZero: true
+            },
+            xAxes: [{
+                barThickness: 8,  // number (pixels) or 'flex'
+                maxBarThickness: 8 // number (pixels)
+            }]
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Penjualan'
             }
         }
     }
