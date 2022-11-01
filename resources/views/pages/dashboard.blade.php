@@ -76,7 +76,7 @@
 <script>
 var pembelian = {!! json_encode($pembelianperbulan) !!};
 var bulan = {!! json_encode($bulanterakhir) !!};
-console.log(pembelian);
+var maxvalue = Math.max(...pembelian)+10;
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
@@ -109,9 +109,9 @@ const myChart = new Chart(ctx, {
               display: true,
               ticks: {
                 beginAtZero: true,
-                steps: 10,
-                stepValue: 5,
-                max: 200
+                steps: 5,
+                stepValue: 4,
+                max: maxvalue
             }
             }],
             xAxes: [{
