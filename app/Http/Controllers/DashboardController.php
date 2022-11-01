@@ -103,12 +103,12 @@ class DashboardController extends Controller
                         $pembelian->where('users.cabang_id', Auth::user()->cabang_id)
                         ->where('kendaraan.jenis', '=', 'Mobil')
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
-                        ->whereYear('transaksi.created_at', $year)
+                        ->whereBetween('transaksi.created_at', [Carbon::now()->subYear(), Carbon::now()])
                         ->select('transaksi.id', 'transaksi.created_at');
                     } else if (Auth::user()->role == 0) {
                         $pembelian->where('kendaraan.jenis', '=', 'Sepeda Motor')
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
-                        ->whereYear('transaksi.created_at', $year)
+                        ->whereBetween('transaksi.created_at', [Carbon::now()->subYear(), Carbon::now()])
                         ->select('transaksi.id', 'transaksi.created_at');
                     }
                     $all_pembelianperbulan=$pembelian->get()->groupBy(function($date) {
@@ -142,8 +142,6 @@ class DashboardController extends Controller
 
                     $pembelianperbulan = array_values($pembelianperbulan);
                     $bulanterakhir = array_values($bulanterakhir);
-                    
-                    //dd($bulanterakhir);
                     
                     
 
