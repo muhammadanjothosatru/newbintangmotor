@@ -46,8 +46,8 @@
               @endif
             </li>
             @if(Auth::user()->role == 0)
-            <li class="{{ request()->is('#administrasi') ? 'active' : '' }}">
-              <a href="#administrasi" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
+            <li class="{{ request()->is('user') ? 'active' : '' }}">
+              <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
             </li>
             @endif
         </aside>
