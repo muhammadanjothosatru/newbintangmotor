@@ -74,14 +74,17 @@
 </div>
 
 <script>
+var pembelian = {!! json_encode($pembelianperbulan) !!};
+var bulan = {!! json_encode($bulanterakhir) !!};
+console.log(pembelian);
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'],
+        labels: bulan,
         datasets: [{
             label: 'Penjualan Tiap Bulan',
-            data: [12, 19, 8, 5, 9, 3, 12, 19, 8, 5, 9, 3],
+            data: pembelian,
             backgroundColor: [
                 'rgba(20, 87, 174, 1)',
                 'rgba(20, 87, 174, 1)',
