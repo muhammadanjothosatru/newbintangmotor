@@ -35,7 +35,9 @@ class LaporanController extends Controller
                     $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
                                 ->select('transaksi.*', 'pelanggan.nama', 'kendaraan.no_pol','kendaraan.merk', 'kendaraan.tipe', 'kendaraan.tahun_pembuatan', 'kendaraan.warna', 'kendaraan.harga_beli');
                 }
-                $all_transaksi_motor=$transaksi_motor->get();
+                $all_transaksi_motor=$transaksi_motor
+                ->orderBy('transaksi.created_at', 'desc')
+                ->get();
                 return view('laporan.index', compact('all_transaksi_motor'));
     }
 

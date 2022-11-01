@@ -658,14 +658,14 @@ $(document).ready(function () {
 
             // Total over this page
             var pageTotal = api
-                .column(12, { page: 'current' })
+                .column(13, { page: 'current' })
                 .data()
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0);
 
             // Update footer
-            $(api.column(12).footer()).html('Rp. ' + pageTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+            $(api.column(13).footer()).html('Rp. ' + pageTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         },
         init: function (api, node, config) {
             $(node).removeClass('dt-button')
