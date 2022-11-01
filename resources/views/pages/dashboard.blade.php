@@ -9,9 +9,6 @@
 @endif
 
 <div class="card">
-		<!-- @auth
-		<h5>welcome, {{ Auth::user()->username  }}</h5>
-		@endauth -->
     <div class="mt-3 ml-3">
       <h5 class="ml-1 pl-1 mb-0 pb-0">Dashboard</h5>
     </div>
@@ -30,6 +27,8 @@
                       {{$total->total_kendaraan}}
                     @endforeach	
                   </div>
+                  <div class="mt-1"><a href="kendaraan">Lihat semua kendaraan<i class="fas fa-arrow-right ml-2"></i></a></div>
+                    
                 </div>
               </div>
             </div>
@@ -47,6 +46,7 @@
                       {{$total->total_transaksi}}
                     @endforeach
                   </div>
+                  <div class="mt-1"><a href="transaksi">Lihat semua penjualan<i class="fas fa-arrow-right ml-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -64,6 +64,7 @@
                       Rp. {{ number_format($total->total_keuntungan, 0, ',', '.');}}
                     @endforeach
                   </div>
+                  <div class="mt-1"><a href="laporan">Lihat semua keuntungan<i class="fas fa-arrow-right ml-2"></i></a></div>
                 </div>
               </div>
             </div>
