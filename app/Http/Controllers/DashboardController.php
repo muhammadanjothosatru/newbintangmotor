@@ -75,18 +75,18 @@ class DashboardController extends Controller
                         ->where('kendaraan.jenis', '=', 'Sepeda Motor')
                         ->whereMonth('transaksi.created_at', $month)
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
-                        ->select(DB::raw('sum(harga_akhir - harga_beli) as total_keuntungan'));
+                        ->select(DB::raw('sum(harga_akhir - harga_beli - komisi) as total_keuntungan'));
                     } else if (Auth::user()->role == 2) {
                         $keuntungan->where('users.cabang_id', Auth::user()->cabang_id)
                         ->where('kendaraan.jenis', '=', 'Mobil')
                         ->whereMonth('transaksi.created_at', $month)
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
-                        ->select(DB::raw('sum(harga_akhir - harga_beli) as total_keuntungan'));
+                        ->select(DB::raw('sum(harga_akhir - harga_beli - komisi) as total_keuntungan'));
                     } else if (Auth::user()->role == 0) {
                         $keuntungan
                         ->whereMonth('transaksi.created_at', $month)
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
-                        ->select(DB::raw('sum(harga_akhir - harga_beli) as total_keuntungan'));
+                        ->select(DB::raw('sum(harga_akhir - harga_beli - komisi) as total_keuntungan'));
                     }
                     $all_keuntungan=$keuntungan->get();
 
