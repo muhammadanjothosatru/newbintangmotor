@@ -42,7 +42,7 @@ class DashboardController extends Controller
                 //Total Transaksi
                 
                 $month = Carbon::now()->format('m');
-                // dd($month);
+                $year = Carbon::now()->format('Y');
 
                 $transaksitotal =DB::table('transaksi')
                     ->join('users','transaksi.users_id', '=', 'users.id')
@@ -90,8 +90,65 @@ class DashboardController extends Controller
                     }
                     $all_keuntungan=$keuntungan->get();
 
+                $pembelian = DB::table('transaksi')
+                    ->join('users','transaksi.users_id', '=', 'users.id')
+                    ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol');
+                    if (Auth::user()->role == 1) {
+                        $pembelian->where('users.cabang_id', Auth::user()->cabang_id)
+                        ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                        ->where('kendaraan.status_kendaraan', '=', 'Terjual')
+                        ->whereBetween('transaksi.created_at', [Carbon::now()->subYear(), Carbon::now()])
+                        ->select('transaksi.id', 'transaksi.created_at');
+                    } else if (Auth::user()->role == 2) {
+                        $pembelian->where('users.cabang_id', Auth::user()->cabang_id)
+                        ->where('kendaraan.jenis', '=', 'Mobil')
+                        ->where('kendaraan.status_kendaraan', '=', 'Terjual')
+                        ->whereYear('transaksi.created_at', $year)
+                        ->select('transaksi.id', 'transaksi.created_at');
+                    } else if (Auth::user()->role == 0) {
+                        $pembelian->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                        ->where('kendaraan.status_kendaraan', '=', 'Terjual')
+                        ->whereYear('transaksi.created_at', $year)
+                        ->select('transaksi.id', 'transaksi.created_at');
+                    }
+                    $all_pembelianperbulan=$pembelian->get()->groupBy(function($date) {
+                        return Carbon::parse($date->created_at)->format('m');
+                    });;
 
-        return view('pages.dashboard',compact('allkendaraan', 'all_transaksi', 'all_keuntungan')); 
+                    //dd($month);
+
+                    $usermcount = [];
+                    $pembelianperbulan = [];
+                    $bulanterakhir=[];
+                    $daftarbulan=['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'];
+                    
+                    foreach ($all_pembelianperbulan as $key => $value) {
+                        $usermcount[(int)$key] = count($value);
+                    }
+                    
+                    for($i = 1; $i <= 12; $i++){
+                        $bulan = $i+(int)$month;
+                        if($bulan > 12){
+                            $bulan = $bulan-12;
+                        }
+                        if(!empty($usermcount[$bulan])){
+                            $pembelianperbulan[$i] = $usermcount[$bulan];
+                            $bulanterakhir[$i] = $daftarbulan[$bulan-1];   
+                        }else{
+                            $pembelianperbulan[$i] = 0;    
+                            $bulanterakhir[$i] = $daftarbulan[$bulan-1];
+                        }
+                    }
+
+                    $pembelianperbulan = array_values($pembelianperbulan);
+                    $bulanterakhir = array_values($bulanterakhir);
+                    
+                    //dd($bulanterakhir);
+                    
+                    
+
+
+        return view('pages.dashboard',compact('allkendaraan', 'all_transaksi', 'all_keuntungan', 'pembelianperbulan', 'bulanterakhir')); 
     }
 
     /**
