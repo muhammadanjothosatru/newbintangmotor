@@ -13,7 +13,7 @@
 		<h5>welcome, {{ Auth::user()->username  }}</h5>
 		@endauth -->
     <div class="mt-3 ml-3">
-      <h5>Dashboard</h5>
+      <h5 class="ml-1 pl-1 mb-0 pb-0">Dashboard</h5>
     </div>
 		<div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 ">
@@ -68,7 +68,9 @@
               </div>
             </div>
 		</div>
-		<div>
+    <h6 class="ml-4 pl-1 mb-0 pb-0">Grafik Penjualan</h6>
+		<div class="ml-4 mr-4 mt-0">
+    
       <canvas id="myChart" height="400px"></canvas>
 		</div>
 </div>
@@ -91,6 +93,12 @@ const myChart = new Chart(ctx, {
         datasets: [{
             label: 'Penjualan Per Bulan',
             data: pembelian,
+            borderColor: '#1457ae',
+            borderWidth: 1,
+            borderRadius: 20,
+            borderSkipped: 'bottom',
+            barThickness: 15,
+            maxBarThickness: 15,
             backgroundColor: [
                 'rgba(20, 87, 174, 1)',
                 'rgba(20, 87, 174, 1)',
@@ -111,23 +119,10 @@ const myChart = new Chart(ctx, {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-            yAxes: [{
-              display: true,
-              ticks: {
+            y: {
                 beginAtZero: true,
-                stepSize: step,
-                max: maxvalue
-            }
-            }],
-            xAxes: [{
-                barThickness: 20,
-                maxBarThickness: 20 
-            }]
-        },
-        plugins: {
-            title: {
-                display: true,
-                text: 'Penjualan'
+                suggestedMin: 0,
+                suggestedMax: maxvalue,
             }
         }
     }
