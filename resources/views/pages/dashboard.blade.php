@@ -69,7 +69,7 @@
             </div>
 		</div>
 		<div>
-      <canvas id="myChart" height="100px"></canvas>
+      <canvas id="myChart" height="400px"></canvas>
 		</div>
 </div>
 
@@ -83,7 +83,7 @@ const myChart = new Chart(ctx, {
     data: {
         labels: bulan,
         datasets: [{
-            label: 'Penjualan Tiap Bulan',
+            label: 'Penjualan Per Bulan',
             data: pembelian,
             backgroundColor: [
                 'rgba(20, 87, 174, 1)',
@@ -102,13 +102,21 @@ const myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
-            y: {
-                beginAtZero: true
-            },
+            yAxes: [{
+              display: true,
+              ticks: {
+                beginAtZero: true,
+                steps: 10,
+                stepValue: 5,
+                max: 200
+            }
+            }],
             xAxes: [{
-                barThickness: 8,  // number (pixels) or 'flex'
-                maxBarThickness: 8 // number (pixels)
+                barThickness: 20,
+                maxBarThickness: 20 
             }]
         },
         plugins: {
