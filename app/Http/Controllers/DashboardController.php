@@ -59,7 +59,7 @@ class DashboardController extends Controller
                         ->whereMonth('transaksi.created_at', $month)
                         ->select(DB::raw('count(no_pol) as total_transaksi'));
                     } else if (Auth::user()->role == 0) {
-                        $transaksitotal->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                        $transaksitotal
                         ->whereMonth('transaksi.created_at', $month)
                         ->select(DB::raw('count(no_pol) as total_transaksi'));
                     }
@@ -83,7 +83,7 @@ class DashboardController extends Controller
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
                         ->select(DB::raw('sum(harga_akhir - harga_beli) as total_keuntungan'));
                     } else if (Auth::user()->role == 0) {
-                        $keuntungan->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                        $keuntungan
                         ->whereMonth('transaksi.created_at', $month)
                         ->where('kendaraan.status_kendaraan', '=', 'Terjual')
                         ->select(DB::raw('sum(harga_akhir - harga_beli) as total_keuntungan'));
@@ -106,8 +106,7 @@ class DashboardController extends Controller
                         ->whereBetween('transaksi.created_at', [Carbon::now()->subYear(), Carbon::now()])
                         ->select('transaksi.id', 'transaksi.created_at');
                     } else if (Auth::user()->role == 0) {
-                        $pembelian->where('kendaraan.jenis', '=', 'Sepeda Motor')
-                        ->where('kendaraan.status_kendaraan', '=', 'Terjual')
+                        $pembelian->where('kendaraan.status_kendaraan', '=', 'Terjual')
                         ->whereBetween('transaksi.created_at', [Carbon::now()->subYear(), Carbon::now()])
                         ->select('transaksi.id', 'transaksi.created_at');
                     }
