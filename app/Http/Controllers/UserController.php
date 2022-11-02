@@ -75,9 +75,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::findorfail($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -98,8 +99,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        // $user = User::findorfail($id);
+        // $user->delete();
+        // return redirect()->route('user.index')->with('success','User berhasil dihapus');
     }
 }

@@ -30,7 +30,12 @@
 					<td>{{$data->email}}</td>
 					<td>{{ $data->cabang->nama }}</td>
 					<td>
-						<a href="{{route('user.edit',$data->id)}}" class="btn btn-primary btn-sm">Edit</a>
+					<form id="delete-kendaraan" class="p-0" action="{{route('user.destroy',$data->id) }}" method="POST">
+						@method('DELETE')
+						@csrf
+						<a href="{{route('user.edit',$data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+						<!-- <button class='btn btn-danger btn-sm'  type="submit" id="delete" ><i class="far fa-trash-alt"></i></button> -->
+					</form>
 					</td>
 				</tr>
 				@endforeach

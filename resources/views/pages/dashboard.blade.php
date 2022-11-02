@@ -93,7 +93,7 @@ const myChart = new Chart(ctx, {
             label: 'Penjualan Per Bulan',
             data: pembelian,
             borderColor: '#1457ae',
-            borderWidth: 1,
+            borderWidth: 0,
             borderRadius: 20,
             borderSkipped: 'bottom',
             barThickness: 15,
