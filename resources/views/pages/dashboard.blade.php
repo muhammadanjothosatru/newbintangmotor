@@ -82,8 +82,6 @@ var bulan = {!! json_encode($bulanterakhir) !!};
 var maxvalue = Math.max(...pembelian)+10;
 if(maxvalue%2!=0){
   maxvalue += 1;
-}else{
-  maxvalue += 0;
 }
 var step = maxvalue/10;
 const ctx = document.getElementById('myChart').getContext('2d');
@@ -124,6 +122,9 @@ const myChart = new Chart(ctx, {
                 beginAtZero: true,
                 suggestedMin: 0,
                 suggestedMax: maxvalue,
+                ticks: {
+                  stepSize: step
+                }
             }
         }
     }
