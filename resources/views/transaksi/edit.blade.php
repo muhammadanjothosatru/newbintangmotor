@@ -95,13 +95,17 @@
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="uang_dp" value="Rp. {!! number_format($transaksi->uang_dp, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                                @if($transaksi->metode_pembayaran == 'Tunai')
+                                    <input type="text" name="uang_dp" value="-" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
+                                @elseif($transaksi->metode_pembayaran == 'Kredit')
+                                    <input type="text" name="uang_dp" value= "Rp. {!!number_format($transaksi->uang_dp, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka">
+                                @endif
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="bulan_angsuran" value="{!! $transaksi->bulan_angsuran !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                                <input type="text" name="bulan_angsuran" value="{!! $transaksi->bulan_angsuran !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" {!! $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' !!}>
                             </div>
                     </div>
                     <div class="mb-3 row">
