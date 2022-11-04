@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "816fb91059f4660294e64300efba9dde",
+    "content-hash": "2afdad05278fcafff3d45978bd7c2e80",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2624,16 +2624,16 @@
         },
         {
             "name": "nnnick/chartjs",
-            "version": "v4.0.0",
+            "version": "v3.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chartjs/Chart.js.git",
-                "reference": "02a7bdbf803bcadcd684a9045a4638a7b059e562"
+                "reference": "5ea4b3adffcea61c7ec256ac3976927c5619c17a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/02a7bdbf803bcadcd684a9045a4638a7b059e562",
-                "reference": "02a7bdbf803bcadcd684a9045a4638a7b059e562",
+                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/5ea4b3adffcea61c7ec256ac3976927c5619c17a",
+                "reference": "5ea4b3adffcea61c7ec256ac3976927c5619c17a",
                 "shasum": ""
             },
             "require": {
@@ -2663,9 +2663,9 @@
             ],
             "support": {
                 "issues": "https://github.com/chartjs/Chart.js/issues",
-                "source": "https://github.com/chartjs/Chart.js/tree/v4.0.0"
+                "source": "https://github.com/chartjs/Chart.js/tree/v3.9.1"
             },
-            "time": "2022-10-12T11:16:03+00:00"
+            "time": "2022-08-03T12:46:38+00:00"
         },
         {
             "name": "nunomaduro/termwind",

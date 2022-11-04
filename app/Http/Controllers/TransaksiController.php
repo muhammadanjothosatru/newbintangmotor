@@ -42,7 +42,8 @@ class TransaksiController extends Controller
         return view('transaksi.mobil', compact('all_transaksi_mobil'));
     }
     public function index()
-    {
+    { 
+        self::changestatus();
         $transaksi_motor =DB::table('transaksi')
                 ->join('users','transaksi.users_id', '=', 'users.id')
                 ->join('pelanggan','transaksi.pelanggan_id', '=', 'pelanggan.id')
@@ -77,10 +78,6 @@ class TransaksiController extends Controller
     public function create()
     {
         $pelanggan = Pelanggan::all();
-        $kendaraan = DB::table('kendaraan')
-                    ->where('kendaraan.status_kendaraan','=','Tersedia')
-                    ->select('kendaraan.*')
-                    ->get();
         $motor =DB::table('kendaraan')
                 ->join('users','kendaraan.users_id', '=', 'users.id');
                 if (Auth::user()->role == 1) {
@@ -102,7 +99,9 @@ class TransaksiController extends Controller
                 }
                
                 $all_kendaraan=$motor->get();
-        return view('transaksi.create', compact('pelanggan','kendaraan','all_kendaraan'));
+
+    
+        return view('transaksi.create', compact('pelanggan','all_kendaraan'));
     }
 
     /**
@@ -171,18 +170,73 @@ class TransaksiController extends Controller
      */
     public function edit($id)
     {
-        // $transaksi = Transaksi::findorfail($id);
+        $transaksi = Transaksi::findorfail($id);
 
-        // $pelanggan = Pelanggan::findorfail($transaksi->pelanggan_id);
-        // $kendaraan = Kendaraan::findorfail($transaksi->kendaraan_no_pol);
+        $pelanggan = Pelanggan::findorfail($transaksi->pelanggan_id);
+        $pelangganall = Pelanggan::all();
+
+        $nopol = $transaksi->kendaraan_no_pol;
+        $kendaraan = Kendaraan::findorfail($nopol);
+        $kendaraan->status_kendaraan = "Tersedia";
+        $kendaraan->save();
+
+        $motor =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id');
+                if (Auth::user()->role == 1) {
+                    $motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 2) {
+                    $motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 0) {
+                    $motor->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                $kendaraanall=$motor->get();
         
 
-        // return view('transaksi.edit', compact('transaksi', 'pelanggan', 'kendaraan'));
+        return view('transaksi.edit', compact('transaksi', 'pelanggan', 'pelangganall', 'kendaraan', 'kendaraanall', 'nopol'));
+    }
+
+    public function changestatus(){
+        $kendaraan =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->join('transaksi','kendaraan.no_pol', '=', 'kendaraan_no_pol');
+                if (Auth::user()->role == 1) {
+                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 2) {
+                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 0) {
+                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                $kendaraanterjual=$kendaraan->get();
+        
+        foreach ($kendaraanterjual as $terjual) {
+            Kendaraan::where('no_pol', '=', $terjual->no_pol)->update(['status_kendaraan'=>'Terjual']);
+        }
     }
 
     public function detail($id)
     {
         $transaksi = Transaksi::findorfail($id);
+        self::changestatus();
 
         $pelanggan = Pelanggan::findorfail($transaksi->pelanggan_id);
         $kendaraan = Kendaraan::findorfail($transaksi->kendaraan_no_pol);
@@ -198,9 +252,33 @@ class TransaksiController extends Controller
      * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaksi $transaksi)
+    public function update(Request $request, $id)
     {
-        //
+        $transaksi = Transaksi::findorfail($id);
+        $validate= $request->validate([
+            'harga_akhir' => 'required',
+        ]);
+        $transaksi->pelanggan_id = $request->nama;
+        $transaksi->kendaraan_no_pol = $request->no_pol;
+        $transaksi->metode_pembayaran = $request->metode_pembayaran;
+        $transaksi->harga_akhir=preg_replace('/[^0-9]/', '', $request->harga_akhir);
+        $transaksi->komisi=preg_replace('/[^0-9]/', '', $request->komisi);
+        if($request->metode_pembayaran=='Tunai'){
+            $transaksi->no_kontrak='-';
+            $transaksi->uang_dp='-';
+            $transaksi->bulan_angsuran='-';
+            $transaksi->keterangan='-';
+        }elseif($request->metode_pembayaran=='Kredit'){
+            $transaksi->no_kontrak=$request->no_kontrak;
+            $transaksi->uang_dp=preg_replace('/[^0-9]/', '', $request->uang_dp);
+            $transaksi->bulan_angsuran=$request->bulan_angsuran;
+            $transaksi->keterangan=$request->keterangan;
+        }
+        $transaksi->keterangan_lain=$request->keterangan_lain;
+        $transaksi->save();
+        
+        Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
+        return redirect()->route('transaksi.index')->with('success','Data transaksi anda berhasil diupdate'); 
     }
 
     /**

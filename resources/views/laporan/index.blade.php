@@ -29,7 +29,7 @@
         <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal Pembelian</th>
+                    <th>Tanggal</th>
                     <th>Pelanggan</th>
                     <th>No.Pol</th>
                     <th>Merk</th>
@@ -39,6 +39,7 @@
                     <th>Pembayaran</th>
                     <th>Ket. ACC</th>
                     <th>Harga Beli</th>
+                    <th>Komisi</th>
                     <th>Harga Jual</th>
                     <th>Laba</th>
                 </tr>
@@ -47,18 +48,19 @@
             @foreach($all_transaksi_motor as $data)
             <tr>
                 <td style="width:25px">{{ $loop->iteration}}</td>
-                <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}</td>
+                <td style="width:100px">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}</td>
                 <td>{{ $data->nama }}</td>
                 <td>{{ $data->no_pol }}</td>
                 <td>{{ $data->merk }}</td>
                 <td>{{ $data->tipe}}</td>
-                <td>{{ $data->tahun_pembuatan }}</td>
-                <td>{{ $data->warna }}</td>
-                <td>{{ $data->metode_pembayaran }}</td>
+                <td style="width:25px">{{ $data->tahun_pembuatan }}</td>
+                <td style="width:50px">{{ $data->warna }}</td>
+                <td style="width:50px">{{ $data->metode_pembayaran }}</td>
                 <td><span class="badge ">{{ $data->keterangan }}</span></td>
                 <td>Rp. {{ number_format($data->harga_beli, 0, ',', '.');}}</td>
+                <td>Rp. {{ number_format($data->komisi, 0, ',', '.');}}</td>
                 <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
-                <td>Rp. {{ number_format($data->harga_akhir - $data->harga_beli, 0, ',', '.');}}</td>
+                <td>Rp. {{ number_format($data->harga_akhir - ($data->harga_beli + $data->komisi), 0, ',', '.');}}</td>
             </tr>
             @endforeach
         </tbody>
@@ -75,7 +77,8 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th style="text-align:right; white-space: nowrap;">Total:</th>
+                <th></th>
+                <th style="text-align:right; white-space: nowrap;">Total Laba:</th>
                 <th style="text-align:right; white-space: nowrap"></th>
             </tr>
         </tfoot>
