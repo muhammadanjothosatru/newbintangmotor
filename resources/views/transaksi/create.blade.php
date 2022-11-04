@@ -109,7 +109,7 @@
                     <div class="mb-3 row">
                         <label for="inputAlamat" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
                         <div class="pl-0 col-sm-10">
-                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan"></textarea>
+                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan" disabled></textarea>
                         </div>
                     </div>
                     
@@ -124,11 +124,13 @@
 <script type="text/javascript">
     function selectmetode(metodedipilih){
         if(metodedipilih.value=='Tunai'){
+            $('#keterangan').prop('disabled', true);
             $('#nokontrak').prop('disabled', true);
             $('#uangmuka').prop('disabled', true);
             $('#angsuran').prop('disabled', true);
             $('#acc').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
+            $('#keterangan').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
             $('#angsuran').prop('disabled', false);
             $('#acc').prop('disabled', false);

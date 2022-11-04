@@ -268,13 +268,14 @@ class TransaksiController extends Controller
             $transaksi->uang_dp='-';
             $transaksi->bulan_angsuran='-';
             $transaksi->keterangan='-';
+            $transaksi->keterangan_lain='-';
         }elseif($request->metode_pembayaran=='Kredit'){
             $transaksi->no_kontrak=$request->no_kontrak;
             $transaksi->uang_dp=preg_replace('/[^0-9]/', '', $request->uang_dp);
             $transaksi->bulan_angsuran=$request->bulan_angsuran;
             $transaksi->keterangan=$request->keterangan;
+            $transaksi->keterangan_lain=$request->keterangan_lain;
         }
-        $transaksi->keterangan_lain=$request->keterangan_lain;
         $transaksi->save();
         
         Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
