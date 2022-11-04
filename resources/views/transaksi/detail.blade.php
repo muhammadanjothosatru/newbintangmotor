@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/kendaraan-create.css')}}">
 @endsection
 @section('konten')
+
 <div class="card mt-4">
     @if(count($errors)>0)
     @foreach($errors->all() as $error)
@@ -20,7 +21,7 @@
             <div class="font-form-header mb-3 col-6">Detail Pembelian</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
                 <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
-                <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-pen mr-2"></i>Ubah</a>
+                <a href="{{ route('transaksi.edit', $transaksi->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-pen mr-2"></i>Ubah</a>
             </div>
         </div>
         

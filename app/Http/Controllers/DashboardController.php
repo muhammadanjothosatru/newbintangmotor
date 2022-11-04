@@ -17,6 +17,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        
+        self::changestatus();
         $jumlahkendaraan =DB::table('kendaraan')
             ->join('users','kendaraan.users_id', '=', 'users.id');
              
@@ -157,6 +159,35 @@ class DashboardController extends Controller
     public function create()
     {
         //
+    }
+
+    
+    public function changestatus(){
+        $kendaraan =DB::table('kendaraan')
+                ->join('users','kendaraan.users_id', '=', 'users.id')
+                ->join('transaksi','kendaraan.no_pol', '=', 'kendaraan_no_pol');
+                if (Auth::user()->role == 1) {
+                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 2) {
+                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.jenis', '=', 'Mobil')
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                if (Auth::user()->role == 0) {
+                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
+                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                                ->select('kendaraan.*');
+                }
+                $kendaraanterjual=$kendaraan->get();
+        
+        foreach ($kendaraanterjual as $terjual) {
+            Kendaraan::where('no_pol', '=', $terjual->no_pol)->update(['status_kendaraan'=>'Terjual']);
+        }
     }
 
     /**
