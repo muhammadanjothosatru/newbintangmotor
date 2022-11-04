@@ -79,7 +79,7 @@
                     <div class="mb-3 row">
                         <label for="metode"  class="pl-0 col-sm-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 col-sm-10">
-                            <select class="select2 col-sm-12" required="required"name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity" id="metodepembayaran">
+                            <select class="select2 col-sm-12" required="required" name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity" id="metodepembayaran">
                                 <option></option>
                                 <option value="Tunai" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'selected' : '' }}>Tunai</option>
                                 <option value="Kredit" {{ $transaksi->metode_pembayaran == 'Kredit' ? 'selected' : '' }}>Kredit</option>
@@ -87,9 +87,9 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="keteranganacc"  class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
-                        <div id="keteranganacc" class="pl-0 col-sm-10">
-                            <select class="select2 col-sm-12" required="required"name="keterangan" data-placeholder="Pilih Keterangan ACC" data-minimum-results-for-search="Infinity" id="keteranganacc" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                        <label for="keteranganbaru"  class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
+                        <div id="keteranganbaru" class="pl-0 col-sm-10">
+                            <select class="select2 col-sm-12" name="keterangan" data-placeholder="Pilih Keterangan ACC" data-minimum-results-for-search="Infinity" id="keteranganacc" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
                                 <option></option>
                                 <option value="Belum ACC" {{ $transaksi->keterangan == 'Belum ACC' ? 'selected' : '' }}>Belum ACC</option>
                                 <option value="Sudah ACC" {{ $transaksi->keterangan == 'Sudah ACC' ? 'selected' : '' }}>Sudah ACC</option>
@@ -121,7 +121,7 @@
                     <div class="mb-3 row">
                         <label for="inputKeterangan" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
                         <div class="pl-0 col-sm-10">
-                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan">{!! $transaksi->keterangan_lain !!}</textarea>
+                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan" {!! $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' !!}>{!! $transaksi->keterangan_lain !!}</textarea>
                         </div>
                     </div>
                     
@@ -136,12 +136,14 @@
 <script type="text/javascript">
     function selectmetode(metodedipilih){
         if(metodedipilih.value=='Tunai'){
+            $('#keterangan').prop('disabled', true);
             $('#keteranganacc').prop('disabled', true);
             $('#nokontrak').prop('disabled', true);
             $('#uangmuka').prop('disabled', true);
             $('#angsuran').prop('disabled', true);
             $('#acc').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
+            $('#keterangan').prop('disabled', false);
             $('#keteranganacc').prop('disabled', false);
             $('#nokontrak').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
