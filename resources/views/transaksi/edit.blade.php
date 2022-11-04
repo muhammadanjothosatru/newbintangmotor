@@ -33,7 +33,7 @@
                             <select class="select2 col-sm-12" name="nama" required="required" data-placeholder="Cari Nama Pelanggan">
                                 <option></option>
                                 @foreach($pelangganall as $data)
-                                    <option value={{$data->id}} {{ $data->id == $pelanggan->id ? 'selected' : '' }}>{{ $data->nama }}</option>
+                                    <option value="{{$data->id}}" {{ $data->id == $pelanggan->id ? 'selected' : '' }}>{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -50,7 +50,7 @@
                             <select class="select2 col-sm-12" name="no_pol" data-placeholder="Cari Nomor Polisi">
                                 <option></option>
                                 @foreach($kendaraanall as $data)
-                                    <option value={{$data->no_pol}} {{ $data->no_pol ==  $kendaraan->no_pol ? 'selected' : '' }}>{{ $data->no_pol }} - {{$data->tipe}}</option>
+                                    <option value="{{$data->no_pol}}" {{ $data->no_pol ==  $transaksi->kendaraan_no_pol ? 'selected' : '' }}>{{ $data->no_pol }} - {{$data->tipe}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,7 +65,7 @@
                     <div class="mb-3 row">
                         <label for="inputKomisi"  class="col-sm-2 col-form-label font-form">Komisi</label>
                             <div class="col-sm-10">
-                                <input type="text" name="komisi" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
+                                <input type="text" name="komisi" value= "Rp. {!!number_format($transaksi->komisi, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
                             </div>
                     </div>
                     <br>
@@ -83,6 +83,16 @@
                                 <option></option>
                                 <option value="Tunai" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'selected' : '' }}>Tunai</option>
                                 <option value="Kredit" {{ $transaksi->metode_pembayaran == 'Kredit' ? 'selected' : '' }}>Kredit</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="keteranganacc"  class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
+                        <div id="keteranganacc" class="pl-0 col-sm-10">
+                            <select class="select2 col-sm-12" required="required"name="keterangan" data-placeholder="Pilih Keterangan ACC" data-minimum-results-for-search="Infinity" id="keteranganacc" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                                <option></option>
+                                <option value="Belum ACC" {{ $transaksi->keterangan == 'Belum ACC' ? 'selected' : '' }}>Belum ACC</option>
+                                <option value="Sudah ACC" {{ $transaksi->keterangan == 'Sudah ACC' ? 'selected' : '' }}>Sudah ACC</option>
                             </select>
                         </div>
                     </div>
@@ -109,9 +119,9 @@
                             </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="inputAlamat" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
+                        <label for="inputKeterangan" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
                         <div class="pl-0 col-sm-10">
-                            <textarea class="form-control textarea-control-size" value = "{!! $transaksi->keterangan_lain !!}" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan"></textarea>
+                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan">{!! $transaksi->keterangan_lain !!}</textarea>
                         </div>
                     </div>
                     
@@ -126,11 +136,13 @@
 <script type="text/javascript">
     function selectmetode(metodedipilih){
         if(metodedipilih.value=='Tunai'){
+            $('#keteranganacc').prop('disabled', true);
             $('#nokontrak').prop('disabled', true);
             $('#uangmuka').prop('disabled', true);
             $('#angsuran').prop('disabled', true);
             $('#acc').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
+            $('#keteranganacc').prop('disabled', false);
             $('#nokontrak').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
             $('#angsuran').prop('disabled', false);

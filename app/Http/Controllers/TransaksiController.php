@@ -178,7 +178,7 @@ class TransaksiController extends Controller
         $nopol = $transaksi->kendaraan_no_pol;
         $kendaraan = Kendaraan::findorfail($nopol);
         $kendaraan->status_kendaraan = "Tersedia";
-        $kendaraan->update();
+        $kendaraan->save();
 
         $motor =DB::table('kendaraan')
                 ->join('users','kendaraan.users_id', '=', 'users.id');
@@ -252,9 +252,33 @@ class TransaksiController extends Controller
      * @param  \App\Models\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaksi $transaksi)
+    public function update(Request $request, $id)
     {
-        //
+        $transaksi = Transaksi::findorfail($id);
+        $validate= $request->validate([
+            'harga_akhir' => 'required',
+        ]);
+        $transaksi->pelanggan_id = $request->nama;
+        $transaksi->kendaraan_no_pol = $request->no_pol;
+        $transaksi->metode_pembayaran = $request->metode_pembayaran;
+        $transaksi->harga_akhir=preg_replace('/[^0-9]/', '', $request->harga_akhir);
+        $transaksi->komisi=preg_replace('/[^0-9]/', '', $request->komisi);
+        if($request->metode_pembayaran=='Tunai'){
+            $transaksi->no_kontrak='-';
+            $transaksi->uang_dp='-';
+            $transaksi->bulan_angsuran='-';
+            $transaksi->keterangan='-';
+        }elseif($request->metode_pembayaran=='Kredit'){
+            $transaksi->no_kontrak=$request->no_kontrak;
+            $transaksi->uang_dp=preg_replace('/[^0-9]/', '', $request->uang_dp);
+            $transaksi->bulan_angsuran=$request->bulan_angsuran;
+            $transaksi->keterangan=$request->keterangan;
+        }
+        $transaksi->keterangan_lain=$request->keterangan_lain;
+        $transaksi->save();
+        
+        Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
+        return redirect()->route('transaksi.index')->with('success','Data transaksi anda berhasil diupdate'); 
     }
 
     /**
