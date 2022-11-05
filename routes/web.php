@@ -43,14 +43,23 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
         'kendaraan' => KendaraanController::class,
         'transaksi' => TransaksiController::class,
         'laporan' => LaporanController::class,
-        'user' => UserController::class,
-        'cabang' => CabangController::class,
+       
+        
     ]);
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
-    Route::get('/kendaraan-mobil', [KendaraanController::class,'mobil']);
     Route::get('/kendaraan/{no_pol}/detail',[KendaraanController::class,'detail'])->name('kendaraan.detail');
     Route::get('/transaksi/{id}/invoice', [TransaksiController::class,'invoice'])->name('transaksi.invoice');
     Route::get('/transaksi/{id}/detail', [TransaksiController::class,'detail'])->name('transaksi.detail');
+    
+});
+// Hanya bisa diakses oleh Super Admin
+Route::group(['middleware' => ['auth','cekrole:0']], function(){
+    Route::resource('user', UserController::class);
+    Route::resource('cabang', CabangController::class);
+});
+// Hanya bisa diakses oleh Super Admin dan Admin Mobil
+Route::group(['middleware' => ['auth','cekrole:0,2']], function(){
+    Route::get('/kendaraan-mobil', [KendaraanController::class,'mobil']);
     Route::get('/transaksi-mobil', [TransaksiController::class,'mobil']);
     Route::get('/laporan-mobil', [LaporanMobilController::class,'index']);
 });
