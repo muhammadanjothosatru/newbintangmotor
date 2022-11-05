@@ -56,7 +56,7 @@
                         <select class="select2 col-sm-12" name="cabang_id" data-placeholder="Cari Cabang">
                             <option></option>
                                 @foreach($cabangall as $data)
-                                    <option  value="{{ $data->id }}{{ $data->id == $cabang->id ? 'selected' : '' }}">{{ $data->id }} - {{$data->nama}}</option>
+                                    <option  value="{{ $data->id }}{{ $data->id == $cabang->id ? 'selected' : '' }}">{{$data->nama}}</option>
                                 @endforeach
                             </select>
                     </div>

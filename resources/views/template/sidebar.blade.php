@@ -46,8 +46,12 @@
               @endif
             </li>
             @if(Auth::user()->role == 0)
-            <li class="{{ request()->is('user') ? 'active' : '' }}">
+            <li class="{{ request()->is('user','cabang') ? 'active' : '' }}">
               <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
+              <ul class="dropdown-menu">
+                <li class="{{ request()->is('user') ? 'active' : ''}}"><a class="nav-link " href="user">User</a></li>
+                <li class="{{ request()->is('cabang') ? 'active' : ''}}"><a class="nav-link" href="cabang">Cabang</a></li>
+              </ul>
             </li>
             @endif
         </aside>

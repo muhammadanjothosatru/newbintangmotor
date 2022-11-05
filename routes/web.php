@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\CabangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['auth','cekrole:0,1,2']], function(){
         'transaksi' => TransaksiController::class,
         'laporan' => LaporanController::class,
         'user' => UserController::class,
+        'cabang' => CabangController::class,
     ]);
     Route::get('/pelanggan/ubah/{id}',[PelangganController::class,'ubah'])->name('pelanggan.ubah');
     Route::get('/kendaraan-mobil', [KendaraanController::class,'mobil']);
