@@ -762,9 +762,8 @@ if (flasherror) {
         text: flasherror,
     });
 }
-$("#delete").on("click", function (e) {
-    e.preventDefault();
-    let id = $(this).data("id");
+function dosomething(id){
+    id = "#" + id.replace(/\s/g, "");
     Swal.fire({
         title: "Are you sure ?",
         text: "You won't be able to revert this !",
@@ -775,7 +774,7 @@ $("#delete").on("click", function (e) {
         confirmButtonText: "Yes, delete it!",
     }).then((result) => {
         if (result.isConfirmed) {
-            $("#delete-kendaraan").submit();
+            $(id).submit();
         }
     });
-});
+}

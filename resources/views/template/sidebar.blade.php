@@ -14,7 +14,7 @@
             
             <li class="{{ request()->is('kendaraan', 'kendaraan-mobil', 'kendaraan/*', 'kendaraan-mobil/*') ? 'active' : ''}}">
               <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
-              @if(Auth::user()->role == 0)
+              @if(Auth::user()->role == 0 && !request()->is('kendaraan/*/detail'))
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('kendaraan', 'kendaraan/*') ? 'active' : ''}}"><a class="nav-link " href="kendaraan">Motor</a></li>
                 <li class="{{ request()->is('kendaraan-mobil', 'kendaraan-mobil/*') ? 'active' : ''}}"><a class="nav-link" href="kendaraan-mobil">Mobil</a></li>
@@ -28,9 +28,9 @@
             {{-- @endif --}}
             <li class="{{ request()->is('transaksi','transaksi-mobil', 'transaksi/*','transaksi-mobil/*') ? 'active' : ''}}">
               <a href="{{ route('transaksi.index') }}" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
-              @if(Auth::user()->role == 0)
+              @if(Auth::user()->role == 0 && !request()->is('transaksi/*/detail'))
               <ul class="dropdown-menu">
-                <li class="{{ request()->is('transaksi') ? 'active' : ''}}"><a class="nav-link " href="transaksi">Motor</a></li>
+                <li class="{{ request()->is('transaksi')? 'active' : ''}}"><a class="nav-link " href="transaksi">Motor</a></li>
                 <li class="{{ request()->is('transaksi-mobil','transaksi-mobil/*') ? 'active' : ''}}"><a class="nav-link" href="transaksi-mobil">Mobil</a></li>
               </ul>
               @endif
@@ -46,12 +46,14 @@
               @endif
             </li>
             @if(Auth::user()->role == 0)
-            <li class="{{ request()->is('user','cabang') ? 'active' : '' }}">
+            <li class="{{ request()->is('user','cabang', 'user/*', 'cabang/*') ? 'active' : '' }}">
               <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
+              @if(!request()->is('user/*/edit') && !request()->is('cabang/*/edit'))
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('user') ? 'active' : ''}}"><a class="nav-link " href="user">User</a></li>
                 <li class="{{ request()->is('cabang') ? 'active' : ''}}"><a class="nav-link" href="cabang">Cabang</a></li>
               </ul>
+              @endif
             </li>
             @endif
         </aside>
