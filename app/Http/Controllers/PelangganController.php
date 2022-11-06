@@ -136,9 +136,9 @@ class PelangganController extends Controller
 
        if($request->has('foto_ktp2')){
             $extension = $request->file('foto_ktp2')->getClientOriginalExtension();
-            $newName = $request->nama.'2'.'.'.$extension;
-            $request->file('foto_ktp2')->storeAs('foto_ktp2',$newName);
-            $pelanggan->foto_ktp2 = $newName;
+            $newName2 = $request->nama.'2'.'.'.$extension;
+            $request->file('foto_ktp2')->storeAs('foto_ktp2',$newName2);
+            $pelanggan->foto_ktp2 = $newName2;
        }
        $namaFoto2 = $pelanggan->foto_ktp2;
        

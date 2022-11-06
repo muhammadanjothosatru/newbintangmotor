@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         // Cabang::factory(2)->create();
     //    User::factory(10)->create();
         Pelanggan::factory(15)->create();
-        Kendaraan::factory(100)->create();
+        Kendaraan::factory(20)->create();
        
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
