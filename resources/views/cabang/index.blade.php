@@ -21,9 +21,9 @@
 			</thead>
 				@foreach($cabang as $data)
 				<tr>
-					<td>{{ $loop->iteration}}</td>
+					<td style="width:5%">{{ $loop->iteration}}</td>
 					<td>{{ $data->nama }}</td>
-					<td>
+					<td style="width:10%">
 						<form id="delete-cabang" class="p-0" action="{{route('cabang.destroy',$data->id) }}" method="POST">
 							@method('DELETE')
 							@csrf	

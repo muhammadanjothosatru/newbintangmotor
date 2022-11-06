@@ -106,7 +106,7 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->role = $request->role;
             $user->cabang_id = $request->cabang_id;
-            $user->password = Hash::make('123456');
+        
             $user->save();
         return redirect('/user')->with('success','data berhasil ditambahkan');
     }
