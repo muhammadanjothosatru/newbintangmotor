@@ -762,13 +762,8 @@ if (flasherror) {
         text: flasherror,
     });
 }
-<<<<<<< HEAD
-$("#delete").on("click", function (e) {
-    e.preventDefault();
-=======
 function dosomething(id){
     id = "#" + id.replace(/\s/g, "");
->>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
     Swal.fire({
         title: "Are you sure ?",
         text: "You won't be able to revert this !",
@@ -782,8 +777,4 @@ function dosomething(id){
             $(id).submit();
         }
     });
-<<<<<<< HEAD
-});
-=======
 }
->>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
