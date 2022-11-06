@@ -21,7 +21,7 @@
             <div class="font-form-header mb-3 col-6">Masukkan Data User</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
                 <a href="{{ route('user.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
-                
+                <a href="{{ route('user.ubahPassword',$user->id) }}" class="btn btn-primary btn-sm ml-2"><i class="fas fa-pen mr-2"></i>Ubah Password</a>
             </div>
         </div>
         

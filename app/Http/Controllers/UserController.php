@@ -110,7 +110,23 @@ class UserController extends Controller
             $user->save();
         return redirect('/user')->with('success','data berhasil ditambahkan');
     }
-    
+    public function ubahPassword($id)
+    {
+        return view ('user.ubahPassword');
+    }
+    public function updatePassword(Request $request)
+    {
+        # Validation
+        $request->validate([
+            'password_lama' => 'required|current_password',
+            'password_baru' => 'required|confirmed',
+      
+        ]);
+        $user = User::find(Auth: id());
+        $user->password = Hash::make($request->password_baru);
+        $user ->save();
+        return back()->with("status", "Password changed successfully!");
+    }
 
     /**
      * Remove the specified resource from storage.
