@@ -20,10 +20,6 @@
             <div class="font-form-header mb-3 col-6">Masukkan Data User</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
                 <a href="{{ route('user.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
             </div>
         </div>
         
