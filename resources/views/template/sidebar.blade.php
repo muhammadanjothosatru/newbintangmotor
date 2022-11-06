@@ -46,10 +46,6 @@
               @endif
             </li>
             @if(Auth::user()->role == 0)
-<<<<<<< HEAD
-            <li class="{{ request()->is('user', 'user/*') ? 'active' : '' }}">
-              <a href="user" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
-=======
             <li class="{{ request()->is('user','cabang', 'user/*', 'cabang/*') ? 'active' : '' }}">
               <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
               @if(!request()->is('user/*/edit') && !request()->is('cabang/*/edit'))
@@ -58,7 +54,6 @@
                 <li class="{{ request()->is('cabang') ? 'active' : ''}}"><a class="nav-link" href="cabang">Cabang</a></li>
               </ul>
               @endif
->>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
             </li>
             @endif
         </aside>
