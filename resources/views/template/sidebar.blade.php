@@ -14,7 +14,7 @@
             
             <li class="{{ request()->is('kendaraan', 'kendaraan-mobil', 'kendaraan/*', 'kendaraan-mobil/*') ? 'active' : ''}}">
               <a href="{{ route('kendaraan.index') }}" class="nav-link"><i class="fas fa-light fa-car-side"></i><span>Kendaraan</span></a>
-              @if(Auth::user()->role == 0 && !request()->is('kendaraan/*/detail'))
+              @if(Auth::user()->role == 0 && !request()->is('kendaraan/*/detail') && !request()->is('kendaraan/*/edit'))
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('kendaraan', 'kendaraan/*') ? 'active' : ''}}"><a class="nav-link " href="kendaraan">Motor</a></li>
                 <li class="{{ request()->is('kendaraan-mobil', 'kendaraan-mobil/*') ? 'active' : ''}}"><a class="nav-link" href="kendaraan-mobil">Mobil</a></li>
