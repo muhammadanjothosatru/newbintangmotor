@@ -78,7 +78,13 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findorfail($id);
+<<<<<<< HEAD
         return view('user.edit', compact('user'));
+=======
+        $cabang = Cabang::findorfail($user->cabang_id);
+        $cabangall = Cabang::all();
+        return view('user.edit', compact('user','cabang','cabangall'));
+>>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
     }
 
     /**
@@ -88,10 +94,27 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request,$id)
     {
-        //
+        $validate= $request->validate([
+            'username' => 'required',
+            'email' => 'required|email',
+            'role' => 'required',
+            'cabang_id' => 'required',
+            // 'password' => 'required',
+        ]);
+        // $password = $request->password;
+        // $hashedPassword = Hash::make($password);
+        $user = User::findorfail($id);
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->role = $request->role;
+            $user->cabang_id = $request->cabang_id;
+        
+            $user->save();
+        return redirect('/user')->with('success','data berhasil ditambahkan');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -101,8 +124,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         // $user = User::findorfail($id);
         // $user->delete();
         // return redirect()->route('user.index')->with('success','User berhasil dihapus');
+=======
+        $user = User::findorfail($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success','Data user anda berhasil dihapus');
+>>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
     }
 }

@@ -44,15 +44,23 @@
 		@endif
 		
 		<td>
+<<<<<<< HEAD
 			<form id="delete-kendaraan" class="p-0 delete-kendaraan" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
+=======
+			<form id="{{preg_replace('/\s+/', '', $k->no_pol)}}" class="p-0" action="{{route('kendaraan.destroy',$k->no_pol) }}" method="POST">
+>>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
 				@method('DELETE')
 				@csrf	
 				<a href="{{ route('kendaraan.edit', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
 				<a href="{{ route('kendaraan.detail', $k->no_pol ) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
 				@if($k->status_kendaraan == "Tersedia")
-				<button class='btn btn-danger btn-sm'  type="submit" id="delete" ><i class="far fa-trash-alt"></i></button>
+					<button class='delete btn btn-danger btn-sm' value="{{$k->no_pol}}" onclick="event.preventDefault(); dosomething(this.value)" type="submit"><i class="far fa-trash-alt"></i></button>
 				@elseif($k->status_kendaraan == "Terjual")
+<<<<<<< HEAD
 				<button class='btn btn-danger btn-sm' disabled type="submit" id="delete"><i class="far fa-trash-alt"></i></button>
+=======
+					<button class='delete btn btn-danger btn-sm' value="{{$k->no_pol}}" onclick="event.preventDefault(); dosomething(this.value)" disabled type="submit"><i class="far fa-trash-alt"></i></button>
+>>>>>>> 9f3e2ffc6e08740c8456ab7fa6fdc1e63c38c246
 				@endif
 			</form>
 		</td>

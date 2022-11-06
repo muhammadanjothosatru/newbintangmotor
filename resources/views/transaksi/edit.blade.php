@@ -13,13 +13,14 @@
   @if(Session::has('success'))
   <div id="flash" data-flash="{{session('success')}}"></div>
   @endif
-    <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('transaksi.update', $transaksi->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('put')
     <div class="m-4">
         <div class="row">
             <div class="font-form-header mb-3 col-6">Masukkan Detail Pembelian</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
-                <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
+                <a href="{{ route('transaksi.detail', $transaksi->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
             </div>
         </div>
         
@@ -30,9 +31,9 @@
                         <label for="inputNama"  class=" mt-2 col-sm-2 col-form-label font-form">Nama</label>
                         <div class="col-sm-10">
                             <select class="select2 col-sm-12" name="nama" required="required" data-placeholder="Cari Nama Pelanggan">
-                                <option ></option>
-                                @foreach($pelanggan as $data)
-                                <option value="{{$data->id}}">{{ $data->nama }}</option>
+                                <option></option>
+                                @foreach($pelangganall as $data)
+                                    <option value="{{$data->id}}" {{ $data->id == $pelanggan->id ? 'selected' : '' }}>{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -46,27 +47,25 @@
                     <div class="mb-3 row">
                         <label for="inputNopol"  class="mt-2 col-sm-2 col-form-label font-form">No Pol.</label>
                         <div class="col-sm-10">
-                            <select class="select2 col-sm-12" name="no_pol"data-placeholder="Cari Nomor Polisi">
+                            <select class="select2 col-sm-12" name="no_pol" data-placeholder="Cari Nomor Polisi">
                                 <option></option>
-                                    @foreach($all_kendaraan as $data)
-                                        <option  value="{{ $data->no_pol }}">{{ $data->no_pol }} - {{$data->tipe}}</option>
-                                    @endforeach
-                        
-            
-                                </select>
+                                @foreach($kendaraanall as $data)
+                                    <option value="{{$data->no_pol}}" {{ $data->no_pol ==  $transaksi->kendaraan_no_pol ? 'selected' : '' }}>{{ $data->no_pol }} - {{$data->tipe}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     
                     <div class="mb-3 row">
                         <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Akhir</label>
                             <div class="col-sm-10">
-                                <input type="text" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
+                                <input type="text" value="Rp. {!! number_format($transaksi->harga_akhir, 0, ',', '.')!!}" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputKomisi"  class="col-sm-2 col-form-label font-form">Komisi</label>
                             <div class="col-sm-10">
-                                <input type="text" name="komisi" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
+                                <input type="text" name="komisi" value= "Rp. {!!number_format($transaksi->komisi, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
                             </div>
                     </div>
                     <br>
@@ -80,36 +79,49 @@
                     <div class="mb-3 row">
                         <label for="metode"  class="pl-0 col-sm-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 col-sm-10">
-
-                            <select class="select2 col-sm-12" required="required"name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
+                            <select class="select2 col-sm-12" required="required" name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity" id="metodepembayaran">
                                 <option></option>
-                                <option value="Tunai">Tunai</option>
-                                <option value="Kredit">Kredit</option>
+                                <option value="Tunai" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'selected' : '' }}>Tunai</option>
+                                <option value="Kredit" {{ $transaksi->metode_pembayaran == 'Kredit' ? 'selected' : '' }}>Kredit</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="keteranganbaru"  class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
+                        <div id="keteranganbaru" class="pl-0 col-sm-10">
+                            <select class="select2 col-sm-12" name="keterangan" data-placeholder="Pilih Keterangan ACC" data-minimum-results-for-search="Infinity" id="keteranganacc" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                                <option></option>
+                                <option value="Belum ACC" {{ $transaksi->keterangan == 'Belum ACC' ? 'selected' : '' }}>Belum ACC</option>
+                                <option value="Sudah ACC" {{ $transaksi->keterangan == 'Sudah ACC' ? 'selected' : '' }}>Sudah ACC</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputDiskon"  class="pl-0 col-sm-2 col-form-label font-form">Nomor Kontrak</label>
                             <div class=" pl-0 col-sm-10 col-form-label">
-                                <input type="text" name="no_kontrak" value="-"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" disabled>
+                                <input type="text" name="no_kontrak" value="{!! $transaksi->no_kontrak !!}"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="uang_dp" value="{{ old('uang_dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
+                                @if($transaksi->metode_pembayaran == 'Tunai')
+                                    <input type="text" name="uang_dp" value="-" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
+                                @elseif($transaksi->metode_pembayaran == 'Kredit')
+                                    <input type="text" name="uang_dp" value= "Rp. {!!number_format($transaksi->uang_dp, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka">
+                                @endif
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
+                                <input type="text" name="bulan_angsuran" value="{!! $transaksi->bulan_angsuran !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" {!! $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' !!}>
                             </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="inputAlamat" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
+                        <label for="inputKeterangan" class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Keterangan</label>
                         <div class="pl-0 col-sm-10">
-                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan" disabled></textarea>
+                            <textarea class="form-control textarea-control-size" required="required" name="keterangan_lain" placeholder="Masukkan Keterangan" id="keterangan" {!! $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' !!}>{!! $transaksi->keterangan_lain !!}</textarea>
                         </div>
                     </div>
                     
@@ -125,12 +137,15 @@
     function selectmetode(metodedipilih){
         if(metodedipilih.value=='Tunai'){
             $('#keterangan').prop('disabled', true);
+            $('#keteranganacc').prop('disabled', true);
             $('#nokontrak').prop('disabled', true);
             $('#uangmuka').prop('disabled', true);
             $('#angsuran').prop('disabled', true);
             $('#acc').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
             $('#keterangan').prop('disabled', false);
+            $('#keteranganacc').prop('disabled', false);
+            $('#nokontrak').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
             $('#angsuran').prop('disabled', false);
             $('#acc').prop('disabled', false);
@@ -167,6 +182,7 @@
     uang_dp.addEventListener('keyup', function(e){
         uang_dp.value = currency(this.value, 'Rp')
     });
+
 </script>
 
 

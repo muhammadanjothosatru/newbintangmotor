@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/kendaraan-create.css')}}">
 @endsection
 @section('konten')
+
 <div class="card mt-4">
     @if(count($errors)>0)
     @foreach($errors->all() as $error)
@@ -20,7 +21,7 @@
             <div class="font-form-header mb-3 col-6">Detail Pembelian</div>
             <div class="font-form-header mb-3 col-6 d-flex justify-content-end">
                 <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm mr-2"><i class="fas fa-arrow-left mr-2"></i>Kembali</a>
-                <a href="{{ route('transaksi.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-pen mr-2"></i>Ubah</a>
+                <a href="{{ route('transaksi.edit', $transaksi->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-pen mr-2"></i>Ubah</a>
             </div>
         </div>
         
@@ -81,13 +82,13 @@
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Harga Jual</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->harga_akhir !!}">
+                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!! number_format($transaksi->harga_akhir, 0, ',', '.')!!}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Komisi</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->komisi !!}">
+                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!! number_format($transaksi->komisi, 0, ',', '.')!!}">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -99,7 +100,12 @@
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                         <div class=" col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->uang_dp !!}">
+                            @if($transaksi->metode_pembayaran == 'Tunai')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="-">
+                            @elseif($transaksi->metode_pembayaran == 'Kredit')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!!number_format($transaksi->uang_dp, 0, ',', '.')!!}">
+                            @endif
+                            
                         </div>
                     </div>
                     <div class="mb-3 row">
