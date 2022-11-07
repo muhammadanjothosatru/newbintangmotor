@@ -263,18 +263,17 @@ class TransaksiController extends Controller
         $transaksi->metode_pembayaran = $request->metode_pembayaran;
         $transaksi->harga_akhir=preg_replace('/[^0-9]/', '', $request->harga_akhir);
         $transaksi->komisi=preg_replace('/[^0-9]/', '', $request->komisi);
+        $transaksi->keterangan_lain=$request->keterangan_lain;
         if($request->metode_pembayaran=='Tunai'){
             $transaksi->no_kontrak='-';
             $transaksi->uang_dp='-';
             $transaksi->bulan_angsuran='-';
             $transaksi->keterangan='-';
-            $transaksi->keterangan_lain='-';
         }elseif($request->metode_pembayaran=='Kredit'){
             $transaksi->no_kontrak=$request->no_kontrak;
             $transaksi->uang_dp=preg_replace('/[^0-9]/', '', $request->uang_dp);
             $transaksi->bulan_angsuran=$request->bulan_angsuran;
             $transaksi->keterangan=$request->keterangan;
-            $transaksi->keterangan_lain=$request->keterangan_lain;
         }
         $transaksi->save();
         

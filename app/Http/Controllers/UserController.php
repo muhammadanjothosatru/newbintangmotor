@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::orderBy('role', 'asc')->get();
         return view('user.index',compact('user'));
     }
 
@@ -110,7 +110,31 @@ class UserController extends Controller
             $user->save();
         return redirect('/user')->with('success','data berhasil ditambahkan');
     }
-    
+
+    public function ubahPassword($id)
+    {
+        $user = User::findorfail($id);
+        return view ('user.ubahPassword', compact('user'));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            'password_lama' => 'required',
+            'password_baru' => 'required',
+            'password_konfirmasi' => 'required|same:password_baru',
+      
+        ]);
+        
+        $user = User::find($id);
+        if(!Hash::check($request->password_lama, $user->password)){
+             return back()->withErrors(["old_pass"=> "Old Password Doesn't match!"]);
+        } else {
+            $user->password = Hash::make($request->password_baru);
+            $user ->save();
+            return redirect('/user')->with("success", "Password changed successfully!");
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
