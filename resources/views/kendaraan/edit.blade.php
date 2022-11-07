@@ -57,8 +57,12 @@
                         <select class="select2 selectform" name="merk"  data-placeholder="Pilih Merk" style="width: 100%">
                             <option></option>
                             @foreach($allkendaraan as $data)
+                            @if(Auth::user()->role == 0)
+                            <option value="{{$data->merk}}" {{ $kendaraan->merk == $data->merk ? 'selected' : '' }}>{{$data->jenis}} - {{$data->merk}}</option>
+                            @else
                                 <option value="{{$data->merk}}" {{ $kendaraan->merk == $data->merk ? 'selected' : '' }}>{{$data->merk}}</option>
-                            @endforeach
+                                @endif
+                                @endforeach
                         </select>
                     </div>
                 </div>

@@ -92,8 +92,8 @@ class KendaraanController extends Controller
                         ->orderBy('merk.created_at', 'desc');
         }
         if (Auth::user()->role == 0) {
-        $kendaraanmotor->where('merk.jenis', '=', 'Sepeda Motor')
-                        ->select('merk.*')
+        $kendaraanmotor->select('merk.*')
+                        ->orderBy('merk.jenis', 'asc')
                         ->orderBy('merk.created_at', 'desc');
         }
         $allkendaraan=$kendaraanmotor->get();
@@ -199,11 +199,13 @@ class KendaraanController extends Controller
                         ->orderBy('merk.created_at', 'desc');
         }
         if (Auth::user()->role == 0) {
-        $kendaraanmotor->where('merk.jenis', '=', 'Sepeda Motor')
+        $kendaraanmotor
                         ->select('merk.*')
+                        ->orderBy('merk.jenis', 'asc')
                         ->orderBy('merk.created_at', 'desc');
         }
         $allkendaraan=$kendaraanmotor->get();
+      
 
         return view('kendaraan.edit', compact('kendaraan', 'allkendaraan'));
     }
