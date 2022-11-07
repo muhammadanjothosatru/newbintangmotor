@@ -79,7 +79,7 @@
 <script>
 var pembelian = {!! json_encode($pembelianperbulan) !!};
 var bulan = {!! json_encode($bulanterakhir) !!};
-var maxvalue = Math.max(...pembelian)+10;
+var maxvalue = Math.max(...pembelian)+12;
 if(maxvalue%2!=0){
   maxvalue += 1;
 }
