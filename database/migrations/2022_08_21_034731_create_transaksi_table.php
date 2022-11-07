@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('no_kontrak')->default('-');
             $table->string('uang_dp')->default('-');
             $table->string('bulan_angsuran')->default('-');
-            $table->string('keterangan')->default('Belum ACC');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
