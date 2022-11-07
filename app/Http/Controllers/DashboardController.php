@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kendaraan;
 
 class DashboardController extends Controller
 {
@@ -178,8 +179,7 @@ class DashboardController extends Controller
                                 ->select('kendaraan.*');
                 }
                 if (Auth::user()->role == 0) {
-                    $kendaraan->where('users.cabang_id', Auth::user()->cabang_id)
-                                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
+                    $kendaraan->where('kendaraan.status_kendaraan', '=', 'Tersedia')
                                 ->select('kendaraan.*');
                 }
                 $kendaraanterjual=$kendaraan->get();
