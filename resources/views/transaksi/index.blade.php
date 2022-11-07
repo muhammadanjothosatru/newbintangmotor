@@ -25,7 +25,7 @@
                     <th>Warna</th>
                     <th>Pembayaran</th>
                     <th>Harga Jual</th>
-                    <th>Keterangan ACC</th>
+                    <th>Bank Pembayaran</th>
                     <th>Keterangan Lain</th>
                     <th>Action</th>
                     
