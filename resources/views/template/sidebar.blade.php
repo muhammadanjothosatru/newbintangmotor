@@ -48,7 +48,7 @@
             @if(Auth::user()->role == 0)
             <li class="{{ request()->is('user','cabang', 'user/*', 'cabang/*') ? 'active' : '' }}">
               <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
-              @if(!request()->is('user/*/edit') && !request()->is('cabang/*/edit'))
+              @if(!request()->is('user/*/edit') && !request()->is('cabang/*/edit') && !request()->is('user/*/ubahPassword'))
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('user') ? 'active' : ''}}"><a class="nav-link " href="user">User</a></li>
                 <li class="{{ request()->is('cabang') ? 'active' : ''}}"><a class="nav-link" href="cabang">Cabang</a></li>

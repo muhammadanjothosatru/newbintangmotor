@@ -34,7 +34,12 @@
 							@method('DELETE')
 							@csrf
 						<a href="{{route('user.edit',$data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-						<button class='btn btn-danger btn-sm'type="submit" value="{{$data->id}}" onclick="event.preventDefault(); dosomething(this.value)"><i class="far fa-trash-alt"></i></button>
+						@if($data->username == 'superadmin')
+							<button class='btn btn-danger btn-sm'type="submit" value="{{$data->id}}" onclick="event.preventDefault(); dosomething(this.value)" disabled><i class="far fa-trash-alt"></i></button>
+						@else
+							<button class='btn btn-danger btn-sm'type="submit" value="{{$data->id}}" onclick="event.preventDefault(); dosomething(this.value)"><i class="far fa-trash-alt"></i></button>
+						@endif
+
 						
 					</form>
 					</td>

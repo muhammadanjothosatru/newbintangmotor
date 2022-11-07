@@ -16,16 +16,17 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal Pembelian</th>
-                    <th>Nama Pelanggan</th>
+                    <th>Tanggal</th>
+                    <th>Nama</th>
                     <th>No.Pol</th>
                     <th>Merk</th>
                     <th>Tipe</th>
                     <th>Tahun</th>
                     <th>Warna</th>
-                    <th>Metode Pembayaran</th>
+                    <th>Pembayaran</th>
                     <th>Harga Jual</th>
                     <th>Keterangan ACC</th>
+                    <th>Keterangan Lain</th>
                     <th>Action</th>
                     
                 </tr>
@@ -51,6 +52,7 @@
                 @elseif($data->keterangan=="-")
                 <td><span class="badge">{{ $data->keterangan }}</span></td>
                 @endif
+                <td><span class="badge">{{ $data->keterangan_lain }}</span></td>
                 <td>
                 <form target="_blank" class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
 				    @method('PUT')
