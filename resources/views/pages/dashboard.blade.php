@@ -80,6 +80,9 @@
 var pembelian = {!! json_encode($pembelianperbulan) !!};
 var bulan = {!! json_encode($bulanterakhir) !!};
 var maxvalue = Math.max(...pembelian) + (10-(Math.max(...pembelian)%10));
+if (maxvalue == Math.max(...pembelian)){
+  maxvalue += 10;
+}
 var step = maxvalue/10;
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
