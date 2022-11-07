@@ -80,7 +80,25 @@ class KendaraanController extends Controller
     
     public function create()
     {
-        return view('kendaraan.create');
+        $kendaraanmotor =DB::table('merk');
+        if (Auth::user()->role == 1) {
+            $kendaraanmotor->where('merk.jenis', '=', 'Sepeda Motor')
+                        ->select('merk.*')
+                        ->orderBy('merk.created_at', 'desc');
+        }
+        if (Auth::user()->role == 2) {
+            $kendaraanmotor->where('merk.jenis', '=', 'Mobil')
+                        ->select('merk.*')
+                        ->orderBy('merk.created_at', 'desc');
+        }
+        if (Auth::user()->role == 0) {
+        $kendaraanmotor->where('merk.jenis', '=', 'Sepeda Motor')
+                        ->select('merk.*')
+                        ->orderBy('merk.created_at', 'desc');
+        }
+        $allkendaraan=$kendaraanmotor->get();
+
+        return view('kendaraan.create',compact('allkendaraan'));
     }
 
     /**
@@ -168,7 +186,26 @@ class KendaraanController extends Controller
     public function edit($no_pol)
     {
         $kendaraan = Kendaraan::findorfail($no_pol);
-        return view('kendaraan.edit', compact('kendaraan'));
+        
+        $kendaraanmotor =DB::table('merk');
+        if (Auth::user()->role == 1) {
+            $kendaraanmotor->where('merk.jenis', '=', 'Sepeda Motor')
+                        ->select('merk.*')
+                        ->orderBy('merk.created_at', 'desc');
+        }
+        if (Auth::user()->role == 2) {
+            $kendaraanmotor->where('merk.jenis', '=', 'Mobil')
+                        ->select('merk.*')
+                        ->orderBy('merk.created_at', 'desc');
+        }
+        if (Auth::user()->role == 0) {
+        $kendaraanmotor->where('merk.jenis', '=', 'Sepeda Motor')
+                        ->select('merk.*')
+                        ->orderBy('merk.created_at', 'desc');
+        }
+        $allkendaraan=$kendaraanmotor->get();
+
+        return view('kendaraan.edit', compact('kendaraan', 'allkendaraan'));
     }
 
     

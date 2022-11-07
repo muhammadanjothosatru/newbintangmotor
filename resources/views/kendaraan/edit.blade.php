@@ -54,13 +54,11 @@
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" name="merk"  data-placeholder="Pilih Merk" style="width: 100%" data-minimum-results-for-search="Infinity">
+                        <select class="select2 selectform" name="merk"  data-placeholder="Pilih Merk" style="width: 100%">
                             <option></option>
-                            <option value="Honda"{{ $kendaraan->merk == 'Honda' ? 'selected' : '' }}>Honda</option>
-                            <option value="Yamaha"{{ $kendaraan->merk == 'Yamaha' ? 'selected' : '' }}>Yamaha</option>
-                            <option value="Suzuki"{{ $kendaraan->merk == 'Suzuki' ? 'selected' : '' }}>Suzuki</option>
-                            <option value="Kawasaki"{{ $kendaraan->merk == 'Kawasaki' ? 'selected' : '' }}>Kawasaki</option>
-                            <option value="Piaggio"{{ $kendaraan->merk == 'Piaggio' ? 'selected' : '' }}>Piaggio</option>
+                            @foreach($allkendaraan as $data)
+                                <option value="{{$data->merk}}" {{ $kendaraan->merk == $data->merk ? 'selected' : '' }}>{{$data->merk}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
