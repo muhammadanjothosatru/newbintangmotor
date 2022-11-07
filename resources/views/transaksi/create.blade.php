@@ -116,7 +116,7 @@
                     <div class="mb-3 row"  style="display: none;"  id="divdplunas">
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Pembayaran Awal</label>
                             <div class="pl-0 col-sm-10">
-                                <input type="text" name="dp_lunas" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" disabled>
+                                <input type="text" name="dp_tunai" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
