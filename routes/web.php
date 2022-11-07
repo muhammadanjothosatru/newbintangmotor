@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth','cekrole:0']], function(){
     Route::resource('user', UserController::class);
     Route::resource('cabang', CabangController::class);
     Route::get('/user/{id}/ubahPassword',[UserController::class,'ubahPassword'])->name('user.ubahPassword');
-    Route::post('/user/ubahPassword',[UserController::class,'updatePassword'])->name('user.updatePassword');
+    Route::post('/user/ubahPassword/{id}',[UserController::class,'updatePassword'])->name('user.updatePassword');
 });
 // Hanya bisa diakses oleh Super Admin dan Admin Mobil
 Route::group(['middleware' => ['auth','cekrole:0,2']], function(){

@@ -110,33 +110,30 @@ class UserController extends Controller
             $user->save();
         return redirect('/user')->with('success','data berhasil ditambahkan');
     }
+
     public function ubahPassword($id)
     {
-        return view ('user.ubahPassword');
+        $user = User::findorfail($id);
+        return view ('user.ubahPassword', compact('user'));
     }
-    public function updatePassword(Request $request)
+
+    public function updatePassword(Request $request, $id)
     {
-        # Validation
         $request->validate([
-            'password_lama' => 'required|current_password',
-            'password_baru' => 'required|confirmed',
+            'password_lama' => 'required',
+            'password_baru' => 'required',
+            'password_konfirmasi' => 'required|same:password_baru',
       
         ]);
-        $user = User::find(Auth: id());
-        $user->password = Hash::make($request->password_baru);
-        $user ->save();
         
-        // #match The Old Password
-        // if(!Hash::check($request->old_password, auth()->user()->password)){
-        //     return back()->with("error", "Old Password Doesn't match!");
-        // }
-
-
-        // #Update the new Password
-        // User::whereId(auth()->user()->id)->update([
-        //     'password' => Hash::make($request->new_password)
-        // ]);
-        return back()->with("status", "Password changed successfully!");
+        $user = User::find($id);
+        if(!Hash::check($request->password_lama, $user->password)){
+             return back()->withErrors(["old_pass"=> "Old Password Doesn't match!"]);
+        } else {
+            $user->password = Hash::make($request->password_baru);
+            $user ->save();
+            return redirect('/user')->with("success", "Password changed successfully!");
+        }
     }
 
     /**
