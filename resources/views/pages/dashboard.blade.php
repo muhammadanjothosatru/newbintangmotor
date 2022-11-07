@@ -79,10 +79,14 @@
 <script>
 var pembelian = {!! json_encode($pembelianperbulan) !!};
 var bulan = {!! json_encode($bulanterakhir) !!};
+<<<<<<< HEAD
 var maxvalue = Math.max(...pembelian)+12;
 if(maxvalue%2!=0){
   maxvalue += 1;
 }
+=======
+var maxvalue = Math.max(...pembelian) + (10-(Math.max(...pembelian)%10));
+>>>>>>> 2447f2a9da0ce09c23c5a5d29047124ed0929109
 var step = maxvalue/10;
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
