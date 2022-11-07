@@ -97,26 +97,26 @@
                     <div class="mb-3 row"  style="display: none;"  id="divuangdp">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="uang_dp" value="{{ old('uang_dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka">
+                                <input type="text" name="uang_dp" value="{{ old('uang_dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row"  style="display: none;"  id="divangsuran">
                         <label for="inputHarga"  class="pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
                             <div class="pl-0 col-sm-10">
-                                <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran">
+                                <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row"  style="display: none;"  id="divlunas">
                         <div class="pl-0 col-sm-2 col-form-label"></div>
                         <div class="pl-0 col-sm-10"  style="padding-left: 25px !important;">
-                            <input class="form-check-input" style="position: relative !important;" type="checkbox" value="Pembayaran Telah Lunas" onchange="checkLunas()" id="cbLunas" checked>
+                            <input class="form-check-input" name="cb_lunas" style="position: relative !important;" type="checkbox" onchange="checkLunas()" id="cbLunas" checked>
                             <label class="pl-1 form-check-label" for="cbLunas">Pembayaran Telah Lunas</label>
                         </div>
                     </div>
                     <div class="mb-3 row"  style="display: none;"  id="divdplunas">
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Pembayaran Awal</label>
                             <div class="pl-0 col-sm-10">
-                                <input type="text" name="dp_tunai" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" disabled>
+                                <input type="text" name="dp_tunai" value="{{ old('dp_tunai') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
@@ -142,12 +142,17 @@
             document.getElementById('divangsuran').style.display = "none";
             document.getElementById('divuangdp').style.display = "none";
             $('#acc').prop('disabled', true);
+            $('#uangmuka').prop('disabled', true);
+            $('#angsuran').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
             document.getElementById('divangsuran').style.display = "flex";
             document.getElementById('divuangdp').style.display = "flex";
             document.getElementById('divlunas').style.display = "none";
             document.getElementById('divdplunas').style.display = "none";
             $('#acc').prop('disabled', false);
+            $('#uangmuka').prop('disabled', false);
+            $('#angsuran').prop('disabled', false);
+            $('#pembayaranawal').prop('disabled', true);
         }
     };
     
@@ -189,6 +194,11 @@
     var uang_dp = document.getElementById('uangmuka');
     uang_dp.addEventListener('keyup', function(e){
         uang_dp.value = currency(this.value, 'Rp')
+    });
+
+    var dp_tunai = document.getElementById('pembayaranawal');
+    dp_tunai.addEventListener('keyup', function(e){
+        dp_tunai.value = currency(this.value, 'Rp')
     });
 </script>
 

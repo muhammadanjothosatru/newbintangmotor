@@ -45,9 +45,9 @@
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
                 <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
-                @if ($data->keterangan=="Belum ACC")
+                @if ($data->keterangan=="Mandiri")
                 <td><span class="badge bg-warning p-2">{{ $data->keterangan }}</span></td>
-                @elseif ($data->keterangan=="Sudah ACC")
+                @elseif ($data->keterangan=="BCA")
                 <td><span class="badge bg-success p-2">{{ $data->keterangan }}</span></td>
                 @elseif($data->keterangan=="-")
                 <td><span class="badge">{{ $data->keterangan }}</span></td>

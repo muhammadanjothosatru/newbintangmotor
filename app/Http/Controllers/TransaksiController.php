@@ -117,6 +117,15 @@ class TransaksiController extends Controller
         ]);
 
         if($request->metode_pembayaran=='Tunai'){
+            $lunas = 0;
+            $dp_tunai = 0;
+            if($request->has('cb_lunas')){
+                $lunas = 1;
+                $dp_tunai = 0;
+            } else{
+                $lunas = 0;
+                $dp_tunai = preg_replace('/[^0-9]/', '', $request->dp_tunai);
+            }
             $transaksi = Transaksi::create([
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
@@ -126,27 +135,31 @@ class TransaksiController extends Controller
                 'no_kontrak'=>'-',
                 'uang_dp'=>'-',
                 'bulan_angsuran'=>'-',
+                'lunas'=>$lunas,
+                'dp_tunai'=>$dp_tunai,
                 'keterangan'=>"-",
                 'keterangan_lain'=>$request->keterangan_lain,
                 'users_id'=>Auth::id(),
             ]);
         }elseif($request->metode_pembayaran=='Kredit'){
 
-        $transaksi = Transaksi::create([
-            'pelanggan_id'=> $request->nama,
-            'kendaraan_no_pol' => $request->no_pol,
-            'metode_pembayaran'=>$request->metode_pembayaran,
-            'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
-            'komisi'=>preg_replace('/[^0-9]/', '', $request->komisi),
-            'no_kontrak'=>'-',
-            'uang_dp'=>preg_replace('/[^0-9]/', '', $request->uang_dp),
-            'bulan_angsuran'=>$request->bulan_angsuran,
-            'keterangan'=>'Belum ACC',
-            'keterangan_lain'=>$request->keterangan_lain,
-            'users_id'=>Auth::id(),
-        ]);
-      
-    }
+            $transaksi = Transaksi::create([
+                'pelanggan_id'=> $request->nama,
+                'kendaraan_no_pol' => $request->no_pol,
+                'metode_pembayaran'=>$request->metode_pembayaran,
+                'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
+                'komisi'=>preg_replace('/[^0-9]/', '', $request->komisi),
+                'no_kontrak'=>'-',
+                'uang_dp'=>preg_replace('/[^0-9]/', '', $request->uang_dp),
+                'bulan_angsuran'=>$request->bulan_angsuran,
+                'lunas'=>'-',
+                'dp_tunai'=>'0',
+                'keterangan'=>'-',
+                'keterangan_lain'=>$request->keterangan_lain,
+                'users_id'=>Auth::id(),
+            ]);
+        }
+
     Kendaraan::where('no_pol', $request->no_pol)->update(['status_kendaraan' => 'Terjual']);
     return redirect('/transaksi')->with('success','data berhasil ditambahkan')->with('message', $transaksi->id);
     }
@@ -265,11 +278,26 @@ class TransaksiController extends Controller
         $transaksi->komisi=preg_replace('/[^0-9]/', '', $request->komisi);
         $transaksi->keterangan_lain=$request->keterangan_lain;
         if($request->metode_pembayaran=='Tunai'){
+            
+            $lunas = 0;
+            $dp_tunai = 0;
+            if($request->has('cb_lunas')){
+                $lunas = 1;
+                $dp_tunai = 0;
+            } else{
+                $lunas = 0;
+                $dp_tunai = preg_replace('/[^0-9]/', '', $request->dp_tunai);
+            }
+
+            $transaksi->lunas=$lunas;
+            $transaksi->dp_tunai=$dp_tunai;
             $transaksi->no_kontrak='-';
             $transaksi->uang_dp='-';
             $transaksi->bulan_angsuran='-';
             $transaksi->keterangan='-';
         }elseif($request->metode_pembayaran=='Kredit'){
+            $transaksi->lunas='-';
+            $transaksi->dp_tunai='0';
             $transaksi->no_kontrak=$request->no_kontrak;
             $transaksi->uang_dp=preg_replace('/[^0-9]/', '', $request->uang_dp);
             $transaksi->bulan_angsuran=$request->bulan_angsuran;
@@ -315,11 +343,15 @@ class TransaksiController extends Controller
         ->title($kendaraan->merk)
         ->jenis($kendaraan->jenis)
         ->warna($kendaraan->warna)
+        ->metpembayaran($transaksi->metode_pembayaran)
         ->tahun($kendaraan->tahun_pembuatan)
         ->nopol($kendaraan->no_pol)
         ->nosin($kendaraan->no_mesin)
         ->noka($kendaraan->no_rangka)
         ->nobpkb($kendaraan->no_bpkb)
+        ->lunas($transaksi->lunas)
+        ->dptunai($transaksi->dp_tunai)
+        ->keterangan($transaksi->keterangan)
         ->ketlain($transaksi->keterangan_lain)
         ->pricePerUnit($biaya);
 
