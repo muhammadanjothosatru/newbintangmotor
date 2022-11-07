@@ -28,7 +28,7 @@
             {{-- @endif --}}
             <li class="{{ request()->is('transaksi','transaksi-mobil', 'transaksi/*','transaksi-mobil/*') ? 'active' : ''}}">
               <a href="{{ route('transaksi.index') }}" class="nav-link" ><i class="fas fa-light fa-file"></i> <span>Pembelian</span></a>
-              @if(Auth::user()->role == 0 && !request()->is('transaksi/*/detail'))
+              @if(Auth::user()->role == 0 && !request()->is('transaksi/*'))
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('transaksi')? 'active' : ''}}"><a class="nav-link " href="transaksi">Motor</a></li>
                 <li class="{{ request()->is('transaksi-mobil','transaksi-mobil/*') ? 'active' : ''}}"><a class="nav-link" href="transaksi-mobil">Mobil</a></li>
@@ -48,7 +48,7 @@
             @if(Auth::user()->role == 0)
             <li class="{{ request()->is('user','cabang', 'user/*', 'cabang/*') ? 'active' : '' }}">
               <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-users"></i> <span>Administrasi</span></a>
-              @if(!request()->is('user/*/edit') && !request()->is('cabang/*/edit') && !request()->is('user/*/ubahPassword'))
+              @if(!request()->is('cabang/*') && !request()->is('user/*'))
               <ul class="dropdown-menu">
                 <li class="{{ request()->is('user') ? 'active' : ''}}"><a class="nav-link " href="user">User</a></li>
                 <li class="{{ request()->is('cabang') ? 'active' : ''}}"><a class="nav-link" href="cabang">Cabang</a></li>
