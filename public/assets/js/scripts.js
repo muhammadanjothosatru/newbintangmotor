@@ -627,7 +627,7 @@ $(function () {
 });
 
 $(document).ready(function () {
-    var table2 = $("#example").DataTable({});
+    var table2 = $("#example").DataTable();
     var table = $("#laporan").DataTable({
         dom: "Bfrtip",
         footerCallback: function (row, data, start, end, display) {
