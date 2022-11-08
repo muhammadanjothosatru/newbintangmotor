@@ -91,7 +91,7 @@
                     <div class="mb-3 row" style="display: none;"  id="divketacc">
                         <label for="keteranganbaru"  class="pl-0 col-sm-2 col-form-label font-form">Bank</label>
                         <div id="keteranganbaru" class="pl-0 col-sm-10">
-                            <select class="select2 col-sm-12" name="keterangan" data-placeholder="Pilih Bank Pembayaran" data-minimum-results-for-search="Infinity" id="keteranganacc" disabled>
+                            <select class="select2 col-sm-12" name="keterangan" style="width:100% !important;" data-placeholder="Pilih Bank Pembayaran" data-minimum-results-for-search="Infinity" id="keteranganacc" disabled>
                                 <option></option>
                                 <option value="Mandiri">Mandiri</option>
                                 <option value="BCA">BCA</option>

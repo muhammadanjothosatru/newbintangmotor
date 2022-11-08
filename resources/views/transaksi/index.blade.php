@@ -25,8 +25,8 @@
                     <th>Warna</th>
                     <th>Pembayaran</th>
                     <th>Harga Jual</th>
-                    <th>Bank Pembayaran</th>
-                    <th></th>
+                    <th>Bank</th>
+                    <th>Action</th>
                     
                 </tr>
             </thead>

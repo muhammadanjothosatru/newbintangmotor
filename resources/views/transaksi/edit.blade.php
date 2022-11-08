@@ -93,7 +93,7 @@
                     @endif
                         <label for="keteranganbaru"  class="pl-0 col-sm-2 col-form-label font-form">Bank</label>
                         <div id="keteranganbaru" class="pl-0 col-sm-10">
-                            <select class="select2 col-sm-12" name="keterangan" data-placeholder="Pilih Bank Pembayaran" data-minimum-results-for-search="Infinity" id="keteranganacc" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                            <select class="select2 col-sm-12" style="width:100% !important;" name="keterangan" data-placeholder="Pilih Bank Pembayaran" data-minimum-results-for-search="Infinity" id="keteranganacc" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
                                 <option></option>
                                 <option value="Mandiri" {{ $transaksi->keterangan == 'Mandiri' ? 'selected' : '' }}>Mandiri</option>
                                 <option value="BCA" {{ $transaksi->keterangan == 'BCA' ? 'selected' : '' }}>BCA</option>

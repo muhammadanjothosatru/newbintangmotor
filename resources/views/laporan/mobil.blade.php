@@ -37,7 +37,7 @@
                     <th>Tahun</th>
                     <th>Warna</th>
                     <th>Pembayaran</th>
-                    <th>Ket. ACC</th>
+                    <th>Bank</th>
                     <th>Harga Beli</th>
                     <th>Komisi</th>
                     <th>Harga Jual</th>
@@ -56,7 +56,7 @@
                 <td style="width:25px">{{ $data->tahun_pembuatan }}</td>
                 <td style="width:50px">{{ $data->warna }}</td>
                 <td style="width:50px">{{ $data->metode_pembayaran }}</td>
-                <td><span class="badge ">{{ $data->keterangan }}</span></td>
+                <td>{{ $data->keterangan }}</td>
                 <td>Rp. {{ number_format($data->harga_beli, 0, ',', '.');}}</td>
                 <td>Rp. {{ number_format($data->komisi, 0, ',', '.');}}</td>
                 <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
