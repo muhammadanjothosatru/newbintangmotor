@@ -44,7 +44,7 @@
                 <td>{{ $data->warna }}</td>
                 @if ($data->metode_pembayaran=='Tunai')
                 @if($data->lunas=="0")
-                <td><span class="badge bg-warning p-2">{{ $data->metode_pembayaran }} - Belum Lunas</span></td>
+                <td><span class="badge bg-success p-2">{{ $data->metode_pembayaran }}</span>  <span class="badge bg-warning p-2">Belum Lunas</span></td>
                 @elseif($data->lunas=="1")
                 <td><span class="badge bg-success p-2">{{ $data->metode_pembayaran }}</span></td>
                 @endif
