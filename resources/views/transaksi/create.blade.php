@@ -81,17 +81,27 @@
                         <label for="metode"  class="pl-0 col-sm-2 col-form-label font-form">Pembayaran</label>
                         <div id="metode" class="pl-0 col-sm-10">
 
-                            <select class="select2 col-sm-12" required="required"name="metode_pembayaran" onchange="selectmetode(this)" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
+                            <select class="select2 col-sm-12" required="required"name="metode_pembayaran" onchange="selectmetode(this); checkLunas();" data-placeholder="Pilih Metode Pembayaran" data-minimum-results-for-search="Infinity">
                                 <option></option>
                                 <option value="Tunai">Tunai</option>
                                 <option value="Kredit">Kredit</option>
                             </select>
                         </div>
                     </div>
+                    <div class="mb-3 row" style="display: none;"  id="divketacc">
+                        <label for="keteranganbaru"  class="pl-0 col-sm-2 col-form-label font-form">Bank</label>
+                        <div id="keteranganbaru" class="pl-0 col-sm-10">
+                            <select class="select2 col-sm-12" name="keterangan" data-placeholder="Pilih Bank Pembayaran" data-minimum-results-for-search="Infinity" id="keteranganacc" disabled>
+                                <option></option>
+                                <option value="Mandiri">Mandiri</option>
+                                <option value="BCA">BCA</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="mb-3 row" style="display: none;" id="divnokontrak">
                         <label for="inputDiskon"  class="pl-0 col-sm-2 col-form-label font-form">Nomor Kontrak</label>
                             <div class=" pl-0 col-sm-10 col-form-label">
-                                <input type="text" name="no_kontrak" value="-"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak">
+                                <input type="text" name="no_kontrak" value="-"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row"  style="display: none;"  id="divuangdp">
@@ -141,18 +151,22 @@
             document.getElementById('divdplunas').style.display = "flex";
             document.getElementById('divangsuran').style.display = "none";
             document.getElementById('divuangdp').style.display = "none";
+            document.getElementById('divketacc').style.display = "none";
             $('#acc').prop('disabled', true);
             $('#uangmuka').prop('disabled', true);
             $('#angsuran').prop('disabled', true);
+            $('#keteranganacc').prop('disabled', true);
         } else if(metodedipilih.value=='Kredit'){
             document.getElementById('divangsuran').style.display = "flex";
             document.getElementById('divuangdp').style.display = "flex";
+            document.getElementById('divketacc').style.display = "flex";
             document.getElementById('divlunas').style.display = "none";
             document.getElementById('divdplunas').style.display = "none";
             $('#acc').prop('disabled', false);
             $('#uangmuka').prop('disabled', false);
             $('#angsuran').prop('disabled', false);
             $('#pembayaranawal').prop('disabled', true);
+            $('#keteranganacc').prop('disabled', false);
         }
     };
     

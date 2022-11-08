@@ -154,7 +154,7 @@ class TransaksiController extends Controller
                 'bulan_angsuran'=>$request->bulan_angsuran,
                 'lunas'=>'-',
                 'dp_tunai'=>'0',
-                'keterangan'=>'-',
+                'keterangan'=>$request->keterangan,
                 'keterangan_lain'=>$request->keterangan_lain,
                 'users_id'=>Auth::id(),
             ]);

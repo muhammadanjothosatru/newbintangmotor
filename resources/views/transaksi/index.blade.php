@@ -26,8 +26,7 @@
                     <th>Pembayaran</th>
                     <th>Harga Jual</th>
                     <th>Bank Pembayaran</th>
-                    <th>Keterangan Lain</th>
-                    <th>Action</th>
+                    <th></th>
                     
                 </tr>
             </thead>
@@ -43,16 +42,17 @@
                 <td>{{ $data->tipe}}</td>
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
-                <td>{{ $data->metode_pembayaran }}</td>
-                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
-                @if ($data->keterangan=="Mandiri")
-                <td><span class="badge bg-warning p-2">{{ $data->keterangan }}</span></td>
-                @elseif ($data->keterangan=="BCA")
-                <td><span class="badge bg-success p-2">{{ $data->keterangan }}</span></td>
-                @elseif($data->keterangan=="-")
-                <td><span class="badge">{{ $data->keterangan }}</span></td>
+                @if ($data->metode_pembayaran=='Tunai')
+                @if($data->lunas=="0")
+                <td><span class="badge bg-warning p-2">{{ $data->metode_pembayaran }} - Belum Lunas</span></td>
+                @elseif($data->lunas=="1")
+                <td><span class="badge bg-success p-2">{{ $data->metode_pembayaran }}</span></td>
                 @endif
-                <td><span class="badge">{{ $data->keterangan_lain }}</span></td>
+                @elseif($data->metode_pembayaran=='Kredit')
+                <td><span class="badge bg-info p-2">{{ $data->metode_pembayaran }}</span></td>
+                @endif
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
+                <td>{{ $data->keterangan }}</td>
                 <td>
                 <form target="_blank" class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
 				    @method('PUT')
