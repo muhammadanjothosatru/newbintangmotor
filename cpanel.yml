@@ -1,0 +1,15 @@
+---
+deployment:
+    tasks:
+        - export PUBLIC=/home/bint9651/public_html/
+        - /bin/cp -R public/assets $PUBLIC
+        - /bin/cp -R public/Bootstrap $PUBLIC
+        - /bin/cp -R public/css $PUBLIC
+        - /bin/cp -R public/foto_ktp $PUBLIC
+        - /bin/cp -R public/images $PUBLIC
+        - /bin/cp -R public/storage $PUBLIC
+        - /bin/cp -R public/vendor $PUBLIC
+        - /bin/cp .htaccess $PUBLIC
+        - /bin/cp favicon.ico $PUBLIC
+        - /bin/cp index.php $PUBLIC
+        - /bin/cp robots.txt. $PUBLIC
