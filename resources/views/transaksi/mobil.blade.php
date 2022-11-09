@@ -25,7 +25,7 @@
                     <th>Warna</th>
                     <th>Metode Pembayaran</th>
                     <th>Harga Jual</th>
-                    <th>Keterangan ACC</th>
+                    <th>Bank</th>
                     <th>Action</th>
                     
                 </tr>
@@ -43,14 +43,16 @@
                 <td>{{ $data->tahun_pembuatan }}</td>
                 <td>{{ $data->warna }}</td>
                 <td>{{ $data->metode_pembayaran }}</td>
-                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
-                @if ($data->keterangan=="Belum ACC")
-                <td><span class="badge bg-warning p-2">{{ $data->keterangan }}</span></td>
-                @elseif ($data->keterangan=="Sudah ACC")
-                <td><span class="badge bg-success p-2">{{ $data->keterangan }}</span></td>
-                @elseif($data->keterangan=="-")
-                <td><span class="badge">{{ $data->keterangan }}</span></td>
+                if ($data->metode_pembayaran=='Tunai')
+                @if($data->lunas=="0")
+                <td><span class="badge bg-success p-2">{{ $data->metode_pembayaran }}</span>  <span class="badge bg-warning p-2">Belum Lunas</span></td>
+                @elseif($data->lunas=="1")
+                <td><span class="badge bg-success p-2">{{ $data->metode_pembayaran }}</span></td>
                 @endif
+                @elseif($data->metode_pembayaran=='Kredit')
+                <td><span class="badge bg-info p-2">{{ $data->metode_pembayaran }}</span></td>
+                @endif
+                <td>Rp. {{ number_format($data->harga_akhir, 0, ',', '.');}}</td>
                 <td>
                 <form target="_blank" class="p-0" action="{{route('transaksi.invoice', $data->id) }}" method="GET">
 				    @method('PUT')

@@ -165,7 +165,7 @@
 
             <p class="text-center" style="font-size: 12px; margin-bottom: -5px;"><strong>Jual Beli Sepeda Motor / Mobil - Cash - Kredit / Tukar Tambah<strong></p>
             <p class="text-center">
-            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091 / 08223347431<br>
+            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091<br>
             (<span>&#177;</span> 100 meter barat Kantor BRI Lamongan)<br>
             CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat (0322) 456463</p>
  
@@ -175,52 +175,99 @@
             {{-- Table --}}
 
             
+            @foreach($invoice->items as $item)
+            @if($item->lunas=="0")
+            <p class="nominal"> Uang sebanyak: {{ $invoice->getDPinWords($item->dptunai) }}</p>
+            @elseif($item->lunas=="1" || $item->metpembayaran == "Kredit")
             <p class="nominal"> Uang sebanyak: {{ $invoice->getTotalAmountInWords() }}</p>
+            @endif
             <table class="table table-items mb-0">
                 <tbody>
-                    @foreach($invoice->items as $item)
                     <tr>
                         <td colspan="2" class="text-left pl-0 total-amount">Pembayaran 1 (Satu) Unit {{$item->jenis}}</td>
+                        <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">Merk/Type</td>
                         <td class="text-left pr-0 total-amount">: {{$item->title}}</td>
-                        <td></td>
+                        <td colspan="2" class="text-left pl-0 total-amount">Keterangan Pembayaran Kendaraan</td>
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">Warna</td>
                         <td class="text-left pr-0 total-amount">
                         : {{$item->warna}}
                         </td>
-                        <td></td>
+                        
+                        @if($item->metpembayaran=="Tunai")
+                        <td width="20%" class="text-left pl-0">Pelunasan</td>
+                        @if($item->lunas=="0")
+                        <td class="text-left pr-0 total-amount">: Belum Lunas</td>
+                        @elseif($item->lunas=="1")
+                        <td class="text-left pr-0 total-amount">: Sudah Lunas</td>
+                        @endif
+                        @elseif($item->metpembayaran=="Kredit")
+                            <td width="20%" class="text-left pl-0">Bank Pembayaran</td>
+                            <td class="text-left pr-0 total-amount">
+                            : {{$item->keterangan}}
+                            </td>
+                        @endif
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">Tahun</td>
                         <td class="text-left pr-0 total-amount">
                         : {{$item->tahun}}
                         </td>
-                        <td></td>
+                        @if($item->metpembayaran=="Tunai")
+                            <td width="20%" class="text-left pl-0">Harga Kendaraan</td>
+                            <td class="text-left pr-0 total-amount">
+                            : {{$invoice->formatCurrency($invoice->total_amount)}}
+                            </td>
+                        @endif
+                        
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">No. Pol.</td>
                         <td class="text-left pr-0 total-amount">
                         : {{$item->nopol}}
                         </td>
-                        <td></td>
+                        @if($item->metpembayaran=="Tunai")
+                        <td width="20%" class="text-left pl-0">Telah Dibayar</td>
+                        @if($item->lunas=="0")
+                            <td class="text-left pr-0 total-amount">
+                            : {{$invoice->formatCurrency(($item->dptunai))}}
+                            </td>
+                        @elseif($item->lunas=="1")
+                            <td class="text-left pr-0 total-amount">
+                                : {{$invoice->formatCurrency(($invoice->total_amount))}}
+                            </td>
+                        @endif
+                        @endif
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">No. Ka.</td>
                         <td class="text-left pr-0 total-amount">
                         : {{$item->noka}}
                         </td>
-                        <td></td>
+                        @if($item->metpembayaran=="Tunai")
+                        <td width="20%" class="text-left pl-0">Biaya Yang Perlu Dilunasi</td>
+                        @if($item->lunas=="0")
+                            <td class="text-left pr-0 total-amount">
+                            : {{$invoice->formatCurrency(($invoice->total_amount-$item->dptunai))}}
+                            </td>
+                        @elseif($item->lunas=="1")
+                            <td class="text-left pr-0 total-amount">
+                            : Rp 0
+                            </td>
+                        @endif
+                        @endif
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">No. Sin.</td>
                         <td class="text-left pr-0 total-amount">
                         : {{$item->nosin}}
                         </td>
+                        <td></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -229,12 +276,14 @@
                         : {{$item->nobpkb}}
                         </td>
                         <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td width="20%" class="text-left pl-0">Keterangan Lain</td>
+                        <td width="20%" class="text-left pl-0">Keterangan</td>
                         <td class="text-left pr-0 total-amount">
                         : {{$item->ketlain}}
                         </td>
+                        <td></td>
                         <td></td>
                     </tr>
                     @endforeach
@@ -244,14 +293,15 @@
             <table class="table pl-0 ml-0 table-items">
                 <tbody>
                     <tr class="mb-0">
-                        <td colspan="2" class="pl-0 ml-0">
+                        <td colspan="5" class="pl-0 ml-0">
                             <p class="nominal">
+                                @if($item->lunas=="0")
+                                {{ trans('invoices::invoice.amount_in_words') }}:  {{ $invoice->formatCurrency($item->dptunai) }}
+                                @elseif($item->lunas=="1" || $item->metpembayaran == "Kredit")
                                 {{ trans('invoices::invoice.amount_in_words') }}:  {{ $invoice->formatCurrency($invoice->total_amount) }}
+                                @endif
                             </p>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td></td>

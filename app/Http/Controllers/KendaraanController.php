@@ -261,7 +261,7 @@ class KendaraanController extends Controller
             'tanggal_masuk' => 'required',
         
         ]);
-        $kendaraan->no_pol = $request->no_pol;
+        $kendaraan->no_pol = strtoupper($request->no_pol);
         $kendaraan->nama_pemilik = $request->nama_pemilik;
         $kendaraan->alamat = $request->alamat;
         $kendaraan->merk = $request->merk;

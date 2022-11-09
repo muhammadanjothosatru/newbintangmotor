@@ -14,7 +14,7 @@
     <div id="flash" data-flash="{{session('success')}}"></div>
 @endif
   
-    <form action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="m-4">
         <div class="row pl-0 pr-0">
@@ -29,7 +29,7 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="form-label col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="no_pol" value="{{ old('no_pol') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol">
+                            <input type="text" name="no_pol" value="{{ old('no_pol') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol" autocomplete="off">
                               @if($errors->has('no_pol'))
                                 <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
                             @endif
@@ -140,7 +140,7 @@
                 <div class="mb-3 row">
                     <label for="inputSupplier"  class="col-sm-2 col-form-label font-form">Supplier</label>
                         <div class="col-sm-10">
-                            <input type="text" name="supplier" value="{{ old('supplier') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Supplier" id="supplier">
+                            <input type="text" name="supplier" value="{{ old('supplier') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Supplier" id="supplier"  autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -177,6 +177,28 @@
     hargabeli.addEventListener('keyup', function(e){
         hargabeli.value = currency(this.value, 'Rp')
     })
+
+    function navigate(origin, sens) {
+        var inputs = $('#form').find('input:enabled');
+        var index = inputs.index(origin);
+        index += sens;
+        if (index < 0) {
+            index = inputs.length - 1;
+        }
+        if (index > inputs.length - 1) {
+            index = 0;
+        }
+        inputs.eq(index).focus();
+    }
+
+    $('input').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
 
 </script>
 
