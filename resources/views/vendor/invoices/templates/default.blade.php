@@ -200,7 +200,7 @@
                         </td>
                         
                         @if($item->metpembayaran=="Tunai")
-                        <td width="20%" class="text-left pl-0">Pelunasan</td>
+                        <td width="20%" class="text-left pl-0">Keterangan</td>
                         @if($item->lunas=="0")
                         <td class="text-left pr-0 total-amount">: Belum Lunas</td>
                         @elseif($item->lunas=="1")
@@ -234,11 +234,11 @@
                         @if($item->metpembayaran=="Tunai")
                         <td width="20%" class="text-left pl-0">Telah Dibayar</td>
                         @if($item->lunas=="0")
-                            <td class="text-left pr-0 total-amount">
+                            <td style="border-bottom: 1px solid black !important;" class="text-left pr-0 total-amount">
                             : {{$invoice->formatCurrency(($item->dptunai))}}
                             </td>
                         @elseif($item->lunas=="1")
-                            <td class="text-left pr-0 total-amount">
+                            <td style="border-bottom: 1px solid black !important;" class="text-left pr-0 total-amount">
                                 : {{$invoice->formatCurrency(($invoice->total_amount))}}
                             </td>
                         @endif
