@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
+                        <label class="pl-0 col-sm-2 col-form-label font-form">Bank</label>
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->keterangan !!}">
                         </div>
