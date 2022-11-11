@@ -200,7 +200,7 @@
                         </td>
                         
                         @if($item->metpembayaran=="Tunai")
-                        <td width="20%" class="text-left pl-0">Pelunasan</td>
+                        <td width="20%" class="text-left pl-0">Keterangan</td>
                         @if($item->lunas=="0")
                         <td class="text-left pr-0 total-amount">: Belum Lunas</td>
                         @elseif($item->lunas=="1")
