@@ -55,13 +55,13 @@ class PelangganController extends Controller
         $newName="";
        if($request->file('foto_ktp')){
             $extension = $request->file('foto_ktp')->getClientOriginalExtension();
-            $newName = $request->nama.'.'.$extension;
+            $newName = $request->nik.'.'.$extension;
             $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
        }
         $newName2="";
        if($request->file('foto_ktp2')){
             $extension = $request->file('foto_ktp2')->getClientOriginalExtension();
-            $newName2 = $request->nama.'2'.'.'.$extension;
+            $newName2 = $request->nik.'_2'.'.'.$extension;
             $request->file('foto_ktp2')->storeAs('foto_ktp2',$newName2);
        }
        
@@ -124,7 +124,7 @@ class PelangganController extends Controller
        
        if($request->has('foto_ktp')){
             $extension = $request->file('foto_ktp')->getClientOriginalExtension();
-            $newName = $request->nama.'.'.$extension;
+            $newName = $request->nik.'.'.$extension;
             $request->file('foto_ktp')->storeAs('foto_ktp',$newName);
             $pelanggan->foto_ktp = $newName;
        }
@@ -135,9 +135,9 @@ class PelangganController extends Controller
        }
 
        if($request->has('foto_ktp2')){
-            $extension = $request->file('foto_ktp2')->getClientOriginalExtension();
-            $newName2 = $request->nama.'2'.'.'.$extension;
-            $request->file('foto_ktp2')->storeAs('foto_ktp2',$newName2);
+            $extension = $request->file('foto_ktp_2')->getClientOriginalExtension();
+            $newName2 = $request->nik.'_2'.'.'.$extension;
+            $request->file('foto_ktp_2')->storeAs('foto_ktp_2',$newName2);
             $pelanggan->foto_ktp2 = $newName2;
        }
        $namaFoto2 = $pelanggan->foto_ktp2;

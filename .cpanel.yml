@@ -1,0 +1,5 @@
+---
+deployment:
+    tasks:
+        - export PELANGGAN=/home/bint9651/laravel/resources/views/pelanggan
+        - /bin/cp resources/views/pelanggan/edit.blade.php $PELANGGAN

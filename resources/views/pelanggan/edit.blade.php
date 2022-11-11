@@ -52,9 +52,11 @@
                 </div>
                 <div class="mb-3 row">
                     <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP</label>
-                    <div class="form-floating col-sm-10">
+                    <div class="form-floating col-sm-10 wadah-foto">
                         @if ($pelanggan->foto_ktp)
-                        <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" class="foto-ktp" alt="...">
+                        <a data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;">
+                            <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" class="foto-ktp" alt="...">
+                        </a>
                         @else
                         <span class="badge badge-danger">belum ada foto</span>
                         @endif
@@ -62,12 +64,42 @@
                 </div>
                 <div class="mb-3 row">
                     <label for="file-upload" class="col-sm-2 col-form-label font-form">Foto KTP 2</label>
-                    <div class="form-floating col-sm-10">
+                    <div class="form-floating col-sm-10 wadah-foto">
                         @if ($pelanggan->foto_ktp2)
-                        <img src="{{asset('storage/foto_ktp2/'.$pelanggan->foto_ktp2)}}" class="foto-ktp" alt="...">
+                        <a data-toggle="modal" data-target="#exampleModalCenter2" style="cursor: pointer;">
+                            <img src="{{asset('storage/foto_ktp2/'.$pelanggan->foto_ktp2)}}" class="foto-ktp" alt="...">
+                        </a>
                         @else
                         <span class="badge badge-danger">belum ada foto</span>
                         @endif
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" >
+                                    <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" class="foto-ktp" alt="..." style="width: 100%; height: auto;">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" >
+                                    <img src="{{asset('storage/foto_ktp2/'.$pelanggan->foto_ktp2)}}" class="foto-ktp" alt="..." style="width: 100%; height: auto;">
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
