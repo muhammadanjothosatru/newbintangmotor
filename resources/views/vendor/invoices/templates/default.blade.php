@@ -165,9 +165,9 @@
 
             <p class="text-center" style="font-size: 12px; margin-bottom: -5px;"><strong>Jual Beli Sepeda Motor / Mobil - Cash - Kredit / Tukar Tambah<strong></p>
             <p class="text-center">
-            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091<br>
+            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan <strong>085780938091</strong><br>
             (<span>&#177;</span> 100 meter barat Kantor BRI Lamongan)<br>
-            CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat (0322) 456463</p>
+            CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat <strong>082227464748</strong></p>
  
             <hr width="100%" align="right" noshade>
 
