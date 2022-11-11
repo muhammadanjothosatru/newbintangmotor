@@ -232,7 +232,7 @@
                         : {{$item->nopol}}
                         </td>
                         @if($item->metpembayaran=="Tunai")
-                        <td style="border-bottom: 1px solid black !important;" width="20%" class="text-left pl-0">Telah Dibayar</td>
+                        <td width="20%" class="text-left pl-0">Telah Dibayar</td>
                         @if($item->lunas=="0")
                             <td style="border-bottom: 1px solid black !important;" class="text-left pr-0 total-amount">
                             : {{$invoice->formatCurrency(($item->dptunai))}}
