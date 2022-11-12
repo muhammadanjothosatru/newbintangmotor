@@ -44,13 +44,13 @@
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Alamat</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pemilik" id="alamat">{{ old('alamat') }}</textarea>
+                        <textarea style="overflow:hidden !important;" class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pemilik" id="alamat">{{ old('alamat') }}</textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" name="merk" data-placeholder="Pilih Merk" style="width: 100%">
+                        <select class="select2 selectform" id="pilihmerk"  onchange="selectmetode(3)"  name="merk" data-placeholder="Pilih Merk" style="width: 100%">
                             <option></option>
                             @foreach($allkendaraan as $data)
                             @if(Auth::user()->role == 0)
@@ -179,7 +179,7 @@
     })
 
     function navigate(origin, sens) {
-        var inputs = $('#form').find('input:enabled');
+        var inputs = $('#form').find(':input:enabled:not(:button)');
         var index = inputs.index(origin);
         index += sens;
         if (index < 0) {
@@ -188,7 +188,14 @@
         if (index > inputs.length - 1) {
             index = 0;
         }
+        console.log(index);
+        if(index == 4){
+            $("#pilihmerk" ).select2('open');
+        } else if(index == 6){
+            $("#jenis" ).select2('open');
+        }
         inputs.eq(index).focus();
+        console.log(inputs.eq(index));
     }
 
     $('input').keydown(function(e) {
@@ -199,6 +206,21 @@
             navigate(e.target, 1);
         }
     });
+
+    $('textarea').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
+   
+    function selectmetode(id){
+        $("#pilihmerk" ).select2('close');
+        navigate($("#pilihmerk"), 1);
+    };
+    
 
 </script>
 
