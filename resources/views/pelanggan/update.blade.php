@@ -13,7 +13,7 @@
   @if(Session::has('success'))
   <div id="flash" data-flash="{{session('success')}}"></div>
   @endif
-    <form action="{{ route('pelanggan.update',$pelanggan->id) }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('pelanggan.update',$pelanggan->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
     <div class="m-4">
@@ -29,25 +29,25 @@
                 <div class="mb-3 row">
                     <label for="inputNIK"  class="col-sm-2 col-form-label font-form">NIK</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nik" value="{!! $pelanggan->nik !!}" required="required" class="form-control form-control-size" placeholder="Masukkan NIK Pelanggan" id="nik">
+                            <input type="text" name="nik" value="{!! $pelanggan->nik !!}" required="required" class="form-control form-control-size" placeholder="Masukkan NIK Pelanggan" id="nik" autofocus autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama"  class="col-sm-2 col-form-label font-form">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama" value="{!! $pelanggan->nama !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama">
+                            <input type="text" name="nama" value="{!! $pelanggan->nama !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama" autocomplete="off">>
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Alamat</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pelanggan" id="alamat">{!! $pelanggan->alamat !!}</textarea>
+                        <textarea style="overflow:hidden !important;"  class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pelanggan" id="alamat">{!! $pelanggan->alamat !!}</textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">No. HP</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nomor_hp"  value="{!! $pelanggan->nomor_hp!!}" required="required" class="form-control form-control-size" placeholder="Masukkan No. HP Pelanggan" id="inputNIK">
+                            <input type="text" name="nomor_hp"  value="{!! $pelanggan->nomor_hp!!}" required="required" class="form-control form-control-size" placeholder="Masukkan No. HP Pelanggan" id="inputNIK" autocomplete="off">>
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -83,5 +83,41 @@
     </div>
 </form>
 </div>
+
+<script type="text/javascript">
+    
+    function navigate(origin, sens) {
+        var inputs = $('#form').find(':input:enabled:not(:button)');
+        var index = inputs.index(origin);
+        index += sens;
+
+        if (index < 0) {
+            index = inputs.length - 1;
+        }
+        if (index > inputs.length - 1) {
+            index = 0;
+        }
+        inputs.eq(index).focus();
+    }
+
+    $('input').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
+
+    $('textarea').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
+   
+</script>
 
 @endsection

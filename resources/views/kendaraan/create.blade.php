@@ -146,7 +146,7 @@
                 <div class="mb-3 row">
                     <label for="inputKeterangan" class="col-sm-2 col-form-label font-form">Keterangan</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan Tambahan" id="keterengan">{{ old('keterangan') }}</textarea>
+                        <textarea style="overflow:hidden !important;" class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan Tambahan" id="keterengan">{{ old('keterangan') }}</textarea>
                     </div>
                 </div>
             </div>
