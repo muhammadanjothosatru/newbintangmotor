@@ -191,7 +191,7 @@
                     <tr>
                         <td width="20%" class="text-left pl-0">Merk/Type</td>
                         <td class="text-left pr-0 total-amount">: {{$item->title}}</td>
-                        <td colspan="2" class="text-left pl-0 total-amount">Keterangan Pembayaran Kendaraan</td>
+                        <td colspan="2" class="text-left pl-0 total-amount">Keterangan Pembayaran Kendaraan </td>
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">Warna</td>
