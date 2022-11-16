@@ -13,7 +13,7 @@
   @if(Session::has('success'))
   <div id="flash" data-flash="{{session('success')}}"></div>
   @endif
-    <form action="{{ route('kendaraan.update', $kendaraan->no_pol) }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('kendaraan.update', $kendaraan->no_pol) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
     <div class="m-4">
@@ -30,9 +30,9 @@
                     <label for="inputNoPol"  class="col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
                             @if($kendaraan->status_kendaraan == "Tersedia")
-                                <input type="text" name="no_pol"  value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                                <input type="text" name="no_pol"  value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol" autocomplete="off" autofocus>
                             @elseif($kendaraan->status_kendaraan == "Terjual")
-                                <input type="text" name="no_pol" readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol">
+                                <input type="text" name="no_pol" readonly value="{!! $kendaraan->no_pol !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="no_pol" autocomplete="off" >
                            @endif
                            @if($errors->has('no_pol'))
                                 <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
@@ -42,19 +42,23 @@
                 <div class="mb-3 row">
                     <label for="inputNamaPemilik"  class="col-sm-2 col-form-label font-form">Nama Pemilik</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="nama_pemilik" value="{!! $kendaraan->nama_pemilik !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik">
+                            @if($kendaraan->status_kendaraan == "Tersedia")
+                            <input type="text" name="nama_pemilik" value="{!! $kendaraan->nama_pemilik !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik" autocomplete="off" >
+                            @elseif($kendaraan->status_kendaraan == "Terjual")
+                            <input type="text" name="nama_pemilik" value="{!! $kendaraan->nama_pemilik !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik" autocomplete="off" autofocus>
+                            @endif
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Alamat</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pemilik" id="alamat">{!! $kendaraan->alamat!!}</textarea>
+                        <textarea style="overflow:hidden !important;"  class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pemilik" id="alamat">{!! $kendaraan->alamat!!}</textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" name="merk"  data-placeholder="Pilih Merk" style="width: 100%">
+                        <select class="select2 selectform"  id="pilihmerk" onchange="selectmetode(3);"  name="merk"  data-placeholder="Pilih Merk" style="width: 100%">
                             <option></option>
                             @foreach($allkendaraan as $data)
                             @if(Auth::user()->role == 0)
@@ -75,7 +79,7 @@
                 <div class="mb-3 row">
                     <label for="inputJenis" class="col-sm-2 col-form-label font-form">Jenis</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" id="jenis" name="jenis" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%" data-minimum-results-for-search="Infinity">
+                        <select class="select2 selectform" id="jenis" name="jenis" onchange="selectmetode(5);" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%">
                             <option></option>
                             <option value="Sepeda Motor"{{ $kendaraan->jenis == 'Sepeda Motor' ? 'selected' : '' }}>Sepeda Motor</option>
                             <option value="Mobil"{{ $kendaraan->jenis == 'Mobil' ? 'selected' : '' }}>Mobil</option>
@@ -146,7 +150,7 @@
                 <div class="mb-3 row">
                     <label for="inputTanggalMasuk"  class="col-sm-2 col-form-label font-form">Tanggal Masuk</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="date" name="tanggal_masuk" value="{{ \Carbon\Carbon::parse($kendaraan->tanggal_masuk)->format('Y-m-d') }}" required="required" class="form-control font-form form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk"  onfocus="(this.type='date')"  onblur="(this.type='text')">
+                            <input type="text" name="tanggal_masuk" value="{{ \Carbon\Carbon::parse($kendaraan->tanggal_masuk)->format('Y-m-d') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk" onfocus="(this.type='date'); (this.showPicker());"  onblur="(this.type='text')" >
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -164,7 +168,7 @@
                 <div class="mb-3 row">
                     <label for="inputJenis" class="col-sm-2 col-form-label font-form">Status</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" id="status_kendaraan" name="status_kendaraan" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%" data-minimum-results-for-search="Infinity">
+                        <select class="select2 selectform" id="status_kendaraan" onchange="selectmetode(20);" name="status_kendaraan" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%">
                             <option></option>
                             <option value="Tersedia"{{ $kendaraan->status_kendaraan == 'Tersedia' ? 'selected' : '' }}>Tersedia</option>
                             <option value="Terjual"{{ $kendaraan->status_kendaraan == 'Terjual' ? 'selected' : '' }}>Terjual</option>
@@ -180,6 +184,11 @@
 
 
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        $(".select2").select2();
+    }); 
+
     function currency(angka, prefix){
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
         split = number_string.split(','),
@@ -204,6 +213,63 @@
     biaya_tambahan.addEventListener('keyup', function(e){
         biaya_tambahan.value = currency(this.value, 'Rp')
     })
+
+    
+
+    function navigate(origin, sens) {
+        var inputs = $('#form').find(':input:enabled:not(:button)');
+        var index = inputs.index(origin);
+        index += sens;
+
+        console.log(origin);
+        console.log(index);
+        if (index < 0) {
+            index = inputs.length - 1;
+        }
+        if (index > inputs.length - 1) {
+            index = 0;
+        }
+
+        if(index == 5){
+            $("#pilihmerk" ).select2('open');
+        } else if(index == 7){
+            $("#jenis" ).select2('open');
+        } else if(index == 20){
+            $("#status_kendaraan" ).select2('open');
+        } else {
+            inputs.eq(index).focus();
+        }
+    }
+
+    $('input').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
+
+    $('textarea').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
+   
+    function selectmetode(id){
+        $(document).ready(function() {
+            if(id == 3){
+                document.getElementById("tipe").focus();
+            } else if(id==5){
+                document.getElementById("model").focus();
+            }
+        });
+    };
+    
+
 
 </script>
 

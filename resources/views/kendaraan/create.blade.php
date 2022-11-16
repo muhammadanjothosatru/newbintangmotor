@@ -29,7 +29,7 @@
                 <div class="mb-3 row">
                     <label for="inputNoPol"  class="form-label col-sm-2 col-form-label font-form">No. Pol.</label>
                         <div class="col-sm-10">
-                            <input type="text" name="no_pol" value="{{ old('no_pol') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol" autocomplete="off">
+                            <input type="text" name="no_pol" value="{{ old('no_pol') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Polisi" id="nopol" autocomplete="off" autofocus>
                               @if($errors->has('no_pol'))
                                 <div class="error"><span class="badge" style="color:red">{{ $errors->first('no_pol') }}</span></div>
                             @endif
@@ -38,19 +38,19 @@
                 <div class="mb-3 row">
                     <label for="inputNamaPemilik"  class="col-sm-2 col-form-label font-form">Nama Pemilik</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="nama_pemilik" value="{{ old('nama_pemilik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik">
+                            <input type="text" name="nama_pemilik" value="{{ old('nama_pemilik') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pemilik" id="namapemilik"  autocomplete="off" >
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Alamat</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pemilik" id="alamat">{{ old('alamat') }}</textarea>
+                        <textarea style="overflow:hidden !important;" class="form-control textarea-control-size" required="required" name="alamat" placeholder="Masukkan Alamat Pemilik" id="alamat">{{ old('alamat') }}</textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">Merk</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" name="merk" data-placeholder="Pilih Merk" style="width: 100%">
+                        <select class="select2 selectform" id="pilihmerk" onchange="selectmetode(3);" name="merk" data-placeholder="Pilih Merk" style="width: 100%">
                             <option></option>
                             @foreach($allkendaraan as $data)
                             @if(Auth::user()->role == 0)
@@ -65,13 +65,13 @@
                 <div class="mb-3 row">
                     <label for="inputTipe"  class="col-sm-2 col-form-label font-form">Tipe</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tipe" value="{{ old('tipe') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tipe Kendaraan" id="tipe">
+                            <input type="text" name="tipe" value="{{ old('tipe') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tipe Kendaraan" id="tipe" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputJenis" class="col-sm-2 col-form-label font-form">Jenis</label>
                     <div class="dropdown col-sm-10 mt-1">
-                        <select class="select2 selectform" id="jenis" name="jenis" data-placeholder="Pilih Jenis Kendaraan" style="width: 100%" data-minimum-results-for-search="Infinity">
+                        <select class="select2 selectform" id="jenis" name="jenis" onchange="selectmetode(5);"  data-placeholder="Pilih Jenis Kendaraan" style="width: 100%">
                             <option></option>
                             <option value="Sepeda Motor"{{ old('jenis') == "Sepeda Motor" ? 'selected' : '' }}>Sepeda Motor</option>
                             <option value="Mobil" {{ old('jenis') == "Mobil" ? 'selected' : '' }}>Mobil</option>
@@ -81,19 +81,19 @@
                 <div class="mb-3 row">
                     <label for="inputModel"  class="col-sm-2 col-form-label font-form">Model</label>
                         <div class="col-sm-10">
-                            <input type="text" name="model" value="{{ old('model') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Model Kendaraan" id="model">
+                            <input type="text" name="model" value="{{ old('model') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Model Kendaraan" id="model" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTahun"  class="col-sm-2 col-form-label font-form">Tahun Pemb.</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="tahun_pembuatan" value="{{ old('tahun_pembuatan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Pembuatan Kendaraan" id="tahun">
+                            <input type="text" name="tahun_pembuatan" value="{{ old('tahun_pembuatan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Pembuatan Kendaraan" id="tahun" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNoRangka"  class="col-sm-2 col-form-label font-form">No. Rangka</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="no_rangka" value="{{ old('no_rangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka">
+                            <input type="text" name="no_rangka" value="{{ old('no_rangka') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Rangka" id="norangka" autocomplete="off">
                         </div>
                 </div>
                 <div class="row">
@@ -104,49 +104,49 @@
                 <div class="mb-3 row">
                     <label for="inputNoMesin"  class="col-sm-2 col-form-label font-form">No. Mesin</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="no_mesin" value="{{ old('no_mesin') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Mesin" id="nomesin">
+                            <input type="text" name="no_mesin" value="{{ old('no_mesin') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor Mesin" id="nomesin" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputWarna"  class="col-sm-2 col-form-label font-form">Warna</label>
                         <div class="col-sm-10">
-                            <input type="text" name="warna" value="{{ old('warna') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Warna" id="warna">
+                            <input type="text" name="warna" value="{{ old('warna') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Warna" id="warna" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTahunReg"  class="col-sm-2 col-form-label font-form">Tahun Reg.</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="tahun_registrasi" value="{{ old('tahun_registrasi') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Registrasi Kendaraan" id="tahunreg">
+                            <input type="text" name="tahun_registrasi" value="{{ old('tahun_registrasi') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tahun Registrasi Kendaraan" id="tahunreg" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputNoBPKB"  class="col-sm-2 col-form-label font-form">No. BPKB</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="no_bpkb" value="{{ old('no_bpkb') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor BPKB" id="nobpkb">
+                            <input type="text" name="no_bpkb" value="{{ old('no_bpkb') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Nomor BPKB" id="nobpkb" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Beli</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="harga_beli" value="{{ old('harga_beli') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga">
+                            <input type="text" name="harga_beli" value="{{ old('harga_beli') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Beli Kendaraan" id="harga" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputTanggalMasuk"  class="col-sm-2 col-form-label font-form">Tanggal Masuk</label>
                         <div class="col-sm-10 col-form-label">
-                            <input type="text" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control font-form form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk" onfocus="(this.type='date')"  onblur="(this.type='text')" >
+                            <input type="text" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tanggal Masuk Kendaraan" id="tanggalmasuk" onfocus="(this.type='date'); (this.showPicker());"  onblur="(this.type='text')" >
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputSupplier"  class="col-sm-2 col-form-label font-form">Supplier</label>
                         <div class="col-sm-10">
-                            <input type="text" name="supplier" value="{{ old('supplier') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Supplier" id="supplier"  autocomplete="off">
+                            <input type="text" name="supplier" value="{{ old('supplier') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Supplier" id="supplier"  autocomplete="off" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="inputKeterangan" class="col-sm-2 col-form-label font-form">Keterangan</label>
                     <div class="form-floating col-sm-10">
-                        <textarea class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan Tambahan" id="keterengan">{{ old('keterangan') }}</textarea>
+                        <textarea style="overflow:hidden !important;" class="form-control textarea-control-size" required="required" name="keterangan" placeholder="Masukkan Keterangan Tambahan" id="keterengan">{{ old('keterangan') }}</textarea>
                     </div>
                 </div>
             </div>
@@ -157,6 +157,10 @@
 </div>
 
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        $(".select2").select2();
+    }); 
     function currency(angka, prefix){
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
         split = number_string.split(','),
@@ -179,16 +183,24 @@
     })
 
     function navigate(origin, sens) {
-        var inputs = $('#form').find('input:enabled');
+        var inputs = $('#form').find(':input:enabled:not(:button)');
         var index = inputs.index(origin);
         index += sens;
+
         if (index < 0) {
             index = inputs.length - 1;
         }
         if (index > inputs.length - 1) {
             index = 0;
         }
-        inputs.eq(index).focus();
+
+        if(index == 4){
+            $("#pilihmerk" ).select2('open');
+        } else if(index == 6){
+            $("#jenis" ).select2('open');
+        } else {
+            inputs.eq(index).focus();
+        }
     }
 
     $('input').keydown(function(e) {
@@ -199,6 +211,26 @@
             navigate(e.target, 1);
         }
     });
+
+    $('textarea').keydown(function(e) {
+        if (e.keyCode==38) {
+            navigate(e.target, -1);
+        }
+        if (e.keyCode==40) {
+            navigate(e.target, 1);
+        }
+    });
+   
+    function selectmetode(id){
+        $(document).ready(function() {
+            if(id == 3){
+                document.getElementById("tipe").focus();
+            } else if(id==5){
+                document.getElementById("model").focus();
+            }
+        });
+    };
+    
 
 </script>
 

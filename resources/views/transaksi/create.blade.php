@@ -13,7 +13,7 @@
   @if(Session::has('success'))
   <div id="flash" data-flash="{{session('success')}}"></div>
   @endif
-    <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="m-4">
         <div class="row">
@@ -32,7 +32,7 @@
                             <select class="select2 col-sm-12" name="nama" required="required" data-placeholder="Cari Nama Pelanggan">
                                 <option ></option>
                                 @foreach($pelanggan as $data)
-                                <option value="{{$data->id}}">{{ $data->nama }}</option>
+                                <option value="{{$data->id}}">{{ $data->nama }} - {{ $data->alamat }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -60,13 +60,13 @@
                     <div class="mb-3 row">
                         <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Akhir</label>
                             <div class="col-sm-10">
-                                <input type="text" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
+                                <input type="text" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir" autocomplete="off">
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputKomisi"  class="col-sm-2 col-form-label font-form">Komisi</label>
                             <div class="col-sm-10">
-                                <input type="text" name="komisi" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
+                                <input type="text" name="komisi" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi" autocomplete="off">
                             </div>
                     </div>
                     <br>
@@ -107,13 +107,13 @@
                     <div class="mb-3 row"  style="display: none;"  id="divuangdp">
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="uang_dp" value="{{ old('uang_dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
+                                <input type="text" name="uang_dp" value="{{ old('uang_dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" autocomplete="off" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row"  style="display: none;"  id="divangsuran">
                         <label for="inputHarga"  class="pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
                             <div class="pl-0 col-sm-10">
-                                <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" disabled>
+                                <input type="text" name="bulan_angsuran" value="{{ old('bulan_angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" autocomplete="off" id="angsuran" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row"  style="display: none;"  id="divlunas">
@@ -126,7 +126,7 @@
                     <div class="mb-3 row"  style="display: none;"  id="divdplunas">
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Pembayaran Awal</label>
                             <div class="pl-0 col-sm-10">
-                                <input type="text" name="dp_tunai" value="{{ old('dp_tunai') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" disabled>
+                                <input type="text" name="dp_tunai" value="{{ old('dp_tunai') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" autocomplete="off" disabled>
                             </div>
                     </div>
                     <div class="mb-3 row">
@@ -145,6 +145,7 @@
 </div>
 
 <script type="text/javascript">
+
     function selectmetode(metodedipilih){
         if(metodedipilih.value=='Tunai'){
             document.getElementById('divlunas').style.display = "flex";
@@ -214,6 +215,7 @@
     dp_tunai.addEventListener('keyup', function(e){
         dp_tunai.value = currency(this.value, 'Rp')
     });
+   
 </script>
 
 

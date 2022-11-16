@@ -165,9 +165,9 @@
 
             <p class="text-center" style="font-size: 12px; margin-bottom: -5px;"><strong>Jual Beli Sepeda Motor / Mobil - Cash - Kredit / Tukar Tambah<strong></p>
             <p class="text-center">
-            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan (0322) 314810 / 085780938091<br>
+            SHOW ROOM: Jl. Basuki Rahmad No. 129 Lamongan <strong>(085780938091)</strong><br>
             (<span>&#177;</span> 100 meter barat Kantor BRI Lamongan)<br>
-            CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat (0322) 456463</p>
+            CABANG BABAT: Jl. Bedahan No. 11A Barat Pasar Baru <span>&#177;</span> 100 meter Babat <strong>(082227464748)</strong></p>
  
             <hr width="100%" align="right" noshade>
 
@@ -191,7 +191,7 @@
                     <tr>
                         <td width="20%" class="text-left pl-0">Merk/Type</td>
                         <td class="text-left pr-0 total-amount">: {{$item->title}}</td>
-                        <td colspan="2" class="text-left pl-0 total-amount">Keterangan Pembayaran Kendaraan </td>
+                        <td colspan="2" class="text-left pl-0 total-amount">Keterangan Pembayaran Kendaraan</td>
                     </tr>
                     <tr>
                         <td width="20%" class="text-left pl-0">Warna</td>
@@ -200,7 +200,7 @@
                         </td>
                         
                         @if($item->metpembayaran=="Tunai")
-                        <td width="20%" class="text-left pl-0">Pelunasan</td>
+                        <td width="20%" class="text-left pl-0">Keterangan</td>
                         @if($item->lunas=="0")
                         <td class="text-left pr-0 total-amount">: Belum Lunas</td>
                         @elseif($item->lunas=="1")
@@ -234,11 +234,11 @@
                         @if($item->metpembayaran=="Tunai")
                         <td width="20%" class="text-left pl-0">Telah Dibayar</td>
                         @if($item->lunas=="0")
-                            <td class="text-left pr-0 total-amount">
+                            <td style="border-bottom: 1px solid black !important;" class="text-left pr-0 total-amount">
                             : {{$invoice->formatCurrency(($item->dptunai))}}
                             </td>
                         @elseif($item->lunas=="1")
-                            <td class="text-left pr-0 total-amount">
+                            <td style="border-bottom: 1px solid black !important;" class="text-left pr-0 total-amount">
                                 : {{$invoice->formatCurrency(($invoice->total_amount))}}
                             </td>
                         @endif

@@ -97,29 +97,65 @@
                             <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->metode_pembayaran !!}">
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label class="pl-0 col-sm-2 col-form-label font-form">Uang Muka</label>
-                        <div class=" col-sm-10">
-                            @if($transaksi->metode_pembayaran == 'Tunai')
-                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="-">
-                            @elseif($transaksi->metode_pembayaran == 'Kredit')
+                    
+                    @if($transaksi->metode_pembayaran == 'Tunai')
+                        <div class="mb-3 row">
+                            <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan</label>
+                            <div class=" col-sm-10">
+                                @if($transaksi->lunas == '0')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Belum Lunas">
+                                @elseif($transaksi->lunas == '1')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Sudah Lunas">
+                                @endif
+                            </div>
+                        </div>
+                    @elseif($transaksi->metode_pembayaran == 'Kredit')
+                        <div class="mb-3 row">
+                            <label class="pl-0 col-sm-2 col-form-label font-form">Uang Muka</label>
+                            <div class=" col-sm-10">
                                 <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!!number_format($transaksi->uang_dp, 0, ',', '.')!!}">
-                            @endif
-                            
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label class="pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
-                        <div class=" col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->bulan_angsuran !!}">
+                    @endif
+                    
+                    @if($transaksi->metode_pembayaran == 'Tunai')
+                        <div class="mb-3 row">
+                            <label class="pl-0 col-sm-2 col-form-label font-form">Telah Dibayar</label>
+                            <div class=" col-sm-10">
+                                @if($transaksi->lunas == '0')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!!number_format($transaksi->dp_tunai, 0, ',', '.')!!}">
+                                @elseif($transaksi->lunas == '1')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!!number_format($transaksi->harga_akhir, 0, ',', '.')!!}">
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan ACC</label>
-                        <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->keterangan !!}">
+                    @elseif($transaksi->metode_pembayaran == 'Kredit')
+                        <div class="mb-3 row">
+                            <label class="pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
+                            <div class=" col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->bulan_angsuran !!}">
+                            </div>
                         </div>
-                    </div>
+                    @endif
+                    @if($transaksi->metode_pembayaran == 'Tunai')
+                        <div class="mb-3 row">
+                            <label class="pl-0 col-sm-2 col-form-label font-form">Perlu Dilunasi</label>
+                            <div class=" col-sm-10">
+                                @if($transaksi->lunas == '0')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. {!!number_format($transaksi->harga_akhir-$transaksi->dp_tunai, 0, ',', '.')!!}">
+                                @elseif($transaksi->lunas == '1')
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="Rp. 0">
+                                @endif
+                            </div>
+                        </div>
+                    @elseif($transaksi->metode_pembayaran == 'Kredit')
+                        <div class="mb-3 row">
+                            <label class="pl-0 col-sm-2 col-form-label font-form">Bank</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext font-data" id="staticEmail" value="{!! $transaksi->keterangan !!}">
+                            </div>
+                        </div>
+                    @endif
                     <div class="mb-3 row">
                         <label class="pl-0 col-sm-2 col-form-label font-form">Keterangan Lain</label>
                         <div class="col-sm-10">

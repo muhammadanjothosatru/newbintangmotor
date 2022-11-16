@@ -33,7 +33,7 @@
                             <select class="select2 col-sm-12" name="nama" required="required" data-placeholder="Cari Nama Pelanggan">
                                 <option></option>
                                 @foreach($pelangganall as $data)
-                                    <option value="{{$data->id}}" {{ $data->id == $pelanggan->id ? 'selected' : '' }}>{{ $data->nama }}</option>
+                                    <option value="{{$data->id}}" {{ $data->id == $pelanggan->id ? 'selected' : '' }}>{{ $data->nama }} - {{ $data->alamat }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -59,13 +59,13 @@
                     <div class="mb-3 row">
                         <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Akhir</label>
                             <div class="col-sm-10">
-                                <input type="text" value="Rp. {!! number_format($transaksi->harga_akhir, 0, ',', '.')!!}" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir">
+                                <input type="text" value="Rp. {!! number_format($transaksi->harga_akhir, 0, ',', '.')!!}" name="harga_akhir" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Akhir" id="hargaakhir" autocomplete="off">
                             </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputKomisi"  class="col-sm-2 col-form-label font-form">Komisi</label>
                             <div class="col-sm-10">
-                                <input type="text" name="komisi" value= "Rp. {!!number_format($transaksi->komisi, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi">
+                                <input type="text" name="komisi" value= "Rp. {!!number_format($transaksi->komisi, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Komisi" id="komisi" autocomplete="off">
                             </div>
                     </div>
                     <br>
@@ -107,7 +107,7 @@
                     @endif
                         <label for="inputDiskon"  class="pl-0 col-sm-2 col-form-label font-form">Nomor Kontrak</label>
                             <div class=" pl-0 col-sm-10 col-form-label">
-                                <input type="text" name="no_kontrak" value="{!! $transaksi->no_kontrak !!}"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }}>
+                                <input type="text" name="no_kontrak" value="{!! $transaksi->no_kontrak !!}"  class="form-control form-control-size" placeholder="Masukkan Nomor Kontrak" id="nokontrak" {{ $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' }} autocomplete="off">
                             </div>
                     </div>
                     @if($transaksi->metode_pembayaran == 'Tunai')
@@ -118,9 +118,9 @@
                         <label for="inputHarga"  class=" pl-0 pr-0 col-sm-2 col-form-label font-form">Uang Muka</label>
                             <div class=" pl-0 col-sm-10">
                                 @if($transaksi->metode_pembayaran == 'Tunai')
-                                    <input type="text" name="uang_dp" value="-" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled>
+                                    <input type="text" name="uang_dp" value="-" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" disabled autocomplete="off">
                                 @elseif($transaksi->metode_pembayaran == 'Kredit')
-                                    <input type="text" name="uang_dp" value= "Rp. {!!number_format($transaksi->uang_dp, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka">
+                                    <input type="text" name="uang_dp" value= "Rp. {!!number_format($transaksi->uang_dp, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka" id="uangmuka" autocomplete="off">
                                 @endif
                             </div>
                     </div>
@@ -131,7 +131,7 @@
                     @endif
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Angsuran</label>
                             <div class=" pl-0 col-sm-10">
-                                <input type="text" name="bulan_angsuran" value="{!! $transaksi->bulan_angsuran !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" {!! $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' !!}>
+                                <input type="text" name="bulan_angsuran" value="{!! $transaksi->bulan_angsuran !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Bulan Angsuran" id="angsuran" {!! $transaksi->metode_pembayaran == 'Tunai' ? 'disabled' : '' !!} autocomplete="off">
                             </div>
                     </div>
                     @if($transaksi->metode_pembayaran == 'Tunai')
@@ -152,7 +152,7 @@
                     @endif
                         <label for="inputHarga"  class=" pl-0 col-sm-2 col-form-label font-form">Pembayaran Awal</label>
                             <div class="pl-0 col-sm-10">
-                                <input type="text" name="dp_tunai" value="Rp. {!!number_format($transaksi->dp_tunai, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" {{ $transaksi->lunas == '1' ? 'disabled' : '' }}>
+                                <input type="text" name="dp_tunai" value="Rp. {!!number_format($transaksi->dp_tunai, 0, ',', '.')!!}" required="required" class="form-control form-control-size" placeholder="Masukkan Pembayaran Awal" id="pembayaranawal" {{ $transaksi->lunas == '1' ? 'disabled' : '' }} autocomplete="off">
                             </div>
                     </div>
 
