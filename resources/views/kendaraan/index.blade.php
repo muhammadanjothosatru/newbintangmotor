@@ -17,6 +17,7 @@
 			<th>Merk</th>
 			<th>Nama Pemilik</th>
 			<th>Tipe</th>
+			<th>Tahun</th>
 			<th>Warna</th>
 			<th>Tanggal Masuk</th>
 			<th>Harga Beli</th>
@@ -34,6 +35,7 @@
 		<td>{{ $k->merk}}</td>
 		<td>{{ $k->nama_pemilik}}</td>
 		<td>{{ $k->tipe}}</td>
+		<td>{{ $k->tahun_pembuatan}}</td>
 		<td>{{ $k->warna}}</td>
 		<td>{{  \Carbon\Carbon::parse($k->tanggal_masuk)->format('d M Y')}}</td>
 		<td>Rp. {{ number_format($k->harga_beli, 0, ',', '.');}}</td>
