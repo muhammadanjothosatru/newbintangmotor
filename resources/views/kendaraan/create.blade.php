@@ -65,7 +65,7 @@
                 <div class="mb-3 row">
                     <label for="inputTipe"  class="col-sm-2 col-form-label font-form">Tipe</label>
                         <div class="col-sm-10">
-                            <input type="text" name="tipe" value="{{ old('tipe') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tipe Kendaraan" id="tipe" autocomplete="off">
+                            <input type="text" name="tipe" value="{{ old('tipe') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Tipe Kendaraan" id="tipe">
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -81,7 +81,7 @@
                 <div class="mb-3 row">
                     <label for="inputModel"  class="col-sm-2 col-form-label font-form">Model</label>
                         <div class="col-sm-10">
-                            <input type="text" name="model" value="{{ old('model') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Model Kendaraan" id="model" autocomplete="off">
+                            <input type="text" name="model" value="{{ old('model') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Model Kendaraan" id="model">
                         </div>
                 </div>
                 <div class="mb-3 row">

@@ -46,7 +46,7 @@ class PelangganController extends Controller
         $validate= $request->validate([
             'nik' => 'required|unique:pelanggan',
             'nama' => 'required',
-            'nomor_hp' => 'required|numeric',
+            'nomor_hp' => 'required',
             'alamat' => 'required',
         ]);
        
@@ -118,7 +118,7 @@ class PelangganController extends Controller
         $validate= $request->validate([
             'foto_ktp' => 'mimes:jpg,png,jpeg|image',
             'foto_ktp2' => 'mimes:jpg,png,jpeg|image',
-            'nomor_hp' => 'required|numeric',
+            'nomor_hp' => 'required',
         ]);
         $pelanggan = Pelanggan::findorfail($id);
        

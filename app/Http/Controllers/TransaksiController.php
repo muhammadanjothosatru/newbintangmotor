@@ -126,12 +126,16 @@ class TransaksiController extends Controller
                 $lunas = 0;
                 $dp_tunai = preg_replace('/[^0-9]/', '', $request->dp_tunai);
             }
+            $komisi = 0;
+            if($request->komisi != ""){
+                $komisi = preg_replace('/[^0-9]/', '', $request->komisi);
+            }
             $transaksi = Transaksi::create([
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
                 'metode_pembayaran'=>$request->metode_pembayaran,
                 'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
-                'komisi'=>preg_replace('/[^0-9]/', '', $request->komisi),
+                'komisi'=>$komisi,
                 'no_kontrak'=>'-',
                 'uang_dp'=>'-',
                 'bulan_angsuran'=>'-',
@@ -148,7 +152,7 @@ class TransaksiController extends Controller
                 'kendaraan_no_pol' => $request->no_pol,
                 'metode_pembayaran'=>$request->metode_pembayaran,
                 'harga_akhir'=>preg_replace('/[^0-9]/', '', $request->harga_akhir),
-                'komisi'=>preg_replace('/[^0-9]/', '', $request->komisi),
+                'komisi'=>$komisi,
                 'no_kontrak'=>'-',
                 'uang_dp'=>preg_replace('/[^0-9]/', '', $request->uang_dp),
                 'bulan_angsuran'=>$request->bulan_angsuran,

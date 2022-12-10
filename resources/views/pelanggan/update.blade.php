@@ -35,7 +35,7 @@
                 <div class="mb-3 row">
                     <label for="inputNama"  class="col-sm-2 col-form-label font-form">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nama" value="{!! $pelanggan->nama !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama" autocomplete="off">>
+                            <input type="text" name="nama" value="{!! $pelanggan->nama !!}" required="required" class="form-control form-control-size" placeholder="Masukkan Nama Pelanggan" id="nama" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
@@ -47,7 +47,7 @@
                 <div class="mb-3 row">
                     <label for="inputNama" class="col-sm-2 col-form-label font-form">No. HP</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nomor_hp"  value="{!! $pelanggan->nomor_hp!!}" required="required" class="form-control form-control-size" placeholder="Masukkan No. HP Pelanggan" id="inputNIK" autocomplete="off">>
+                            <input type="text" name="nomor_hp"  value="{!! $pelanggan->nomor_hp!!}" required="required" class="form-control form-control-size" placeholder="Masukkan No. HP Pelanggan" id="inputNIK" autocomplete="off">
                         </div>
                 </div>
                 <div class="mb-3 row">
