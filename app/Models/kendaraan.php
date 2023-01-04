@@ -43,4 +43,7 @@ class Kendaraan extends Model
     public function users(){
     	return $this->belongsTo(User::class,'users_id','id');
     }
+    public function item(){
+        return $this->hasOne(Item::class);
+    }
 }

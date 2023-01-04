@@ -2,6 +2,7 @@
 
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Landing\LandingController;
 use App\Http\Controllers\Pos\UserController;
 use App\Http\Controllers\Pos\LoginController;
 use App\Http\Controllers\Pos\MobilController;
@@ -25,8 +26,15 @@ use App\Http\Controllers\Pos\LaporanMobilController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/', [LandingController::class,'index'])->middleware('guest');
+
+
+// POS
+
 // start pages to login //
-Route::get('/', function(){
+Route::get('/pos', function(){
  return view('pos.auth.login');
 });
 
