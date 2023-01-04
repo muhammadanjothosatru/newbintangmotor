@@ -2,16 +2,16 @@
 
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MobilController;
-use App\Http\Controllers\CabangController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KendaraanController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\LaporanMobilController;
+use App\Http\Controllers\Pos\UserController;
+use App\Http\Controllers\Pos\LoginController;
+use App\Http\Controllers\Pos\MobilController;
+use App\Http\Controllers\Pos\CabangController;
+use App\Http\Controllers\Pos\LaporanController;
+use App\Http\Controllers\Pos\DashboardController;
+use App\Http\Controllers\Pos\KendaraanController;
+use App\Http\Controllers\Pos\PelangganController;
+use App\Http\Controllers\Pos\TransaksiController;
+use App\Http\Controllers\Pos\LaporanMobilController;
 
 
 
@@ -27,7 +27,7 @@ use App\Http\Controllers\LaporanMobilController;
 */
 // start pages to login //
 Route::get('/', function(){
- return view('auth.login');
+ return view('pos.auth.login');
 });
 
 // route login dan logout//

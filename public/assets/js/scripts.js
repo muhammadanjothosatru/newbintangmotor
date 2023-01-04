@@ -643,17 +643,18 @@ $(document).ready(function () {
             };
 
             // Total over this page
+           
             var pageTotal = api
-                .column(13, { page: "current" })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
+            .column(13, {search:"applied"})
+            .data()
+            .reduce(function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0);
 
             // Update footer
             $(api.column(13).footer()).html(
                 "Rp. " +
-                    pageTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                pageTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             );
         },
         init: function (api, node, config) {
@@ -662,7 +663,7 @@ $(document).ready(function () {
         buttons: [
             {
                 text: '<i class="fas fa-file-export"><a class="ml-2 font-export">Export PDF</a></i>',
-                extend: "pdf",
+                extend: "pdfHtml5",
                 download: "open",
                 className: "btn btn-primary btn-sm",
                 extension: ".pdf",
@@ -689,6 +690,7 @@ $(document).ready(function () {
                     $(node).removeClass("dt-button buttons-pdf buttons-html5");
                 },
             },
+            
         ],
     });
 
