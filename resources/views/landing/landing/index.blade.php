@@ -51,7 +51,7 @@
 
           <div>
             <a>
-                Contact
+                Kontak
             </a>
           </div>
 
@@ -499,8 +499,7 @@
                   </div>
 
                   <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
                   </div>
 
                 </button>
@@ -520,8 +519,7 @@
                   </div>
 
                   <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
                   </div>
 
                 </button>
@@ -541,8 +539,7 @@
                   </div>
 
                   <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
                   </div>
 
                 </button>
@@ -1351,21 +1348,15 @@
                         width="300">
                   
                       <div class="showcase-actions">
-                        <button class="btn-action">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
                   
                         <button class="btn-action">
                           <ion-icon name="eye-outline"></ion-icon>
                         </button>
                   
                         <button class="btn-action">
-                          <ion-icon name="repeat-outline"></ion-icon>
+                          <ion-icon name="chatbubble-outline"></ion-icon>
                         </button>
                   
-                        <button class="btn-action">
-                          <ion-icon name="bag-add-outline"></ion-icon>
-                        </button>
                       </div>
                     </div>
                   
@@ -1395,21 +1386,53 @@
                         width="300">
                   
                       <div class="showcase-actions">
-                        <button class="btn-action">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
                   
                         <button class="btn-action">
                           <ion-icon name="eye-outline"></ion-icon>
                         </button>
                   
                         <button class="btn-action">
-                          <ion-icon name="repeat-outline"></ion-icon>
+                          <ion-icon name="chatbubble-outline"></ion-icon>
+                        </button>
+                  
+                      </div>
+                    </div>
+                  
+                    <div class="showcase-content">
+                      <a href="#" class="showcase-category">{{$data->jenis}}</a>
+                  
+                      <h3>
+                        <a href="#" class="showcase-title">{{$data->merk}} {{$data->tipe}} {{$data->tahun_pembuatan}}</a>
+                      </h3>
+                  
+                      <div class="price-box">
+                        <p class="price">{{ $data->harga_jual }}</p>
+                      </div>
+                  
+                    </div>
+                  
+                  </div>
+            @endforeach
+
+            @foreach($newitems as $data)
+                <div class="showcase">
+              
+                    <div class="showcase-banner">
+                      <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+                        width="300">
+                      <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img hover"
+                        width="300">
+                  
+                      <div class="showcase-actions">
+                  
+                        <button class="btn-action">
+                          <ion-icon name="eye-outline"></ion-icon>
                         </button>
                   
                         <button class="btn-action">
-                          <ion-icon name="bag-add-outline"></ion-icon>
+                          <ion-icon name="chatbubble-outline"></ion-icon>
                         </button>
+                  
                       </div>
                     </div>
                   
@@ -1430,49 +1453,6 @@
             @endforeach
 
             
-            @foreach($newitems as $data)
-                <div class="showcase">
-              
-                    <div class="showcase-banner">
-                      <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
-                        width="300">
-                      <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img hover"
-                        width="300">
-                  
-                      <div class="showcase-actions">
-                        <button class="btn-action">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                  
-                        <button class="btn-action">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </button>
-                  
-                        <button class="btn-action">
-                          <ion-icon name="repeat-outline"></ion-icon>
-                        </button>
-                  
-                        <button class="btn-action">
-                          <ion-icon name="bag-add-outline"></ion-icon>
-                        </button>
-                      </div>
-                    </div>
-                  
-                    <div class="showcase-content">
-                      <a href="#" class="showcase-category">{{$data->jenis}}</a>
-                  
-                      <h3>
-                        <a href="#" class="showcase-title">{{$data->merk}} {{$data->tipe}} {{$data->tahun_pembuatan}}</a>
-                      </h3>
-                  
-                      <div class="price-box">
-                        <p class="price">{{ $data->harga_jual }}</p>
-                      </div>
-                  
-                    </div>
-                  
-                  </div>
-            @endforeach
             </div>
 
           </div>
@@ -1600,83 +1580,51 @@
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">Popular Categories</h2>
+            <h2 class="nav-title">Kategori Populer</h2>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Fashion</a>
+            <a href="#" class="footer-nav-link">Motor</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Electronic</a>
+            <a href="#" class="footer-nav-link">Mobil</a>
+          </li>
+
+          <br>
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Layanan</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Jual Kendaraan</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Beli Kendaraan</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Cosmetic</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Health</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Watches</a>
+            <a href="#" class="footer-nav-link">Tukar Tambah</a>
           </li>
 
         </ul>
 
-        <ul class="footer-nav-list">
+        <ul class="footer-nav-list-cabang">
         
           <li class="footer-nav-item">
-            <h2 class="nav-title">Products</h2>
+            <h2 class="nav-title">Cabang</h2>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
+            <a href="#" class="footer-nav-link">Lamongan</a>
+            <a style="color: var(--sonic-silver)">Jl. Basuki Rahmat No.129A, Rangge, Sukorejo, Kec. Lamongan, Kabupaten Lamongan, Jawa Timur 62216</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
-          </li>
-        
-        </ul>
-
-        <ul class="footer-nav-list">
-        
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Our Company</h2>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Delivery</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Legal Notice</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Terms and conditions</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">About us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Secure payment</a>
+            <a href="#" class="footer-nav-link">Babat</a>
+            <a style="color: var(--sonic-silver);">Jl. Raya Pendem No.11A, Plaosan, Kec. Babat, Kabupaten Lamongan, Jawa Timur 62271</a>
           </li>
         
         </ul>
@@ -1684,27 +1632,15 @@
         <ul class="footer-nav-list">
         
           <li class="footer-nav-item">
-            <h2 class="nav-title">Services</h2>
+            <h2 class="nav-title">Pembayaran</h2>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
+            <a href="#" class="footer-nav-link">Kredit</a>
           </li>
         
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
-          </li>
-        
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
+            <a href="#" class="footer-nav-link">Cash</a>
           </li>
         
         </ul>
@@ -1712,7 +1648,7 @@
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">Contact</h2>
+            <h2 class="nav-title">Kontak</h2>
           </li>
 
           <li class="footer-nav-item flex">
@@ -1721,8 +1657,8 @@
             </div>
 
             <address class="content">
-              419 State 414 Rte
-              Beaver Dams, New York(NY), 14812, USA
+              Jl. Basuki Rahmat No.129A, Rangge, Sukorejo, 
+              Kec. Lamongan, Kabupaten Lamongan, Jawa Timur 62216
             </address>
           </li>
 
@@ -1731,7 +1667,7 @@
               <ion-icon name="call-outline"></ion-icon>
             </div>
 
-            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+            <a href="tel:+607936-8058" class="footer-nav-link">0822 3330 0087</a>
           </li>
 
           <li class="footer-nav-item flex">
@@ -1739,7 +1675,7 @@
               <ion-icon name="mail-outline"></ion-icon>
             </div>
 
-            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+            <a href="mailto:bmlamongan2020@gmail.com" class="footer-nav-link">bmlamongan2020@gmail.com</a>
           </li>
 
         </ul>
@@ -1790,7 +1726,7 @@
 
       <div class="container">
 
-        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
+        {{-- <img src="{{asset('image/mandiri.png')}}" alt="payment method" class="payment-img"> --}}
 
         <p class="copyright">
           Copyright &copy; <a href="#">Bintang Motor</a> all rights reserved.
