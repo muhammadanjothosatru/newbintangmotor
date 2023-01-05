@@ -9,3 +9,9 @@
 .form-control-size {
     height: 48px !important;
 }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+}

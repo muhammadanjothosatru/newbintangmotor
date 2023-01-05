@@ -2,7 +2,13 @@
 
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Route;
+
+
 use App\Http\Controllers\Landing\LandingController;
+use App\Http\Controllers\Landing\LoginAdminController;
+use App\Http\Controllers\Landing\DataController;
+
+
 use App\Http\Controllers\Pos\UserController;
 use App\Http\Controllers\Pos\LoginController;
 use App\Http\Controllers\Pos\MobilController;
@@ -29,7 +35,18 @@ use App\Http\Controllers\Pos\LaporanMobilController;
 
 
 Route::get('/', [LandingController::class,'index'])->middleware('guest');
+Route::get('/adminlogin', [LoginAdminController::class,'index'])->middleware('guest');
+Route::post('/adminlogin', [LoginAdminController::class,'authenticate'])->name('adminlogin');
+Route::post('/adminlogout', [LoginAdminController::class,'logout']);
 
+
+// group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
+Route::group(['middleware' => ['auth','cekrole:0']], function(){
+    Route::resources([
+        'datamanagement' => DataController::class,
+    ]);
+    
+});
 
 // POS
 
