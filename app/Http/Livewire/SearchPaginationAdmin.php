@@ -12,7 +12,11 @@ class SearchPaginationAdmin extends Component
 {
     use WithPagination;
     public $searchTerm;
-
+    
+    public function updatingSearchTerm(){
+        $this->reset();
+    }
+    
     public function render()
     {
         $searchTerm = '%'.$this->searchTerm.'%';

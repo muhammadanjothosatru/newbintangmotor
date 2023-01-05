@@ -9,13 +9,6 @@ const modalCloseOverlay = document.querySelector('[data-modal-overlay]');
 
 // notification toast variables
 const notificationToast = document.querySelector('[data-toast]');
-const toastCloseBtn = document.querySelector('[data-toast-close]');
-
-// notification toast eventListener
-toastCloseBtn.addEventListener('click', function () {
-  notificationToast.classList.add('closed');
-});
-
 
 
 
@@ -78,35 +71,35 @@ for (let i = 0; i < accordionBtn.length; i++) {
 
 }
 
-//maxwheel
-let menu = document.querySelector('#menu-btn');
-let navbar = document.querySelector('.navbar');
+// //maxwheel
+// let menu = document.querySelector('#menu-btn');
+// let navbar = document.querySelector('.navbar');
 
-menu.onclick = () =>{
-  menu.classList.toggle('fa-times');
-  navbar.classList.toggle('active');
-}
+// menu.onclick = () =>{
+//   menu.classList.toggle('fa-times');
+//   navbar.classList.toggle('active');
+// }
 
-document.querySelector('#login-btn').onclick = () =>{
-  document.querySelector('.login-form-container').classList.toggle('active');
-}
+// document.querySelector('#login-btn').onclick = () =>{
+//   document.querySelector('.login-form-container').classList.toggle('active');
+// }
 
-document.querySelector('#close-login-form').onclick = () =>{
-  document.querySelector('.login-form-container').classList.remove('active');
-}
+// document.querySelector('#close-login-form').onclick = () =>{
+//   document.querySelector('.login-form-container').classList.remove('active');
+// }
 
-window.onscroll = () =>{
+// window.onscroll = () =>{
 
-  menu.classList.remove('fa-times');
-  navbar.classList.remove('active');
+//   menu.classList.remove('fa-times');
+//   navbar.classList.remove('active');
 
-  if(window.scrollY > 0){
-    document.querySelector('.header').classList.add('active');
-  }else{
-    document.querySelector('.header').classList.remove('active');
-  };
+//   if(window.scrollY > 0){
+//     document.querySelector('.header').classList.add('active');
+//   }else{
+//     document.querySelector('.header').classList.remove('active');
+//   };
 
-};
+// };
 
 document.querySelector('.home').onmousemove = (e) =>{
 

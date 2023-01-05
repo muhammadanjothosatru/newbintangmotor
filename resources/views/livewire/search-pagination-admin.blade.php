@@ -16,5 +16,5 @@
         </a>
         @endforeach
     </div>
-    {{ $newitems->links('pagination::bootstrap-5') }}
+    {{ $newitems->links('livewire.pagination') }}
 </div>
