@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Landing;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,8 @@ class LandingController extends Controller
     //
     public function index(){
         //$item = Item::all();
+        $carousel = DB::table('carousel')->get();
+
         $itemjual =DB::table('foto_landing')
                 ->join('kendaraan','kendaraan.no_pol', '=', 'foto_landing.no_pol');
         $items = $itemjual->get();
@@ -50,6 +53,23 @@ class LandingController extends Controller
                 "keterangan"=>$key->keterangan
             ]);
         };
-        return view('landing.landing.index',compact('newitems')); 
+
+        $year = Carbon::now()->year;
+
+        $transaksi_motor =DB::table('transaksi')
+                ->join('kendaraan','transaksi.kendaraan_no_pol', '=', 'kendaraan.no_pol');
+        $transaksi_motor->where('kendaraan.jenis', '=', 'Sepeda Motor')
+                    ->whereYear('transaksi.created_at', '=', $year)
+                    ->select(DB::raw('COUNT(transaksi.kendaraan_no_pol) as penjualanmotor'));
+        $jumlahmotor=$transaksi_motor->get();
+
+        
+        $kendaraantersedia =DB::table('kendaraan');
+        $kendaraantersedia->where('status_kendaraan', '=', 'Tersedia')
+                    ->select(DB::raw('COUNT(no_pol) as kendaraantersedia'));
+        $jumlahkendaraan=$kendaraantersedia->get();
+        
+        //dd($jumlahkendaraan);
+        return view('landing.landing.index',compact('newitems', 'carousel', 'jumlahmotor', 'jumlahkendaraan')); 
     }
 }

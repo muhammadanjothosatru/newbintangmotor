@@ -414,9 +414,28 @@
 
     </div> --}}
     <section class="home" id="home">
-
-      <img data-speed="5" class="home-parallax" src="{{asset('landing/assets/image/home-img.png')}}" alt="">
-      
+      <div class="carousel" data-carousel>
+        <ol class="carousel-indicators" data-carousel-slides-indicator>
+          @foreach($carousel as $data)
+          <li class="indicator"></li>
+          @endforeach
+        </ol>
+        <div class="carousel-inner" data-carousel-slides-container>
+          @foreach($carousel as $data)
+            <div class="carousel-item">
+              <a href="#"><img src="{{asset('storage/foto_carousel/'.$data->foto)}}"></a>
+            </div>
+          @endforeach
+        </div>
+        <a class="carousel-control-prev" data-carousel-button-previous>
+          <span class="carousel-control-prev-icon"></span>
+          <span class="sr-only">Sebelumnya</span>
+        </a>
+        <a class="carousel-control-next" data-carousel-button-next>
+          <span class="carousel-control-next-icon"></span>
+          <span class="sr-only">Selanjutnya</span>
+        </a>
+      </div>
     </section>
 
     <!-- 
@@ -425,34 +444,40 @@
     <section class="icons-container">
 
       <div class="icons">
-          <i class="fas fa-home"></i>
+          <i class="fas fa-motorcycle"></i>
           <div class="content">
-              <h3>150+</h3>
-              <p>branches</p>
+            @foreach($jumlahmotor as $data)
+              <h3>{{8640+$data->penjualanmotor}}+</h3>
+              <p>Sepeda Motor Terjual</p>
+            @endforeach
           </div>
       </div>
   
       <div class="icons">
           <i class="fas fa-car"></i>
           <div class="content">
-              <h3>4770+</h3>
-              <p>cars sold</p>
+            <h3>960+</h3>
+            <p>Mobil Terjual</p>
           </div>
       </div>
   
       <div class="icons">
           <i class="fas fa-users"></i>
           <div class="content">
-              <h3>320+</h3>
-              <p>happy clients</p>
+            @foreach($jumlahmotor as $data)
+              <h3>{{960+8640+$data->penjualanmotor}}+</h3>
+              <p>Kepuasan Pelanggan</p>
+            @endforeach
           </div>
       </div>
   
       <div class="icons">
-          <i class="fas fa-car"></i>
+          <i class="fas fa-check"></i>
           <div class="content">
-              <h3>1500+</h3>
-              <p>news cars</p>
+            @foreach($jumlahkendaraan as $data)
+              <h3>{{$data->kendaraantersedia}}+</h3>
+              <p>Kendaraan Tersedia</p>
+            @endforeach
           </div>
       </div>
   
