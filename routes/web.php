@@ -40,6 +40,12 @@ Route::get('/adminlogin', [LoginAdminController::class,'index'])->middleware('gu
 Route::post('/adminlogin', [LoginAdminController::class,'authenticate'])->name('adminlogin');
 Route::post('/adminlogout', [LoginAdminController::class,'logout']);
 
+Route::group(['middleware' => ['guest']], function(){
+    Route::resources([
+        'landing' => LandingController::class
+    ]);
+    Route::get('/{no_pol}/detail',[LandingController::class,'detail'])->name('landing.detail');
+});
 
 // group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
 Route::group(['middleware' => ['auth','cekrole:0']], function(){

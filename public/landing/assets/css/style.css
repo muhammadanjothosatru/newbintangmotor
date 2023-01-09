@@ -207,135 +207,6 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
 
 
 /**
- * MODAL 
- */
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: hsla(0, 0%, 0%, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  z-index: 10;
-  animation: popup 1s ease-in-out 5s forwards;
-}
-
-@keyframes popup {
-
-  0% {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  100% {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-  }
-
-}
-
-.modal.closed { display: none; }
-
-.modal-close-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.newsletter-img { display: none; }
-
-.modal-content {
-  position: relative;
-  max-width: 350px;
-  margin: 20px;
-  background: var(--white);
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  z-index: 2;
-  animation: scaleUp 0.5s ease-in-out 5s forwards;
-}
-
-@keyframes scaleUp {
-
-  0% { transform: scale(0.9); }
-  100% { transform: scale(1); }
-
-}
-
-.modal-close-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: var(--blue-bm);
-  color: var(--white);
-  font-size: 16px;
-  padding: 5px;
-  border-radius: var(--border-radius-sm);
-}
-
-.modal-close-btn:hover { opacity: 0.9; }
-
-.modal-close-btn ion-icon { --ionicon-stroke-width: 70px; }
-
-.newsletter {
-  padding: 50px 30px;
-  text-align: center;
-}
-
-.newsletter-header { margin-bottom: 20px; }
-
-.newsletter-title {
-  color: var(--onyx);
-  font-size: var(--fs-2);
-  font-weight: var(--weight-600);
-  margin-bottom: 10px;
-}
-
-.newsletter-desc {
-  color: var(--sonic-silver);
-  font-size: var(--fs-7);
-  line-height: 1.6;
-}
-
-.email-field {
-  font-size: var(--fs-7);
-  padding: 8px 16px;
-  border-radius: var(--border-radius-sm);
-  border: 1px solid var(--cultured);
-  margin-bottom: 16px;
-}
-
-.btn-newsletter {
-  background: var(--eerie-black);
-  color: var(--white);
-  font-size: var(--fs-7);
-  font-weight: var(--weight-600);
-  text-transform: uppercase;
-  padding: 10px 15px;
-  border-radius: var(--border-radius-sm);
-  margin: auto;
-  transition: var(--transition-timing);
-}
-
-.btn-newsletter:hover { background: var(--blue-bm); }
-
-
-
-
-
-/**
  * NOTIFICATION TOAST 
  */
 
@@ -3340,16 +3211,6 @@ footer {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
 
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 0.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
 
 .carousel-indicators {
   position: absolute;
@@ -3402,4 +3263,145 @@ footer {
 
 .carousel-indicators .active {
   background-color: #fff;
+}
+
+/* carousel bawah */
+
+.detail {
+  display: flex;
+  justify-content: center;
+}
+
+.detail .showcase {
+  display: grid; 
+  grid-template-columns: 1fr 2fr; 
+  grid-gap: 40px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.carousel-detail {
+  --current-slide: 0;
+  position: relative;
+  width: 375px;
+  right: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.carousel-inner-detail {
+  display: flex;
+  transition: transform 0.5s;
+  transform: translateX(calc(-100% * var(--current-slide)));
+}
+
+.carousel-item-detail {
+  flex: 0 0 100%;
+}
+
+.carousel-control-prev-detail,
+.carousel-control-next-detail {
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  top: 39%;
+  width: 15%;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.carousel-control-prev-detail:hover, .carousel-control-prev-detail:focus,
+.carousel-control-next-detail:hover,
+.carousel-control-next-detail:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: .9;
+}
+
+.carousel-control-prev-detail {
+  left: 0;
+}
+
+.carousel-control-next-detail {
+  right: 0;
+}
+
+.carousel-indicators-detail {
+  margin-top: 5px;
+  display: grid; 
+  gap: 5px;
+  grid-template-columns: repeat(5, 1fr); 
+  list-style: none;
+}
+
+.carousel-indicators-detail li {
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 50%;
+  justify-content: center;
+}
+
+.carousel-indicators-detail li img {
+  width: 100%;
+}
+
+.carousel-indicators-detail .active {
+  opacity: 100%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 65%;
+  max-width: 600px;
+}
+
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 80%;
+  }
 }

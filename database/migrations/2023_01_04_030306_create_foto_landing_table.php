@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('foto');
             $table->string('harga_jual');
             $table->string('deskripsi');
+            $table->string('kilometer');
             $table->timestamps();
         });
     }

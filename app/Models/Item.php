@@ -15,7 +15,8 @@ class Item extends Model
         'no_pol' ,
         'foto',
         'harga_jual',
-        'deskripsi'
+        'deskripsi',
+        'kilometer'
     ];
     
     protected $table = 'foto_landing';

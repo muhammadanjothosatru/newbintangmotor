@@ -41,37 +41,26 @@
         <div class="product-grid">
         @foreach($newitems as $data)
             <div class="showcase">
-                <div class="showcase-banner">
-                    <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
-                    width="300">
-                    <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img hover"
-                    width="300">
-                
-                    <div class="showcase-actions">
-                
-                    <button class="btn-action">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                
-                    <button class="btn-action">
-                        <i class="fas fa-comment"></i>
-                    </button>
-                
+                <a href="{{ route('landing.detail', $data->id)}}">
+                    <div class="showcase-banner">
+                        <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+                        width="300">
+                        <img src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img hover"
+                        width="300">
+                    
                     </div>
-                </div>
-                
-                <div class="showcase-content">
-                    <a href="#" class="showcase-category" style="margin: 0">{{$data->jenis}}</a>
-                
-                    <h3>
-                    <a href="#" class="showcase-title" style="margin: 0">{{$data->judul}}</a>
-                    </h3>
-                
-                    <div class="price-box">
-                    <p class="price">{{ $data->harga_jual }}</p>
+                    <div class="showcase-content">
+                        <p class="showcase-category" style="margin: 0">{{$data->jenis}}</p>
+                        <h3>
+                            <p class="showcase-title" style="margin: 0">{{$data->judul}}</p>
+                        </h3>
+                    
+                        <div class="price-box">
+                            <p class="price">Rp. {{ number_format($data->harga_jual, 0, ',', '.');}}</p>
+                        </div>
+                    
                     </div>
-                
-                </div>
+                </a>
             </div>
         @endforeach
         </div>  

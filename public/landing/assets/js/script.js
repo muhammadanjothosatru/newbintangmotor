@@ -1,11 +1,5 @@
 'use strict';
 
-// modal variables
-const modal = document.querySelector('[data-modal]');
-const modalCloseBtn = document.querySelector('[data-modal-close]');
-const modalCloseOverlay = document.querySelector('[data-modal-overlay]');
-
-
 
 // notification toast variables
 const notificationToast = document.querySelector('[data-toast]');
@@ -71,182 +65,6 @@ for (let i = 0; i < accordionBtn.length; i++) {
 
 }
 
-// //maxwheel
-// let menu = document.querySelector('#menu-btn');
-// let navbar = document.querySelector('.navbar');
-
-// menu.onclick = () =>{
-//   menu.classList.toggle('fa-times');
-//   navbar.classList.toggle('active');
-// }
-
-// document.querySelector('#login-btn').onclick = () =>{
-//   document.querySelector('.login-form-container').classList.toggle('active');
-// }
-
-// document.querySelector('#close-login-form').onclick = () =>{
-//   document.querySelector('.login-form-container').classList.remove('active');
-// }
-
-// window.onscroll = () =>{
-
-//   menu.classList.remove('fa-times');
-//   navbar.classList.remove('active');
-
-//   if(window.scrollY > 0){
-//     document.querySelector('.header').classList.add('active');
-//   }else{
-//     document.querySelector('.header').classList.remove('active');
-//   };
-
-// };
-
-document.querySelector('.home').onmousemove = (e) =>{
-
-  document.querySelectorAll('.home-parallax').forEach(elm =>{
-
-    let speed = elm.getAttribute('data-speed');
-
-    let x = (window.innerWidth - e.pageX * speed) / 90;
-    let y = (window.innerHeight - e.pageY * speed) / 90;
-
-    elm.style.transform = `translateX(${y}px) translateY(${x}px)`;
-
-  });
-
-};
-
-
-document.querySelector('.home').onmouseleave = (e) =>{
-
-  document.querySelectorAll('.home-parallax').forEach(elm =>{
-
-    elm.style.transform = `translateX(0px) translateY(0px)`;
-
-  });
-
-};
-
-var swiper = new Swiper(".vehicles-slider", {
-  grabCursor: true,
-  centeredSlides: true,  
-  spaceBetween: 20,
-  loop:true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable:true,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-var swiper = new Swiper(".featured-slider", {
-  grabCursor: true,
-  centeredSlides: true,  
-  spaceBetween: 20,
-  loop:true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable:true,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-var swiper = new Swiper(".review-slider", {
-  grabCursor: true,
-  centeredSlides: true,  
-  spaceBetween: 20,
-  loop:true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable:true,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-document.querySelector('.home').onmousemove = (e) =>{
-
-  document.querySelectorAll('.home-parallax').forEach(elm =>{
-
-    let speed = elm.getAttribute('data-speed');
-
-    let x = (window.innerWidth - e.pageX * speed) / 90;
-    let y = (window.innerHeight - e.pageY * speed) / 90;
-
-    elm.style.transform = `translateX(${y}px) translateY(${x}px)`;
-
-  });
-
-};
-
-
-document.querySelector('.home').onmouseleave = (e) =>{
-
-  document.querySelectorAll('.home-parallax').forEach(elm =>{
-
-    elm.style.transform = `translateX(0px) translateY(0px)`;
-
-  });
-
-};
-
-// var stick = document.getElementById("stick"),
-// stop = stick.offsetTop - 60,
-// docBody = document.documentElement || document.body.parentNode || document.body,
-// hasOffset = window.pageYOffset !== undefined,
-// scrollTop;
-
-// window.onscroll = function (e) {
-//   scrollTop = hasOffset ? window.pageYOffset : docBody.scrollTop;
-
-//   if(scrollTop >=stop){
-//     stick.className = 'stick'
-//   } else {
-//     stick.className = ''
-//   }
-// }
-
 function modulo(number, mod) {
   let result = number % mod;
   if (result < 0) {
@@ -289,6 +107,12 @@ function setUpCarousel(carousel) {
   let currentSlide = 0;
   const numSlides = slidesContainer.children.length;
   indicator[currentSlide].className += " active";
+  
+  indicator.forEach((item, index) => {
+    item.addEventListener('click', arrow => {
+      changeSlide(index);
+    })
+  })
 
   // set up events 
   function myLoop() {
@@ -308,3 +132,52 @@ function setUpCarousel(carousel) {
 
 const carousels = document.querySelectorAll('[data-carousel]');
 carousels.forEach(setUpCarousel);
+
+
+function setUpCarouselDetail(carousel) {
+  var i;
+  var k = 0;      
+  function handleNext() {
+    currentSlide = modulo(currentSlide + 1, numSlides);
+    changeSlide(currentSlide);
+  }
+
+  function handlePrevious() {
+    currentSlide = modulo(currentSlide - 1, numSlides);
+    changeSlide(currentSlide);
+  }
+
+  function changeSlide(slideNumber) {
+    carousel.style.setProperty('--current-slide', slideNumber);
+    for (i = 0; i < indicator.length; i++) {
+      indicator[i].className = indicator[i].className.replace(" active", "");
+    }
+    indicator[slideNumber].className += " active";
+  }
+
+  // get elements
+  const buttonPrevious = carousel.querySelector('[data-carousel-button-previous]');
+  const buttonNext = carousel.querySelector('[data-carousel-button-next]');
+  const slidesContainer = carousel.querySelector('[data-carousel-slides-container]');
+  const indicator = carousel.querySelectorAll('[data-carousel-indicator]');
+  for (i = 0; i < indicator.length; i++) {
+    indicator[i].className = indicator[i].className.replace(" active", "");
+  }
+
+  // carousel state we need to remember
+  let currentSlide = 0;
+  const numSlides = slidesContainer.children.length;
+  indicator[currentSlide].className += " active";
+
+  indicator.forEach((item, index) => {
+    item.addEventListener('mouseover', arrow => {
+      changeSlide(index);
+    })
+  })
+
+  buttonPrevious.addEventListener('click', handlePrevious);
+  buttonNext.addEventListener('click', handleNext);
+}
+
+const detailcarousels = document.querySelectorAll('[data-carousel-detail]');
+detailcarousels.forEach(setUpCarouselDetail);

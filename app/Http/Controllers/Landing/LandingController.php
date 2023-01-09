@@ -72,4 +72,29 @@ class LandingController extends Controller
         //dd($jumlahkendaraan);
         return view('landing.landing.index',compact('newitems', 'carousel', 'jumlahmotor', 'jumlahkendaraan')); 
     }
+
+    public function detail($id){
+        
+        $itemjual =DB::table('foto_landing')
+                ->join('kendaraan','kendaraan.no_pol', '=', 'foto_landing.no_pol')
+                ->select('foto_landing.id', 'kendaraan.jenis', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi', 'kilometer')
+                ->where('foto_landing.id', $id);
+        $items = $itemjual->get();
+
+        $newitems = new Collection();
+        foreach($items as $key){
+            $fotos = explode(";", $key->foto);
+            
+            $newitems->push((object)[
+                "id"=>$key->id,
+                "judul"=>$key->judul,
+                "kilometer"=>$key->kilometer,
+                "foto"=>$fotos,
+                "harga_jual"=>$key->harga_jual,
+                "deskripsi"=>$key->deskripsi
+            ]);
+        };
+
+        return view('landing.landing.detail', compact('newitems'));
+    }
 }
