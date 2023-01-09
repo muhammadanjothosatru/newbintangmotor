@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Landing\LandingController;
 use App\Http\Controllers\Landing\LoginAdminController;
 use App\Http\Controllers\Landing\DataController;
+use App\Http\Controllers\Landing\CarouselController;
 
 
 use App\Http\Controllers\Pos\UserController;
@@ -44,6 +45,7 @@ Route::post('/adminlogout', [LoginAdminController::class,'logout']);
 Route::group(['middleware' => ['auth','cekrole:0']], function(){
     Route::resources([
         'datamanagement' => DataController::class,
+        'carousel' => CarouselController::class,
     ]);
     
 });

@@ -417,13 +417,13 @@
       <div class="carousel" data-carousel>
         <ol class="carousel-indicators" data-carousel-slides-indicator>
           @foreach($carousel as $data)
-          <li class="indicator"></li>
+          <li class="indicator" data-carousel-indicator></li>
           @endforeach
         </ol>
         <div class="carousel-inner" data-carousel-slides-container>
           @foreach($carousel as $data)
             <div class="carousel-item">
-              <a href="#"><img src="{{asset('storage/foto_carousel/'.$data->foto)}}"></a>
+              <a href="{{$data->linkpromo}}"><img src="{{asset('storage/foto_carousel/'.$data->foto)}}"></a>
             </div>
           @endforeach
         </div>

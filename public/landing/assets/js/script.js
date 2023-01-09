@@ -256,8 +256,8 @@ function modulo(number, mod) {
 }
 
 function setUpCarousel(carousel) {
-  let i;
-
+  var i;
+  var k = 0;      
   function handleNext() {
     currentSlide = modulo(currentSlide + 1, numSlides);
     changeSlide(currentSlide);
@@ -280,7 +280,7 @@ function setUpCarousel(carousel) {
   const buttonPrevious = carousel.querySelector('[data-carousel-button-previous]');
   const buttonNext = carousel.querySelector('[data-carousel-button-next]');
   const slidesContainer = carousel.querySelector('[data-carousel-slides-container]');
-  let indicator = document.getElementsByClassName("indicator");
+  const indicator = carousel.querySelectorAll('[data-carousel-indicator]');
   for (i = 0; i < indicator.length; i++) {
     indicator[i].className = indicator[i].className.replace(" active", "");
   }
@@ -290,7 +290,18 @@ function setUpCarousel(carousel) {
   const numSlides = slidesContainer.children.length;
   indicator[currentSlide].className += " active";
 
-  // set up events
+  // set up events 
+  function myLoop() {
+    setTimeout(function() {
+      handleNext(1);
+      k++;
+      if (k >= indicator.length) {
+        k = 0;
+      }
+      myLoop();
+    }, 5000)
+  }
+  myLoop();
   buttonPrevious.addEventListener('click', handlePrevious);
   buttonNext.addEventListener('click', handleNext);
 }
