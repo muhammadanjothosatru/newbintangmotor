@@ -35,7 +35,7 @@ use App\Http\Controllers\Pos\LaporanMobilController;
 */
 
 
-Route::get('/', [LandingController::class,'index'])->middleware('guest');
+Route::get('/', [LandingController::class,'index'])->middleware('guest')->name('landingpage');
 Route::get('/adminlogin', [LoginAdminController::class,'index'])->middleware('guest');
 Route::post('/adminlogin', [LoginAdminController::class,'authenticate'])->name('adminlogin');
 Route::post('/adminlogout', [LoginAdminController::class,'logout']);
