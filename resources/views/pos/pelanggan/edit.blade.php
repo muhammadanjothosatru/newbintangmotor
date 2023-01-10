@@ -55,7 +55,7 @@
                     <div class="form-floating col-sm-10 wadah-foto">
                         @if ($pelanggan->foto_ktp)
                         <a data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer;">
-                            <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" class="foto-ktp" alt="...">
+                            <img src="{{asset('storage/foto_ktp/'.$pelanggan->foto_ktp)}}" style="width:25%;" class="img-thumbnail" alt="...">
                         </a>
                         @else
                         <span class="badge badge-danger">belum ada foto</span>
@@ -67,7 +67,7 @@
                     <div class="form-floating col-sm-10 wadah-foto">
                         @if ($pelanggan->foto_ktp2)
                         <a data-toggle="modal" data-target="#exampleModalCenter2" style="cursor: pointer;">
-                            <img src="{{asset('storage/foto_ktp2/'.$pelanggan->foto_ktp2)}}" class="foto-ktp" alt="...">
+                            <img src="{{asset('storage/foto_ktp2/'.$pelanggan->foto_ktp2)}}" style="width:25%;" class="img-thumbnail" alt="...">
                         </a>
                         @else
                         <span class="badge badge-danger">belum ada foto</span>

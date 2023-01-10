@@ -70,9 +70,8 @@
                 </div>
 
                 <div class="header-top-actions">
-
                     <div>
-                        <a>
+                        <a href="#footer" style="cursor: pointer; color:var(--eerie-black);">
                             Kontak
                         </a>
                     </div>
@@ -86,7 +85,7 @@
 
     </header>
     @yield('landing')
-    <footer>
+    <footer id="footer">
 
         <div class="footer-nav">
 
