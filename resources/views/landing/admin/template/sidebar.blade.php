@@ -16,8 +16,8 @@
             <a class="nav-link" href="/carousel"><i class="fas fa-image"></i><span>Kelola Banner</span></a>
           </li>
 
-          <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-            <a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+          <li class="{{ request()->is('stats') ? 'active' : '' }}">
+            <a class="nav-link" href=""><i class="fas fa-chart-bar"></i><span>Statistik</span></a>
           </li>
 
         </aside>

@@ -20,7 +20,7 @@ class SearchPaginationCarousel extends Component
         $searchTerm = '%'.$this->searchTerm.'%';
         $carousel =DB::table('carousel')
             ->where('namapromo','like', $searchTerm);
-        $carousel = $carousel->paginate(10);
+        $carousel = $carousel->paginate(12);
         return view('livewire.search-pagination-carousel', ['carousel' => $carousel]);
     }
 }

@@ -54,7 +54,8 @@ Route::group(['middleware' => ['auth','cekrole:0']], function(){
         'carousel' => CarouselController::class,
     ]);
     Route::get('datamanagement/{id}/detail',[DataController::class,'detail'])->name('datamanagement.detail');
-    Route::get('datamanagement/{id}/edit',[DataController::class,'detail'])->name('datamanagement.edit');
+    Route::get('datamanagement/{id}/edit',[DataController::class,'edit'])->name('datamanagement.edit');
+    Route::get('carousel/{id}/edit',[CarouselController::class,'edit'])->name('carousel.edit');
 });
 
 // POS

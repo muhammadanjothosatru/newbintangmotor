@@ -169,7 +169,6 @@ class DataController extends Controller
         $num = rand(1, 100);
         
         $item = Item::findorfail($id);
-        $namaFoto = $item->foto;
         $basenamefile = str_replace(' ', '_', $item->no_pol);
         
         if ($request->hasFile('foto')) {
