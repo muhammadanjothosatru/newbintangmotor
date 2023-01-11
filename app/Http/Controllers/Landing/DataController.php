@@ -203,4 +203,16 @@ class DataController extends Controller
         return redirect('/datamanagement')->with('success', 'Data item anda berhasil diupdate');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Kendaraan  $kendaraan
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $item = Item::findorfail($id);
+        $item->delete();
+        return redirect('/datamanagement')->with('success','Data Kendaraan anda berhasil dihapus');
+    }
 }
