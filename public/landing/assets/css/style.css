@@ -1716,9 +1716,8 @@ footer {
 .vehicle-description {
   margin-bottom: 30px;
   color: #808080;
-  font-size: 14px;
+  font-size: 18px;
 }
-
 
 
 /*-----------------------------------*\
@@ -1840,7 +1839,35 @@ footer {
 
   .copyright { --fs-8: 0.875rem; }
 
+  .detail .showcase {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-gap: 40px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .carousel-detail {
+    --current-slide: 0;
+    position: relative;
+    width: 100%;
+    right: 0;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .carousel-detail img{
+    width: 100%;
+  }
+
+
+  .btn-back {
+    display: none;
+  }
+
 }
+
+
 
 
 /**
@@ -1961,10 +1988,7 @@ footer {
    */
 
   .copyright { --fs-8: 0.875rem; }
-
 }
-
-
 
 
 
@@ -2283,6 +2307,18 @@ footer {
   }
 
   .footer-nav-list:not(:last-child) { margin-bottom: 0; }
+
+  .btn-back {
+    display: inline-block;
+    color: var(--white);
+    background-color: #0056b3;
+    padding: 5px 15px;
+    margin-left: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    cursor: pointer;
+    vertical-align: middle;
+  }
 
   
 }
@@ -2717,6 +2753,30 @@ footer {
 
   .footer-bottom { margin-bottom: 0; }
 
+  
+  .detail .showcase {
+    display: grid; 
+    grid-template-columns: 1fr 2fr; 
+    grid-gap: 40px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  
+  .carousel-detail {
+    --current-slide: 0;
+    position: relative;
+    width: 375px;
+    right: 0;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+
+  .carousel-detail img{
+    width: 375px;
+  }
+
 }
 
 
@@ -3051,17 +3111,6 @@ footer {
   width: fit-content;
 }
 
-.btn-back {
-  color: var(--white);
-  background-color: #0056b3;
-  padding: 5px 15px;
-  margin-left: 20px;
-  border-radius: 5px;
-  width: fit-content;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
 
 .pagination {
   padding-top: 30px;
@@ -3324,23 +3373,6 @@ footer {
   display: flex;
   justify-content: center;
   width: fit-content;
-}
-
-.detail .showcase {
-  display: grid; 
-  grid-template-columns: 1fr 2fr; 
-  grid-gap: 40px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.carousel-detail {
-  --current-slide: 0;
-  position: relative;
-  width: 375px;
-  right: 0;
-  overflow: hidden;
-  cursor: pointer;
 }
 
 .carousel-inner-detail {
