@@ -2,7 +2,7 @@
     <input type="text"  class="form-control mb-4" placeholder="Cari Plat Nomor" wire:model="searchTerm" />
     <div class="product-grid">
         @foreach($newitems as $data)
-        <a style="cursor: pointer;">
+        <a href='{{ route('datamanagement.detail', $data->id)}}' style="cursor: pointer;">
             <div class="border card pl-0 pr-0">
                 <div style="max-height: 200px; overflow: hidden; display: flex; align-items: center;">
                     <img class="card-img-top"  src="{{asset('storage/foto_kendaraan/'.$data->foto[0])}}" alt="Card image cap">

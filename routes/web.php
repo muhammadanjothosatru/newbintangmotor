@@ -44,7 +44,7 @@ Route::group(['middleware' => ['guest']], function(){
     Route::resources([
         'landing' => LandingController::class
     ]);
-    Route::get('/{no_pol}/detail',[LandingController::class,'detail'])->name('landing.detail');
+    Route::get('/{id}/detail',[LandingController::class,'detail'])->name('landing.detail');
 });
 
 // group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
@@ -53,7 +53,8 @@ Route::group(['middleware' => ['auth','cekrole:0']], function(){
         'datamanagement' => DataController::class,
         'carousel' => CarouselController::class,
     ]);
-    
+    Route::get('datamanagement/{id}/detail',[DataController::class,'detail'])->name('datamanagement.detail');
+    Route::get('datamanagement/{id}/edit',[DataController::class,'detail'])->name('datamanagement.edit');
 });
 
 // POS

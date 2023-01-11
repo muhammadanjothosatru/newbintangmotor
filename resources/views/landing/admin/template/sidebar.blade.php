@@ -8,11 +8,11 @@
           </div>
           <ul class="sidebar-menu" id="sidebar-menu">
 
-          <li class="{{ request()->is('datamanagement') ? 'active' : '' }}">
+          <li class="{{ request()->is('datamanagement', 'datamanagement/*') ? 'active' : '' }}">
             <a class="nav-link" href="/datamanagement"><i class="fas fa-file"></i><span>Kelola Data</span></a>
           </li>
 
-          <li class="{{ request()->is('carousel') ? 'active' : '' }}">
+          <li class="{{ request()->is('carousel', 'carousel/*') ? 'active' : '' }}">
             <a class="nav-link" href="/carousel"><i class="fas fa-image"></i><span>Kelola Banner</span></a>
           </li>
 

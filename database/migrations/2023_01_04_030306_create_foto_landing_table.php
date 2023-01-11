@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('harga_jual');
             $table->text('deskripsi');
             $table->string('kilometer');
+            $table->integer('bulan');
+            $table->string('dp');
+            $table->string('angsuran');
             $table->timestamps();
         });
     }

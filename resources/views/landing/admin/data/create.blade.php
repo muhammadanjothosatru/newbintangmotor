@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="">
                             <div class="mb-3 row">
                                 <label for="inputNopol" class="mt-2 col-sm-2 col-form-label font-form">No Pol.</label>
@@ -59,7 +59,25 @@
                         <div class="mb-3 row">
                             <label for="inputHarga"  class="col-sm-2 col-form-label font-form">Harga Jual</label>
                                 <div class="col-sm-10 col-form-label">
-                                    <input type="text" name="harga_jual" value="{{ old('harga_jual') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Jual Kendaraan" id="harga" autocomplete="off">
+                                    <input type="text" name="harga_jual" value="{{ old('harga_jual') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Harga Jual Kendaraan" id="harga">
+                                </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputDP"  class="col-sm-2 col-form-label font-form">Uang Muka (Juta)</label>
+                                <div class="col-sm-10 col-form-label">
+                                    <input type="number" name="dp" value="{{ old('dp') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Uang Muka Kredit (Juta)" id="dp">
+                                </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputAngsuran"  class="col-sm-2 col-form-label font-form">Angsuran</label>
+                                <div class="col-sm-10 col-form-label">
+                                    <input type="text" name="angsuran" value="{{ old('angsuran') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Angsuran Kendaraan" id="angsuran">
+                                </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputBulan"  class="col-sm-2 col-form-label font-form">Periode (Bulan)</label>
+                                <div class="col-sm-10 col-form-label">
+                                    <input type="number" name="bulan" value="{{ old('bulan') }}" required="required" class="form-control form-control-size" placeholder="Masukkan Periode Angsuran (Bulan)" id="bulan">
                                 </div>
                         </div>
                         <div class="mb-3 row">
@@ -104,6 +122,11 @@
         var hargabeli = document.getElementById('harga');
         hargabeli.addEventListener('keyup', function(e) {
             hargabeli.value = currency(this.value, 'Rp')
+        })
+
+        var angsuran = document.getElementById('angsuran');
+        angsuran.addEventListener('keyup', function(e) {
+            angsuran.value = currency(this.value, 'Rp')
         })
 
         function navigate(origin, sens) {
