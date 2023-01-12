@@ -28,6 +28,7 @@ class LandingController extends Controller
                 "id"=>$key->id,
                 "no_pol"=>$key->no_pol,
                 "foto"=>$fotos,
+                "dp"=>$key->dp,
                 "harga_jual"=>$key->harga_jual,
                 "deskripsi"=>$key->deskripsi,
                 "created_at"=>$key->created_at,
@@ -77,7 +78,7 @@ class LandingController extends Controller
         
         $itemjual =DB::table('foto_landing')
                 ->join('kendaraan','kendaraan.no_pol', '=', 'foto_landing.no_pol')
-                ->select('foto_landing.id', 'kendaraan.jenis', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi', 'kilometer')
+                ->select('foto_landing.id', 'kendaraan.jenis', 'foto_landing.dp', 'foto_landing.angsuran', 'foto_landing.bulan', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi', 'kilometer')
                 ->where('foto_landing.id', $id);
         $items = $itemjual->get();
 
@@ -89,6 +90,9 @@ class LandingController extends Controller
                 "id"=>$key->id,
                 "judul"=>$key->judul,
                 "kilometer"=>$key->kilometer,
+                "dp"=>$key->dp,
+                "angsuran"=>$key->angsuran,
+                "bulan"=>$key->bulan,
                 "foto"=>$fotos,
                 "harga_jual"=>$key->harga_jual,
                 "deskripsi"=>$key->deskripsi

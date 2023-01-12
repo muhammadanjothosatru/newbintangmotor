@@ -44,11 +44,13 @@
                                     <h2>
                                         <p class="vehicle-title">{{ $data->judul }}</p>
                                     </h2>
-                                    <p class="vehicle-distance" style="margin: 0">KM {{ $data->kilometer }}</p>
+                                    <p class="vehicle-distance" style="margin-top: -5px">KM {{ $data->kilometer }}</p>
                                     <div class="price-box">
-                                        <h3 class="vehicle-price">Rp. {{ number_format($data->harga_jual, 0, ',', '.') }}
-                                        </h3>
+                                        <h3 class="vehicle-price">Rp. {{ number_format($data->harga_jual, 0, ',', '.') }}</h3>
+                                        <br>
+                                        <h4 class="vehicle-dp">DP Mulai {{$data->dp}} juta</h4><p>Angsuran Rp. {{number_format($data->angsuran, 0, ',', '.')}} x {{$data->bulan}} bulan</p>
                                     </div>
+                                    <br>
                                     <p class="vehicle-description">{!! nl2br(e($data->deskripsi)) !!}</p>
                                     <button type="submit" class="btn btn-send"><i class="fab fa-whatsapp"
                                             style="margin-right: 1%;"></i>WhatsApp</button>

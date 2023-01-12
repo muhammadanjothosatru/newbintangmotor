@@ -57,7 +57,7 @@ class SearchPaginationLanding extends Component
 
         $itemjual =DB::table('foto_landing')
                 ->join('kendaraan','kendaraan.no_pol', '=', 'foto_landing.no_pol')
-                ->select('foto_landing.id', 'kendaraan.jenis', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi')
+                ->select('foto_landing.id', 'kendaraan.jenis', 'foto_landing.dp', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi')
                 ->where('kendaraan.jenis', 'like', "%$selectedCategory")
                 ->having('judul','LIKE', "%$searchTerm");
         $items = $itemjual->get();
@@ -69,6 +69,7 @@ class SearchPaginationLanding extends Component
             $newitems->push((object)[
                 "id"=>$key->id,
                 "no_pol"=>$key->no_pol,
+                "dp"=>$key->dp,
                 "judul"=>$key->judul,
                 "jenis"=>$key->jenis,
                 "foto"=>$fotos,
