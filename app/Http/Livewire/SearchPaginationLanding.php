@@ -59,6 +59,7 @@ class SearchPaginationLanding extends Component
                 ->join('kendaraan','kendaraan.no_pol', '=', 'foto_landing.no_pol')
                 ->select('foto_landing.id', 'kendaraan.jenis', 'foto_landing.dp', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi')
                 ->where('kendaraan.jenis', 'like', "%$selectedCategory")
+                ->where('kendaraan.status_kendaraan', '=', 'Tersedia')
                 ->having('judul','LIKE', "%$searchTerm");
         $items = $itemjual->get();
 
@@ -78,7 +79,7 @@ class SearchPaginationLanding extends Component
             ]);
         };
         
-        $newitems = $newitems->paginate(15);
+        $newitems = $newitems->paginate(16);
 
         return view('livewire.search-pagination-landing', ['newitems' => $newitems], ['itemCategory' => $itemCategory]);
     }
