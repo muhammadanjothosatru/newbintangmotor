@@ -148,6 +148,11 @@ class TransaksiController extends Controller
             ]);
         }elseif($request->metode_pembayaran=='Kredit'){
 
+            $komisi = 0;
+            if($request->komisi != ""){
+                $komisi = preg_replace('/[^0-9]/', '', $request->komisi);
+            }
+
             $transaksi = Transaksi::create([
                 'pelanggan_id'=> $request->nama,
                 'kendaraan_no_pol' => $request->no_pol,
