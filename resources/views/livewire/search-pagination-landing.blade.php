@@ -35,6 +35,11 @@
             </button>
 
             </div>
+            <select class="filter-minimal">
+                @foreach($itemCategory as $data)
+                    <option value="{{$data->kategori}}">{{$data->kategori}}</i></option>
+                @endforeach
+            </select>
         </div>
         
         @if($newitems->count() > 0)
