@@ -73,8 +73,13 @@
             var modal = document.getElementById('myModal');
             var img = document.getElementById('myImg');
             var modalImg = document.getElementById("img");
-            modal.style.display = "block";
-            modalImg.src = element.src;
+
+            const isMobile = navigator.userAgentData.mobile;
+            if(!isMobile){
+                modal.style.display = "block";
+                modalImg.src = element.src;
+            }
+            
         }
     </script>
 @endsection

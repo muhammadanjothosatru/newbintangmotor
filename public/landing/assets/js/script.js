@@ -169,9 +169,8 @@ function setUpCarouselDetail(carousel) {
   const numSlides = slidesContainer.children.length;
   indicator[currentSlide].className += " active";
 
-  var x = window.matchMedia("(max-width: 768px)")
-  
-  if (x.matches) { 
+  const isMobile = navigator.userAgentData.mobile;
+  if(isMobile){
     indicator.forEach((item, index) => {
       item.addEventListener('click', arrow => {
         changeSlide(index);
