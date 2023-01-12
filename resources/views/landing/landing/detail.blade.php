@@ -38,9 +38,8 @@
                             </div>
 
                             <div class="showcase-content">
-
-                                <form
-                                    action="https://wa.me/6285854457796?text=Halo%20saya%20mau%20tanya%20{{ $data->judul }}%20yang%20kilometernya%20{{ $data->kilometer }}">
+                                <form action="{{route('landing.waproduct', $data->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <h2>
                                         <p class="vehicle-title">{{ $data->judul }}</p>
                                     </h2>

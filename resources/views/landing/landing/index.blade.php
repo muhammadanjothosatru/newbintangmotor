@@ -104,10 +104,11 @@
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-            <form action="">
+            <form action="{{route('landing.whatsapp')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <h3 style="padding-bottom: 0;">Punya pertanyaan? Chat sekarang!</h3>
-                <textarea placeholder="Masukkan pesan Anda di sini!" class="box" cols="30" rows="10"></textarea>
-                <button type="submit" style="padding: 10px; " class="btn btn-send"><i class="fab fa-whatsapp"
+                <textarea placeholder="Masukkan pesan Anda di sini!" name="text" id="text" class="box" cols="30" rows="10"></textarea>
+                <button type="submit" style="padding: 10px;" class="btn btn-send"><i class="fab fa-whatsapp"
                         style="margin-left: 0; margin-right: 1%;"></i>Kirim</button>
             </form>
 

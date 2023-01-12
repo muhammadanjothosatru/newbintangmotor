@@ -45,6 +45,8 @@ Route::group(['middleware' => ['guest']], function(){
         'landing' => LandingController::class
     ]);
     Route::get('/{id}/detail',[LandingController::class,'detail'])->name('landing.detail');
+    Route::post('/{id}/whatsapp',[LandingController::class,'waproduct'])->name('landing.waproduct');
+    Route::post('/whatsapp', [LandingController::class, 'whatsapp'])->name('landing.whatsapp');
 });
 
 // group middleware agar login terlebih dahulu baru bisa akses dashboard dkk //
