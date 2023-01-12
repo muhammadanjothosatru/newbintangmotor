@@ -1115,6 +1115,12 @@ section{
 
 .product-main { margin-bottom: 30px; }
 
+.product-main .container { 
+  padding-bottom: 30px; 
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .product-grid {
   margin-left: 30px;
   margin-right: 30px;
@@ -1809,7 +1815,8 @@ footer {
 
   .product-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 10px;
+    margin: 0 auto;
   }
 
 
@@ -1865,6 +1872,23 @@ footer {
     display: none;
   }
 
+  .product-main .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filter-minimal {
+    padding: 8px 10px;
+    background-color: var(--blue-bm);
+    color: var(--orange-bm);
+    border-radius: 5px;
+  }
+
+  .container .header-search-container {
+    min-width: 90%;
+  }
+
 }
 
 
@@ -1915,6 +1939,8 @@ footer {
   .header-alert-news b { font-weight: var(--weight-500); }
 
   .header-main { padding: 25px 0; }
+
+  .header-search-container { min-width: 75%;}
 
   .mobile-bottom-navigation {
     border-top-left-radius: var(--border-radius-md);
@@ -2032,7 +2058,7 @@ footer {
 
   .header-top-actions select:hover { color: var(--eerie-black); }
 
-  .header-search-container { min-width: 300px; }
+  .header-search-container { min-width: 75%; }
 
 
 
@@ -2158,7 +2184,13 @@ footer {
 
   .header-main .container { gap: 80px; }
 
-  .header-search-container { flex-grow: 1; }
+  .header-search-container { min-width: 75%; }
+
+  .product-main .container {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+  }
 
 
 
@@ -2393,6 +2425,10 @@ footer {
     display: flex;
     align-items: center;
     gap: 15px;
+  }
+
+  .header-search-container {
+    min-width: 100%;
   }
 
   .header-user-actions .action-btn {
@@ -2646,7 +2682,6 @@ footer {
     display: flex;
     align-items: flex-start;
     gap: 30px;
-    margin-bottom: 30px;
   }
   
 
@@ -2775,6 +2810,14 @@ footer {
 
   .carousel-detail img{
     width: 375px;
+  }
+
+  .filter-minimal {
+    display: none;
+  }
+
+  .container .header-search-container {
+    min-width: 100%;
   }
 
 }
