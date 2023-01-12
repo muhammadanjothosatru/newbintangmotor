@@ -38,25 +38,25 @@
                 <ul class="header-social-container">
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="https://www.facebook.com/showroombintangmotor/" class="social-link">
                             <ion-icon name="logo-facebook"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="https://www.youtube.com/@bintangmotorlmg" class="social-link">
                             <ion-icon name="logo-youtube"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="https://www.instagram.com/bintangmotorlmg/" class="social-link">
                             <ion-icon name="logo-instagram"></ion-icon>
                         </a>
                     </li>
 
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="http://wa.me/6285780938091" class="social-link">
                             <ion-icon name="logo-whatsapp"></ion-icon>
                         </a>
                     </li>
@@ -182,8 +182,11 @@
                         <div class="icon-box">
                             <ion-icon name="call-outline"></ion-icon>
                         </div>
-
-                        <a href="tel:+607936-8058" class="footer-nav-link">0822 3330 0087</a>
+                        <div>
+                            <a href="https://wa.me/6282233300087" class="footer-nav-link">0822 3330 0087</a>
+                            <a href="http://wa.me/6285854457796" class="footer-nav-link">0858 5445 7796</a>
+                            <a href="http://wa.me/6282227464748" class="footer-nav-link">0822 2746 4748</a>
+                        </div>
                     </li>
 
                     <li class="footer-nav-item flex">
@@ -206,26 +209,26 @@
                         <ul class="social-link">
 
                             <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
+                                <a href="https://www.facebook.com/showroombintangmotor/" class="footer-nav-link">
                                     <ion-icon name="logo-facebook"></ion-icon>
                                 </a>
                             </li>
 
                             <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
-                                    <ion-icon name="logo-twitter"></ion-icon>
+                                <a href="https://www.youtube.com/@bintangmotorlmg" class="footer-nav-link">
+                                    <ion-icon name="logo-youtube"></ion-icon>
                                 </a>
                             </li>
 
                             <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
-                                    <ion-icon name="logo-linkedin"></ion-icon>
-                                </a>
-                            </li>
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
+                                <a href="https://www.instagram.com/bintangmotorlmg/" class="footer-nav-link">
                                     <ion-icon name="logo-instagram"></ion-icon>
+                                </a>
+                            </li>
+
+                            <li class="footer-nav-item">
+                                <a href="http://wa.me/6285780938091" class="footer-nav-link">
+                                    <ion-icon name="logo-whatsapp"></ion-icon>
                                 </a>
                             </li>
 

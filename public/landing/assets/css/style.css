@@ -1898,6 +1898,11 @@ footer {
   .container .header-search-container {
     min-width: 70%;
   }
+
+  .carousel-item img{
+    object-fit: cover;
+    height: 240px;
+  }
 }
 
 
@@ -2376,7 +2381,10 @@ footer {
     min-width: 75%;
   }
   
-
+  .carousel-item img{
+    width: 100%;
+    height: auto;
+  }
   
 }
 
