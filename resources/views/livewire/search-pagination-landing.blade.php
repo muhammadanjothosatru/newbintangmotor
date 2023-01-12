@@ -35,9 +35,9 @@
             </button>
 
             </div>
-            <select class="filter-minimal">
+            <select class="filter-minimal" wire:model="selectedCategory">
                 @foreach($itemCategory as $data)
-                    <option value="{{$data->kategori}}">{{$data->kategori}}</i></option>
+                    <option value="{{$data->kategori}}">{{$data->kategori}}</option>
                 @endforeach
             </select>
         </div>

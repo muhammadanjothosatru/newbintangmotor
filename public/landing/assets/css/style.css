@@ -1879,14 +1879,14 @@ footer {
   }
 
   .filter-minimal {
-    padding: 8px 10px;
+    padding: 8px 2px;
     background-color: var(--blue-bm);
-    color: var(--orange-bm);
-    border-radius: 5px;
+    color: var(--white);
+    border-radius: 4px;
   }
 
   .container .header-search-container {
-    min-width: 90%;
+    min-width: 70%;
   }
 
 }
@@ -2014,6 +2014,13 @@ footer {
    */
 
   .copyright { --fs-8: 0.875rem; }
+
+  .filter-minimal {
+    padding: 8px 10px;
+    background-color: var(--blue-bm);
+    color: var(--white);
+    border-radius: 5px;
+  }
 }
 
 
@@ -2114,6 +2121,10 @@ footer {
   .blog-card { min-width: calc(50% - 15px); }
 
 
+
+  .container .header-search-container {
+    min-width: 75%;
+  }
 }
 
 
@@ -2350,6 +2361,9 @@ footer {
     width: fit-content;
     cursor: pointer;
     vertical-align: middle;
+  }
+  .container .header-search-container {
+    min-width: 80%;
   }
 
   
@@ -2985,6 +2999,11 @@ footer {
   }
 
   .footer-nav { padding-bottom: 50px; }
+
+  .container .header-search-container {
+    min-width: 100%;
+  }
+
 
 }
 
