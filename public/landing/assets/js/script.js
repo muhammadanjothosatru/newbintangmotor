@@ -169,12 +169,21 @@ function setUpCarouselDetail(carousel) {
   const numSlides = slidesContainer.children.length;
   indicator[currentSlide].className += " active";
 
-  indicator.forEach((item, index) => {
-    item.addEventListener('mouseover', arrow => {
-      changeSlide(index);
+  var x = window.matchMedia("(max-width: 768px)")
+  
+  if (x.matches) { 
+    indicator.forEach((item, index) => {
+      item.addEventListener('click', arrow => {
+        changeSlide(index);
+      })
     })
-  })
-
+  } else {
+    indicator.forEach((item, index) => {
+      item.addEventListener('mouseover', arrow => {
+        changeSlide(index);
+      })
+    })
+  }
   buttonPrevious.addEventListener('click', handlePrevious);
   buttonNext.addEventListener('click', handleNext);
 }
