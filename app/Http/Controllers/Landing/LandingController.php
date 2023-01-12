@@ -116,18 +116,27 @@ class LandingController extends Controller
     
     public function waproduct(Request $request, $id){
         
+        $nomermotor = "6285780938091";
+        $nomermobil = "6285854457796";
+
         $itemjual =DB::table('foto_landing')
                 ->join('kendaraan','kendaraan.no_pol', '=', 'foto_landing.no_pol')
-                ->select('foto_landing.id', 'kendaraan.jenis', 'foto_landing.dp', 'foto_landing.angsuran', 'foto_landing.bulan', 'kendaraan.no_pol', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'harga_jual', 'foto', 'deskripsi', 'kilometer')
+                ->select('foto_landing.id', 'kendaraan.jenis', DB::Raw("CONCAT(merk, ' ' , tipe, ' ', tahun_pembuatan) AS judul"), 'kendaraan.warna', 'kilometer')
                 ->where('foto_landing.id', $id);
         $items = $itemjual->get();
 
         $basetext = "";
+        $nomer = "";
         foreach($items as $key){
-            $basetext = "Halo mas, saya mau tanya " . $key->judul . " yang kilometernya " . $key->kilometer . ". Apa masih ada ya?";
+            $basetext = "Halo mas, saya mau tanya " . $key->judul . " warna " . $key->warna . " yang kilometernya " . $key->kilometer . ". Apa masih ada ya?";
+            if($key->jenis == "Sepeda Motor"){
+                $nomer = $nomermotor;
+            } else {
+                $nomer = $nomermobil;
+            }
         };
         $text = str_replace(" ", "%20", $basetext);
-        $link = 'https://wa.me/6285780938091?text='.$text;
+        $link = 'https://wa.me/'. $nomer . '?text='.$text;
         return Redirect::to($link);
     }
 }
